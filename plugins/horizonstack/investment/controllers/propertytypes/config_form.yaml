@@ -1,0 +1,10 @@
+name: PropertyTypes
+form: $/horizonstack/investment/models/propertytype/fields.yaml
+modelClass: Horizonstack\Investment\Models\PropertyType
+defaultRedirect: horizonstack/investment/propertytypes
+create:
+    redirect: 'horizonstack/investment/propertytypes/update/:id'
+    redirectClose: horizonstack/investment/propertytypes
+update:
+    redirect: horizonstack/investment/propertytypes
+    redirectClose: horizonstack/investment/propertytypes

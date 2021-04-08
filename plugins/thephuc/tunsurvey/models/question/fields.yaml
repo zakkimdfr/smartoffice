@@ -1,0 +1,25 @@
+fields:
+    question:
+        label: 'thephuc.tunsurvey::lang.form.question'
+        size: ''
+        span: auto
+        required: 1
+        type: text
+    control:
+        label: 'thephuc.tunsurvey::lang.form.control'
+        span: auto
+        required: 1
+        type: dropdown
+    is_optional:
+        label: 'thephuc.tunsurvey::lang.form.optional'
+        span: auto
+        type: switch
+tabs:
+    fields:
+        answers:
+            span: full
+            path: field_answers
+            type: partial
+            tab: 'thephuc.tunsurvey::lang.form.answers'
+            context:
+                - update

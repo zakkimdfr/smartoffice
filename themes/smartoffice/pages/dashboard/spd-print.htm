@@ -1,0 +1,463 @@
+title = "SPD Print"
+url = "/spd/print/:id"
+layout = "dashboard"
+is_hidden = 0
+
+[tripRealityFormPrintDetail]
+==
+<div class="container pt-10">
+    <div class="container-fluid pt-3" id="printableArea">
+        <!-- content start -->
+        <div class="row">
+
+            <!-- left side content start -->
+            <div class="col-md-6 col-sm-6 col-lg-6">
+                <!-- header start -->
+                <div class="row">
+                    <div class="col-2 text-right pb-0"><img src="/themes/smartoffice/assets/img/logos/logo-print.png"
+                                                            class="print-logo"
+                                                            height="120"/></div>
+                    <div class="col-10 text-center pb-0"><span class="font-weight-bold">PEMERINTAH DAERAH  PROVINSI  JAWA  BARAT</span>
+                        <h1 class="font-weight-bold">DINAS PARIWISATA DAN KEBUDAYAAN</h1>
+
+                        Jl. LL. RE. Martadinata No. 209 Telp. (022) 7273209-7103605
+                        Fax. (022) 7271385 – 7234656<br/> <u>www.disparbud.jabar.go.id</u> email: <u>disparbud@jabarprov.go.id</u><br/>
+                        Bandung - 40114
+                    </div>
+                </div>
+                <hr class="barier-top mt-0 mb-1">
+                <hr class="barier-bottom mt-0">
+                <!-- header end -->
+
+                <div class="row">
+                    <div class="col-7"></div>
+                    <div class="col pr-0">Lembar ke<span class="float-right">:</span></div>
+                    <div class="col pl-1"></div>
+                </div>
+                <div class="row">
+                    <div class="col-7"></div>
+                    <div class="col pr-0">Kode No.<span class="float-right">:</span></div>
+                    <div class="col pl-1"></div>
+                </div>
+                <div class="row">
+                    <div class="col-7"></div>
+                    <div class="col pr-0">Nomor<span class="float-right">:</span></div>
+                    <div class="col pl-1"></div>
+                </div>
+
+                <p class="text-center pt-5"><strong><u>SURAT PERJALANAN DINAS</u></strong></p>
+
+                <table class="table table-sm table-bordered">
+                    <tr>
+                        <td>1</td>
+                        <td>Pengguna Anggaran/Kuasa Pengguna Anggaran</td>
+                        <td colspan="2">Bidang Pemasaran</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Nama/NIP Pegawai yang melaksanakan Perjalanan Dinas</td>
+                        <td colspan="2">{{realityForm.user.name}}</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>
+                            <ol type="a" class="p-0 pl-3">
+                                <li>Pangkat dan Golongan Ruang</li>
+                                <li>Jabatan/Instansi</li>
+                                <li>Tingkat Biaya Perjalanan Dinas</li>
+                            </ol>
+                        </td>
+                        <td colspan="2">
+                            <ol type="a" class="p-0 pl-3">
+                                <li>{{realityForm.user.jobLevel.name}}</li>
+                                <li>{{realityForm.user.job}}</li>
+                                <li></li>
+                            </ol>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Maksud Perjalanan Dinas</td>
+                        <td colspan="2">{{realityForm.trip.mission}}</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Alat angkutan yang dipergunakan</td>
+                        <td colspan="2">{{realityForm.trip.transportation.name}}</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>
+                            <ol type="a" class="p-0 pl-3">
+                                <li>Tempat Berangkat</li>
+                                <li>Tempat Tujuan</li>
+                            </ol>
+                        </td>
+                        <td colspan="2">
+                            <ol type="a" class="p-0 pl-3">
+                                <li>{{realityForm.trip.origin_city.name}}</li>
+                                <li>{{realityForm.trip.destinationCity1.name}}</li>
+                            </ol>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>
+                            <ol type="a" class="p-0 pl-3">
+                                <li>Lamanya Perjalanan</li>
+                                <li>Tanggal Berangkat</li>
+                                <li>Tempat/Tanggal harus kembali di tempat baru *)</li>
+                            </ol>
+                        </td>
+                        <td colspan="2">
+                            <ol type="a" class="p-0 pl-3">
+                                <li>{{realityForm.trip.days}} (<span id="trip-days"></span>) hari</li>
+                                <li>{{realityForm.trip.start_at|localizeddate('long', 'none', 'id', 'Asia/Jakarta')}}
+                                </li>
+                                <li>{{realityForm.trip.return_at|localizeddate('long', 'none', 'id', 'Asia/Jakarta')}}
+                                </li>
+                            </ol>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>
+                            Pengikut : Nama
+                            <ol type="1" class="p-0 pl-3">
+                                {% for participant in realityForm.trip.participants %}
+                                <li>{{participant.name}}</li>
+                                {% endfor %}
+                            </ol>
+                        </td>
+                        <td>
+                            Tanggal lahir
+                            <ol type="1" class="p-0 pl-3">
+                                {% for participant in realityForm.trip.participants %}
+                                <li>{{participant.date_of_birth|localizeddate('long', 'none', 'id', 'Asia/Jakarta')}}
+                                </li>
+                                {% endfor %}
+                            </ol>
+                        </td>
+                        <td>
+                            Keterangan
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td>
+                            Pembebanan Anggaran
+                            <ol type="a" class="p-0 pl-3">
+                                <li>Instansi</li>
+                                <li>Akun</li>
+                            </ol>
+                        </td>
+                        <td colspan="2">
+                            <ol type="a" class="p-0 pl-3 pt-3">
+                                <li>Disparbud Provinsi Jawa Barat</li>
+                                <li>{{realityForm.trip.budget_name}}</li>
+                            </ol>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td>Keterangan Lain -lain</td>
+                        <td colspan="2">{{realityForm.remarks|raw}}</td>
+                    </tr>
+                </table>
+
+                <div>
+                    *) Coret yang tidak perlu
+
+                    <div class="row">
+                        <div class="col-7"></div>
+                        <div class="col pr-0">Dikeluarkan<span class="float-right">:</span></div>
+                        <div class="col pl-1">Bandung</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-7"></div>
+                        <div class="col pr-0">Tanggal<span class="float-right">:</span></div>
+                        <div class="col pl-1">{{realityForm.trip.start_at|localizeddate('long', 'none', 'id', 'Asia/Jakarta')}}</div>
+                    </div>
+
+                    <!-- sign start -->
+                    <div class="row text-center pt-2">
+                        <div class="col"></div>
+                        <div class="col-5">Pengguna Anggaran</div>
+                    </div>
+
+                    <div class="row text-center sign-space">
+                        <div class="col"></div>
+                        <div class="col-5">{{realityForm.signature_right.name}}</div>
+                    </div>
+                    <div class="row text-center">
+                        <div class="col"></div>
+                        <div class="col-5">NIP. {{realityForm.signature_right.identity_number}}</div>
+                    </div>
+                    <!-- sign end -->
+
+                </div>
+                <!-- left side content end -->
+            </div>
+
+            <!-- right side content start -->
+            <div class="col-md-6 col-sm-6 col-lg-6">
+
+                <table class="table table-sm table-bordered">
+                    <tr>
+                        <td colspan="2">I.</td>
+                        <td>
+                            <div class="row">
+                                <div class="col pr-0">Berangkat dari<span class="float-right">:</span></div>
+                                <div class="col pl-1">{{realityForm.trip.origin_city.name}}</div>
+                            </div>
+                            <div class="row">
+                                <div class="col pr-0">(Tempat kedudukan)<br/>Ke<span class="float-right">:</span></div>
+                                <div class="col pl-1 align-self-end">{{realityForm.trip.destinationCity1.name}}</div>
+                            </div>
+                            <div class="row">
+                                <div class="col pr-0">Pada Tanggal<span class="float-right">:</span></div>
+                                <div class="col pl-1">{{realityForm.trip.start_at|localizeddate('long', 'none', 'id', 'Asia/Jakarta')}}</div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>II.</td>
+                        <td>
+                            <div class="row">
+                                <div class="col pr-0">Tiba di<span class="float-right">:</span></div>
+                                <div class="col pl-1">{{realityForm.trip.destinationCity1.name}}</div>
+                            </div>
+                            <div class="row">
+                                <div class="col pr-0">Pada Tanggal<span class="float-right">:</span></div>
+                                <div class="col pl-1"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col pr-0">Kepala<span class="float-right">:</span></div>
+                                <div class="col pl-1"></div>
+                            </div>
+                            <!-- sign start -->
+                            <div class="row text-center sign-space">
+                                <div class="col"></div>
+                            </div>
+                            <div class="row text-center">
+                                <div class="col"></div>
+                            </div>
+                            <!-- sign end -->
+                        </td>
+                        <td>
+                            <div class="row">
+                                <div class="col pr-0">Berangkat dari<span class="float-right">:</span></div>
+                                <div class="col pl-1">{{realityForm.trip.destinationCity1.name}}</div>
+                            </div>
+                            <div class="row">
+                                <div class="col pr-0">Ke<span class="float-right">:</span></div>
+                                <div class="col pl-1">{{realityForm.trip.origin_city.name}}</div>
+                            </div>
+                            <div class="row">
+                                <div class="col pr-0">Pada Tanggal<span class="float-right">:</span></div>
+                                <div class="col pl-1">{{realityForm.trip.return_at|localizeddate('long', 'none', 'id', 'Asia/Jakarta')}}</div>
+                            </div>
+                            <div class="row">
+                                <div class="col pr-0">Kepala<span class="float-right">:</span></div>
+                                <div class="col pl-1"></div>
+                            </div>
+                            <!-- sign start -->
+                            <div class="row text-center sign-space">
+                                <div class="col"></div>
+                            </div>
+                            <div class="row text-center">
+                                <div class="col"></div>
+                            </div>
+                            <!-- sign end -->
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>III.</td>
+                        <td>
+                            <div class="row">
+                                <div class="col pr-0">Tiba di<span class="float-right">:</span></div>
+                                <div class="col pl-1"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col pr-0">Pada Tanggal<span class="float-right">:</span></div>
+                                <div class="col pl-1"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col pr-0">Kepala<span class="float-right">:</span></div>
+                                <div class="col pl-1"></div>
+                            </div>
+                            <!-- sign start -->
+                            <div class="row text-center sign-space">
+                                <div class="col"></div>
+                            </div>
+                            <div class="row text-center">
+                                <div class="col"></div>
+                            </div>
+                            <!-- sign end -->
+                        </td>
+                        <td>
+                            <div class="row">
+                                <div class="col pr-0">Berangkat dari<span class="float-right">:</span></div>
+                                <div class="col pl-1"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col pr-0">Ke<span class="float-right">:</span></div>
+                                <div class="col pl-1"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col pr-0">Pada Tanggal<span class="float-right">:</span></div>
+                                <div class="col pl-1"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col pr-0">Kepala<span class="float-right">:</span></div>
+                                <div class="col pl-1"></div>
+                            </div>
+                            <!-- sign start -->
+                            <div class="row text-center sign-space">
+                                <div class="col"></div>
+                            </div>
+                            <div class="row text-center">
+                                <div class="col"></div>
+                            </div>
+                            <!-- sign end -->
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>IV.</td>
+                        <td>
+                            <div class="row">
+                                <div class="col pr-0">Tiba di<span class="float-right">:</span></div>
+                                <div class="col pl-1"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col pr-0">Pada Tanggal<span class="float-right">:</span></div>
+                                <div class="col pl-1"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col pr-0">Kepala<span class="float-right">:</span></div>
+                                <div class="col pl-1"></div>
+                            </div>
+                            <!-- sign start -->
+                            <div class="row text-center sign-space">
+                                <div class="col"></div>
+                            </div>
+                            <div class="row text-center">
+                                <div class="col"></div>
+                            </div>
+                            <!-- sign end -->
+                        </td>
+                        <td>
+                            <div class="row">
+                                <div class="col pr-0">Berangkat dari<span class="float-right">:</span></div>
+                                <div class="col pl-1"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col pr-0">Ke<span class="float-right">:</span></div>
+                                <div class="col pl-1"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col pr-0">Pada Tanggal<span class="float-right">:</span></div>
+                                <div class="col pl-1"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col pr-0">Kepala<span class="float-right">:</span></div>
+                                <div class="col pl-1"></div>
+                            </div>
+                            <!-- sign start -->
+                            <div class="row text-center sign-space">
+                                <div class="col"></div>
+                            </div>
+                            <div class="row text-center">
+                                <div class="col"></div>
+                            </div>
+                            <!-- sign end -->
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>V.</td>
+                        <td colspan="2">
+                            <div class="row">
+                                <div class="col-3 pr-0">Tiba Kembali di<span class="float-right">:</span></div>
+                                <div class="col pl-1"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3 pr-0">Pada Tanggal<span class="float-right">:</span></div>
+                                <div class="col pl-1"></div>
+                            </div>
+                            Telah diperiksa dengan keterangan bahwa perjalanan tersebut atas perintahnya dan semata
+                            untuk
+                            kepentingan jabatan dalam waktu yang sesingkat-seingkatnya.
+                            <!-- sign start -->
+                            <div class="row text-center pt-5">
+                                <div class="col">Pengguna Anggaran</div>
+                            </div>
+                            <div class="row text-center">
+                                <div class="col">Tanggal : {{realityForm.trip.start_at|localizeddate('long', 'none', 'id', 'Asia/Jakarta')}}</div>
+                            </div>
+
+                            <div class="row text-center sign-space">
+                                <div class="col">{{realityForm.signature_left.name}}</div>
+                            </div>
+                            <div class="row text-center">
+                                <div class="col">NIP. {{realityForm.signature_left.identity_number}}</div>
+                            </div>
+                            <!-- sign end -->
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>VI.</td>
+                        <td colspan="2">PERHATIAN :<br/>PA/KPA yang menerbitkan SPD, pegawai yang melakukan perjalanan
+                            dinas, para pejabat yang mengesahkan tanggal berangkat/tiba, serta bendahara pengeluaran
+                            bertanggung jawab berdasarkan peraturan-peraturan Keuangan Negara apabila menderita rugi
+                            akibat
+                            kesalahan, kelalaian dan kealpaannya.
+                        </td>
+                    </tr>
+                </table>
+
+                <!-- right side content end -->
+            </div>
+
+            <!-- content end -->
+        </div>
+        <!-- container end -->
+    </div>
+    <div class="text-right mt-5">
+        <button type="button" class="btn btn-primary btn-sm-wide transition-3Pembinad-hover"
+                onclick="printDiv('printableArea')">
+            <span class="fas fa-print mr-2"></span>
+            Print
+        </button>
+    </div>
+</div>
+
+{% put javascript %}
+<script type="text/javascript" src="{{'assets/js/numericalindonesia.js'|theme}}"></script>
+<script>
+    var daysElement = document.getElementById('trip-days');
+    var totalDays = '{{realityForm.trip.days}}';
+    var result = terbilang(totalDays.toString());
+    result = lowerCase(result);
+    daysElement.innerHTML = result;
+
+    function lowerCase(str) {
+        return str.toLowerCase();
+    }
+
+    function printDiv(divName) {
+        var printContents = document.getElementById(divName).innerHTML;
+        var originalContents = document.body.innerHTML;
+
+        document.body.innerHTML = printContents;
+
+        window.print();
+
+        document.body.innerHTML = originalContents;
+    }
+</script>
+{% endput %}
+{% put styles %}
+<link href="{{ 'assets/css/trip-reality-form-print.css'|theme }}" rel="stylesheet"/>
+{% endput %}

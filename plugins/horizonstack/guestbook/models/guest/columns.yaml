@@ -1,0 +1,30 @@
+columns:
+    name:
+        label: Name
+        type: text
+        searchable: true
+        sortable: true
+    guestOrganization:
+        label: Organization
+        relation: guestOrganization
+        select: name
+    phone:
+        label: Phone
+        type: text
+    job:
+        label: Job
+        relation: job
+        select: name
+    event:
+        label: Event
+        relation: event
+        select: name
+    is_souvenirs:
+        label: Souvenirs
+        type: switch
+    created_at:
+        label: 'Registered At'
+        type: datetime
+        searchable: true
+        sortable: true
+

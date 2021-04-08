@@ -1,0 +1,10 @@
+questions:
+    label: thephuc.tunsurvey::lang.form.questions
+    view:
+        list: $/thephuc/tunsurvey/models/question/columns.yaml
+        toolbarButtons: create|delete
+        defaultSort:
+            column: sort_order
+            direction: asc
+    manage:
+        form: $/thephuc/tunsurvey/models/question/fields.yaml

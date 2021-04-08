@@ -1,0 +1,134 @@
+title = "Perjadin"
+url = "/perjadin"
+layout = "dashboard"
+is_hidden = 0
+
+[tripList]
+tripsPerPage = 10
+
+[tripReportsList]
+tripReportsPerPage = 10
+
+[tripRealityFormsList]
+tripRealityFormsPerPage = 10
+==
+<div class="container mt-10">
+    <div class="row">
+        <div class="col-md-4">
+            <article class="card text-center bg-soft-light">
+                <div class="card-body">
+                    <!-- SVG Icon -->
+                    <div id="SVGforSale" class="svg-preloader w-75 mx-auto mb-6">
+                        <figure class="ie-for-sale">
+                            <img class="js-svg-injector w-50"
+                                 src="/themes/smartoffice/assets/img/perjadin/propose-trip.png"
+                                 alt="Image Description"
+                                 data-parent="#SVGforSale">
+                        </figure>
+                    </div>
+                    <!-- End SVG Icon -->
+
+                    <h3 class="h4 mb-3">Pengajuan Perjalanan</h3>
+                    <p class="mb-4">Jumlah Pengajuan Anda: {{trips|length}}</p>
+                    <a class="btn btn-sm btn-soft-danger transition-3d-hover" href="/perjadin/propose">
+                        Buat Baru
+                        <span class="fas fa-angle-right ml-2"></span>
+                    </a>
+                </div>
+            </article>
+        </div>
+        <div class="col-md-4">
+            <article class="card text-center bg-soft-light">
+                <div class="card-body">
+                    <!-- SVG Icon -->
+                    <div id="SVGforReality" class="svg-preloader w-75 mx-auto mb-6">
+                        <figure class="ie-for-sale">
+                            <img class="js-svg-injector w-50" src="/themes/smartoffice/assets/img/perjadin/reality.png"
+                                 alt="Image Description"
+                                 data-parent="#SVGforReality">
+                        </figure>
+                    </div>
+                    <!-- End SVG Icon -->
+
+                    <h3 class="h4 mb-3">SPD</h3>
+                    <p class="mb-4">Jumlah SPD Anda: {{tripRealityForms|length}}</p>
+                    <a class="btn btn-sm btn-soft-info transition-3d-hover" href="{{'dashboard/spd'|page}}">
+                        Buat Baru
+                        <span class="fas fa-angle-right ml-2"></span>
+                    </a>
+                </div>
+            </article>
+        </div>
+        <div class="col-md-4">
+            <article class="card text-center bg-soft-light">
+                <div class="card-body">
+                    <!-- SVG Icon -->
+                    <div id="SVGforReport" class="svg-preloader w-75 mx-auto mb-6">
+                        <figure class="ie-for-sale">
+                            <img class="js-svg-injector w-50" src="/themes/smartoffice/assets/img/perjadin/report.png"
+                                 alt="Image Description"
+                                 data-parent="#SVGforReport">
+                        </figure>
+                    </div>
+                    <!-- End SVG Icon -->
+
+                    <h3 class="h4 mb-3">Laporan Perjadin</h3>
+                    <p class="mb-4">Jumlah Laporan Anda: {{tripReports|length}}</p>
+                    <a class="btn btn-sm btn-soft-primary transition-3d-hover"
+                       href="{{'dashboard/laporan-perjadin'|page}}">
+                        Buat Baru
+                        <span class="fas fa-angle-right ml-2"></span>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <div class="card mt-5 bg-soft-light">
+        <div class="card-body p-4">
+            <!-- Nav -->
+            <div class="row justify-content-between align-items-center mb-4">
+                <div class="col-md-7 order-md-1">
+                    <!-- Nav Classic -->
+                    <ul class="nav nav-classic nav-borderless px-0" id="pills-tab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="pills-trip-tab" data-toggle="pill" href="#pills-trip"
+                               role="tab" aria-controls="pills-trip" aria-selected="true">Pengajuan</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="pills-reality-tab" data-toggle="pill" href="#pills-reality"
+                               role="tab" aria-controls="pills-reality" aria-selected="false">SPD</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="pills-report-tab" data-toggle="pill" href="#pills-report" role="tab"
+                               aria-controls="pills-report" aria-selected="false">Laporan</a>
+                        </li>
+                    </ul>
+                    <!-- End Nav Classic -->
+                </div>
+            </div>
+            <!-- End Nav -->
+
+            <div class="tab-content" id="pills-tabContent">
+                <!-- Content One -->
+                <div class="tab-pane fade show active" id="pills-trip" role="tabpanel" aria-labelledby="pills-trip-tab">
+                    {% component 'tripList' %}
+                </div>
+                <!-- End Content One -->
+
+                <!-- Content Two -->
+                <div class="tab-pane fade" id="pills-reality" role="tabpanel" aria-labelledby="pills-reality-tab">
+                    {% component 'tripRealityFormsList' %}
+                </div>
+                <!-- End Content Two -->
+
+                <!-- Content Three -->
+                <div class="tab-pane fade" id="pills-report" role="tabpanel" aria-labelledby="pills-report-tab">
+                    {% component 'tripReportsList' %}
+                </div>
+                <!-- End Content Three -->
+
+            </div>
+        </div>
+    </div>
+</div>

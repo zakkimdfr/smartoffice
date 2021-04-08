@@ -1,0 +1,53 @@
+1.0.1:
+    - 'Initialize plugin.'
+1.0.2:
+    - 'Created table horizonstack_espj_signatures'
+    - builder_table_create_horizonstack_espj_signatures.php
+1.0.3:
+    - 'Created table horizonstack_espj_transportations'
+    - builder_table_create_horizonstack_espj_transportations.php
+1.0.4:
+    - 'Created table horizonstack_espj_trips'
+    - builder_table_create_horizonstack_espj_trips.php
+1.0.5:
+    - 'Created table horizonstack_espj_trip_destinations'
+    - builder_table_create_horizonstack_espj_trip_destinations.php
+1.0.6:
+    - 'Created table horizonstack_espj_trip_participants'
+    - builder_table_create_horizonstack_espj_trip_participants.php
+1.0.7:
+    - 'Created table horizonstack_espj_reality_forms'
+    - builder_table_create_horizonstack_espj_reality_forms.php
+1.0.8:
+    - 'Created table horizonstack_espj_trip_reports'
+    - builder_table_create_horizonstack_espj_trip_reports.php
+1.0.9:
+    - 'Add remarks to trips table'
+    - migration109.php
+1.0.10:
+    - 'Add transportation_id to trips table'
+    - migration1010.php
+1.0.11:
+    - 'Remove unnecessary fields from reality_forms table'
+    - migration1011.php
+1.0.12:
+    - 'Created table horizonstack_espj_urgencies'
+    - builder_table_create_horizonstack_espj_urgencies.php
+1.0.13:
+    - 'Created table horizonstack_espj_attn'
+    - builder_table_create_horizonstack_espj_attn.php
+1.0.14:
+    - 'Add destination city fields to trips table'
+    - migration1014.php
+1.0.15:
+    - 'Remove budget field and add budget_name field from trips table'
+    - migration1015.php
+1.0.16:
+    - 'Add signature_date to trips table'
+    - migration1016.php
+1.0.17:
+    - 'Add job_level to signatures table'
+    - migration1017.php
+1.0.18:
+    - 'Add days & nights field to trips table'
+    - migration1018.php

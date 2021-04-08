@@ -1,0 +1,6 @@
+fields:
+    answer:
+        label: 'thephuc.tunsurvey::lang.form.answer'
+        span: full
+        required: 1
+        type: text

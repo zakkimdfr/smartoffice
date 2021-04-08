@@ -1,0 +1,10 @@
+name: Events
+form: $/horizonstack/guestbook/models/event/fields.yaml
+modelClass: Horizonstack\Guestbook\Models\Event
+defaultRedirect: horizonstack/guestbook/events
+create:
+    redirect: 'horizonstack/guestbook/events/update/:id'
+    redirectClose: horizonstack/guestbook/events
+update:
+    redirect: horizonstack/guestbook/events
+    redirectClose: horizonstack/guestbook/events

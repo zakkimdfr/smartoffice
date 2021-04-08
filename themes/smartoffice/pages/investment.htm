@@ -1,0 +1,845 @@
+title = "Investment Project Detail"
+url = "/investment/:slug"
+layout = "default"
+is_hidden = 0
+
+[investmentDetails]
+==
+<?php
+function onStart(){
+    $this['google_map_api_key'] = Horizonstack\Userextend\Models\Setting::get('google_maps_key');
+}
+function onEnd() {
+    $_detail = $this->components['investmentDetails']->investment;
+$this->page->title = $_detail->name;
+}
+?>
+==
+<!-- Gallery Section -->
+<div class="container-fluid position-relative p-2 mb-3 space-1 space-top-3">
+    <div class="row {% if investment.photos|length == 1 %}text-center {% endif %}mx-gutters-1">
+        <div class="{% if investment.photos|length == 1 %}col-md-12 col-lg-12{% else %}col-md-8 col-lg-6{% endif %}">
+            <!-- Gallery -->
+            <a class="js-fancybox u-media-viewer" href="javascript:void(0);"
+               data-src="{{investment.photos[0].path}}"
+               data-fancybox="fancyboxGallery6"
+               data-caption="{{investment.photos[0].filename}}"
+               data-speed="700"
+               data-is-infinite="true">
+                <img class="img-fluid" src="{{investment.photos[0].thumb('900','455','crop')}}"
+                     alt="{{investment.photos[0].filename}}">
+
+                <div class="position-absolute bottom-0 right-0 pb-3 pr-3">
+              <span class="d-md-none btn btn-sm btn-white">
+                <span class="fas fa-expand mr-2"></span>
+                View Photos
+              </span>
+                </div>
+            </a>
+            <!-- End Gallery -->
+        </div>
+
+        {% if investment.photos|length > 1 %}
+        <div class="col-md-4 col-lg-3 d-none d-md-inline-block">
+            <!-- Gallery -->
+            <a class="js-fancybox u-media-viewer mb-2" href="javascript:;"
+               data-src="{{investment.photos[1].path}}"
+               data-fancybox="fancyboxGallery6"
+               data-caption="{{investment.photos[1].filename}}"
+               data-speed="700"
+               data-is-infinite="true">
+                <img class="img-fluid" src="{{investment.photos[1].thumb('450','225','crop')}}"
+                     alt="{{investment.photos[1].filename}}">
+            </a>
+            <!-- End Gallery -->
+
+            {% if investment.photos|length > 2 %}
+            <!-- Gallery -->
+            <a class="js-fancybox u-media-viewer" href="javascript:;"
+               data-src="{{investment.photos[2].path}}"
+               data-fancybox="fancyboxGallery6"
+               data-caption="{{investment.photos[2].filename}}"
+               data-speed="700"
+               data-is-infinite="true">
+                <img class="img-fluid" src="{{investment.photos[2].thumb('450','225','crop')}}"
+                     alt="{{investment.photos[2].filename}}">
+
+                <div class="position-absolute bottom-0 right-0 pb-3 pr-3">
+              <span class="d-sm-inline-block d-lg-none btn btn-sm btn-white">
+                <span class="fas fa-expand mr-2"></span>
+                View Photos
+              </span>
+                </div>
+            </a>
+            <!-- End Gallery -->
+            {% endif %}
+        </div>
+        {% endif %}
+
+        {% if investment.photos|length > 3 %}
+        <div class="col-lg-3 d-none d-lg-inline-block">
+            <!-- Gallery -->
+            <a class="js-fancybox u-media-viewer mb-2" href="javascript:;"
+               data-src="{{investment.photos[3].path}}"
+               data-fancybox="fancyboxGallery6"
+               data-caption="{{investment.photos[3].filename}}"
+               data-speed="700"
+               data-is-infinite="true">
+                <img class="img-fluid" src="{{investment.photos[3].thumb('450','225','crop')}}"
+                     alt="{{investment.photos[3].filename}}">
+            </a>
+            <!-- End Gallery -->
+
+            {% if investment.photos|length > 4 %}
+            <!-- Gallery -->
+            <a class="js-fancybox u-media-viewer" href="javascript:;"
+               data-src="{{investment.photos[4].path}}"
+               data-fancybox="fancyboxGallery6"
+               data-caption="{{investment.photos[4].filename}}"
+               data-speed="700"
+               data-is-infinite="true">
+                <img class="img-fluid" src="{{investment.photos[4].thumb('450','225','crop')}}"
+                     alt="{{investment.photos[4].filename}}">
+
+                <div class="position-absolute bottom-0 right-0 pb-3 pr-3">
+              <span class="d-none d-lg-inline-block btn btn-sm btn-white">
+                <span class="fas fa-expand mr-2"></span>
+                View Photos
+              </span>
+                </div>
+            </a>
+            <!-- End Gallery -->
+            {% endif %}
+        </div>
+        {% endif %}
+
+        {% set totalPhotos = investment.photos|length %}
+        {% if investment.photos|length > 4 %}
+        {% for photo in investment.photos|slice(5,totalPhotos) %}
+        <a class="js-fancybox u-media-viewer" href="javascript:;"
+           data-src="{{photo.path}}"
+           data-fancybox="fancyboxGallery6"
+           data-caption="{{photo.filename}}"
+           data-speed="700"
+           data-is-infinite="true">
+            <img class="img-fluid" src="{{photo.thumb('450','225','crop')}}" alt="{{photo.filename}}"
+                 style="display: none">
+        </a>
+        {% endfor %}
+        {% endif %}
+    </div>
+</div>
+<!-- End Gallery Section -->
+
+<!-- Property Description Section -->
+<div class="container space-bottom-2">
+    <!-- Additional Functions -->
+    <div class="d-md-flex justify-content-md-start align-items-md-center text-center mb-7">
+        <div class="mr-md-auto mb-2 mb-md-0">
+            <span class="font-size-1 font-weight-medium">Published:</span>
+            <span class="text-secondary font-size-1">{{investment.created_at|localizeddate('long', 'none', 'en', 'Asia/Jakarta')}}</span>
+        </div>
+
+        <!-- <a class="js-go-to btn btn-sm btn-outline-secondary border-white" href="javascript:;"
+           data-target="#calculatorSection"
+           data-type="static">
+            <span class="fas fa-calculator mr-2"></span>
+            Calculator
+        </a> -->
+
+        <a class="btn btn-sm btn-outline-secondary border-white" href="javascript:;">
+            <span class="far fa-heart mr-2"></span>
+            Save
+        </a>
+
+        <a class="btn btn-sm btn-outline-secondary border-white" href="javascript:;">
+            <span class="fas fa-share-alt mr-2"></span>
+            Share
+        </a>
+    </div>
+    <!-- End Additional Functions -->
+
+    <!-- Title -->
+    <div class="row justify-content-lg-between">
+        <div class="col-lg-8">
+
+            <h1 class="h3 font-weight-medium">{{investment.name}}</h1>
+        </div>
+
+        <div class="col-lg-4 align-self-lg-end text-lg-right mb-5 mb-lg-0">
+            <span class="h3 text-primary font-weight-medium text-nowrap">
+                {% if investment.investment_value %}Rp. {{investment.investment_value|number_format(0, '.', '.')}}{% else %}No Data{% endif %}
+            <br/>
+                {% if investment.usd %}USD {{investment.usd|number_format(0, ',', ',')}}{% else %}No Data{% endif %}</span>
+        </div>
+    </div>
+    <!-- End Title -->
+
+    <div class="row space-top-2">
+        <div class="col-lg-8 mb-9 mb-lg-0">
+            <!-- Nav Classic -->
+            <ul id="SVGnavIcons" class="svg-preloader nav nav-classic nav-rounded nav-shadow nav-justified border"
+                role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link font-weight-medium active" id="pills-one-tab" data-toggle="pill"
+                       href="#pills-one" role="tab" aria-controls="pills-one" aria-selected="true">
+                        <div class="d-md-flex justify-content-md-center align-items-md-center">
+                            <figure class="ie-height-40 d-none d-md-block w-100 max-width-6 mr-3">
+                                <img class="js-svg-injector" src="{{ 'assets/svg/icons/icon-13.svg'|theme }}" alt="SVG"
+                                     data-parent="#SVGnavIcons">
+                            </figure>
+                            Detail
+                        </div>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link font-weight-medium" id="pills-two-tab" data-toggle="pill" href="#pills-two"
+                       role="tab" aria-controls="pills-two" aria-selected="false">
+                        <div class="d-md-flex justify-content-md-center align-items-md-center">
+                            <figure class="ie-height-40 d-none d-md-block w-100 max-width-6 mr-3">
+                                <img class="js-svg-injector" src="{{ 'assets/svg/icons/icon-63.svg'|theme }}" alt="SVG"
+                                     data-parent="#SVGnavIcons">
+                            </figure>
+                            Location
+                        </div>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link font-weight-medium" id="pills-three-tab" data-toggle="pill" href="#pills-three"
+                       role="tab" aria-controls="pills-three" aria-selected="false">
+                        <div class="d-md-flex justify-content-md-center align-items-md-center">
+                            <figure class="ie-height-40 d-none d-md-block w-100 max-width-6 mr-3">
+                                <img class="js-svg-injector" src="{{ 'assets/svg/icons/icon-5.svg'|theme }}" alt="SVG"
+                                     data-parent="#SVGnavIcons">
+                            </figure>
+                            Legalities and Documents
+                        </div>
+                    </a>
+                </li>
+            </ul>
+            <!-- End Nav Classic -->
+
+            <!-- Tab Content -->
+            <div class="tab-content">
+                <div class="tab-pane fade pt-6 show active" id="pills-one" role="tabpanel"
+                     aria-labelledby="pills-one-tab">
+                    <!-- Title -->
+                    <!-- <div class="mb-3">
+                        <h2 class="h5">Key facts</h2>
+                    </div> -->
+                    <!-- End Title -->
+
+                    <!-- Key Facts -->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4>Key Facts</h4>
+                            <!-- Fact List -->
+                            <ul class="list-unstyled font-size-1 mb-0">
+                                <li class="d-sm-flex justify-content-sm-between py-1">
+                                    <span class="font-weight-medium">Scope of Project:</span>
+                                    <span class="text-secondary">
+                                        {% if investment.projectLevel %}{{investment.projectLevel.name}}{% else %}No Data{% endif %}
+                                    </span>
+                                </li>
+
+                                <li class="d-sm-flex justify-content-sm-between py-1">
+                                    <span class="font-weight-medium">Sector:</span>
+                                    <span class="text-secondary">
+                                        {% if investment.propertyType %}{{investment.propertyType.name}}{% else %}No Data{% endif %}
+                                    </span>
+                                </li>
+
+                                <li class="d-sm-flex justify-content-sm-between py-1">
+                                    <span class="font-weight-medium">Expected Time of Operation:</span>
+                                    <span class="text-secondary">
+                                        {% if targetOperationMonth %}{{targetOperationMonth}}, {{targetOperationYear}}{% else %}No Data{% endif %}
+                                    </span>
+                                </li>
+
+                                <li class="d-sm-flex justify-content-sm-between py-1">
+                                    <span class="font-weight-medium">Ownership:</span>
+                                    <span class="text-secondary">
+                                        {% if investment.ownership %}{{investment.ownership.name}}{% else %}No Data{% endif %}
+                                    </span>
+                                </li>
+
+                                <li class="d-sm-flex justify-content-sm-between py-1">
+                                    <span class="font-weight-medium">Land Size:</span>
+                                    <span class="text-secondary">
+                                        {% if investment.land_size %}{{investment.land_size|number_format(0, '.', '.')}} <strong>M2</strong>{% else %}No Data{% endif %}
+                                    </span>
+                                </li>
+
+                                <li class="d-sm-flex justify-content-sm-between py-1">
+                                    <span class="font-weight-medium">Land Allocation:</span>
+                                    <span class="text-secondary">
+                                        {% if investment.land_allocation %}{{investment.land_allocation}}{% else %}No Data{% endif %}
+                                    </span>
+                                </li>
+
+                                <li class="d-sm-flex justify-content-sm-between py-1">
+                                    <span class="font-weight-medium">Number of Human Resource:</span>
+                                    <span class="text-secondary">
+                                        {% if investment.human_resources %}{{investment.human_resources|number_format(0, '.', '.')}}{% else %}No Data{% endif %}
+                                    </span>
+                                </li>
+                            </ul>
+                            <!-- End Fact List -->
+                        </div>
+
+                        <div class="col-md-6">
+                            <h4>Financial Overview</h4>
+                            <!-- Fact List -->
+                            <ul class="list-unstyled font-size-1 mb-0">
+                                <li class="d-sm-flex justify-content-sm-between py-1">
+                                    <span class="font-weight-medium">Internal Rate Return (IRR):</span>
+                                    <span class="text-secondary">
+                                        {% if investment.irr %}{{investment.irr}}%{% else %}No Data{% endif %}
+                                    </span>
+                                </li>
+
+                                <li class="d-sm-flex justify-content-sm-between py-1">
+                                    <span class="font-weight-medium">Net Present Value (NPV):</span>
+                                    <span class="text-secondary">
+                                        {% if investment.npv %}Rp.{{investment.npv|number_format(0, '.', '.')}}{% else %}No Data{% endif %}
+                                    </span>
+                                </li>
+
+                                <li class="d-sm-flex justify-content-sm-between py-1">
+                                    <span class="font-weight-medium">Build Coverage Ratio (BCR):</span>
+                                    <span class="text-secondary">
+                                        {% if investment.bcr %}({{investment.bcr}})%{% else %}No Data{% endif %}
+                                    </span>
+                                </li>
+
+                                <li class="d-sm-flex justify-content-sm-between py-1">
+                                    <span class="font-weight-medium">Payback Period:</span>
+                                    <span class="text-secondary">
+                                        {% if investment.payback_period %}{{investment.payback_period}} Months{% else %}No Data{% endif %}
+                                    </span>
+                                </li>
+
+                                <li class="d-sm-flex justify-content-sm-between py-1">
+                                    <span class="font-weight-medium">Return of Investment (ROI):</span>
+                                    <span class="text-secondary">
+                                        {% if investment.return_of_investment %}{{investment.return_of_investment}}%{% else %}No Data{% endif %}
+                                    </span>
+                                </li>
+
+                                <li class="d-sm-flex justify-content-sm-between py-1">
+                                    <span class="font-weight-medium">Break Event Point (BEP):</span>
+                                    <span class="text-secondary">
+                                        {% if investment.break_event_point %}Rp.{{investment.break_event_point|number_format(0, '.', '.')}}{% else %}No Data{% endif %}
+                                    </span>
+                                </li>
+
+                                <li class="d-sm-flex justify-content-sm-between py-1">
+                                    <span class="font-weight-medium">Profitability Index:</span>
+                                    <span class="text-secondary">
+                                        {% if investment.profitability_index %}{{investment.profitability_index}}%{% else %}No Data{% endif %}
+                                    </span>
+                                </li>
+                            </ul>
+                            <!-- End Fact List -->
+                        </div>
+                    </div>
+                    <!-- End Key Facts -->
+
+                    <!-- View Info -->
+                    <div class="border-top border-bottom py-4 my-6">
+                        <div class="pr-md-4">
+                            <span class="text-secondary">Investment Schema:</span>
+                            <strong class="text-dark">
+                                {% for scheme in investment.investment_schemes %}{{scheme.name}}
+                                {% if not loop.last %},{% endif %}
+                                {% else %}
+                                No Data
+                                {% endfor %}
+                            </strong>
+                        </div>
+                    </div>
+                    <!-- End View Info -->
+
+                    <!-- Executing Agent -->
+                    <div class="mb-3">
+                        <h3 class="h5">Executing Agent</h3>
+                        <div>
+                            {% if investment.organization %}
+                            {% if investment.organization and investment.organization.icon %}
+                            <img class="js-svg-injector w-15" src="{{investment.organization.icon.path}}">
+                            {% else %}
+                            <img class="js-svg-injector w-15"
+                                 src="{{'assets/img/logos/logo.png'|theme}}">
+                            {% endif %}
+                            <span class="ml-2">{{investment.organization.name}}</span>
+                            {% else %}
+                            No Data
+                            {% endif %}
+                        </div>
+                    </div>
+                    <!-- End Executing Agent -->
+
+                    <h3 class="h5">
+                        Incentives
+                    </h3>
+                    <p>
+                        {% if investment.incentives %}
+                        {{investment.incentives}}
+                        {% else %}
+                        No Data
+                        {% endif %}
+                    </p>
+                    <hr>
+
+                    <h3 class="h5">
+                        Project Description
+                    </h3>
+                    <p>
+                        {% if investment.description %}
+                        {{investment.description}}
+                        {% else %}
+                        No Data
+                        {% endif %}
+                    </p>
+                    <hr>
+
+                    <!-- Collapse Link - Content -->
+                    <!--<div class="collapse" id="collapseLinkExample">
+                        <h4 class="h6">Directions</h4>
+
+                        <p>Proceed up the Otley Road from the Prince Of Wales roundabout and through the traffic lights
+                            with the turning into Harlow Moor Road. Continue ahead where the property can be found on
+                            the left hand side.</p>
+
+                        <h4 class="h6">Strictly by appointment through Front House</h4>
+
+                        <p>You may download, store and use the material for your own personal use and research. You may
+                            not republish, retransmit, redistribute or otherwise make the material available to any
+                            party or make the same available on any website, online service or bulletin board of your
+                            own or of any other party or make the same available in hard copy or in any other media
+                            without the website owner's express prior written consent. The website owner's copyright
+                            must remain on all reproductions of material taken from this website.</p>
+                    </div>-->
+                    <!-- End Collapse Link - Content -->
+
+                    <!-- Collapse Link -->
+                    <!--<a class="link-collapse" data-toggle="collapse" href="#collapseLinkExample" role="button"
+                       aria-expanded="false" aria-controls="collapseLinkExample">
+                        <span class="link-collapse__default">View More</span>
+                        <span class="link-collapse__active">View Less</span>
+                    </a>-->
+                    <!-- End Collapse Link -->
+
+                    <div class="mb-3">
+                        <h3 class="h5">Available Infrastructure</h3>
+                    </div>
+
+                    <div class="row mx-0">
+                        {% for infrastructure in investment.infrastructures %}
+                        <div class="col-md-2 col-sm-3 col-5 border rounded text-center p-2 mr-2 mb-2 w-100">
+                            {% if infrastructure.icon %}
+                            <img class="mb-2" src="{{ infrastructure.icon.thumb('50','50','crop') }}">
+                            {% else %}
+                            <img class="mb-2" src="{{ 'assets/img/icons/img1.png'|theme }}">
+                            {% endif %}
+                            <p class="d-block two-line-truncate">{{infrastructure.name}}</p>
+                        </div>
+                        {% else %}
+                        No Data
+                        {% endfor %}
+                    </div>
+
+                    {% if investment.objectives %}
+                    <h3 class="h5">
+                        Project Objective
+                    </h3>
+                    <p>
+                        {% if investment.objectives %}
+                        {{investment.objectives}}
+                        {% else %}
+                        No Data
+                        {% endif %}
+                    </p>
+                    {% endif %}
+                </div>
+
+                <div class="tab-pane fade pt-6" id="pills-two" role="tabpanel" aria-labelledby="pills-two-tab">
+                    <!-- gmap locations here -->
+                    <div style="height: 430px" id="map"></div>
+                    <!-- gmap locations here -->
+
+                    <div class="mt-2">
+                        <span class="text-secondary">Administrative Locations:</span>
+                        <strong class="text-dark">{{investment.village.name}}, {{investment.district.name}},
+                            {{investment.city.name}}</strong>
+                    </div>
+                </div>
+
+                <div class="tab-pane fade pt-6" id="pills-three" role="tabpanel" aria-labelledby="pills-three-tab">
+                    {% if investment.policyRegulations|length > 0 or investment.ded_document or
+                    investment.amdal_document or investment.amdas_document or investment.feasibility_study_document %}
+                    {% for policy in investment.policyRegulations %}
+                    <div class="row mb-3">
+                        <div class="col-1">
+                            <span class="fas fa-file-pdf display-4"></span>
+                        </div>
+                        <div class="col">
+                            {{policy.name}}<br>
+                            <a target="_blank" href="/files/download/{{policy.file.id}}"
+                               class="btn btn-sm btn-soft-primary">Download ({{policy.file.size}})</a>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+                    {% if investment.ded_document %}
+                    <div class="row mb-3">
+                        <div class="col-1">
+                            <span class="fas fa-file-pdf display-4"></span>
+                        </div>
+                        <div class="col">
+                            Detail Engineering Design Document<br>
+                            <a target="_blank" href="/files/download/{{investment.ded_document.id}}"
+                               class="btn btn-sm btn-soft-primary">Download ({{investment.ded_document.size}})</a>
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    {% if investment.amdal_document %}
+                    <div class="row mb-3">
+                        <div class="col-1">
+                            <span class="fas fa-file-pdf display-4"></span>
+                        </div>
+                        <div class="col">
+                            Environmental Impact Analysis Document<br>
+                            <a target="_blank" href="/files/download/{{investment.amdal_document.id}}"
+                               class="btn btn-sm btn-soft-primary">Download ({{investment.amdal_document.size}})</a>
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    {% if investment.amdas_document %}
+                    <div class="row mb-3">
+                        <div class="col-1">
+                            <span class="fas fa-file-pdf display-4"></span>
+                        </div>
+                        <div class="col">
+                            Pre Feasibility Study Document<br>
+                            <a target="_blank" href="/files/download/{{investment.amdas_document.id}}"
+                               class="btn btn-sm btn-soft-primary">Download ({{investment.amdas_document.size}})</a>
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    {% if investment.feasibility_study_document %}
+                    <div class="row mb-3">
+                        <div class="col-1">
+                            <span class="fas fa-file-pdf display-4"></span>
+                        </div>
+                        <div class="col">
+                            Feasibility Study Document<br>
+                            <a target="_blank" href="/files/download/{{investment.feasibility_study_document.id}}"
+                               class="btn btn-sm btn-soft-primary">Download
+                                ({{investment.feasibility_study_document.size}})</a>
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% else %}
+                    <p>No Data</p>
+                    {% endif %}
+                </div>
+            </div>
+            <!-- End Tab Content -->
+
+        </div>
+
+        <div class="col-lg-4">
+            <div id="stickyBlockStartPoint" class="pl-lg-4">
+                <!-- Contact Form -->
+                <div class="js-sticky-block card shadow-sm p-4"
+                     data-parent="#stickyBlockStartPoint"
+                     data-sticky-view="lg"
+                     data-start-point="#stickyBlockStartPoint"
+                     data-end-point="#stickyBlockEndPoint"
+                     data-offset-top="24"
+                     data-offset-bottom="0">
+                    <!-- Header -->
+                    <div class="media align-items-center mb-4 border-bottom">
+                        <div class="u-avatar mr-3">
+                            <img class="img-fluid rounded-circle" src="{{ 'assets/img/logos/logo.png'|theme }}"
+                                 alt="Image Description">
+                        </div>
+                        <div class="media-body">
+                            <h4 class="h6 mb-0">Contact Information</h4>
+                        </div>
+                    </div>
+                    <!-- End Header -->
+
+                    <p>Contact Person<br>
+                        <span class="text-dark font-weight-bold">{{investment.agent_name}}</span></p>
+                    <p>Organization Name<br>
+                        <span class="text-dark font-weight-bold">{{investment.organization_name}}</span></p>
+                    <p>Email Address<br>
+                        <span class="text-dark font-weight-bold">{{investment.agent_email}}</span></p>
+
+                    <p>Office Address<br>
+                        <span class="text-dark font-weight-bold">{{investment.office_address}}</span></p>
+
+                    <a class="btn btn-block btn-whatsapp" href="tel:+62{{investment.agent_phone}}"><span
+                            class="fas fa-phone"></span>
+                        {{investment.agent_phone}}</a>
+
+                    <a class="btn btn-block btn-print" target="_blank" href="/investment-print/{{investment.slug}}"><span
+                            class="fas fa-print"></span>
+                        Print</a>
+
+                    <a class="btn btn-block btn-primary" onclick="openNotifyMeModal()" href="javascript:void(0)"><span
+                            class="fas fa-newspaper"></span>
+                        Notify Me</a>
+                </div>
+                <!-- End Contact Form -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Sticky Block End Point -->
+    <div id="stickyBlockEndPoint"></div>
+
+
+    <!-- Similar City Investments Section -->
+    {% if relatedInvestments|length > 0 %}
+    <div class="border-top pt-8 mt-8">
+        <!-- Title -->
+        <div class="mb-3">
+            <h2 class="h5">Similar projects in {{investment.city.name}}</h2>
+        </div>
+        <!-- End Title -->
+
+        <!-- Slick Carousel -->
+        <div class="js-slick-carousel u-slick u-slick-zoom u-slick--gutters-3"
+             data-slides-show="3"
+             data-variable-width="true"
+             data-arrows-classes="d-none d-lg-inline-block u-slick__arrow u-slick__arrow--flat u-slick__arrow-centered--y rounded-circle"
+             data-arrow-left-classes="fas fa-arrow-left u-slick__arrow-inner u-slick__arrow-inner--left ml-n2"
+             data-arrow-right-classes="fas fa-arrow-right u-slick__arrow-inner u-slick__arrow-inner--right mr-n2"
+             data-pagi-classes="d-lg-none text-center u-slick__pagination mt-5 mb-0"
+             data-responsive='[{
+               "breakpoint": 992,
+               "settings": {
+                 "slidesToShow": 2
+               }
+             }, {
+               "breakpoint": 768,
+               "settings": {
+                 "slidesToShow": 1
+               }
+             }]'>
+
+            <!-- similar city investment detail -->
+            {% for investment in relatedInvestments %}
+            <div class="js-slide card" style="width: 600px;">
+                <div class="row">
+                    <div class="col-4 pr-0">
+                        <div class="bg-img-hero-center rounded-left h-100"
+                             style="background-image: url({{investment.photos[0].thumb('200','300','auto')}});"></div>
+                    </div>
+
+                    <div class="col-8">
+                        <div class="card-body py-5 px-md-4">
+                            <div class="mb-2">
+                                <a class="d-inline-block text-secondary small font-weight-medium mb-1" href="#">{{investment.city.name}}</a>
+                                <h2 class="h6 font-weight-normal">
+                                    <a class="text-secondary"
+                                       href="/investment/{{investment.slug}}">{{investment.name}}</a>
+                                </h2>
+                                <p class="font-size-1 two-line-truncate">{{investment.objectives}}</p>
+                                <div class="d-block">
+                                    <span class="h5">Rp. {{investment.investment_value|number_format(0, '.', '.')}}</span>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <div class="d-inline-flex align-items-center small" href="#">
+                                    <span class="text-secondary">schema: {% for scheme in investment.investment_schemes %}{{scheme.name}} {% if not loop.last %},{% endif %}{% endfor %}</span>
+                                </div>
+                            </div>
+                            <button type="button" class="btn btn-sm btn-soft-secondary btn-pill transition-3d-hover">
+                                {{investment.organization_name}}
+                            </button>
+                            <a href="/investment/{{investment.slug}}"
+                               class="btn btn-sm btn-outline-primary btn-sm-wide btn-pill transition-3d-hover mr-1">
+                                Detail
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            <!-- End similar city investment detail -->
+        </div>
+        <!-- End Slick Carousel -->
+    </div>
+    {% endif %}
+    <!-- End Similar City Investments Section -->
+</div>
+<!-- End Property Description Section -->
+
+<div id="notifyMeModal" class="modal">
+    <div class="modal-dialog modal-lg" role="dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="container">
+                    <form class="p-md-4 p-2 js-validate" id="notify-me-form">
+                        <div class="text-center">
+                            <h5>Place Your Interest</h5>
+                            <p>Please fill the form below. Our system will send directly to the Excecuting
+                                Agencies.<br/>
+                                Your data will be saved for our Investment Summit Events invitee. </p>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 mb-3">
+                                <div class="js-form-message">
+                                    <label for="name" class="font-weight-medium text-uppercase">Name <strong
+                                            class="text-danger">*</strong></label>
+                                    <div class="input-group mb-2">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><span class="fas fa-suitcase"></span></span>
+                                        </div>
+                                        <input type="text" class="form-control percent" name="name" id="name"
+                                               placeholder="Name" required
+                                               data-msg="Name required"
+                                               data-error-class="u-has-error"
+                                               data-success-class="u-has-success">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="phone" class="font-weight-medium text-uppercase">Phone Number
+                                </label>
+                                <div class="input-group mb-2">
+                                    <div class="input-group-prepend">
+                                            <span class="input-group-text">+62
+                                            </span>
+                                    </div>
+                                    <input type="number" class="form-control" name="phone" id="phone"
+                                           placeholder="Phone number">
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <div class="js-form-message">
+                                    <label for="email" class="font-weight-medium text-uppercase">Email Address <strong
+                                            class="text-danger">*</strong>
+                                    </label>
+                                    <div class="input-group mb-2">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><span class="fas fa-globe"></span>
+                                            </span>
+                                        </div>
+                                        <input type="email" class="form-control" required name="email" id="email"
+                                               placeholder="Your Email Address"
+                                               data-msg="Email Address required"
+                                               data-error-class="u-has-error"
+                                               data-success-class="u-has-success">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12 mb-3">
+                                <label for="organization_name" class="font-weight-medium text-uppercase">Organization
+                                </label>
+                                <div class="input-group mb-2">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><span class="fas fa-globe"></span></span>
+                                    </div>
+                                    <input type="text" class="form-control" name="organization_name"
+                                           id="organization_name"
+                                           placeholder="Organization Name">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-end">
+                            <a class="btn btn-sm btn-wide btn-sm-wide btn-soft-secondary transition-3d-hover mr-md-3 mr-1"
+                               href="javascript:void(0);"
+                               data-dismiss="modal">Cancel</a>
+                            <button type="button" onclick="submitNotifyMeForm()"
+                                    class="btn btn-sm btn-wide btn-sm-wide btn-success transition-3d-hover">Submit
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% put javascript %}
+<script>
+    function openNotifyMeModal() {
+        $('#notifyMeModal').modal()
+    }
+
+    function submitNotifyMeForm() {
+        var form = $('#notify-me-form');
+        var investmentId = "{{investment.id}}";
+        if (form.valid()) {
+            form.request('onSubmitNotifyMe',
+                {
+                    data: {investment_id: investmentId},
+                    beforeSend: function () {
+                        $.oc.stripeLoadIndicator.show();
+                    },
+                    complete: function () {
+                        $.oc.stripeLoadIndicator.hide();
+                        $('#notify-me-form').trigger("reset");
+                        $('#notifyMeModal').modal('hide')
+                    },
+                    flash: true
+                })
+        }
+    }
+</script>
+<script>
+    var map, autocomplete, geocoder, marker;
+
+    var latitude = parseFloat("{{investment.latitude}}");
+    var longitude = parseFloat("{{investment.longitude}}");
+
+    if (!latitude) {
+        latitude = -6.121435;
+    }
+
+    if (!longitude) {
+        longitude = 106.774124;
+    }
+
+    function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+            center: {
+                lat: latitude, lng: longitude
+            },
+            zoom: 15
+        });
+        //autocomplete.setComponentRestrictions({'country': ['ind']});
+
+        marker = new google.maps.Marker({
+            map: map,
+            anchorPoint: new google.maps.Point(0, -29),
+            draggable: true,
+            animation: google.maps.Animation.DROP,
+            position: new google.maps.LatLng(latitude, longitude)
+        });
+
+        marker.addListener('dragend', function (evt) {
+            $("#latitude").val(evt.latLng.lat());
+            $("#longitude").val(evt.latLng.lng());
+        });
+
+        //codeAddress("Mumbai");
+
+    }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key={{google_map_api_key}}&libraries=places&callback=initMap"
+        async defer></script>
+{% endput %}

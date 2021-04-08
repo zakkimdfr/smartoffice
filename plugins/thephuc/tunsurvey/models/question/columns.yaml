@@ -1,0 +1,27 @@
+columns:
+    code:
+        label: 'thephuc.tunsurvey::lang.form.code'
+        type: text
+        searchable: true
+    question:
+        label: 'thephuc.tunsurvey::lang.form.question'
+        type: text
+        searchable: true
+    is_optional:
+        label: 'thephuc.tunsurvey::lang.form.optional'
+        type: switch
+    control:
+        label: 'thephuc.tunsurvey::lang.form.control'
+        type: control
+    created_at:
+        label: 'thephuc.tunsurvey::lang.form.created_at'
+        type: datetime
+    sort_order_handle:
+        label: " "
+        type: partial
+        path: $/thephuc/tunsurvey/models/question/_reroder_handle.htm
+        sortable: false
+        width: 60px
+    sort_order:
+        invisible: true
+        type: number

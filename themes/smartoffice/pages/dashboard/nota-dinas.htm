@@ -1,0 +1,41 @@
+title = "Nota Dinas"
+url = "/nota-dinas"
+layout = "dashboard"
+is_hidden = 0
+
+[workReportList]
+workReportsPerPage = 10
+==
+<div class="container mt-10">
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <article class="card text-center bg-soft-light">
+                <div class="card-body">
+                    <!-- SVG Icon -->
+                    <div id="SVGforReport" class="svg-preloader w-75 mx-auto mb-6">
+                        <figure class="ie-for-sale">
+                            <img class="js-svg-injector w-50" src="/themes/smartoffice/assets/img/perjadin/report.png"
+                                 alt="Image Description"
+                                 data-parent="#SVGforReport">
+                        </figure>
+                    </div>
+                    <!-- End SVG Icon -->
+
+                    <h3 class="h4 mb-3">Nota Dinas</h3>
+                    <p class="mb-4">Jumlah Nota Dinas: {{workReports|length}}</p>
+                    <a class="btn btn-sm btn-soft-primary transition-3d-hover"
+                       href="{{'dashboard/nota-dinas-form'|page}}">
+                        Buat Baru
+                        <span class="fas fa-angle-right ml-2"></span>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <div class="card mt-5 bg-soft-light">
+        <div class="card-body p-4">
+            {% component 'workReportList' %}
+        </div>
+    </div>
+</div>

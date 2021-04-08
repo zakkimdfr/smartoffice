@@ -1,0 +1,18 @@
+# ===================================
+#  Field Definitions
+# ===================================
+
+tabs:
+    fields:
+
+        # Google Maps API Key
+        google_maps_key:
+            label: 'Google Maps API Key'
+            comment: 'If you plan on using Google Maps services, enter the API key for it here.'
+            tab: 'Credentials'
+
+        # Admin Email address for email
+        emails:
+            label: Email
+            comment: Comma separated emails
+            tab: 'Emails'

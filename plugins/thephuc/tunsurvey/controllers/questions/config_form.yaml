@@ -1,0 +1,10 @@
+name: Questions
+form: $/thephuc/tunsurvey/models/question/fields.yaml
+modelClass: ThePhuc\Tunsurvey\Models\Question
+defaultRedirect: thephuc/tunsurvey/questions
+create:
+    redirect: 'thephuc/tunsurvey/questions/update/:id'
+    redirectClose: thephuc/tunsurvey/questions
+update:
+    redirect: thephuc/tunsurvey/questions
+    redirectClose: thephuc/tunsurvey/questions

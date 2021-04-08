@@ -1,0 +1,51 @@
+<?php Block::put('breadcrumb') ?>
+    <ul>
+        <li><a href="<?= Backend::url('thephuc/tunsurvey/analytics') ?>"><?= trans('thephuc.tunsurvey::lang.menu.survey_result') ?></a></li>
+        <li><?= e($this->pageTitle) . ' - ' . $code ?></li>
+    </ul>
+<?php Block::endPut() ?>
+
+<div class="layout-row">
+    <div class="col-sm-12">
+        <div class="control-list">
+            <h2><?= trans('thephuc.tunsurvey::lang.form.questions') ?></h2>
+            <table class="table data">
+                <thead>
+                    <tr>
+                        <th><span>#</span></th>
+                        <th><span><?= trans('thephuc.tunsurvey::lang.form.questions') ?></span></th>
+                        <th><span><?= trans('thephuc.tunsurvey::lang.form.view_details') ?></span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($questions as $key => $question): ?>
+                    <tr>
+                        <td><strong>Q<?= $key + 1 ?></strong></td>
+                        <td><?= $question->question ?></td>
+                        <td class="nolink">
+                            <button
+                                data-control="popup"
+                                data-size="large"
+                                data-handler="onShowDetail"
+                                data-request-data="question_id: '<?= $question->id ?>', survey_id: '<?= $id ?>'"
+                                class="btn-icon icon-info-circle"
+                                ></button>
+                        </td>
+                    </tr>
+                    <?php endforeach ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="col-sm-12">
+        <div class="control-list" id="list_answers">
+            <?= $this->makePartial('$/thephuc/tunsurvey/controllers/analytics/_list_preview.htm', [
+                'id' => $id,
+                'questions' => $questions,
+                'useranswers' => $useranswers,
+            ]) ?>
+        </div>
+    </div>
+</div>
+

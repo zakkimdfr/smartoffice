@@ -1,0 +1,237 @@
+description = "Dashboard layout"
+
+[userSession]
+security = "user"
+redirect = "login"
+==
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="{{ this.page.meta_description }}">
+    <meta name="title" content="{{ this.page.meta_title }}">
+    <link rel="icon" type="image/png" href="{{ 'assets/img/logos/favicon.ico'|theme }}">
+    <title>{{ this.page.title }} &sim; Smart Office</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap" rel="stylesheet">
+
+    <!-- CSS Implementing Plugins -->
+    <link rel="stylesheet" href="{{ [
+  'assets/vendor/font-awesome/css/fontawesome-all.min.css',
+  'assets/vendor/custombox/dist/custombox.min.css',
+  'assets/vendor/animate.css/animate.min.css',
+  'assets/vendor/hs-megamenu/src/hs.megamenu.css',
+  'assets/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css',
+  'assets/vendor/flatpickr/dist/flatpickr.css',
+  'assets/vendor/bootstrap-datepicker/dist/css/bootstrap-datepicker3.css',
+  'assets/vendor/dropify/dist/css/dropify.min.css',
+  'assets/vendor/bootstrap-select/dist/css/bootstrap-select.min.css'
+  ]|theme }}">
+
+    <!-- CSS Front Template -->
+    <link rel="stylesheet" href="{{ [
+  'assets/css/theme.css',
+  'assets/css/custom.css'
+  ]|theme }}">
+
+    {% styles %}
+</head>
+<body class="u-custombox-no-scroll {% if this.page.id == 'dashboard-employee' %}bg-light{% endif %}">
+{% flash %}
+<script>
+    // only execute once the DOM is loaded
+    document.addEventListener("DOMContentLoaded", function () {
+        $.oc.flashMsg({text: '{{ message }}', 'class': '{{ type }}', 'interval': 10})
+    }, false);
+</script>
+{% endflash %}
+
+{% partial 'webticker' %}
+<!-- ========== MAIN ========== -->
+<main id="content" role="main">
+    {% partial 'site/dashboard-header' %}
+    {% page %}
+</main>
+
+<!-- profileForm Modal Window -->
+<div id="profileForm" class="modal">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            {% partial 'userSession::profile-complete' %}
+        </div>
+    </div>
+</div>
+<!-- End profileForm Modal Window -->
+<!-- ========== END MAIN ========== -->
+
+<!-- ========== FOOTER ========== -->
+<footer>
+    {% partial 'site/footer' %}
+</footer>
+<!-- ========== END FOOTER ========== -->
+
+<!-- ========== END SECONDARY CONTENTS ========== -->
+
+<!-- Go to Top -->
+<a class="js-go-to u-go-to" href="#"
+   data-position='{"bottom": 15, "right": 15 }'
+   data-type="fixed"
+   data-offset-top="400"
+   data-compensation="#header"
+   data-show-effect="slideInUp"
+   data-hide-effect="slideOutDown">
+    <span class="fas fa-arrow-up u-go-to__inner"></span>
+</a>
+<!-- End Go to Top -->
+
+<!-- JS Global Compulsory -->
+<script src="{{ [
+  'assets/vendor/jquery/dist/jquery.min.js',
+  'assets/vendor/jquery-migrate/dist/jquery-migrate.min.js',
+  'assets/vendor/popper.js/dist/umd/popper.min.js',
+  'assets/vendor/bootstrap/bootstrap.min.js'
+  ]|theme }}"></script>
+
+<!-- JS Implementing Plugins -->
+<script src="{{ [
+  'assets/vendor/hs-megamenu/src/hs.megamenu.js',
+  'assets/vendor/svg-injector/dist/svg-injector.min.js',
+  'assets/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js',
+  'assets/vendor/jquery-validation/dist/jquery.validate.min.js',
+  'assets/vendor/flatpickr/dist/flatpickr.js',
+  'assets/vendor/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js',
+  'assets/vendor/bootstrap-datepicker/dist/locales/bootstrap-datepicker.id.min.js',
+  'assets/vendor/appear.js',
+  'assets/vendor/circles/circles.min.js',
+  'assets/vendor/bootstrap-select/dist/js/bootstrap-select.min.js',
+  ]|theme }}"></script>
+
+<!-- JS Front -->
+<script src="{{ [
+  'assets/js/hs.core.js',
+  'assets/js/components/hs.header.js',
+  'assets/js/components/hs.unfold.js',
+  'assets/js/components/hs.malihu-scrollbar.js',
+  'assets/js/components/hs.focus-state.js',
+  'assets/js/components/hs.validation.js',
+  'assets/js/components/hs.selectpicker.js',
+  'assets/js/components/hs.modal-window.js',
+  'assets/js/components/hs.step-form.js',
+  'assets/js/components/hs.show-animation.js',
+  'assets/js/components/hs.range-datepicker.js',
+  'assets/js/components/hs.chart-pie.js',
+  'assets/js/components/hs.progress-bar.js',
+  'assets/js/components/hs.svg-injector.js',
+  'assets/js/components/hs.go-to.js'
+  ]|theme }}"></script>
+
+<!-- JS Plugins Init. -->
+<script>
+    $(window).on('load', function () {
+        // initialization of HSMegaMenu component
+        $('.js-mega-menu').HSMegaMenu({
+            event: 'hover',
+            pageContainer: $('.container'),
+            breakpoint: 767.98,
+            hideTimeOut: 0
+        });
+
+        // initialization of HSMegaMenu component
+        $('.js-breadcrumb-menu').HSMegaMenu({
+            event: 'hover',
+            pageContainer: $('.container'),
+            breakpoint: 991.98,
+            hideTimeOut: 0
+        });
+
+        // initialization of svg injector module
+        $.HSCore.components.HSSVGIngector.init('.js-svg-injector');
+    });
+
+    function openUpdateProfileModal()
+    {
+        var profileFormModal = $('#profileForm').modal({
+            backdrop: 'static',
+            keyboard: false
+        });
+        profileFormModal.modal('show');
+    }
+
+    $(document).on('ready', function () {
+        var profileCompleted = '{{user.is_profile_completed}}';
+        if (profileCompleted == '0') {
+            var profileFormModal = $('#profileForm').modal({
+                backdrop: 'static',
+                keyboard: false
+            });
+            profileFormModal.modal('show');
+        }
+
+        // initialization of header
+        $.HSCore.components.HSHeader.init($('#header'));
+
+        // initialization of unfold component
+        $.HSCore.components.HSUnfold.init($('[data-unfold-target]'), {
+            afterOpen: function () {
+                $(this).find('input[type="search"]').focus();
+            }
+        });
+
+        // initialization of malihu scrollbar
+        $.HSCore.components.HSMalihuScrollBar.init($('.js-scrollbar'));
+
+        // initialization of forms
+        $.HSCore.components.HSFocusState.init();
+
+        // initialization of form validation
+        $.HSCore.components.HSValidation.init('.js-validate');
+
+        // initialization of autonomous popups
+        $.HSCore.components.HSModalWindow.init('[data-modal-target]', '.js-modal-window', {
+            autonomous: true
+        });
+
+        // initialization of step form
+        $.HSCore.components.HSStepForm.init('.js-step-form');
+
+        // initialization of select picker
+        $.HSCore.components.HSSelectPicker.init('.js-select');
+
+        // initialization of show animations
+        $.HSCore.components.HSShowAnimation.init('.js-animation-link');
+
+        // initialization of range datepicker
+        $.HSCore.components.HSRangeDatepicker.init('.js-range-datepicker');
+
+        // initialization of chart pies
+        var items = $.HSCore.components.HSChartPie.init('.js-pie');
+
+        // initialization of horizontal progress bars
+        var horizontalProgressBars = $.HSCore.components.HSProgressBar.init('.js-hr-progress', {
+            direction: 'horizontal',
+            indicatorSelector: '.js-hr-progress-bar'
+        });
+
+        var verticalProgressBars = $.HSCore.components.HSProgressBar.init('.js-vr-progress', {
+            direction: 'vertical',
+            indicatorSelector: '.js-vr-progress-bar'
+        });
+
+        // initialization of go to
+        $.HSCore.components.HSGoTo.init('.js-go-to');
+    });
+</script>
+{% placeholder javascript %}
+{% framework extras %}
+<script>
+    $(window).on('ajaxErrorMessage', function (event, message) {
+        $.oc.flashMsg({text: message, 'class': 'error', 'interval': 10});
+        return false;
+        event.preventDefault();
+    });
+</script>
+{% scripts %}
+</body>
+</html>

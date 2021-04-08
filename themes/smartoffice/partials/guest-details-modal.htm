@@ -1,0 +1,50 @@
+<div class="modal-dialog vertical-align-modal" role="document">
+    <div class="modal-content">
+        <div class="modal-header mt-3">
+            <div class="col-md-6">
+                <div class="position-relative">
+                    <img class="img-fluid rounded-circle" style="border-radius: 50%;"
+                         src="{{guestDetail.image.thumb('150','150','crop')}}">
+                </div>
+            </div>
+            <div class="col-md-6">
+                {% if guestDetail.status == 1 %}
+                <button class="btn btn-block border-radius-0 btn-warning btn-sm text-white">Terundang</button>
+                {% elseif guestDetail.status == 2 %}
+                <button class="btn btn-block border-radius-0 btn-warning btn-sm text-white">Mewakili</button>
+                {% elseif guestDetail.status == 3 %}
+                <button class="btn btn-block border-radius-0 btn-warning btn-sm text-white">Mendampingi</button>
+                {% endif %}
+
+                {% if guestDetail.invitation_confirmation == 1 %}
+                <button class="btn btn-block border-radius-0 btn-secondary btn-sm text-white">Konfirmasi</button>
+                {% elseif guestDetail.invitation_confirmation == 2 %}
+                <button class="btn btn-block border-radius-0 btn-primary btn-sm text-white">Hadir</button>
+                {% elseif guestDetail.invitation_confirmation == 3 %}
+                <button class="btn btn-block border-radius-0 btn-danger btn-sm text-white">Tidak Hadir</button>
+                {% endif %}
+
+                {% if guestDetail.is_souvenirs == 1 %}
+                <button class="btn btn-block border-radius-0 btn-souvenir btn-sm text-white">Souvenir Terambil</button>
+                {% elseif guestDetail.is_souvenirs == 0 %}
+                <button class="btn btn-block border-radius-0 btn-souvenir btn-sm text-white">Souvenir Tersedia</button>
+                {% endif %}
+
+            </div>
+
+        </div>
+        <div class="modal-body row">
+            <div class="col-md-8">
+                <h4 class="modal-title">{{guestDetail.name}}</h4>
+                <p>
+                    {% if guestDetail.job_title %}{{guestDetail.job_title}}<br/>{% endif %}
+                    {% if guestDetail.guestOrganization %}{{guestDetail.guestOrganization.name}}<br/>{% endif %}
+                    {% if guestDetail.phone %}{{guestDetail.phone}}<br/>{% endif %}
+                    {% if guestDetail.email %}{{guestDetail.email}}<br/>{% endif %}
+                    {% if guestDetail.job %}{{guestDetail.job.name}}<br/>{% endif %}
+                    {% if guestDetail.guestCity %}{{guestDetail.guestCity.name}}{% endif %}
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

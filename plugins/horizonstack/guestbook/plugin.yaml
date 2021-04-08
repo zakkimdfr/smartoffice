@@ -1,0 +1,51 @@
+plugin:
+    name: 'horizonstack.guestbook::lang.plugin.name'
+    description: 'horizonstack.guestbook::lang.plugin.description'
+    author: Horizonstack
+    icon: oc-icon-book
+    homepage: ''
+permissions:
+    horizonstack.guestbook.manage_guests:
+        tab: 'horizonstack.guestbook::lang.plugin.name'
+        label: 'horizonstack.guestbook::lang.permissions.guests'
+    horizonstack.guestbook.manage_jobs:
+        tab: 'horizonstack.guestbook::lang.plugin.name'
+        label: 'horizonstack.guestbook::lang.permissions.jobs'
+    horizonstack.guestbook.manage_events:
+        tab: 'horizonstack.guestbook::lang.plugin.name'
+        label: 'horizonstack.guestbook::lang.permissions.events'
+    horizonstack.guestbook.manage_organizations:
+        tab: 'horizonstack.guestbook::lang.plugin.name'
+        label: 'horizonstack.guestbook::lang.permissions.organizations'
+navigation:
+    guests:
+        label: Guests
+        url: horizonstack/guestbook/guests
+        icon: icon-book
+        permissions:
+            - horizonstack.guestbook.manage_guests
+        sideMenu:
+            guests:
+                label: Guests
+                url: horizonstack/guestbook/guests
+                icon: icon-book
+                permissions:
+                    - horizonstack.guestbook.manage_guests
+            jobs:
+                label: Jobs
+                url: horizonstack/guestbook/jobs
+                icon: icon-sliders
+                permissions:
+                    - horizonstack.guestbook.manage_jobs
+            events:
+                label: Events
+                url: horizonstack/guestbook/events
+                icon: icon-calendar
+                permissions:
+                    - horizonstack.guestbook.manage_events
+            organizations:
+                label: Organizations
+                url: horizonstack/guestbook/organizations
+                icon: icon-star-o
+                permissions:
+                    - horizonstack.guestbook.manage_organizations

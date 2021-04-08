@@ -1,0 +1,58 @@
+{% if assetRecords|length > 0 %}
+{% for asset in assetRecords %}
+<!-- Products -->
+<li class="card mb-5">
+    <div class="row">
+        <div class="col-4 pr-0">
+            {% if asset.photos|length > 0 %}
+            <div class="bg-img-hero-center rounded-left h-100"
+                 style="background-image: url('{{asset.photos[0].getThumb('440','310','auto')}}');"></div>
+            {% else %}
+            <div class="bg-img-hero-center rounded-left h-100"
+                 style="background-image: url('/themes/smartoffice/assets/img/mockups/img6.png');"></div>
+            {% endif %}
+        </div>
+
+        <div class="col-8">
+            <div class="card-body py-5 px-md-4">
+                <div class="mb-2">
+                    <a class="d-inline-block text-secondary small font-weight-medium mb-1"
+                       href="javascript:void(0)"><strong>{{asset.category.name}}</strong></a>
+                    |
+                    <a class="d-inline-block text-secondary small font-weight-medium mb-1" href="javascript:void(0)">{{asset.type.name}}</a>
+                    <h2 class="h4 font-weight-normal">
+                        <a class="text-secondary" href="javascript:void(0)"> {{ asset.name }}</a>
+                    </h2>
+                    <p>{{asset.remarks}}</p>
+                    <div class="d-block">
+                        <span class="h5">Rp. {{asset.value|number_format(0, '.', '.')}}</span>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <p class="small"> Kode Aset: {{asset.code}} | Tahun Anggaran: {{asset.year}}</p>
+                </div>
+                {% if asset.status == '1' %}
+                <button type="button" class="btn btn-sm btn-soft-secondary btn-pill transition-3d-hover">
+                    <span class="fa fa-ban mr-1"></span>
+                    TIDAK TERSEDIA
+                </button>
+                {% else %}
+                <button type="button" data-request="onOpenAssetDetailForm" data-request-data="asset_id: {{asset.id}}"
+                        data-request-update="'@asset-use-form':'#assetUseFormModal'"
+                        data-request-success="openAssetModal()"
+                        class="btn btn-sm btn-outline-primary btn-sm-wide btn-pill transition-3d-hover mr-1">
+                    PINJAM
+                </button>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</li>
+<!-- End Products -->
+{% endfor %}
+{% else %}
+<div class="col-md-12 col-sm-12">
+    <h3>Tidak Ada Data Asset Tersedia</h3>
+</div>
+{% endif %}

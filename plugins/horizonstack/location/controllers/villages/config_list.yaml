@@ -1,0 +1,12 @@
+list: $/horizonstack/location/models/village/columns.yaml
+modelClass: Horizonstack\Location\Models\Village
+title: Villages
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: true
+showCheckboxes: true
+recordsPerPage: 20
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'
+recordUrl: 'horizonstack/location/villages/update/:id'

@@ -1,0 +1,129 @@
+title = "Laporan Perjadin Print"
+url = "/laporan-perjadin/print/:id"
+layout = "dashboard"
+is_hidden = 0
+
+[tripReportPrintDetail]
+==
+<div class="container pt-3" id="printableArea">
+    <div class="card bg-img-hero">
+        <div class="card-body p-5 p-md-7 p-lg-11">
+            <!-- header start -->
+            <div class="row">
+                <div class="col-2 text-right pb-0"><img src="/themes/smartoffice/assets/img/logos/logo-print.png"
+                                                        height="150"/></div>
+                <div class="col-10 text-center pb-0"><h3 class="font-weight-bold">PEMERINTAH DAERAH PROVINSI JAWA
+                    BARAT</h3>
+                    <h1 class="font-weight-bold">DINAS PARIWISATA DAN KEBUDAYAAN</h1>
+
+                    Jl. LL. RE. Martadinata No. 209 Telp. (022) 7273209-7103605<br/>
+                    Fax. (022) 7271385 – 7234656 <u>www.disparbud.jabar.go.id</u> email:
+                    <u>disparbud@jabarprov.go.id</u><br/>
+                    Bandung - 40114
+                </div>
+            </div>
+            <hr class="barier-top mt-0 mb-1">
+            <hr class="barier-bottom mt-0">
+            <!-- header end -->
+
+            <!-- content start -->
+            <p class="text-center pt-5"><u>N O T A&nbsp;&nbsp;&nbsp;D I N A S</u></p>
+
+
+            <div class="row pt-4">
+                <div class="col-2"></div>
+                <div class="col-2 pr-0">Kepada<span class="float-right">:</span></div>
+                <div class="col pl-1">{{tripReport.attnTo.name}}</div>
+            </div>
+            <div class="row">
+                <div class="col-2"></div>
+                <div class="col-2 pr-0">Dari<span class="float-right">:</span></div>
+                <div class="col pl-1">{{tripReport.From.name}}</div>
+            </div>
+            <div class="row">
+                <div class="col-2"></div>
+                <div class="col-2 pr-0">Tembusan<span class="float-right">:</span></div>
+                <div class="col pl-1">{{tripReport.CC.name}}</div>
+            </div>
+            <div class="row">
+                <div class="col-2"></div>
+                <div class="col-2 pr-0">Tanggal<span class="float-right">:</span></div>
+                <div class="col pl-1">{{tripReport.date|localizeddate('long', 'none', 'id', 'Asia/Jakarta')}}</div>
+            </div>
+            <div class="row">
+                <div class="col-2"></div>
+                <div class="col-2 pr-0">Nomor<span class="float-right">:</span></div>
+                <div class="col pl-1">{{tripReport.report_number}}</div>
+            </div>
+            <div class="row">
+                <div class="col-2"></div>
+                <div class="col-2 pr-0">Lampiran<span class="float-right">:</span></div>
+                <div class="col pl-1">{{tripReport.attachment}}</div>
+            </div>
+            <div class="row">
+                <div class="col-2"></div>
+                <div class="col-2 pr-0">Hal<span class="float-right">:</span></div>
+                <div class="col pl-1">{{tripReport.subject}}</div>
+            </div>
+
+            <hr/>
+
+            <div class="row pt-4">
+                <div class="col"></div>
+                <div class="col-10 text-justify">
+                    {{tripReport.description|raw}}
+                </div>
+                <div class="col"></div>
+            </div>
+
+            <!-- sign start -->
+            <div class="row text-center pt-5">
+                <div class="col"></div>
+                <div class="col-7">{{tripReport.user.job}}</div>
+            </div>
+
+            <div class="row text-center sign-space">
+                <div class="col"></div>
+                <div class="col-7">{{tripReport.user.name}}</div>
+            </div>
+            <div class="row text-center add-page-break-after">
+                <div class="col"></div>
+                <div class="col-7">NIP. {{tripReport.user.unique_id}}</div>
+            </div>
+            <!-- sign end -->
+
+
+            <div class="row mt-5">
+                {% for photo in tripReport.photos %}
+                <img src="{{photo.path}}" class="img-fluid mb-4">
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <div class="text-right mt-5">
+        <button type="button" class="btn btn-primary btn-sm-wide transition-3d-hover"
+                onclick="printDiv('printableArea')">
+            <span class="fas fa-print mr-2"></span>
+            Print
+        </button>
+    </div>
+</div>
+
+{% put javascript %}
+<script>
+    function printDiv(divName) {
+        var printContents = document.getElementById(divName).innerHTML;
+        var originalContents = document.body.innerHTML;
+
+        document.body.innerHTML = printContents;
+
+        window.print();
+
+        document.body.innerHTML = originalContents;
+    }
+</script>
+{% endput %}
+{% put styles %}
+<link href="{{ 'assets/css/trip-report-print.css'|theme }}" rel="stylesheet"/>
+{% endput %}

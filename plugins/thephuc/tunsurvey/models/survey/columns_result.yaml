@@ -1,0 +1,21 @@
+columns:
+    code:
+        label: 'thephuc.tunsurvey::lang.form.code'
+        type: text
+        searchable: true
+    name:
+        label: 'thephuc.tunsurvey::lang.form.name'
+        type: text
+        searchable: true
+    status:
+        label: 'thephuc.tunsurvey::lang.form.status'
+        type: status
+    user_answers:
+        label: 'thephuc.tunsurvey::lang.form.user_answers'
+        type: user-answer
+    banner:
+        label: 'thephuc.tunsurvey::lang.form.banner'
+        type: image
+    created_at:
+        label: 'thephuc.tunsurvey::lang.form.created_at'
+        type: datetime

@@ -1,0 +1,41 @@
+title = "Detail Event"
+url = "/detail/event/:slug/:invitation_code?/:response?"
+layout = "dashboard"
+is_hidden = 0
+
+[eventDetails]
+guestsPerPage = 10
+
+[guestForm]
+==
+<?php
+function onEnd() {
+	$_detail = $this->components['eventDetails']->event;
+    $this->page->title = $_detail->name;
+}
+?>
+==
+<!--<div class="d-md-flex bg-img-hero-bottom"
+     style="
+     {% if event.image %}
+     background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url({{event.image.path}}) no-repeat center;
+     {% else %}
+     background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(/themes/smartoffice/assets/img/bg-shapes/event-bg.jpeg) no-repeat center;
+     {% endif %}; background-size: cover">
+    <div class="container d-md-flex align-items-md-center min-height-md-100vh space-3">
+        <div class="w-lg-80 text-left text-white">
+            <h2 class="text-white display-3 mb-0 font-weight-medium">{{event.name}}</h2>
+            <span class="fas fa-map-marker-alt text-danger mr-2"></span>
+            <small>{{event.location}}</small>
+            <h5>{{ event.date |localizeddate('medium', 'none', 'id', 'Asia/Jakarta')}}</h5>
+        </div>
+    </div>
+</div>-->
+<div class="container mt-10">
+    <h4>{{event.name}}</h4>
+    <small><span class="fa fa-map-pin"></span> {{event.location}}</small>
+    <p class="text-muted">{{ event.date |localizeddate('medium', 'none', 'id', 'Asia/Jakarta')}}</p>
+    <h6>Daftar Hadir Undangan ({{guests.total}} Orang)</h6>
+    {% component 'eventDetails' %}
+    {% component 'guestForm' %}
+</div>

@@ -1,0 +1,161 @@
+<div class="mt-10 mb-10">
+    <a href="javascript:void(0)" onclick="openGuestForm()" class="btn btn-primary btn-sm float-md-right mb-2"><span
+            class="fas fa-plus"></span>
+        Isi Daftar Hadir</a>
+    <a target="_blank" href="/event/{{event.id}}/guests/pdf" class="btn btn-success mr-md-2 btn-sm float-md-right mb-2"><span
+            class="fas fa-download"></span>
+        PDF</a>
+
+    <form id="guests-search-form" class="form-inline mb-2 float-left" data-request="onSearchGuests"
+          name="guests-search"
+          data-request-update="'{{__SELF__}}::guests_table_detail': '#guests-table-detail','{{__SELF__}}::guests_sorting_field': '#sorting-field','@guests_pagination': '#guests-pagination'">
+        <div class="bottommargin-sm pull-right text-right">
+            <div id="sorting-fields">
+                {% partial "@guests_sorting_field" %}
+            </div>
+
+            <div class="input-group">
+                <input type="text" class="form-control" name="searchTerm" id="subscribeSrEmailExample1"
+                       placeholder="Cari nama peserta" aria-label="Cari nama peserta">
+                <div class="input-group-append">
+                    <button class="btn btn-primary" id="find-guests">Cari</button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div class="table-responsive">
+        <table id="guests-all-details" class="table table-light table-responsive-sm table-striped">
+            <thead>
+            <tr class="text-primary">
+                <th scope="col">No.</th>
+                <th scope="col"></th>
+                <th scope="col" data-sort-name="name" class="sort" data-sort-direction="asc">Nama <i
+                        class="fa fa-sort"></i></th>
+                <th scope="col">Organisasi</th>
+                <th scope="col">Nomor Telepon</th>
+                <th scope="col">Email</th>
+                <th scope="col" data-sort-name="created_at" class="sort" data-sort-direction="asc">Waktu Hadir <i
+                        class="fa fa-sort"></i></th>
+            </tr>
+            </thead>
+            <tbody id="guests-table-detail">
+            {% partial "@guests_table_detail" guests=guests %}
+            </tbody>
+        </table>
+    </div>
+</div>
+<div id="guestDetailModal" class="modal"></div>
+<div id="guests-pagination">
+    {% partial '@guests_pagination' guests=guests %}
+</div>
+
+{% if event.presentations|length > 0 %}
+<div id="media">
+    <h5>Presentations</h5>
+    <div class="row mx-gutters-2">
+        {% for presentation in event.presentations %}
+        <div class="col-12 col-md-4 mb-3 mb-md-0">
+            <div class="card card-frame transition-3d-hover mb-3">
+                <!-- Card -->
+                <div class="card-body">
+                    <div class="media">
+                        <div class="u-avatar">
+                            <img class="img-fluid rounded" src="{{'assets/img/logos/logo.png'|theme}}"
+                                 alt="{{presentation.filename}}">
+                        </div>
+                        <div class="media-body px-4">
+                            <h4 class="h6 text-dark mb-1 height-48">
+                                {{presentation.filename}}</h4>
+                            <a target="_blank" href="/files/download/{{presentation.id}}"
+                               class="btn btn-success btn-xs"><span
+                                    class="fas fa-download"></span> Download</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Card -->
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endif %}
+
+{% if event.meeting_note %}
+<div id="meeting-note">
+    <h5>Meeting Note</h5>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card border-0 bg-primary text-white shadow-primary-lg transition-3d-hover mb-5 mb-md-0">
+                <div class="card-body text-center">
+              <span class="btn btn-lg btn-icon btn-soft-light rounded-circle mb-1">
+                <span class="fa fa-users font-size-5 btn-icon__inner btn-icon__inner-bottom-minus"
+                      style="top: 65%;"></span>
+              </span>
+                    <small class="d-block text-white-70 text-uppercase mb-1">Meeting Note</small>
+                    <h3 class="h6 mb-3">{{event.meeting_note.filename}}</h3>
+                    <a class="btn btn-sm btn-soft-white btn-pill transition-3d-hover" target="_blank"
+                       href="/files/download/{{event.meeting_note.id}}">Download</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+{% put javascript %}
+<script>
+
+    function openModal() {
+        $('#guestDetailModal').modal()
+    }
+
+    function redirectToLink(data) {
+        $.oc.stripeLoadIndicator.hide();
+    }
+
+    $(document).on('click', '.sort', function () {
+
+
+        $('.sort').not(this).each(function () {
+            $(this).find('i:first').attr('class', 'fa fa-sort');
+        });
+
+        var sortField = $(this).data('sort-name');
+        var sortClass = $(this).find('i:first').hasClass('fa-sort');
+        var ascClass = $(this).find('i:first').hasClass('fa fa-sort-up');
+        var sortDirection = 'asc';
+        if (sortClass) {
+            $(this).find('i:first').attr('class', 'fa fa-sort-up');
+        } else {
+            if (ascClass) {
+                $(this).find('i:first').attr('class', 'fa fa-sort-down');
+                sortDirection = 'desc';
+            } else {
+                $(this).find('i:first').attr('class', 'fa fa-sort-up');
+                sortDirection = 'asc';
+            }
+        }
+
+        $("#sortBy").val(sortField);
+        $("#sortDirection").val(sortDirection);
+
+        $('#searchTerm').request('onSearchGuests', {
+            update: {
+                '@guests_table_detail': '#guests-table-detail',
+                '@guests_pagination': '#guests-pagination',
+                '@guests_sorting_field': '#sorting-fields'
+            },
+            data: {sort_by: sortField, sort_direction: sortDirection},
+            beforeUpdate: function () { /* do something */
+            },
+            beforeSend: function () {
+                $.oc.stripeLoadIndicator.show()
+            },
+            complete: function () {
+                $.oc.stripeLoadIndicator.hide()
+            }
+        })
+    });
+
+</script>
+{% endput %}

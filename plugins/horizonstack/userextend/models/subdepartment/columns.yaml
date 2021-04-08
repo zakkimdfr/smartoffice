@@ -1,0 +1,16 @@
+columns:
+    name:
+        label: Name
+        type: text
+        searchable: true
+        sortable: true
+    department:
+        label: Department
+        span: left
+        relation: department
+        select: name
+    is_active:
+        label: Active
+        type: switch
+        searchable: false
+        sortable: true

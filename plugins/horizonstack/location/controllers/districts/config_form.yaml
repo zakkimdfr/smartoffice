@@ -1,0 +1,10 @@
+name: Districts
+form: $/horizonstack/location/models/district/fields.yaml
+modelClass: Horizonstack\Location\Models\District
+defaultRedirect: horizonstack/location/districts
+create:
+    redirect: 'horizonstack/location/districts/update/:id'
+    redirectClose: horizonstack/location/districts
+update:
+    redirect: horizonstack/location/districts
+    redirectClose: horizonstack/location/districts

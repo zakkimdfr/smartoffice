@@ -1,0 +1,157 @@
+<div id="events-results">
+    <div class="row mb-sm-3 mb-md-6">
+        <div class="col-md-6 mb-md-3" id="list-events-total">
+            {% partial "@list-events-total" %}
+        </div>
+        <div class="col-md-6">
+            <div class="row justify-content-end">
+                <div class="col-md-8 col-sm-12">
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="search-input" name="searchTerm"
+                               placeholder="Cari nama event" aria-label="Cari nama event">
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-12">
+                    {% partial '@events-sorting' %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="list-events-result" class="row">
+        {% partial "@list-events-result" %}
+    </div>
+
+    <div id="list-events-pagination">
+        {% partial "@list-events-pagination" %}
+    </div>
+</div>
+{% put javascript %}
+<script src="{{'assets/js/custom-autocomplete.js'|theme}}"></script>
+<script>
+    $(function () {
+        $.widget("custom.catcomplete", $.ui.autocomplete, {
+            _create: function () {
+                this._super();
+                this.widget().menu("option", "items", "> :not(.ui-autocomplete-category)");
+            },
+            _renderMenu: function (ul, items) {
+                var that = this,
+                    currentCategory = "";
+                $.each(items, function (index, item) {
+                    var li;
+                    if (item.category != currentCategory) {
+                        ul.append("<li class='ui-autocomplete-category'>" + item.category + "</li>");
+                        currentCategory = item.category;
+                    }
+                    li = that._renderItemData(ul, item);
+                    if (item.category) {
+                        li.attr("aria-label", item.category + " : " + item.label);
+                    }
+                });
+            }
+        });
+
+        var protocol = window.location.protocol;
+        var url = window.location.hostname;
+        $("#search-input").catcomplete({
+            source: function (request, response) {
+                var keyword = $("#search-input").val();
+                $.ajax({
+                    url: protocol + '//' + url + "//api/search/" + keyword,
+                    dataType: '',
+                    success: function (data) {
+                        if (data.length > 0) {
+                            response($.map(data, function (item) {
+                                if (item.pluginType) {
+                                    return {
+                                        label: item.name,
+                                        value: item.name,
+                                        data: item,
+                                        category: item.pluginType
+                                    }
+                                }
+                            }));
+                        } else {
+                            response([{
+                                label: 'Tidak ada hasil yang ditemukan.',
+                                val: -1,
+                                category: "Tidak ada hasil"
+                            }]);
+                        }
+                    },
+                    error: function (jqXHR, exception) {
+                        var msg = '';
+                        if (jqXHR.status === 0) {
+                            msg = 'Not connect.\n Verify Network.';
+                        } else if (jqXHR.status == 404) {
+                            msg = 'Requested page not found. [404]';
+                        } else if (jqXHR.status == 500) {
+                            msg = 'Internal Server Error [500].';
+                        } else if (exception === 'parsererror') {
+                            msg = 'Requested JSON parse failed.';
+                        } else if (exception === 'timeout') {
+                            msg = 'Time out error.';
+                        } else if (exception === 'abort') {
+                            msg = 'Ajax request aborted.';
+                        } else {
+                            msg = 'Uncaught Error.\n' + jqXHR.responseText;
+                        }
+
+                        console.log('Error: ' + msg)
+                    }
+                });
+            },
+            minLength: 1,
+            select: function (event, data) {
+                $.each(data, function (data, value) {
+                    if (value.data.pluginType) {
+                        window.location = value.data.url;
+                    } else {
+
+                    }
+
+                })
+            }
+        });
+
+    });
+</script>
+<script>
+    $('#filter-by').on('change', function () {
+        applyFilter(1);
+    });
+
+    function applyFilter(pageNum) {
+        var page = 1;
+        if (pageNum) {
+            page = pageNum;
+        }
+
+        if (pageNum) {
+            $('form').request('onPageChangeFilter', {
+                update: {
+                    '@list-events-result': '#list-events-result',
+                    '@list-events-total': '#list-events-total',
+                    '@list-events-pagination': '#list-events-pagination',
+                },
+                data: {
+                    page: page,
+                    filter_by: $('#filter-by').val(),
+                },
+                beforeSend: function () {
+                    $.oc.stripeLoadIndicator.show();
+                },
+                complete: function () {
+                    $.oc.stripeLoadIndicator.hide();
+                }
+            })
+        }
+    }
+
+    $(document).on('click', '.paginate-list', function () {
+        var page = $(this).data('page');
+        applyFilter(page);
+    });
+</script>
+{% endput %}

@@ -1,0 +1,22 @@
+fields:
+  id:
+    label: Id
+    span: auto
+    type: number
+  name:
+    label: Name
+    span: left
+    type: text
+    tab: Basic Details
+  district:
+    label: District
+    type: relation
+    span: auto
+    selct: name
+    tab: Basic Details
+  is_active:
+    label: Active
+    span: left
+    type: switch
+    default: 1
+    tab: Basic Details

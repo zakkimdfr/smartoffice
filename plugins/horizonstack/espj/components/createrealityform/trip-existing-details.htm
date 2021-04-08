@@ -1,0 +1,75 @@
+<div class="form-group row">
+    <label class="col-sm-3 col-form-label text-uppercase">Tanggal Perjalanan</label>
+    <div class="col-sm-9">
+        <span class="form-control">
+            {{ selectedTrip.start_at |localizeddate('medium', 'none', 'id', 'Asia/Jakarta')}} to {{
+            selectedTrip.return_at |localizeddate('medium', 'none', 'id', 'Asia/Jakarta')}}
+        </span>
+    </div>
+</div>
+<div class="form-group row">
+    <label class="col-sm-3 col-form-label text-uppercase">Jumlah Hari</label>
+    <div class="col-sm-9">
+        <span class="form-control">
+            {{ selectedTrip.days}}
+        </span>
+    </div>
+</div>
+<div class="form-group row">
+    <label class="col-sm-3 col-form-label text-uppercase">Maksud Perjalanan</label>
+    <div class="col-sm-9">
+        <span class="form-control">
+            {{ selectedTrip.mission}}
+        </span>
+    </div>
+</div>
+<div class="form-group row">
+    <label class="col-sm-3 col-form-label text-uppercase">Angkutan</label>
+    <div class="col-sm-9">
+        <span class="form-control">
+            {{ selectedTrip.transportation.name}}
+        </span>
+    </div>
+</div>
+<div class="form-group row">
+    <label class="col-sm-3 col-form-label text-uppercase">Kota Asal</label>
+    <div class="col-sm-3">
+        <span class="form-control">
+            {{ selectedTrip.origin_city.name}}
+        </span>
+    </div>
+    <label class="col-sm-3 col-form-label text-uppercase text-right">Kota Tujuan</label>
+    <div class="col-sm-3">
+        <span class="form-control">
+            {{ selectedTrip.destinationCity1.name}}
+        </span>
+    </div>
+</div>
+
+<div class="form-group row">
+    <label class="col-sm-3 col-form-label text-uppercase">Peserta</label>
+    <div class="col-sm-9">
+        <div class="media align-items-center my-1">
+            <div class="u-sm-avatar mr-2">
+                <img class="img-fluid rounded-circle" src="{{selectedTrip.user.avatar.thumb('50','50','crop')}}"
+                     alt="{{selectedTrip.user.name}}">
+            </div>
+            <div class="media-body">
+                <h5 class="h6 font-weight-normal mb-0">{{selectedTrip.user.name}}</h5>
+                <small class="text-muted">{{selectedTrip.user.job}}</small>
+            </div>
+        </div>
+        {% for participant in selectedTrip.participants %}
+        <div class="media align-items-center my-1">
+            <div class="u-sm-avatar mr-2">
+                <img class="img-fluid rounded-circle" src="{{participant.avatar.thumb('50','50','crop')}}"
+                     alt="{{participant.name}}">
+            </div>
+            <div class="media-body">
+                <h5 class="h6 font-weight-normal mb-0">{{participant.name}}</h5>
+                <small class="text-muted">{{participant.job}}</small>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>

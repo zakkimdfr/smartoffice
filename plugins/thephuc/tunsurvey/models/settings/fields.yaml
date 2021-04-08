@@ -1,0 +1,26 @@
+tabs:
+    fields:
+        stylesheet:
+            span: full
+            type: codeeditor
+            size: large
+            language: css
+            tab: 'thephuc.tunsurvey::lang.form.stylesheet'
+        default:
+            span: full
+            type: codeeditor
+            size: large
+            language: twig
+            tab: default
+        _form_fields:
+            span: full
+            type: codeeditor
+            size: large
+            language: twig
+            tab: _form_fields
+        _completed:
+            span: full
+            type: codeeditor
+            size: large
+            language: twig
+            tab: _completed

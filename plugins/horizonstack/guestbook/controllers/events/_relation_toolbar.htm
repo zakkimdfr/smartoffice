@@ -1,0 +1,25 @@
+<div class="toolbar-item toolbar-primary">
+    <div data-control="toolbar" data-disposable="">
+
+        <a data-control="popup" data-size="huge" data-handler="onRelationButtonCreate" href="javascript:;"
+           class="btn btn-sm btn-secondary oc-icon-file">
+            Create Guests</a>
+
+        <button class="btn btn-sm btn-secondary oc-icon-trash-o control-disabled" onclick="$(this).data('request-data', {
+            checked: $('#Events-update-RelationController-guests-view .control-list').listWidget('getChecked')})"
+                disabled="" data-request="onRelationButtonDelete" data-request-confirm="Are you sure?"
+                data-request-success="$.oc.relationBehavior.changed('guests', 'deleted')" data-trigger-action="enable"
+                data-trigger="#Events-update-RelationController-guests-view .control-list input[type=checkbox]"
+                data-trigger-condition="checked" data-stripe-load-indicator="">
+            Delete
+        </button>
+
+        <?php if ($this->formGetModel()->id) {
+        ?>
+        <a href="<?= Backend::url('horizonstack/guestbook/events/export?eventId='.$this->formGetModel()->id) ?>"
+           class="btn btn-primary oc-icon-download"><?= e(trans('horizonstack.guestbook::lang.export.export_guests')) ?></a>
+        <?php
+        }
+        ?>
+    </div>
+</div>

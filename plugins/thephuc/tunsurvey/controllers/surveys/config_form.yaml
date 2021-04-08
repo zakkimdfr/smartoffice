@@ -1,0 +1,10 @@
+name: Surveys
+form: $/thephuc/tunsurvey/models/survey/fields.yaml
+modelClass: ThePhuc\Tunsurvey\Models\Survey
+defaultRedirect: thephuc/tunsurvey/surveys
+create:
+    redirect: 'thephuc/tunsurvey/surveys/update/:id'
+    redirectClose: thephuc/tunsurvey/surveys
+update:
+    redirect: thephuc/tunsurvey/surveys
+    redirectClose: thephuc/tunsurvey/surveys

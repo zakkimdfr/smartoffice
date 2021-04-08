@@ -1,0 +1,10 @@
+name: Transportations
+form: $/horizonstack/espj/models/transportation/fields.yaml
+modelClass: Horizonstack\eSPJ\Models\Transportation
+defaultRedirect: horizonstack/espj/transportations
+create:
+    redirect: 'horizonstack/espj/transportations/update/:id'
+    redirectClose: horizonstack/espj/transportations
+update:
+    redirect: horizonstack/espj/transportations
+    redirectClose: horizonstack/espj/transportations

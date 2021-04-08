@@ -1,0 +1,22 @@
+fields:
+    name:
+        label: Name
+        span: auto
+        type: text
+    slug:
+        label: Slug
+        span: auto
+        preset:
+            field: name
+            type: slug
+        type: text
+    department:
+        label: Department
+        span: left
+        type: relation
+        select: name
+    is_active:
+        label: Active
+        span: left
+        type: switch
+        default: 1

@@ -1,0 +1,10 @@
+name: Guests
+form: $/horizonstack/guestbook/models/guest/fields.yaml
+modelClass: Horizonstack\Guestbook\Models\Guest
+defaultRedirect: horizonstack/guestbook/guests
+create:
+    redirect: 'horizonstack/guestbook/guests/update/:id'
+    redirectClose: horizonstack/guestbook/guests
+update:
+    redirect: horizonstack/guestbook/guests
+    redirectClose: horizonstack/guestbook/guests

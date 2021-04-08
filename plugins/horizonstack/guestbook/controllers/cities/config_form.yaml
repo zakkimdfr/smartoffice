@@ -1,0 +1,10 @@
+name: Cities
+form: $/horizonstack/guestbook/models/city/fields.yaml
+modelClass: Horizonstack\Guestbook\Models\City
+defaultRedirect: horizonstack/guestbook/cities
+create:
+    redirect: 'horizonstack/guestbook/cities/update/:id'
+    redirectClose: horizonstack/guestbook/cities
+update:
+    redirect: horizonstack/guestbook/cities
+    redirectClose: horizonstack/guestbook/cities

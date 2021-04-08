@@ -1,0 +1,27 @@
+columns:
+    name:
+        label: Name
+        type: text
+        searchable: true
+        sortable: true
+    user:
+        label: User
+        relation: user
+        select: name
+    origin_city:
+        label: Origin City
+        relation: origin_city
+        select: name
+    return_city:
+        label: Return City
+        relation: return_city
+        select: name
+    budget_name:
+        label: Budget Name
+        type: text
+    updated_at:
+        label: 'Modified At'
+        type: datetime
+        searchable: true
+        sortable: true
+

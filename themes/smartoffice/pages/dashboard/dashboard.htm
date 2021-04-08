@@ -1,0 +1,304 @@
+title = "Dashboard"
+url = "/dashboard"
+layout = "dashboard"
+is_hidden = 0
+
+[dashboardStats]
+==
+<!-- Content Section -->
+<div class="bg-light">
+    <div class="container space-2">
+        <!-- Stats -->
+        <div class="card-deck d-block d-lg-flex card-lg-gutters-3 mb-6">
+            <!-- Card -->
+            <div class="card mb-3 mb-lg-0">
+                <div class="card-body p-5">
+                    <div class="media align-items-center">
+                <span class="btn btn-lg btn-icon btn-soft-primary rounded-circle mr-4">
+                  <span class="fas fa-users btn-icon__inner"></span>
+                </span>
+                        <div class="media-body">
+                            <span class="d-block font-size-3">{{totalGuests|number_format(0, '.', '.')}}</span>
+                            <h2 class="h6 text-secondary font-weight-normal mb-0">Data Tamu Undangan</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Card -->
+
+            <!-- Card -->
+            <div class="card mb-3 mb-lg-0">
+                <div class="card-body p-5">
+                    <div class="media align-items-center">
+                <span class="btn btn-lg btn-icon btn-soft-success rounded-circle mr-4">
+                  <span class="fas fa-coins btn-icon__inner"></span>
+                </span>
+                        <div class="media-body">
+                            <span class="d-block font-size-3">{{totalAssets|number_format(0, '.', '.')}}</span>
+                            <h3 class="h6 text-secondary font-weight-normal mb-0">Total Aset Kantor</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Card -->
+
+            <!-- Card -->
+            <div class="card">
+                <div class="card-body p-5">
+                    <div class="media align-items-center">
+                <span class="btn btn-lg btn-icon btn-soft-warning rounded-circle mr-4">
+                  <span class="fas fa-exchange-alt btn-icon__inner"></span>
+                </span>
+                        <div class="media-body">
+                            <span class="d-block font-size-3">{{totalTrips|number_format(0, '.', '.')}}</span>
+                            <h3 class="h6 text-secondary font-weight-normal mb-0">Data Perjalanan</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Card -->
+        </div>
+        <!-- End Stats -->
+
+        <!-- Stats -->
+        <div class="card mb-7">
+            <div class="card-body pt-4 pb-5 px-5 mb-3 mb-md-0">
+                <!-- Title & Settings -->
+                <div class="d-flex justify-content-between align-items-center">
+                    <h4 class="h6 mb-0">Kegiatan Acara</h4>
+                </div>
+                <!-- End Title & Settings -->
+
+                <hr class="mt-3 mb-4">
+
+                <!-- Balance Info -->
+                <div class="row align-items-center mb-4">
+                    <div class="col-6 u-ver-divider">
+                        <label class="d-block small text-muted mb-0">Jumlah Acara:</label>
+                        <span class="font-weight-medium">{{totalEvents|number_format(0, '.', '.')}}</span>
+                    </div>
+
+                    <div class="col-6">
+                        <label class="d-block small text-muted mb-0">Jumlah Tamu:</label>
+                        <span class="font-weight-medium">{{totalEventGuests|number_format(0, '.', '.')}} Undangan</span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div style="width: 100%" id="event-monthly-chart-data"></div>
+                    </div>
+                </div>
+                <!-- End Balance Info -->
+            </div>
+        </div>
+        <!-- End Stats -->
+
+        <!-- Card -->
+        <div class="card-deck d-block d-lg-flex card-lg-gutters-3">
+            <!-- Stats -->
+            <div class="card mb-7 mb-lg-0">
+                <div class="card-body pt-4 pb-5 px-5 mb-3 mb-md-0">
+                    <!-- Title & Settings -->
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h4 class="h6 mb-0">Perlengkapan</h4>
+
+                        <!-- Settings Dropdown -->
+                        <div class="position-relative">
+                            <a id="depositSettingsDropdownInvoker"
+                               class="btn btn-sm btn-icon btn-soft-secondary btn-bg-transparent" href="javascript:;"
+                               role="button"
+                               aria-controls="depositSettingsDropdown"
+                               aria-haspopup="true"
+                               aria-expanded="false"
+                               data-unfold-event="click"
+                               data-unfold-target="#depositSettingsDropdown"
+                               data-unfold-type="css-animation"
+                               data-unfold-duration="300"
+                               data-unfold-delay="300"
+                               data-unfold-hide-on-scroll="true"
+                               data-unfold-animation-in="slideInUp"
+                               data-unfold-animation-out="fadeOut">
+                                <span class="fas fa-ellipsis-h btn-icon__inner"></span>
+                            </a>
+
+                            <div id="depositSettingsDropdown" class="dropdown-menu dropdown-unfold dropdown-menu-right"
+                                 aria-labelledby="depositSettingsDropdownInvoker" style="min-width: 190px;">
+                                <a class="dropdown-item" href="#">
+                                    <small class="fas fa-cogs dropdown-item-icon"></small>
+                                    Settings
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                    <small class="fas fa-cloud-download-alt dropdown-item-icon"></small>
+                                    Download
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                    <small class="fas fa-archive dropdown-item-icon"></small>
+                                    Archive
+                                </a>
+                            </div>
+                        </div>
+                        <!-- End Settings Dropdown -->
+                    </div>
+                    <!-- End Title & Settings -->
+
+                    <hr class="mt-3 mb-4">
+
+                    <!-- Deposit Info -->
+                    <div class="row mb-5">
+                        <div class="col-sm-6 mb-4 mb-sm-0">
+                            <!-- <span class="align-top">$</span> -->
+                            <span class="font-size-3 font-weight-medium text-lh-sm">{{totalAssets|number_format(0, '.', '.')}}</span>
+                            <div class="mb-1">
+                                <span class="text-secondary font-size-1">Digunakan Anda:</span>
+                                <span class="font-weight-medium font-size-1">{{currentlyUsedAssetRecords|number_format(0, '.', '.')}}</span>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 align-self-end">
+                            <!-- Pie Circle -->
+                            <div class="js-pie text-center"
+                                 data-circles-text-class="content-centered-y"
+                                 data-circles-value="{{userPercentageAssets}}"
+                                 data-circles-max-value="100"
+                                 data-circles-bg-color="rgba(0, 201, 167, 0.1)"
+                                 data-circles-fg-color="#00c9a7"
+                                 data-circles-radius="50"
+                                 data-circles-stroke-width="4"
+                                 data-circles-additional-text="%"
+                                 data-circles-duration="2000"
+                                 data-circles-scroll-animate="true"
+                                 data-circles-color="#00c9a7"
+                                 data-circles-font-size="24"></div>
+                            <!-- End Pie Circle -->
+                        </div>
+                    </div>
+
+                    <!-- End Deposit Info -->
+                </div>
+
+                <div class="card-footer p-5">
+                    <!-- Progress Info -->
+                    <div class="row align-items-center">
+                        <div class="col-6 u-ver-divider">
+                            <label class="small text-muted">Pemakaian Aset:</label>
+                            <small class="font-weight-medium">{{totalUsedAssetRecords|number_format(0, '.',
+                                '.')}}</small>
+                            <div class="js-hr-progress progress" style="height: 4px;">
+                                <div class="js-hr-progress-bar progress-bar" role="progressbar" style="width: 75%;"
+                                     aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+
+                        <div class="col-6">
+                            <label class="small text-muted">Dari Total:</label>
+                            <small class="font-weight-medium">{{totalAssets|number_format(0, '.', '.')}}</small>
+                            <div class="js-hr-progress progress" style="height: 4px;">
+                                <div class="js-hr-progress-bar progress-bar bg-success" role="progressbar"
+                                     style="width: 40%;" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Progress Info -->
+                </div>
+            </div>
+            <!-- End Stats -->
+
+
+            <!-- Indicator -->
+            <div class="card">
+                <div class="card-body pt-4 pb-5 px-5 mb-3 mb-md-0">
+                    <!-- Title & Settings -->
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h4 class="h6 mb-0">Perjalanan</h4>
+                    </div>
+                    <!-- End Title & Settings -->
+
+                    <hr class="mt-3 mb-4">
+
+                    <div class="overflow-hidden">
+                        <div class="js-scrollbar pr-3" style="max-height: 300px;">
+                            <!-- Activity Feed -->
+                            <ul class="list-unstyled u-indicator-vertical-dashed">
+                                {% for trip in latestTrips %}
+                                <li class="media u-indicator-vertical-dashed-item">
+                      <span class="btn btn-xs btn-icon btn-primary rounded-circle mr-3">
+                        <span class="btn-icon__inner">{{trip.user.name|slice(0, 1)|uppercase}}</span>
+                      </span>
+                                    <div class="media-body">
+                                        <h5 class="font-size-1 mb-1">{{trip.user.name}}</h5>
+                                        <p class="small mb-1">Tujuan: <span
+                                                class="font-weight-medium">{{trip.destinationCity1.name}}</span></p>
+                                    
+                                    </div>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                            <!-- End Activity Feed -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Indicator -->
+        </div>
+        <!-- End Card -->
+    </div>
+</div>
+<!-- End Content Section -->
+
+{% put javascript %}
+<script src="{{'assets/vendor/apexcharts/apexcharts.min.js'|theme}}"></script>
+<script>
+    var monthlyEventsChartData = "{{monthlyEventsChartData| json_encode()}}";
+    monthlyEventsChartData = monthlyEventsChartData.replace(/\\n/g, "\\n")
+        .replace(/&quot;/g, '"')
+        .replace(/\\'/g, "\\'")
+        .replace(/\\"/g, '\\"')
+        .replace(/\\&/g, "\\&")
+        .replace(/\\r/g, "\\r")
+        .replace(/\\t/g, "\\t")
+        .replace(/\\b/g, "\\b")
+        .replace(/\\f/g, "\\f")
+        .replace(/[\u0000-\u0019]+/g, "");
+    var monthlyEventsDataChart = JSON.parse(monthlyEventsChartData);
+
+    var options = {
+        chart: {height: 358, type: "bar"},
+        plotOptions: {
+            bar: {
+                columnWidth: '45%',
+                distributed: true
+            }
+        },
+        legend: {
+            show: false
+        },
+        colors: ["#727cf5", "#0acf97", "#fa5c7c", "#6c757d", "#39afd1", "#2b908f", "#ffbc00", "#90ee7e", "#f48024", "#212730"],
+        dataLabels: {
+            enabled: false, textAnchor: "start", style: {colors: ["#fff"]}, formatter: function (e, t) {
+                return t.w.globals.labels[t.dataPointIndex] + ":  " + e.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+            }, offsetX: 0, dropShadow: {enabled: !1}
+        },
+        series: [
+            {name: 'Event', data: monthlyEventsDataChart.series}],
+        xaxis: {
+            categories: monthlyEventsDataChart.labels,
+            labels: {
+                show: true,
+                style: {
+                    colors: ["#727cf5", "#0acf97", "#fa5c7c", "#6c757d", "#39afd1", "#2b908f", "#ffbc00", "#90ee7e", "#f48024", "#212730"],
+                    fontSize: '12px'
+                }
+                /*formatter: function (val) {
+                    if (barchart.data.value_label == 'Currency') {
+                        return 'Rp. ' + val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+                    } else {
+                        return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+                    }
+                }*/
+            },
+        },
+    };
+    (chart = new ApexCharts(document.querySelector("#event-monthly-chart-data"), options)).render();
+</script>
+{% endput %}

@@ -1,0 +1,121 @@
+<p class="font-weight-semi-bold text-body">Informasi Perjalanan</p>
+<hr/>
+<form class="js-validate" id="create-reality-form">
+    <div class="form-group row mb-4">
+        <label for="trip_id" class="col-sm-3 col-form-label text-uppercase">Nama Perjalanan Dinas <span
+                class="text-danger">*</span></label>
+        <div class="col-sm-9">
+            <div class="js-form-message">
+                <select name="trip_id" required class="custom-select" id="trip_id"
+                        data-msg="Please select Trip"
+                        data-error-class="u-has-error"
+                        data-success-class="u-has-success"
+                        data-request="onSelectTrip"
+                        data-request-update="'{{__SELF__}}::trip-existing-details': '#trip-existing-details'">
+                    <option selected disabled value="">Pilih perjalanan dinas</option>
+                    {% for trip in trips %}
+                    <option value="{{trip.id}}">{{trip.name}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+    </div>
+    <div id="trip-existing-details">
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6 mb-md-4 mb-4">
+            <div class="js-form-message">
+                <label class="font-weight-medium text-uppercase" for="signature_left_id">
+                    Pengesahan 1<span class="text-danger">*</span>
+                </label>
+                <div class="js-form-message">
+                    <div class="input-group">
+                        <select name="signature_left_id" required class="custom-select" id="signature_left_id"
+                                data-msg="Mohon pilih Pejabat Pengesahan."
+                                data-error-class="u-has-error"
+                                data-success-class="u-has-success">
+                            <option selected disabled>Pilih Pejabat</option>
+                            {% for signature in signatures %}
+                            <option value="{{signature.id}}">{{signature.name}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6 mb-md-4 mb-4">
+            <div class="js-form-message">
+                <label class="font-weight-medium text-uppercase" for="signature_right_id">
+                    Pengesahan 2<span class="text-danger">*</span>
+                </label>
+                <div class="js-form-message">
+                    <div class="input-group">
+                        <select name="signature_right_id" required class="custom-select" id="signature_right_id"
+                                data-msg="Mohon pilih Pejabat Pengesahan."
+                                data-error-class="u-has-error"
+                                data-success-class="u-has-success">
+                            <option selected disabled>Pilih Pejabat</option>
+                            {% for signature in signatures %}
+                            <option value="{{signature.id}}">{{signature.name}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12">
+            <div class="mb-3">
+                <h2 class="h5 mb-0">Keterangan</h2>
+                <p>Isi apabila ada keterangan lainnya.</p>
+            </div>
+            <!-- End Title -->
+
+            <div class="mb-3">
+                <!-- Text Editor Input -->
+                <div class="u-summernote-editor">
+                    <div class="js-summernote-editor" id="remarks" data-height="160"></div>
+                </div>
+                <!-- End Text Editor Input -->
+            </div>
+            <small class="text-muted">*Pastikan semua isian telah di isi sesuai dengan ketentuan yang berlaku.</small>
+        </div>
+
+        <div class="col-sm-12 mt-5">
+            <button type="button" onclick="submitForm()" class="btn btn-sm btn-primary transition-3d-hover mr-1">
+                Create
+            </button>
+            <a href="{{'dashboard/perjadin'|page}}" class="btn btn-secondary btn-sm transition-3d-hover">Cancel</a>
+        </div>
+    </div>
+</form>
+
+{% put javascript %}
+<script src="{{'assets/vendor/summernote/dist/summernote-lite.js'|theme}}"></script>
+<script src="{{'assets/js/components/hs.summernote-editor.js'|theme}}"></script>
+<script>
+    // initialization of text editors
+    $.HSCore.components.HSSummernoteEditor.init('.js-summernote-editor');
+
+    function submitForm() {
+        var remarks = $("#remarks").summernote("code");
+        var form = $('#create-reality-form');
+        if (form.valid()) {
+            form.request('onCreateRealityForm',
+                {
+                    data: {
+                        remarks: remarks,
+                    },
+                    beforeSend: function () {
+                        $.oc.stripeLoadIndicator.show();
+                    },
+                    complete: function () {
+                        $.oc.stripeLoadIndicator.hide();
+                    }
+                })
+        }
+    }
+</script>
+{% endput %}

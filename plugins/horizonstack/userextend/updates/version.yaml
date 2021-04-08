@@ -1,0 +1,17 @@
+1.0.1:
+    - 'Initialize plugin.'
+1.0.2:
+- 'Add users table fields'
+- migration102.php
+1.0.3:
+- 'Created table horizonstack_userextend_departments'
+- builder_table_create_horizonstack_userextend_departments.php
+1.0.4:
+- 'Created table horizonstack_userextend_sub_departments'
+- builder_table_create_horizonstack_userextend_sub_departments.php
+1.0.5:
+- 'Created table horizonstack_userextend_job_levels'
+- builder_table_create_horizonstack_userextend_job_levels.php
+1.0.6:
+- 'Add is_profile_completed field to users table'
+- migration106.php

@@ -1,0 +1,10 @@
+name: AssetCategories
+form: $/horizonstack/asset/models/assetcategory/fields.yaml
+modelClass: Horizonstack\Asset\Models\AssetCategory
+defaultRedirect: horizonstack/asset/assetcategories
+create:
+    redirect: 'horizonstack/asset/assetcategories/update/:id'
+    redirectClose: horizonstack/asset/assetcategories
+update:
+    redirect: horizonstack/asset/assetcategories
+    redirectClose: horizonstack/asset/assetcategories

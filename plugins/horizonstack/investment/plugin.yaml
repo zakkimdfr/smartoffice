@@ -1,0 +1,78 @@
+plugin:
+    name: 'horizonstack.investment::lang.plugin.name'
+    description: 'horizonstack.investment::lang.plugin.description'
+    author: Horizonstack
+    icon: oc-icon-money
+    homepage: ''
+permissions:
+    horizonstack.investment.manage_investments:
+        tab: 'horizonstack.investment::lang.plugin.name'
+        label: 'horizonstack.investment::lang.permissions.investments'
+    horizonstack.investment.manage_property_types:
+        tab: 'horizonstack.investment::lang.plugin.name'
+        label: 'horizonstack.investment::lang.permissions.property_types'
+    horizonstack.investment.manage_schemes:
+        tab: 'horizonstack.investment::lang.plugin.name'
+        label: 'horizonstack.investment::lang.permissions.schemes'
+    horizonstack.investment.manage_organizations:
+        tab: 'horizonstack.investment::lang.plugin.name'
+        label: 'horizonstack.investment::lang.permissions.organizations'
+    horizonstack.investment.manage_ownerships:
+        tab: 'horizonstack.investment::lang.plugin.name'
+        label: 'horizonstack.investment::lang.permissions.ownerships'
+    horizonstack.investment.manage_project_levels:
+        tab: 'horizonstack.investment::lang.plugin.name'
+        label: 'horizonstack.investment::lang.permissions.project_levels'
+    horizonstack.investment.manage_infrastructures:
+        tab: 'horizonstack.investment::lang.plugin.name'
+        label: 'horizonstack.investment::lang.permissions.infrastructures'
+navigation:
+    investments-plugin:
+        label: Investments
+        url: horizonstack/investment/investments
+        icon: icon-money
+        permissions:
+            - horizonstack.investment.manage_investments
+        sideMenu:
+            investments:
+                label: Investments
+                url: horizonstack/investment/investments
+                icon: icon-money
+                permissions:
+                    - horizonstack.investment.manage_investments
+            organizations:
+                label: Organizations
+                url: horizonstack/investment/investmentorganizations
+                icon: icon-spinner
+                permissions:
+                    - horizonstack.investment.manage_organizations
+            infrastructures:
+                label: Infrastructures
+                url: horizonstack/investment/infrastructures
+                icon: icon-stop
+                permissions:
+                    - horizonstack.investment.manage_infrastructures
+            schemes:
+                label: Schemes
+                url: horizonstack/investment/schemes
+                icon: icon-list-alt
+                permissions:
+                    - horizonstack.investment.manage_schemes
+            property-types:
+                label: 'Property Types'
+                url: horizonstack/investment/propertytypes
+                icon: icon-check-square-o
+                permissions:
+                    - horizonstack.investment.manage_property_types
+            project-levels:
+                label: 'Project Levels'
+                url: horizonstack/investment/projectlevels
+                icon: icon-sitemap
+                permissions:
+                    - horizonstack.investment.manage_project_levels
+            ownerships:
+                label: Ownerships
+                url: horizonstack/investment/ownerships
+                icon: icon-star-o
+                permissions:
+                    - horizonstack.investment.manage_ownerships

@@ -1,0 +1,32 @@
+fields:
+    banner:
+        label: 'thephuc.tunsurvey::lang.form.banner'
+        mode: image
+        imageWidth: '400'
+        imageHeight: '200'
+        useCaption: true
+        thumbOptions:
+            mode: crop
+            extension: auto
+        span: right
+        type: fileupload
+    name:
+        label: 'thephuc.tunsurvey::lang.form.name'
+        span: left
+        hidden: 0
+        required: 1
+        type: text
+    status:
+        label: 'thephuc.tunsurvey::lang.form.status'
+        span: left
+        required: 1
+        type: dropdown
+tabs:
+    fields:
+        questions:
+            span: full
+            path: list_questions
+            type: partial
+            tab: 'thephuc.tunsurvey::lang.form.questions'
+            context:
+                - update

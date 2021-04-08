@@ -1,0 +1,10 @@
+name: Villages
+form: $/horizonstack/location/models/village/fields.yaml
+modelClass: Horizonstack\Location\Models\Village
+defaultRedirect: horizonstack/location/villages
+create:
+    redirect: 'horizonstack/location/villages/update/:id'
+    redirectClose: horizonstack/location/villages
+update:
+    redirect: horizonstack/location/villages
+    redirectClose: horizonstack/location/villages

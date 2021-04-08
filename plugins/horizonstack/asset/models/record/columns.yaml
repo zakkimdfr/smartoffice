@@ -1,0 +1,32 @@
+columns:
+    activity:
+        label: Activity
+        type: text
+        searchable: true
+        sortable: true
+    asset:
+        label: Asset
+        relation: asset
+        select: name
+    status:
+        label: Status
+        type: partial
+        path: $/horizonstack/asset/models/record/_status_column.htm
+    date_start:
+        label: Date Start
+        type: date
+        searchable: true
+        sortable: true
+    date_end:
+        label: Date End
+        type: date
+        searchable: true
+        sortable: true
+    user:
+        label: User
+        relation: user
+        select: name
+    is_active:
+        label: Active
+        type: switch
+        sortable: true

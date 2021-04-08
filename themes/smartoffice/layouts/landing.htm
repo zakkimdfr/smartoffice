@@ -1,0 +1,163 @@
+description = "Landing Page layout"
+
+[userSession]
+security = "all"
+==
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{{ this.page.meta_description }}">
+    <meta name="title" content="{{ this.page.meta_title }}">
+    <link rel="icon" type="image/png" href="{{ 'assets/img/logos/favicon.ico'|theme }}">
+    <title>{{ this.page.title }} &sim; Smart Office</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap" rel="stylesheet">
+
+    <!-- CSS Implementing Plugins -->
+    <link href="{{ [
+        'assets/vendor/font-awesome/css/fontawesome-all.min.css',
+        'assets/vendor/animate.css/animate.min.css',
+        'assets/vendor/hs-megamenu/src/hs.megamenu.css',
+        'assets/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css',
+        'assets/vendor/fancybox/jquery.fancybox.css',
+        'assets/vendor/slick-carousel/slick/slick.css',
+        'assets/vendor/bootstrap-select/dist/css/bootstrap-select.min.css'
+        ]|theme }}" rel="stylesheet">
+    <link href="{{ ['assets/css/theme.css','assets/css/custom.css']|theme }}" rel="stylesheet">
+    {% styles %}
+</head>
+<body class="gradient-half-primary-body-v1 mb-lg-0">
+
+{% flash %}
+<script>
+    // only execute once the DOM is loaded
+    document.addEventListener("DOMContentLoaded", function () {
+        $.oc.flashMsg({text: '{{ message }}', 'class': '{{ type }}', 'interval': 10})
+    }, false);
+</script>
+{% endflash %}
+{% partial 'webticker' %}
+<!-- Header -->
+<header id="header" class="u-header u-header--bg-transparent u-header--abs-top">
+    <div class="u-header__section">
+        <div id="logoAndNav" class="container">
+            <!-- Nav -->
+            <nav class="navbar navbar-expand u-header__navbar">
+                <!-- Logo -->
+                <a href="/">
+                    <img src="/themes/smartoffice/assets/img/logos/logo-shadowed.png">
+                </a>
+                <!-- End Logo -->
+
+                <!-- Button -->
+                <div class="ml-auto">
+                    {% if user %}
+                    <a class="btn btn-sm btn-primary transition-3d-hover" href="dashboard">
+                        Dashboard
+                    </a>
+                    {% else %}
+                    <a class="btn btn-sm btn-primary transition-3d-hover" href="login">
+                        Login
+                    </a>
+                    {% endif %}
+                </div>
+                <!-- End Button -->
+            </nav>
+            <!-- End Nav -->
+        </div>
+    </div>
+</header>
+
+<!-- Content -->
+<main id="content" role="main">
+    {% page %}
+</main>
+
+<!-- Footer -->
+<footer class="u-sticky-footer">
+    <div class="container space-bottom-1">
+        <div class="row justify-content-between align-items-center">
+            <div class="col-sm-5 mb-3 mb-sm-0">
+                <!-- Copyright -->
+                <p class="small text-white-70 mb-0">&copy; Dinas Pariwisata dan Kebudayaan - Provinsi Jawa Barat | 2021</p>
+                <!-- End Copyright -->
+            </div>
+
+            <div class="col-sm-6 text-sm-right">
+                <!-- Social Networks -->
+                <ul class="list-inline mb-0">
+                    <li class="list-inline-item">
+                        <a class="btn btn-sm btn-icon btn-soft-light btn-bg-transparent" href="javascript:void(0)">
+                            <span class="fab fa-facebook-f btn-icon__inner"></span>
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a class="btn btn-sm btn-icon btn-soft-light btn-bg-transparent" href="javascript:void(0)">
+                            <span class="fab fa-google btn-icon__inner"></span>
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a class="btn btn-sm btn-icon btn-soft-light btn-bg-transparent" href="javascript:void(0)">
+                            <span class="fab fa-twitter btn-icon__inner"></span>
+                        </a>
+                    </li>
+                </ul>
+                <!-- End Social Networks -->
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Go to Top -->
+<a class="js-go-to u-go-to" href="#"
+   data-position='{"bottom": 15, "right": 15 }'
+   data-type="fixed"
+   data-offset-top="400"
+   data-compensation="#header"
+   data-show-effect="slideInUp"
+   data-hide-effect="slideOutDown">
+    <span class="fas fa-arrow-up u-go-to__inner"></span>
+</a>
+<!-- End Go to Top -->
+
+<!-- Scripts -->
+<script src="{{ [
+'assets/vendor/jquery/dist/jquery.min.js',
+'assets/vendor/jquery-migrate/dist/jquery-migrate.min.js',
+'assets/vendor/popper.js/dist/umd/popper.min.js',
+'assets/vendor/bootstrap/bootstrap.min.js',
+'assets/vendor/hs-megamenu/src/hs.megamenu.js',
+'assets/vendor/svg-injector/dist/svg-injector.min.js',
+'assets/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js',
+'assets/vendor/jquery-validation/dist/jquery.validate.min.js',
+'assets/vendor/fancybox/jquery.fancybox.min.js',
+'assets/vendor/slick-carousel/slick/slick.js',
+'assets/vendor/bootstrap-select/dist/js/bootstrap-select.min.js'
+]|theme }}"></script>
+
+<!-- JS Front -->
+<script src="{{ [
+'assets/js/hs.core.js',
+'assets/js/components/hs.header.js',
+'assets/js/components/hs.unfold.js',
+'assets/js/components/hs.focus-state.js',
+'assets/js/components/hs.malihu-scrollbar.js',
+'assets/js/components/hs.validation.js',
+'assets/js/components/hs.selectpicker.js',
+'assets/js/components/hs.fancybox.js',
+'assets/js/components/hs.slick-carousel.js',
+'assets/js/components/hs.show-animation.js',
+'assets/js/components/hs.svg-injector.js',
+'assets/js/components/hs.go-to.js'
+]|theme }}"></script>
+
+<!-- JS Plugins Init. -->
+{% placeholder javascript %}
+{% framework extras %}
+{% scripts %}
+
+</body>
+</html>

@@ -1,0 +1,10 @@
+fields:
+    name:
+        label: Name
+        span: auto
+        type: text
+    file:
+        label: File
+        span: auto
+        type: fileupload
+        mode: file

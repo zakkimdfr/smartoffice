@@ -1,0 +1,200 @@
+title = "Buku Tamu Statistic"
+url = "/buku-tamu/statistic"
+layout = "dashboard"
+is_hidden = 0
+
+[guestBookStats]
+guestsPerPage = 10
+==
+<!-- Content Section -->
+<div class="bg-light">
+    <div class="container space-2">
+        <div class="row">
+            <div class="col-md-4">
+                <!-- Card -->
+                <div class="card mb-3">
+                    <div class="card-body p-5">
+                        <div class="media align-items-center">
+                <span class="btn btn-lg btn-icon btn-soft-primary rounded-circle mr-4">
+                  <span class="fa fa-calendar-alt btn-icon__inner"></span>
+                </span>
+                            <div class="media-body">
+                                <span class="d-block font-size-3">{{totalEvents|number_format(0, '.', '.')}}</span>
+                                <h2 class="h6 text-secondary font-weight-normal mb-0">Acara Kegiatan</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Card -->
+
+                <!-- Card -->
+                <div class="card mb-3">
+                    <div class="card-body p-5">
+                        <div class="media align-items-center">
+                <span class="btn btn-lg btn-icon btn-soft-success rounded-circle mr-4">
+                  <span class="fa fa-users btn-icon__inner"></span>
+                </span>
+                            <div class="media-body">
+                                <span class="d-block font-size-3">{{totalGuests|number_format(0, '.', '.')}}</span>
+                                <h3 class="h6 text-secondary font-weight-normal mb-0">Tamu Undangan</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Card -->
+
+                <!-- Card -->
+                <div class="card">
+                    <div class="card-body p-5">
+                        <div class="media align-items-center">
+                <span class="btn btn-lg btn-icon btn-soft-warning rounded-circle mr-4">
+                  <span class="fas fa-exchange-alt btn-icon__inner"></span>
+                </span>
+                            <div class="media-body">
+                                <span class="d-block font-size-3">{{avgGuestPerEvent|number_format(0, '.', '.')}}</span>
+                                <h3 class="h6 text-secondary font-weight-normal mb-0">Rata-rata Kehadiran</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Card -->
+            </div>
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="header-title">Profil Undangan Berdasarkan Profesi</h4>
+                        <div id="attraction-categories-chart" class="apex-charts"></div>
+                    </div> <!-- end card-body-->
+                </div>
+            </div>
+
+            <div class="col-md-12 mt-5">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="header-title">Jumlah Undangan Per Bulan (Tahun 2020)</h4>
+                        <div id="bar-chart" class="apex-charts"></div>
+                    </div> <!-- end card-body-->
+                </div>
+            </div>
+
+            <div class="col-md-12 mt-5">
+                <div class="card mt-5">
+                    <div class="card-body p-4">
+                        <!-- Nav -->
+                        <div class="row justify-content-between align-items-center mb-4">
+                            <div class="col-md-7 order-md-1">
+                                <!-- Nav Classic -->
+                                <ul class="nav nav-classic nav-borderless px-0" id="pills-tab" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" id="pills-top-guest-cities-tab" data-toggle="pill"
+                                           href="#pills-top-guest-cities-trip"
+                                           role="tab" aria-controls="pills-top-guest-cities-trip" aria-selected="true">Top 10 
+                                            Asal Kota/Kabupaten Undangan</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="pills-top-organization-reality-tab" data-toggle="pill"
+                                           href="#pills-top-organization-reality"
+                                           role="tab" aria-controls="pills-top-organization-reality"
+                                           aria-selected="false">Top 10 Organisasi</a>
+                                    </li>
+                                </ul>
+                                <!-- End Nav Classic -->
+                            </div>
+                        </div>
+                        <!-- End Nav -->
+
+                        <div class="tab-content" id="pills-tabContent">
+                            <!-- Content One -->
+                            <div class="tab-pane fade show active" id="pills-top-guest-cities-trip" role="tabpanel"
+                                 aria-labelledby="pills-top-guest-cities-tab">
+                                {% component 'guestBookStats::top-cities' %}
+                            </div>
+                            <!-- End Content One -->
+
+                            <!-- Content Two -->
+                            <div class="tab-pane fade" id="pills-top-organization-reality" role="tabpanel"
+                                 aria-labelledby="pills-top-organization-reality-tab">
+                                {% component 'guestBookStats::top-organisations' %}
+                            </div>
+                            <!-- End Content Two -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Content Section -->
+{% put javascript %}
+<script src="{{'assets/vendor/apexcharts/apexcharts.min.js'|theme}}"></script>
+<script>
+    var guestJobs = "{{guestJobsChartData| json_encode()}}";
+    guestJobs = guestJobs.replace(/\\n/g, "\\n")
+        .replace(/&quot;/g, '"')
+        .replace(/\\'/g, "\\'")
+        .replace(/\\"/g, '\\"')
+        .replace(/\\&/g, "\\&")
+        .replace(/\\r/g, "\\r")
+        .replace(/\\t/g, "\\t")
+        .replace(/\\b/g, "\\b")
+        .replace(/\\f/g, "\\f")
+        .replace(/[\u0000-\u0019]+/g, "");
+    var guestJobsData = JSON.parse(guestJobs);
+
+    options = {
+        chart: {height: 392, type: "donut"},
+        series: guestJobsData.series,
+        legend: {
+            show: !0,
+            position: "left",
+            horizontalAlign: "center",
+            verticalAlign: "middle",
+            floating: !1,
+            fontSize: "14px",
+            offsetX: 0,
+            offsetY: -10
+        },
+        labels: guestJobsData.labels,
+        colors: ["#39afd1", "#ffbc00", "#313a46", "#fa5c7c", "#0acf97"],
+        responsive: [{breakpoint: 600, options: {chart: {height: 240}, legend: {show: !1}}}]
+    };
+    (chart = new ApexCharts(document.querySelector("#attraction-categories-chart"), options)).render();
+
+
+    var guestsBar = "{{guestsBarChart| json_encode()}}";
+    guestsBar = guestsBar.replace(/\\n/g, "\\n")
+        .replace(/&quot;/g, '"')
+        .replace(/\\'/g, "\\'")
+        .replace(/\\"/g, '\\"')
+        .replace(/\\&/g, "\\&")
+        .replace(/\\r/g, "\\r")
+        .replace(/\\t/g, "\\t")
+        .replace(/\\b/g, "\\b")
+        .replace(/\\f/g, "\\f")
+        .replace(/[\u0000-\u0019]+/g, "");
+    var guestsBarData = JSON.parse(guestsBar);
+
+    var barChartOptions = {
+        series: [{
+            name: "Total Undangan",
+            data: guestsBarData.series
+        }],
+        chart: {
+            type: 'bar',
+            height: 400
+        },
+        plotOptions: {
+            bar: {
+                horizontal: true,
+            }
+        },
+        dataLabels: {
+            enabled: false
+        },
+        xaxis: {
+            categories: guestsBarData.labels,
+        }
+    };
+    (barChart = new ApexCharts(document.querySelector("#bar-chart"), barChartOptions)).render();
+</script>
+{% endput %}

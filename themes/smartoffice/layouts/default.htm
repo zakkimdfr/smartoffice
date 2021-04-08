@@ -1,0 +1,213 @@
+description = "Default layout"
+
+[userSession]
+security = "all"
+==
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{{ this.page.meta_description }}">
+    <meta name="title" content="{{ this.page.meta_title }}">
+    <link rel="icon" type="image/png" href="{{ 'assets/img/logos/favicon.ico'|theme }}">
+    <title>{{ this.page.title }} &sim; Smart Office</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap" rel="stylesheet">
+
+    <!-- CSS Implementing Plugins -->
+    <link href="{{ [
+        'assets/vendor/font-awesome/css/fontawesome-all.min.css',
+        'assets/vendor/animate.css/animate.min.css',
+        'assets/vendor/hs-megamenu/src/hs.megamenu.css',
+        'assets/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css',
+        'assets/vendor/fancybox/jquery.fancybox.css',
+        'assets/vendor/slick-carousel/slick/slick.css',
+        'assets/vendor/bootstrap-select/dist/css/bootstrap-select.min.css',
+        'assets/vendor/ion-rangeslider/css/ion.rangeSlider.css',
+        'assets/vendor/dropify/dist/css/dropify.min.css',
+        'assets/vendor/flatpickr/dist/flatpickr.min.css',
+        'assets/vendor/bootstrap-datepicker/dist/css/bootstrap-datepicker3.css',
+        ]|theme }}" rel="stylesheet">
+    <link href="{{ ['assets/css/theme.css','assets/css/custom.css']|theme }}" rel="stylesheet">
+    {% styles %}
+</head>
+<body>
+
+{% flash %}
+<script>
+    // only execute once the DOM is loaded
+    document.addEventListener("DOMContentLoaded", function () {
+        $.oc.flashMsg({text: '{{ message }}', 'class': '{{ type }}', 'interval': 10})
+    }, false);
+</script>
+{% endflash %}
+<!-- Header -->
+    {% partial 'site/header-default' %}
+
+<!-- Content -->
+<main id="content" role="main">
+    {% page %}
+</main>
+
+<!-- Footer -->
+<footer>
+    {% partial 'site/footer' %}
+</footer>
+
+<!-- ========== SECONDARY CONTENTS ========== -->
+<!-- Account Sidebar Navigation -->
+
+<!-- End Account Sidebar Navigation -->
+<!-- ========== END SECONDARY CONTENTS ========== -->
+
+<!-- Go to Top -->
+<a class="js-go-to u-go-to" href="#"
+   data-position='{"bottom": 15, "right": 15 }'
+   data-type="fixed"
+   data-offset-top="400"
+   data-compensation="#header"
+   data-show-effect="slideInUp"
+   data-hide-effect="slideOutDown">
+    <span class="fas fa-arrow-up u-go-to__inner"></span>
+</a>
+<!-- End Go to Top -->
+
+<!-- Scripts -->
+<script src="{{ [
+'assets/vendor/jquery/dist/jquery.min.js',
+'assets/vendor/jquery-migrate/dist/jquery-migrate.min.js',
+'assets/vendor/popper.js/dist/umd/popper.min.js',
+'assets/vendor/bootstrap/bootstrap.min.js',
+'assets/vendor/hs-megamenu/src/hs.megamenu.js',
+'assets/vendor/svg-injector/dist/svg-injector.min.js',
+'assets/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js',
+'assets/vendor/jquery-validation/dist/jquery.validate.min.js',
+'assets/vendor/fancybox/jquery.fancybox.min.js',
+'assets/vendor/typed.js/lib/typed.min.js',
+'assets/vendor/slick-carousel/slick/slick.js',
+'assets/vendor/bootstrap-select/dist/js/bootstrap-select.min.js',
+'assets/vendor/jquery.countdown.min.js',
+'assets/vendor/ion-rangeslider/js/ion.rangeSlider.min.js',
+'assets/vendor/gmaps/gmaps.min.js',
+'assets/vendor/flatpickr/dist/flatpickr.min.js',
+'assets/vendor/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js',
+ 'assets/vendor/bootstrap-datepicker/dist/locales/bootstrap-datepicker.id.min.js',
+]|theme }}"></script>
+
+<!-- JS Front -->
+<script src="{{ [
+'assets/js/hs.core.js',
+'assets/js/components/hs.header.js',
+'assets/js/components/hs.unfold.js',
+'assets/js/components/hs.focus-state.js',
+'assets/js/components/hs.malihu-scrollbar.js',
+'assets/js/components/hs.validation.js',
+'assets/js/components/hs.selectpicker.js',
+'assets/js/components/hs.fancybox.js',
+'assets/js/components/hs.slick-carousel.js',
+'assets/js/components/hs.show-animation.js',
+'assets/js/components/hs.svg-injector.js',
+'assets/js/components/hs.go-to.js',
+'assets/js/components/hs.countdown.js',
+'assets/js/components/hs.range-slider.js',
+'assets/js/components/hs.g-map.js',
+'assets/js/components/hs.step-form.js',
+'assets/js/components/hs.range-datepicker.js'
+]|theme }}"></script>
+
+<!-- JS Plugins Init. -->
+<script>
+    $(window).on('ajaxErrorMessage', function (event, message) {
+        $.oc.flashMsg({text: message, 'class': 'error', 'interval': 10});
+        return false;
+        event.preventDefault();
+    });
+
+    $(window).on('load', function () {
+        // initialization of HSMegaMenu component
+        $('.js-mega-menu').HSMegaMenu({
+            event: 'hover',
+            pageContainer: $('.container'),
+            breakpoint: 767.98,
+            hideTimeOut: 0
+        });
+
+        // initialization of svg injector module
+        $.HSCore.components.HSSVGIngector.init('.js-svg-injector');
+    });
+
+    $(document).on('ready', function () {
+        // initialization of header
+        $.HSCore.components.HSHeader.init($('#header'));
+
+        // initialization of unfold component
+        $.HSCore.components.HSUnfold.init($('[data-unfold-target]'), {
+            afterOpen: function () {
+                $(this).find('input[type="search"]').focus();
+            }
+        });
+
+        // initialization of malihu scrollbar
+        $.HSCore.components.HSMalihuScrollBar.init($('.js-scrollbar'));
+
+        // initialization of forms
+        $.HSCore.components.HSFocusState.init();
+
+        // initialization of form validation
+        $.HSCore.components.HSValidation.init('.js-validate', {
+            rules: {
+                confirmPassword: {
+                    equalTo: '#signupPassword'
+                }
+            }
+        });
+
+    // initialization of range datepicker
+    $.HSCore.components.HSRangeDatepicker.init('.js-range-datepicker');
+
+    // initialization of form validation
+    $.HSCore.components.HSValidation.init('.js-validate');
+
+        // initialization of select picker
+        $.HSCore.components.HSSelectPicker.init('.js-select');
+
+        // initialization of show animations
+        $.HSCore.components.HSShowAnimation.init('.js-animation-link');
+
+        // initialization of fancybox
+        $.HSCore.components.HSFancyBox.init('.js-fancybox');
+
+        // initialization of slick carousel
+        $.HSCore.components.HSSlickCarousel.init('.js-slick-carousel');
+
+      // initialization of forms
+      $.HSCore.components.HSRangeSlider.init('.js-range-slider');
+
+    // initialization of step form
+    $.HSCore.components.HSStepForm.init('.js-step-form');
+
+        // initialization of go to
+        $.HSCore.components.HSGoTo.init('.js-go-to');
+
+        var countdowns = $.HSCore.components.HSCountdown.init('.js-countdown', {
+            yearsElSelector: '.js-cd-years',
+            daysElSelector: '.js-cd-days',
+            hoursElSelector: '.js-cd-hours',
+            minutesElSelector: '.js-cd-minutes',
+            secondsElSelector: '.js-cd-seconds'
+        });
+    });
+
+    // initialization of google map
+    function initMap() {
+      $.HSCore.components.HSGMap.init('.js-g-map');
+    }
+</script>
+{% placeholder javascript %}
+{% framework extras %}
+{% scripts %}
+
+</body>
+</html>

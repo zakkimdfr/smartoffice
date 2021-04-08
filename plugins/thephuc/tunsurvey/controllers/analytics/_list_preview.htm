@@ -1,0 +1,38 @@
+<?php
+    use ThePhuc\Tunsurvey\Models\Answer;
+    use ThePhuc\Tunsurvey\Models\Question;
+?>
+
+<h2><?= trans('thephuc.tunsurvey::lang.form.answers') ?></h2>
+<table class="table data">
+    <thead>
+        <tr>
+            <th><span>IP</span></th>
+            <?php foreach ($questions as $key => $question): ?>
+            <th><span><strong>Q<?= $key + 1 ?></strong></span></th>
+            <?php endforeach ?>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($useranswers as $answer): ?>
+        <?php $content = json_decode($answer->content); ?>
+        <tr>
+            <td><?= $answer->user_ip ?></td>
+            <?php foreach ($content as $key => $value): ?>
+                <td><?= Question::isValue($key) ? $value : Answer::getAnswer($value) ?></td>
+            <?php endforeach ?>
+            <td class="nolink">
+                <a
+                    href="javascript:;"
+                    data-request="onDeleteAnswer"
+                    data-request-data="record_id: '<?= $answer->id ?>', survey_id: '<?= $id ?>'"
+                    data-request-confirm="<?= trans('backend::lang.form.confirm_delete_multiple') ?>"
+                    class="oc-icon-remove"
+                    data-toggle="tooltip"
+                    title="<?= trans('thephuc.tunsurvey::lang.form.remove') ?>"></a>
+            </td>
+        </tr>
+        <?php endforeach ?>
+    </tbody>
+</table>

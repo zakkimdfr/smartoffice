@@ -1,0 +1,367 @@
+<div class="px-md-7">
+
+    <div class="border-bottom pb-3 mb-5">
+        <h2 class="h6 text-secondary mb-0">Pengajuan Baru</h2>
+    </div>
+    <form class="js-validate" id="create-trip-form">
+        <div class="row mt-2">
+
+            <div class="col-md-6 mb-md-4 mb-3">
+                <label for="name" class="font-weight-medium text-uppercase">Nama Kegiatan <strong
+                        class="text-danger">*</strong></label>
+                <div class="js-form-message">
+                    <div class="input-group input-group-sm">
+                        <input type="text" class="form-control" name="name" id="name" required
+                               data-msg="Please enter Trip name."
+                               data-error-class="u-has-error"
+                               data-success-class="u-has-success"
+                               placeholder="Tulis nama kegiatan">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-md-4 mb-3">
+                <label for="budget" class="font-weight-medium text-uppercase">Dasar <strong
+                        class="text-danger">*</strong></label>
+                <div class="js-form-message">
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="budget_name" id="budget"
+                               required data-msg="Please enter Budget name."
+                               data-error-class="u-has-error"
+                               data-success-class="u-has-success"
+                               placeholder="Dasar Pengajuan">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-md-4 mb-3">
+                <label for="mission" class="font-weight-medium text-uppercase">Tujuan Kegiatan <strong
+                        class="text-danger">*</strong></label>
+                <div class="js-form-message">
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="mission" id="mission" required
+                               data-msg="Please enter Trip Mission."
+                               data-error-class="u-has-error"
+                               data-success-class="u-has-success"
+                               placeholder="Tujuan">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-md-4 mb-3">
+                <label for="transportation_id" class="font-weight-medium text-uppercase">Mode Transportasi
+                    <strong
+                            class="text-danger">*</strong></label>
+                <div class="js-form-message">
+                    <div class="input-group">
+                        <select name="transportation_id" required class="custom-select" id="transportation_id"
+                                data-msg="Pilih angkutan yang dipergunakan."
+                                data-error-class="u-has-error"
+                                data-success-class="u-has-success">
+                            <option selected disabled>Pilih Angkutan</option>
+                            {% for transportation in transportations %}
+                            <option value="{{transportation.id}}">{{transportation.name}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class='col-md-6 mb-md-4 mb-3'>
+                <label id="startAtLabel" class="font-weight-medium text-uppercase">Tanggal Berangkat <strong
+                        class="text-danger">*</strong></label>
+                <div class="js-form-message">
+                    <div class="input-group">
+                        <div class="input-group-append">
+                                <span class="input-group-text rounded-left">
+                                  <span class="fa fa-plane-departure"></span>
+                                </span>
+                        </div>
+                        <input type='text' id="startAt" class="form-control" name="start_at"
+                               placeholder="Keberangkatan" aria-label="Start date" aria-describedby="startAtLabel"
+                               required
+                               data-msg="Pilih tanggal berangkat."
+                               data-error-class="u-has-error"
+                               data-success-class="u-has-success">
+                    </div>
+                </div>
+            </div>
+
+            <div class='col-md-6 mb-md-4 mb-3'>
+                <label id="returnAtLabel" class="font-weight-medium text-uppercase">Tanggal Kembali <strong
+                        class="text-danger">*</strong></label>
+                <div class="js-form-message">
+                    <div class="input-group">
+                        <div class="input-group-append">
+                                <span class="input-group-text rounded-left">
+                                  <span class="fa fa-plane-arrival"></span>
+                                </span>
+                        </div>
+                        <input type='text' id="returnAt" class="form-control" name="return_at"
+                               placeholder="Kepulangan" aria-label="Return date" aria-describedby="returnAtLabel"
+                               data-msg="Pilih tanggal kembali."
+                               data-error-class="u-has-error"
+                               data-success-class="u-has-success"
+                               required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 mb-md-4 mb-3">
+                <div class="js-form-message">
+                    <label class="font-weight-medium text-uppercase">
+                        Kota Asal <span class="text-danger">*</span>
+                    </label>
+
+                    <div class="js-form-message">
+                        <div class="input-group">
+                            <select id="origin_city_id" name="origin_city_id"
+                                    required
+                                    class="js-select selectpicker form-control"
+                                    title="Kota Asal"
+                                    data-style="btn-sm bg-transparent text-secondary font-weight-normal px-0"
+                                    data-live-search="false"
+                                    data-container="body"
+                                    data-searchbox-classes="input-group-sm"
+                                    data-size="5"
+                                    data-msg="Pilih Kota Keberangkatan."
+                                    data-error-class="u-has-error"
+                                    data-success-class="u-has-success">
+                                <option selected disabled value="{{kotaBandungCity.id}}">{{kotaBandungCity.name}}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 mb-md-4 mb-3">
+                <div class="js-form-message">
+                    <label class="font-weight-medium text-uppercase">
+                        Kota Tujuan
+                        <span class="text-danger">*</span>
+                    </label>
+
+                    <div class="js-form-message">
+                        <div class="input-group">
+                            <select id="destination_city_1" name="destination_city_1"
+                                    class="js-select selectpicker form-control"
+                                    required
+                                    title="Kota Tujuan"
+                                    data-style="btn-sm bg-transparent text-secondary font-weight-normal px-0"
+                                    data-live-search="true"
+                                    data-container="body"
+                                    data-searchbox-classes="input-group-sm"
+                                    data-size="5"
+                                    data-msg="Pilih Kota Tujuan."
+                                    data-error-class="u-has-error"
+                                    data-success-class="u-has-success">
+                                {% for city in cities %}
+                                <option value="{{city.id}}">{{city.name}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 mb-md-4 mb-3">
+                <div class="js-form-message">
+                    <label class="font-weight-medium text-uppercase">
+                        Kota Tujuan Lain <span class="text-danger font-weight-light font-size-1">(Opsional)</span>
+                    </label>
+
+                    <div class="js-form-message">
+                        <div class="input-group">
+                            <select id="destination_city_2" name="destination_city_2"
+                                    class="js-select selectpicker form-control"
+                                    title="Tujuan Lain"
+                                    data-style="btn-sm bg-transparent text-secondary font-weight-normal px-0"
+                                    data-live-search="true"
+                                    data-container="body"
+                                    data-searchbox-classes="input-group-sm"
+                                    data-size="5">
+                                {% for city in cities %}
+                                <option value="{{city.id}}">{{city.name}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 mb-md-4 mb-3">
+                <div class="js-form-message">
+                    <label class="font-weight-medium text-uppercase">
+                        Kota Kembali <span class="text-danger">*</span>
+                    </label>
+
+                    <div class="js-form-message">
+                        <div class="input-group">
+                            <select id="return_city_id" name="return_city_id"
+                                    required
+                                    class="js-select selectpicker form-control"
+                                    title="Kota Kembali"
+                                    data-style="btn-sm bg-transparent text-secondary font-weight-normal px-0"
+                                    data-live-search="true"
+                                    data-container="body"
+                                    data-searchbox-classes="input-group-sm"
+                                    data-size="5"
+                                    data-msg="Pilih kota kembali."
+                                    data-error-class="u-has-error"
+                                    data-success-class="u-has-success">
+                                {% for city in cities %}
+                                <option value="{{city.id}}">{{city.name}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 mb-md-4 mb-3">
+                <label for="participants" class="font-weight-medium text-uppercase">Pengikut
+                    <strong
+                            class="text-danger">*</strong></label>
+                <div class="js-form-message">
+                    <div class="input-group">
+                        <select id="participants" name="participants[]"
+                                class="js-select selectpicker form-control"
+                                title="Pilih Partisipan"
+                                data-style="btn-sm bg-transparent text-secondary font-weight-normal px-0"
+                                data-live-search="true"
+                                multiple
+                                data-container="body"
+                                data-searchbox-classes="input-group-sm"
+                                data-selected-text-format="count">
+                            {% for participant in participants %}
+                            <option value="{{participant.id}}" data-subtext="{{participant.email}}"
+                                    data-tokens="user{{participant.id}}"
+                                    data-content='
+                <span class="d-flex align-items-center">
+                  <span class="u-xs-avatar mr-2">
+                    <img class="img-fluid rounded-circle" src="{% if participant.avatar %}{{participant.avatar.thumb("22","22","crop")}}{% else %}/themes/smartoffice/assets/img/logos/logo.png{% endif %}" alt="{{participant.name}}">
+                  </span>
+                  <span>{{participant.name}}</span> &nbsp(<small>{{participant.email}}</small>)
+                </span>'>
+                                {{participant.name}}
+                            </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 mb-md-4 mb-3">
+                <div class="js-form-message">
+                    <label class="font-weight-medium text-uppercase" for="signature_id">
+                        Pengesahan <span class="text-danger">*</span>
+                    </label>
+
+                    <div class="js-form-message">
+                        <div class="input-group">
+                            <select name="signature_id" required class="custom-select" id="signature_id"
+                                    data-msg="Mohon pilih Pejabat Pengesahan."
+                                    data-error-class="u-has-error"
+                                    data-success-class="u-has-success">
+                                <option selected disabled>Pilih Pejabat</option>
+                                {% for signature in signatures %}
+                                <option value="{{signature.id}}">{{signature.name}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 mb-md-4 mb-3">
+                <div class="js-form-message">
+                    <label class="font-weight-medium text-uppercase" for="signature_date">
+                        TTD Pengesahan <span class="text-danger">*</span>
+                    </label>
+                    <div class="js-form-message">
+                        <div class="input-group">
+                            <input name="signature_date" class="js-range-datepicker form-control"
+                                   id="signature_date" required
+                                   data-msg="Signature Date is required"
+                                   data-error-class="u-has-error"
+                                   data-success-class="u-has-success"
+                                   type="text" placeholder="Tanggal Pengesahan">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-12">
+                <div class="mb-3">
+                    <h2 class="h5 mb-0">Keterangan</h2>
+                    <p>Isi apabila ada keterangan lainnya.</p>
+                </div>
+                <!-- End Title -->
+
+                <div class="mb-6">
+                    <!-- Text Editor Input -->
+                    <div class="u-summernote-editor">
+                        <div class="js-summernote-editor" id="remarks" data-height="160"></div>
+                    </div>
+                    <!-- End Text Editor Input -->
+                </div>
+            </div>
+
+            <div class="col-sm-12">
+                <button type="button" onclick="submitForm()" class="btn btn-primary btn-sm btn-block text-uppercase">
+                    Ajukan Perjalanan
+                </button>
+            </div>
+
+        </div>
+    </form>
+</div>
+
+{% put javascript %}
+<script src="{{'assets/vendor/summernote/dist/summernote-lite.js'|theme}}"></script>
+<script src="{{'assets/js/components/hs.summernote-editor.js'|theme}}"></script>
+<script>
+    // initialization of text editors
+    $.HSCore.components.HSSummernoteEditor.init('.js-summernote-editor');
+
+    $('#signature_date').datepicker({
+        format: "dd/mm/yyyy",
+        language: "id",
+        todayHighlight: true
+    });
+
+    $('#startAt').datepicker({
+        format: "dd/mm/yyyy",
+        language: "id",
+        defaultViewDate: "today",
+        todayHighlight: true
+    }).on("changeDate", function (e) {
+        $('#returnAt').datepicker('setStartDate', e.date);
+    });
+
+    $('#returnAt').datepicker({
+        format: "dd/mm/yyyy",
+        language: "id",
+    });
+
+    function submitForm() {
+        var remarks = $("#remarks").summernote("code");
+        var form = $('#create-trip-form');
+        if (form.valid()) {
+            form.request('onCreateTrip',
+                {
+                    data: {
+                        remarks: remarks,
+                    },
+                    beforeSend: function () {
+                        $.oc.stripeLoadIndicator.show();
+                    },
+                    complete: function () {
+                        $.oc.stripeLoadIndicator.hide();
+                    }
+                })
+        }
+    }
+</script>
+{% endput %}

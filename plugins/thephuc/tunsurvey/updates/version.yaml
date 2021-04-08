@@ -1,0 +1,18 @@
+1.0.1:
+    - 'Initialize plugin.'
+1.0.2:
+    - 'Created table thephuc_tunsurvey_surveys'
+    - builder_table_create_thephuc_tunsurvey_surveys.php
+1.0.3:
+    - 'Created table thephuc_tunsurvey_questions'
+    - builder_table_create_thephuc_tunsurvey_questions.php
+1.0.4:
+    - 'Created table thephuc_tunsurvey_answers'
+    - builder_table_create_thephuc_tunsurvey_answers.php
+1.0.5:
+    - 'Created table thephuc_tunsurvey_useranswers'
+    - builder_table_create_thephuc_tunsurvey_useranswers.php
+1.0.6:
+    - 'Additional statistics for each question'
+1.0.7:
+    - 'User checking answered by session'

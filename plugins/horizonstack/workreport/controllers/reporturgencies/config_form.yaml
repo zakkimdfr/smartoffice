@@ -1,0 +1,10 @@
+name: Urgencies
+form: $/horizonstack/workreport/models/reporturgency/fields.yaml
+modelClass: Horizonstack\Workreport\Models\ReportUrgency
+defaultRedirect: horizonstack/workreport/reporturgencies
+create:
+    redirect: 'horizonstack/workreport/reporturgencies/update/:id'
+    redirectClose: horizonstack/workreport/reporturgencies
+update:
+    redirect: horizonstack/workreport/reporturgencies
+    redirectClose: horizonstack/workreport/reporturgencies

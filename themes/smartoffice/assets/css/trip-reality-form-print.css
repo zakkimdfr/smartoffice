@@ -1,0 +1,8 @@
+@media print {
+    @page {
+        size: landscape;
+    }
+    html, body {
+        font-size: 6pt; /* changing to 10pt has no impact */
+    }
+}

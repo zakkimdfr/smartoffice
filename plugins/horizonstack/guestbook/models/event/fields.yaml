@@ -1,0 +1,78 @@
+fields:
+    name:
+        label: Name
+        span: auto
+        type: text
+    slug:
+        label: Slug
+        span: auto
+        preset:
+            field: name
+            type: slug
+        type: text
+tabs:
+    fields:
+        location:
+            label: Location
+            span: auto
+            type: text
+            tab: Basic Details
+        date:
+            label: 'Date'
+            comment: 'When is the event?'
+            type: datepicker
+            span: auto
+            mode: date
+            ignoreTimezone: true
+            tab: Basic Details
+        image:
+            label: Image
+            type: fileupload
+            mode: image
+            imageHeight: 260
+            imageWidth: 260
+            thumbOptions:
+                mode: auto
+                offset:
+                - 0
+                - 0
+                interlace: false
+                extension: auto
+            tab: Basic Details
+            span: auto
+        organizations:
+            label: Invited Organizations
+            span: auto
+            type: relation
+            select: name
+            tab: Basic Details
+        is_active:
+            label: Active
+            span: left
+            default: 1
+            type: switch
+            tab: Basic Details
+        is_public:
+            label: Public
+            span: left
+            default: 0
+            type: switch
+            tab: Basic Details
+        guests:
+            label: Guests
+            type: partial
+            path: field_guests
+            span: full
+            tab: Guests
+        presentations:
+            label: Presentations
+            span: auto
+            mode: file
+            type: fileupload
+            tab: Presentations & Meeting Notes
+        meeting_note:
+            label: Meeting Notes
+            span: auto
+            mode: file
+            type: fileupload
+            tab: Presentations & Meeting Notes

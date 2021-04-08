@@ -1,0 +1,56 @@
+<div class="row">
+    <div class="col-md-12 mb-3">
+        <div class="border-bottom d-flex justify-content-between">
+            <h5 class="pb-2">Data Perlengkapan</h5>
+            <span>{{recordList|length}} Aset</span>
+        </div>
+    </div>
+    {% for record in recordList %}
+    <div class="col-md-12 mb-5">
+        <div class="card">
+            <div class="row">
+                <div class="col-4 pr-0">
+                    {% if record.asset.photos|length > 0 %}
+                    <div class="bg-img-hero-center rounded-left h-100"
+                         style="background-image: url('{{record.asset.photos[0].getThumb('440','310','auto')}}');"></div>
+                    {% else %}
+                    <div class="bg-img-hero-center rounded-left h-100"
+                         style="background-image: url('/themes/smartoffice/assets/img/mockups/img6.png');"></div>
+                    {% endif %}
+                </div>
+
+                <div class="col-8">
+                    <div class="card-body py-5 px-md-4">
+                        <div class="mb-2">
+                            <div class="d-flex justify-content-between">
+                                <span class="h5">{{ record.asset.name }}</span>
+                                <span>Rp. {{record.asset.value|number_format(0, '.', '.')}}</span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-8">
+                                
+                            </div>
+                            <div class="col-md-4 text-right">
+                                {% if record.asset.status == '1' %}
+                                <a href="javascript:void(0)" data-request="onReturnAsset" data-request-flash="1"
+                                   data-request-data="record_id: {{record.id}}"
+                                   data-request-confirm="Are you sure to return this item?"
+                                   class="mt-4 btn btn-sm btn-warning text-white btn-sm-wide btn-pill transition-3d-hover mr-1 float-right">
+                                    Kembalikan
+                                </a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div class="col-md-12 mb-5">
+        Tidak ada Aset Kantor yang Anda gunakan saat ini.
+    </div>
+    {% endfor %}
+</div>

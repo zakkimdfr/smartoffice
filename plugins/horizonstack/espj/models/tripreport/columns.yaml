@@ -1,0 +1,20 @@
+columns:
+    trip:
+        label: Trip
+        relation: trip
+        select: name
+        searchable: true
+        sortable: true
+    user:
+        label: User
+        relation: user
+        select: name
+    date:
+        label: Date
+        type: date
+    updated_at:
+        label: 'Modified At'
+        type: datetime
+        searchable: true
+        sortable: true
+

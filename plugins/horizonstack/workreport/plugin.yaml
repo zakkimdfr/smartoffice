@@ -1,0 +1,42 @@
+plugin:
+    name: 'horizonstack.workreport::lang.plugin.name'
+    description: 'horizonstack.workreport::lang.plugin.description'
+    author: Horizonstack
+    icon: oc-icon-krw
+    homepage: ''
+permissions:
+    horizonstack.workreport.manage_reports:
+        tab: 'horizonstack.workreport::lang.plugin.name'
+        label: 'horizonstack.workreport::lang.permissions.reports'
+    horizonstack.workreport.manage_attns:
+        tab: 'horizonstack.workreport::lang.plugin.name'
+        label: 'horizonstack.workreport::lang.permissions.attns'
+    horizonstack.workreport.manage_urgencies:
+        tab: 'horizonstack.workreport::lang.plugin.name'
+        label: 'horizonstack.workreport::lang.permissions.urgencies'
+navigation:
+    work-reports:
+        label: 'Work Reports'
+        url: horizonstack/workreport/reports
+        icon: icon-krw
+        permissions:
+            - horizonstack.workreport.manage_reports
+        sideMenu:
+            reports:
+                label: Reports
+                url: horizonstack/workreport/reports
+                icon: icon-th-list
+                permissions:
+                    - horizonstack.workreport.manage_reports
+            attn:
+                label: Attn
+                url: horizonstack/workreport/reportattns
+                icon: icon-sun-o
+                permissions:
+                    - horizonstack.workreport.manage_attns
+            report-urgencies:
+                label: Urgencies
+                url: horizonstack/workreport/reporturgencies
+                icon: icon-th
+                permissions:
+                    - horizonstack.workreport.manage_urgencies

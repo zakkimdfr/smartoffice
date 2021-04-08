@@ -1,0 +1,17 @@
+columns:
+    id:
+        label: Id
+        type: text
+        searchable: true
+        sortable: true
+    name:
+        label: Name
+        type: text
+        searchable: true
+        sortable: true
+    is_active:
+        label: Active
+        type: switch
+    updated_at:
+        label: Last Modified
+        type: datetime

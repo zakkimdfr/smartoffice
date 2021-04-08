@@ -1,0 +1,10 @@
+name: Trips
+form: $/horizonstack/espj/models/trip/fields.yaml
+modelClass: Horizonstack\eSPJ\Models\Trip
+defaultRedirect: horizonstack/espj/trips
+create:
+    redirect: 'horizonstack/espj/trips/update/:id'
+    redirectClose: horizonstack/espj/trips
+update:
+    redirect: horizonstack/espj/trips
+    redirectClose: horizonstack/espj/trips

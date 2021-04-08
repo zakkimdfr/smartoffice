@@ -1,0 +1,110 @@
+fields:
+    name:
+        label: Name
+        span: auto
+        type: text
+    slug:
+        label: Slug
+        span: auto
+        preset:
+            field: name
+            type: slug
+        type: text
+    user_id:
+        label: User
+        span: auto
+        type: dropdown
+tabs:
+    fields:
+        budget_name:
+            label: Budget Name
+            span: auto
+            type: text
+            tab: Basic Details
+        mission:
+            label: Mission
+            span: auto
+            type: text
+            tab: Basic Details
+        start_at:
+            label: Start At
+            span: auto
+            type: datepicker
+            mode: date
+            ignoreTimezone: true
+            tab: Basic Details
+        return_at:
+            label: Return At
+            span: auto
+            type: datepicker
+            mode: date
+            ignoreTimezone: true
+            tab: Basic Details
+        transportation_id:
+            label: Transportation
+            span: auto
+            type: dropdown
+            tab: Basic Details
+        signature_id:
+            label: Signature
+            span: auto
+            type: dropdown
+            tab: Basic Details
+        signature_date:
+            label: Signature Date
+            span: auto
+            type: datepicker
+            mode: date
+            ignoreTimezone: true
+            tab: Basic Details
+        remarks:
+            label: Remarks
+            span: full
+            type: richeditor
+            tab: Basic Details
+        origin_city_id:
+            label: Origin City
+            span: auto
+            type: recordfinder
+            list: ~/plugins/horizonstack/guestbook/models/city/columns.yaml
+            recordsPerPage: 10
+            title: Find Record
+            prompt: Click the Find button to find a city
+            keyFrom: id
+            nameFrom: name
+            descriptionFrom: name
+            searchMode: all
+            useRelation: false
+            modelClass: Horizonstack\Guestbook\Models\City
+            tab: Travelling Details
+        destination_city_1:
+            label: Destination City 1
+            type: dropdown
+            span: auto
+            tab: Travelling Details
+        destination_city_2:
+            label: Destination City 2
+            type: dropdown
+            span: auto
+            tab: Travelling Details
+        return_city_id:
+            label: Return City
+            span: auto
+            type: recordfinder
+            list: ~/plugins/horizonstack/guestbook/models/city/columns.yaml
+            recordsPerPage: 10
+            title: Find Record
+            prompt: Click the Find button to find a city
+            keyFrom: id
+            nameFrom: name
+            descriptionFrom: name
+            searchMode: all
+            useRelation: false
+            modelClass: Horizonstack\Guestbook\Models\City
+            tab: Travelling Details
+        participants:
+            label: Participants
+            type: partial
+            path: field_participants
+            span: auto
+            tab: Travelling Details

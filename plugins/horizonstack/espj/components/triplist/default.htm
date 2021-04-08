@@ -1,0 +1,70 @@
+<div class="table-responsive">
+    <table id="trips-all-details" class="table table-light table-responsive-sm table-striped">
+        <thead>
+        <tr class="text-primary">
+            <th scope="col" data-sort-name="name" class="sort" data-sort-direction="asc">Nama Kegiatan
+                <i class="fa fa-sort"></i></th>
+            <th scope="col">Nama Pegawai</th>
+            <th scope="col" data-sort-name="start_at" class="sort" data-sort-direction="asc">Tanggal Berangkat
+                <i class="fa fa-sort"></i></th>
+            <th scope="col">Kota Tujuan</th>
+            <th scope="col">Tindakan</th>
+        </tr>
+        </thead>
+        <tbody id="trips-table-detail">
+        {% partial "@trips_table_detail" trips=trips %}
+        </tbody>
+    </table>
+</div>
+
+<div id="trips-pagination">
+    {% partial '@trips_pagination' trips=trips %}
+</div>
+
+{% put javascript %}
+<script>
+    $(document).on('click', '.sort', function () {
+
+
+        $('.sort').not(this).each(function () {
+            $(this).find('i:first').attr('class', 'fa fa-sort');
+        });
+
+        var sortField = $(this).data('sort-name');
+        var sortClass = $(this).find('i:first').hasClass('fa-sort');
+        var ascClass = $(this).find('i:first').hasClass('fa fa-sort-up');
+        var sortDirection = 'asc';
+        if (sortClass) {
+            $(this).find('i:first').attr('class', 'fa fa-sort-up');
+        } else {
+            if (ascClass) {
+                $(this).find('i:first').attr('class', 'fa fa-sort-down');
+                sortDirection = 'desc';
+            } else {
+                $(this).find('i:first').attr('class', 'fa fa-sort-up');
+                sortDirection = 'asc';
+            }
+        }
+
+        $("#sortBy").val(sortField);
+        $("#sortDirection").val(sortDirection);
+
+        $('#searchTerm').request('onSearchTrips', {
+            update: {
+                '@trips_table_detail': '#trips-table-detail',
+                '@trips_pagination': '#trips-pagination',
+                '@trips_sorting_field': '#sorting-fields'
+            },
+            data: {sort_by: sortField, sort_direction: sortDirection},
+            beforeUpdate: function () { /* do something */
+            },
+            beforeSend: function () {
+                $.oc.stripeLoadIndicator.show()
+            },
+            complete: function () {
+                $.oc.stripeLoadIndicator.hide()
+            }
+        })
+    });
+</script>
+{% endput %}

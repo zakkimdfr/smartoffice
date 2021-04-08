@@ -1,0 +1,7 @@
+answers:
+    label: thephuc.tunsurvey::lang.form.answers
+    view:
+        list: $/thephuc/tunsurvey/models/answer/columns.yaml
+        toolbarButtons: create|delete
+    manage:
+        form: $/thephuc/tunsurvey/models/answer/fields.yaml

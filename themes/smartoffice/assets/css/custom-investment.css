@@ -1,0 +1,13 @@
+.nav-icon-action {
+    width: 3rem !important;
+    height: 3rem !important;
+}
+.nav-icon-action h1 {
+    font-size: 2rem !important;
+    line-height: 1.5 !important;
+}
+
+.step-title {
+    font-size: 13px !important;
+    line-height: 1 !important;
+}

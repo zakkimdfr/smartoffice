@@ -1,0 +1,29 @@
+<header id="header" class="u-header u-header--bg-transparent u-header--abs-top">
+    <div class="u-header__section">
+        <div id="logoAndNav" class="container">
+            <!-- Nav -->
+            <nav class="navbar navbar-expand u-header__navbar">
+                <!-- Logo -->
+                <a href="/">
+                    <img src="/themes/smartoffice/assets/img/logos/logo-shadowed.png">
+                </a>
+                <!-- End Logo -->
+
+                <!-- Button -->
+                <div class="ml-auto">
+                    {% if user %}
+                    <a class="btn btn-sm btn-primary transition-3d-hover" href="/dashboard">
+                        Dashboard
+                    </a>
+                    {% else %}
+                    <a class="btn btn-sm btn-primary transition-3d-hover" href="/login">
+                        Login
+                    </a>
+                    {% endif %}
+                </div>
+                <!-- End Button -->
+            </nav>
+            <!-- End Nav -->
+        </div>
+    </div>
+</header>

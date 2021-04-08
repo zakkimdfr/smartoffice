@@ -1,0 +1,10 @@
+name: ProjectLevels
+form: $/horizonstack/investment/models/projectlevel/fields.yaml
+modelClass: Horizonstack\Investment\Models\ProjectLevel
+defaultRedirect: horizonstack/investment/projectlevels
+create:
+    redirect: 'horizonstack/investment/projectlevels/update/:id'
+    redirectClose: horizonstack/investment/projectlevels
+update:
+    redirect: horizonstack/investment/projectlevels
+    redirectClose: horizonstack/investment/projectlevels

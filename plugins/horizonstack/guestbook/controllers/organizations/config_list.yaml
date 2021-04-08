@@ -1,0 +1,12 @@
+list: $/horizonstack/guestbook/models/organization/columns.yaml
+modelClass: Horizonstack\Guestbook\Models\Organization
+title: Organizations
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: true
+showCheckboxes: true
+recordsPerPage: 20
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'
+recordUrl: 'horizonstack/guestbook/organizations/update/:id'

@@ -1,0 +1,19 @@
+{% for report in workReports %}
+<tr>
+    <td scope="row" class="align-middle">
+        <span>{{report.user.name}} {{report.user.surname}}</span>
+    </td>
+    <td class="align-middle text-secondary">
+        {{ report.subject}}
+    </td>
+    <td>
+        <a href="/nota-dinas/print/{{ report.id}}" class="btn btn-sm btn-icon btn-soft-info transition-3d-hover">
+            <span class="fa fa-print btn-icon__inner"></span>
+        </a>
+    </td>
+</tr>
+{% else %}
+<tr>
+    <td colspan="6">Belum ada peserta yang terdata.</td>
+</tr>
+{% endfor %}

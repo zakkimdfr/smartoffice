@@ -1,0 +1,56 @@
+fields:
+    name:
+        label: Name
+        span: auto
+        type: text
+    slug:
+        label: Slug
+        span: auto
+        preset:
+            field: name
+            type: slug
+        type: text
+    category_id:
+        label: Category
+        span: auto
+        type: dropdown
+    type_id:
+        label: Type
+        dependsOn: category_id
+        span: auto
+        type: dropdown
+    code:
+        label: Code
+        span: auto
+        type: text
+    year:
+        label: Year
+        span: auto
+        type: dropdown
+    value:
+        label: Value (in Rp.)
+        span: left
+        type: number
+    photos:
+        label: Photos
+        type: fileupload
+        span: right
+        mode: image
+        imageHeight: 260
+        imageWidth: 260
+        thumbOptions:
+            mode: auto
+            offset:
+                - 0
+                - 0
+            interlace: false
+            extension: auto
+    remarks:
+        label: Remarks
+        span: left
+        type: textarea
+    is_active:
+        label: Active
+        span: left
+        default: 1
+        type: switch

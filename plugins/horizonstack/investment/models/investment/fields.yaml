@@ -1,0 +1,269 @@
+fields:
+    name:
+        label: Name
+        span: auto
+        type: text
+    slug:
+        label: Slug
+        span: auto
+        preset:
+            field: name
+            type: slug
+        type: text
+    is_active:
+        label: Active
+        type: switch
+        default: 1
+        span: left
+tabs:
+    fields:
+        city_id:
+            label: City
+            span: left
+            type: dropdown
+            required: true
+            select: name
+            tab: '2 - Project Location & Map'
+        district_id:
+            label: District
+            span: auto
+            required: true
+            type: dropdown
+            dependsOn:
+                - city_id
+            select: name
+            tab: '2 - Project Location & Map'
+        address:
+            label: Address
+            type: investmentaddressfinder
+            span: left
+            required: true
+            fieldMap:
+                latitude: latitude
+                longitude: longitude
+                place_id: place_id
+            tab: '2 - Project Location & Map'
+        village_id:
+            label: Village
+            type: dropdown
+            required: true
+            dependsOn:
+                - city_id
+                - district_id
+            span: auto
+            tab: '2 - Project Location & Map'
+        latitude:
+            label: Latitude
+            span: left
+            type: text
+            required: true
+            tab: '2 - Project Location & Map'
+        longitude:
+            label: Longitude
+            span: right
+            required: true
+            type: text
+            tab: '2 - Project Location & Map'
+        policyRegulations:
+            label: 'Policy Regulations'
+            span: full
+            type: partial
+            path: field_policy_regulations
+            tab: '3 - Policy Background'
+        objectives:
+            label: Objectives
+            type: textarea
+            span: auto
+            tab: '4,5 & 6 - Objectives, Description & Scope of Project'
+        description:
+            label: 'Description'
+            type: textarea
+            span: auto
+            tab: '4,5 & 6 - Objectives, Description & Scope of Project'
+        project_level_id:
+            label: Project Level
+            span: auto
+            type: dropdown
+            required: true
+            select: name
+            tab: '4,5 & 6 - Objectives, Description & Scope of Project'
+        propertyType:
+            label: 'Property Type'
+            type: relation
+            select: name
+            span: auto
+            tab: '4,5 & 6 - Objectives, Description & Scope of Project'
+        remarks:
+            label: 'Remarks'
+            type: textarea
+            span: auto
+            tab: '4,5 & 6 - Objectives, Description & Scope of Project'
+        target_operation:
+            label: Target Operation
+            span: auto
+            type: text
+            tab: '7 & 8 - Time of Operation & Period of Development'
+        period_of_development:
+            label: Period Of Development
+            span: auto
+            type: text
+            tab: '7 & 8 - Time of Operation & Period of Development'
+        ownership_id:
+            label: Ownership
+            span: auto
+            type: dropdown
+            required: true
+            select: name
+            tab: '9 - Project Status'
+        land_size:
+            label: Land Size
+            span: auto
+            type: number
+            tab: '9 - Project Status'
+        human_resources:
+            label: Human Resources
+            span: auto
+            type: number
+            tab: '9 - Project Status'
+        land_allocation:
+            label: Land Allocation
+            span: left
+            type: text
+            tab: '9 - Project Status'
+        infrastructures:
+            label: Infrastructures
+            span: auto
+            type: relation
+            select: name
+            tab: '9 - Project Status'
+        ded_document:
+            label: DETAIL ENGINEERING DESIGN
+            type: fileupload
+            mode: file
+            span: right
+            tab: '9 - Project Status'
+        amdal_document:
+            label: ENVIRONMENTAL IMPACT ANALYSIS
+            type: fileupload
+            mode: file
+            span: right
+            tab: '9 - Project Status'
+        amdas_document:
+            label: PRE FEASIBILITY STUDY
+            type: fileupload
+            mode: file
+            span: right
+            tab: '9 - Project Status'
+        feasibility_study_document:
+            label: FEASIBILITY STUDY DOCUMENT
+            type: fileupload
+            mode: file
+            span: right
+            tab: '9 - Project Status'
+        investment_schemes:
+            label: 'Investment Schemes'
+            span: left
+            type: relation
+            select: name
+            tab: '10 & 11 - Offered Schemes & Costs'
+        investment_value:
+            label: 'Investment Value(Rp.)'
+            span: auto
+            type: number
+            tab: '10 & 11 - Offered Schemes & Costs'
+        usd:
+            label: 'Investment Value(USD)'
+            span: auto
+            type: number
+            tab: '10 & 11 - Offered Schemes & Costs'
+        irr:
+            label: 'INTERNAL RATE RETURN(IRR) (%)'
+            span: auto
+            type: number
+            tab: '12 - Financial Overview'
+        npv:
+            label: 'NET PRESENT VALUE(NPV) (Rp.)'
+            span: auto
+            type: number
+            tab: '12 - Financial Overview'
+        bcr:
+            label: 'BUILD COVERAGE RATIO(BCR) (%)'
+            span: auto
+            type: number
+            tab: '12 - Financial Overview'
+        payback_period:
+            label: 'Payback Period (Month)'
+            span: auto
+            type: number
+            tab: '12 - Financial Overview'
+        return_of_investment:
+            label: 'Return of Investment(ROI) (%)'
+            span: auto
+            type: number
+            tab: '12 - Financial Overview'
+        break_event_point:
+            label: 'Break Event Point(BEP) (Rp.)'
+            span: auto
+            type: number
+            tab: '12 - Financial Overview'
+        profitability_index:
+            label: 'Profitability Index (%)'
+            span: auto
+            type: number
+            tab: '12 - Financial Overview'
+        incentives:
+            label: 'Incentives'
+            type: textarea
+            span: auto
+            tab: '13 & 14- Incentives & Executing Agency'
+        organization_id:
+            label: Offered By
+            span: auto
+            type: dropdown
+            required: true
+            select: name
+            tab: '13 & 14- Incentives & Executing Agency'
+        agent_name:
+            label: 'Name'
+            span: auto
+            type: text
+            tab: '15 - Contact and Coordination'
+        agent_phone:
+            label: 'Phone Number'
+            span: auto
+            type: number
+            tab: '15 - Contact and Coordination'
+        agent_email:
+            label: 'Email Address'
+            span: auto
+            type: text
+            tab: '15 - Contact and Coordination'
+        office_address:
+            label: 'Office Address'
+            span: auto
+            type: text
+            tab: '15 - Contact and Coordination'
+        organization_name:
+            label: Organization Name
+            span: auto
+            type: text
+            tab: '15 - Contact and Coordination'
+        photos:
+            label: Photos
+            type: fileupload
+            span: left
+            mode: image
+            imageHeight: 260
+            imageWidth: 260
+            thumbOptions:
+                mode: auto
+                offset:
+                    - 0
+                    - 0
+                interlace: false
+                extension: auto
+            tab: '15 - Contact and Coordination'
+        interests:
+            type: partial
+            path: field_interests
+            tab: 'Interests'

@@ -1,0 +1,4 @@
+title: ReportAttns
+modelClass: Horizonstack\Workreport\Models\ReportAttn
+toolbar:
+    buttons: reorder_toolbar

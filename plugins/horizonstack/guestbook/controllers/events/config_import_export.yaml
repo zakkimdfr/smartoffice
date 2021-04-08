@@ -1,0 +1,6 @@
+export:
+    title: Export Event Guests
+    modelClass:  Horizonstack\Guestbook\Models\EventExport
+    list: $/horizonstack/guestbook/models/eventexport/columns.yaml
+    fileName: event-guests.csv
+    redirect: horizonstack/guestbook/events

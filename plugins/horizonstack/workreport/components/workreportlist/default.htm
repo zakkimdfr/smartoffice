@@ -1,0 +1,67 @@
+<div class="table-responsive">
+    <table id="work-reports-all-details" class="table table-light table-responsive-sm table-striped">
+        <thead>
+        <tr class="text-primary">
+            <th scope="col">Pegawai</th>
+            <th scope="col">Tanggal</th>
+            <th scope="col">Hal</th>
+            <th scope="col">Tindakan</th>
+        </tr>
+        </thead>
+        <tbody id="work-reports-table-detail">
+        {% partial "@work_reports_table_detail" workReports=workReports %}
+        </tbody>
+    </table>
+</div>
+
+<div id="work-reports-pagination">
+    {% partial '@work_reports_pagination' workReports=workReports %}
+</div>
+
+{% put javascript %}
+<script>
+    $(document).on('click', '.sort', function () {
+
+
+        $('.sort').not(this).each(function () {
+            $(this).find('i:first').attr('class', 'fa fa-sort');
+        });
+
+        var sortField = $(this).data('sort-name');
+        var sortClass = $(this).find('i:first').hasClass('fa-sort');
+        var ascClass = $(this).find('i:first').hasClass('fa fa-sort-up');
+        var sortDirection = 'asc';
+        if (sortClass) {
+            $(this).find('i:first').attr('class', 'fa fa-sort-up');
+        } else {
+            if (ascClass) {
+                $(this).find('i:first').attr('class', 'fa fa-sort-down');
+                sortDirection = 'desc';
+            } else {
+                $(this).find('i:first').attr('class', 'fa fa-sort-up');
+                sortDirection = 'asc';
+            }
+        }
+
+        $("#sortBy").val(sortField);
+        $("#sortDirection").val(sortDirection);
+
+        $('#searchTerm').request('onSearchTripReports', {
+            update: {
+                '@work_reports_table_detail': '#work-reports-table-detail',
+                '@work_reports_pagination': '#work-reports-pagination',
+                '@work_reports_sorting_field': '#sorting-fields'
+            },
+            data: {sort_by: sortField, sort_direction: sortDirection},
+            beforeUpdate: function () { /* do something */
+            },
+            beforeSend: function () {
+                $.oc.stripeLoadIndicator.show()
+            },
+            complete: function () {
+                $.oc.stripeLoadIndicator.hide()
+            }
+        })
+    });
+</script>
+{% endput %}

@@ -1,0 +1,142 @@
+<!-- Filters -->
+<div class="col-lg-3">
+
+    <div class="text-center">
+        <a class="btn btn-block btn-primary" href="/add-investment">Add New Project</a>
+    </div>
+    {% partial '@investments-filter' %}
+</div>
+<!-- End Filters -->
+
+<!-- Divider -->
+<div class="d-lg-none">
+    <hr class="my-11">
+</div>
+<!-- End Divider -->
+
+<div class="col-lg-9">
+    <!-- Sorting -->
+    <div class="row align-items-center mb-5">
+        <div class="col-lg-6 mb-3 mb-lg-0" id="investments-total-numbers">
+            {% partial '@investments-total-numbers' %}
+        </div>
+
+        <div class="col-lg-6 align-self-lg-end text-lg-right">
+            <ul class="list-inline mb-0">
+                {% partial '@investments-sorting' %}
+            </ul>
+        </div>
+    </div>
+    <!-- End Sorting -->
+
+    <ul class="list-unstyled" id="investments-list">
+        {% partial '@investments-list' %}
+    </ul>
+
+    <div class="py-3"></div>
+
+    <!-- Pagination -->
+    <nav aria-label="Page navigation" id="investments-pagination">
+        {% partial '@investments-pagination' %}
+    </nav>
+    <!-- End Pagination -->
+</div>
+
+{% put javascript %}
+<script>
+    $(".js-range-slider").ionRangeSlider({
+        onChange: function (data) {
+            // Called every time handle position is changed
+            $('#investmentValueFrom').val(data.from);
+            $('#investmentValueTo').val(data.to);
+        },
+        onFinish: function (data) {
+            // Called every time handle position is changed
+            applyFilter(1);
+        },
+    });
+
+    $(document).on('click', '.paginate-list', function () {
+        var page = $(this).data('page');
+        applyFilter(page);
+    });
+
+    $(document).on('change', '#page-number', function () {
+        var page = $('#page-number').val();
+        applyFilter(page);
+    });
+
+    $('.investment-filter').on('click', function () {
+        applyFilter(1);
+    });
+
+    $("#investmentValueFrom").on('change', function () {
+        applyFilter(1);
+    });
+
+    $("#investmentValueTo").on('change', function () {
+        applyFilter(1);
+    });
+
+    $('#sort-by').on('change', function () {
+        applyFilter(1);
+    });
+
+    function resetFilterForm() {
+        $('#filters-form').trigger("reset");
+        let USDrange = $(".js-range-slider").data("ionRangeSlider");
+        USDrange.update({
+            from: 0,
+            to: 1000000
+        });
+        applyFilter(1);
+    }
+
+    function applyFilter(pageNum) {
+        var projectLevels = [];
+        $("input[name='projectLevels[]']:checked").each(function () {
+            projectLevels.push(parseInt($(this).val()));
+        });
+
+        var schemes = [];
+        $("input[name='schemes[]']:checked").each(function () {
+            schemes.push(parseInt($(this).val()));
+        });
+
+        var propertyTypes = [];
+        $("input[name='propertyTypes[]']:checked").each(function () {
+            propertyTypes.push(parseInt($(this).val()));
+        });
+
+        var page = 1;
+        if (pageNum) {
+            page = pageNum;
+        }
+
+        if (pageNum) {
+            $('form').request('onPageChangeFilter', {
+                update: {
+                    '@investments-list': '#investments-list',
+                    '@investments-pagination': '#investments-pagination',
+                    '@investments-total-numbers': '#investments-total-numbers'
+                },
+                data: {
+                    projectLevels: projectLevels,
+                    schemes: schemes,
+                    propertyTypes: propertyTypes,
+                    investment_value_from: $('#investmentValueFrom').val(),
+                    investment_value_to: $('#investmentValueTo').val(),
+                    page: page,
+                    sort_by: $('#sort-by').val(),
+                },
+                beforeSend: function () {
+                    $.oc.stripeLoadIndicator.show();
+                },
+                complete: function () {
+                    $.oc.stripeLoadIndicator.hide();
+                }
+            })
+        }
+    }
+</script>
+{% endput %}

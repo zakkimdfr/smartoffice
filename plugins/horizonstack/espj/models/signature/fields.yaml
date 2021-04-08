@@ -1,0 +1,30 @@
+fields:
+    name:
+        label: Name
+        span: auto
+        type: text
+    slug:
+        label: Slug
+        span: auto
+        preset:
+            field: name
+            type: slug
+        type: text
+    identity_number:
+        label: Identity Number
+        span: auto
+        type: text
+    job_position:
+        label: Job Position
+        span: auto
+        type: text
+    job_level:
+        label: Job Level
+        span: auto
+        type: text
+    is_active:
+        label: Active
+        span: left
+        default: 1
+        type: switch
+        tab: Basic Details

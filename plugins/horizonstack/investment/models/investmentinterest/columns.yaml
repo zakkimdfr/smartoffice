@@ -1,0 +1,27 @@
+columns:
+    name:
+        label: Name
+        type: text
+        searchable: true
+        sortable: true
+    phone:
+        label: Phone
+        type: number
+        searchable: true
+        sortable: true
+    email:
+        label: Email
+        type: text
+        searchable: true
+        sortable: true
+    organization_name:
+        label: Organization Name
+        type: text
+        searchable: true
+        sortable: true
+    created_at:
+        label: 'Subscribed At'
+        type: datetime
+        searchable: true
+        sortable: true
+

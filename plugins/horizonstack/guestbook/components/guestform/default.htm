@@ -1,0 +1,258 @@
+<div class="modal fade" id="guestFormModal" tabindex="-1" role="dialog"
+     aria-labelledby="guestFormModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header" style="display: block; border-bottom: unset">
+                <button type="button" class="close" onclick="closeGuestForm()" aria-hidden="true">×</button>
+                <h4 class="text-center mt-3" id="guestFormModalLabel">{{event.name}}</h4>
+                <p class="text-center">Silahkan mengisi data dan kelengkapan Anda</p>
+            </div>
+            <div class="modal-body">
+                <div class="px-md-7">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div id="image" class="web-cam-img"></div>
+                            <input type=button class="btn btn-sm btn-secondary my-2"
+                                   style="display: block;margin: 0 auto;"
+                                   value="Smiling" onClick="take_snapshot()">
+
+                            <div id="results" class="web-cam-preview-img"></div>
+                        </div>
+                    </div>
+
+                    <div class="border-bottom pb-3 mb-5">
+                        <h2 class="h6 text-secondary mb-0">Data Diri</h2>
+                    </div>
+
+                    {{ form_ajax('onAddGuest', { name : 'add-guest-form', id: 'add-guest-form'})}}
+                    <input type="hidden" name="event_id" value="{{event.id}}">
+                    <div class="row mt-2">
+                        <div class="col-md-12 mb-3">
+                            <label for="organization_id" class="font-weight-medium text-uppercase">Nama Organisasi
+                                <strong
+                                        class="text-danger">*</strong></label>
+
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="listingOrganizationsLabel">
+                                      <span class="fas fa-globe"></span>
+                                    </span>
+                                </div>
+                                <select id="organization_id" name="organization_id"
+                                        class="js-select selectpicker form-control" title="Organisasi"
+                                        data-style="btn-sm bg-transparent text-secondary font-weight-normal px-0"
+                                        data-live-search="true"
+                                        data-container=".container">
+                                    {% for organization in organizations %}
+                                    <option value="{{organization.id}}">{{organization.name}}
+                                    </option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label for="status" class="font-weight-medium text-uppercase">Status <strong
+                                    class="text-danger">*</strong></label>
+
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="listingStatuesLabel">
+                                      <span class="fas fa-globe"></span>
+                                    </span>
+                                </div>
+                                <select name="status" class="custom-select" id="status"
+                                        aria-describedby="listingStatuesLabel">
+                                    <option selected>Pilih Status</option>
+                                    {% for id,status in statuses %}
+                                    <option value="{{id}}">{{status}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label for="job_title" class="font-weight-medium text-uppercase">Jabatan <strong
+                                    class="text-danger">*</strong></label>
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend"><span class="input-group-text"><span
+                                        class="fas fa-user"></span></span>
+                                </div>
+                                <input type="text" class="form-control" name="job_title" id="job_title"
+                                       placeholder="Jabatan"
+                                       aria-label="Jabatan">
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label for="name" class="font-weight-medium text-uppercase">Nama Lengkap <strong
+                                    class="text-danger">*</strong></label>
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend"><span class="input-group-text"><span
+                                        class="fas fa-user"></span></span>
+                                </div>
+                                <input type="text" class="form-control" name="name" id="name" placeholder="Nama Lengkap"
+                                       aria-label="Nama Lengkap">
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label for="phone" class="font-weight-medium text-uppercase">Nomor Telepon <strong
+                                    class="text-danger">*</strong></label>
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend"><span class="input-group-text"><span
+                                        class="fas fa-phone"></span></span>
+                                </div>
+                                <input type="number" name="phone" class="form-control" id="phone"
+                                       placeholder="Nomor Handphone"
+                                       aria-label="Nomor Handphone">
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label for="city_id" class="font-weight-medium text-uppercase">Asal Kota/Kabupaten <strong
+                                    class="text-danger">*</strong></label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="listingCitiesLabel">
+                                      <span class="fas fa-briefcase"></span>
+                                    </span>
+                                </div>
+
+                                <select id="city_id" name="city_id" class="js-select selectpicker form-control"
+                                        title="Kota/Kabupaten"
+                                        data-style="btn-sm bg-transparent text-secondary font-weight-normal px-0"
+                                        data-live-search="true"
+                                        data-container="body"
+                                        data-searchbox-classes="input-group-sm">
+                                    {% for city in cities %}
+                                    <option value="{{city.id}}">{{city.name}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label for="email" class="font-weight-medium text-uppercase">Alamat Email <strong
+                                    class="text-danger">*</strong></label>
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend"><span class="input-group-text"><span
+                                        class="fas fa-globe"></span></span>
+                                </div>
+                                <input type="email" name="email" class="form-control" id="email"
+                                       placeholder="Alamat Email"
+                                       aria-label="Alamat Email">
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 mb-10">
+                            <!-- Title -->
+                            <div class="border-bottom pb-3 mb-5">
+                                <h2 class="h6 text-secondary mb-0">Jenis Profesi <strong class="text-danger">*</strong>
+                                </h2>
+                            </div>
+                            <!-- End Title -->
+
+                            <!-- Radio Checkbox Group -->
+                            <div class="row mx-gutters-2">
+                                {% for job in jobs %}
+                                <div class="col-6 col-md-3 mb-3 mb-md-0">
+                                    <div class="custom-control custom-radio custom-control-inline checkbox-outline text-center">
+                                        <input type="radio" id="job-{{job.id}}" name="job_id" value="{{job.id}}"
+                                               class="custom-control-input checkbox-outline__input">
+                                        <label class="checkbox-outline__label rounded py-3 px-1 mb-0"
+                                               for="job-{{job.id}}">
+                                            {% if job.icon %}
+                                            <img class="js-svg-injector w-50 mb-3"
+                                                 src="{{job.icon.path}}" alt="{{job.name}}"
+                                                 data-parent="#add-guest-form">
+                                            {% else %}
+                                            <img class="js-svg-injector w-50 mb-3"
+                                                 src="{{'assets/img/logos/logo.png'|theme}}" alt="{{job.name}}"
+                                                 data-parent="#add-guest-form">
+                                            {% endif %}
+                                            <span class="d-block">{{job.name}}</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                            <!-- End Radio Checkbox Group -->
+                        </div>
+
+                        <button type="button" onclick="submitGuestForm()"
+                                class="btn btn-primary btn-sm btn-block text-uppercase">Simpan Data Anda
+                        </button>
+
+                    </div>
+                    {{ form_close() }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% put javascript %}
+<script src="{{'assets/js/webcam.js'|theme}}"></script>
+<script>
+    var snapShotImg;
+
+    function openGuestForm() {
+        $('#guestFormModal').modal('show');
+        showWebCam();
+    }
+
+    function closeGuestForm() {
+        $('#guestFormModal').modal('hide');
+        Webcam.reset();
+    }
+
+    function showWebCam() {
+        Webcam.set({
+            width: 312,
+            height: 250,
+            image_format: 'jpeg',
+            jpeg_quality: 90
+        });
+
+        Webcam.attach('#image');
+    }
+
+    <!-- Code to handle taking the snapshot and displaying it locally -->
+    function take_snapshot() {
+
+        // take snapshot and get image data
+        Webcam.snap(function (data_uri) {
+            // display results in page
+            document.getElementById('results').innerHTML =
+                '<img src="' + data_uri + '"/>';
+            snapShotImg = data_uri;
+
+        });
+    }
+
+    function submitGuestForm() {
+        var form = $("#add-guest-form");
+
+        form.request('onAddGuest',
+            {
+                files: true,
+                data: {
+                    image: snapShotImg
+                },
+                beforeSend: function () {
+                    $.oc.stripeLoadIndicator.show();
+                },
+                complete: function () {
+                    $.oc.stripeLoadIndicator.hide();
+                },
+                success: function () {
+                    $.oc.stripeLoadIndicator.hide();
+                    $('#guestFormModal').modal('hide');
+                    $.oc.flashMsg({text: 'Data Berhasil ditambahkan', 'class': 'success', 'interval': 10})
+                    location.reload();
+                }
+            });
+    }
+</script>
+{% endput %}

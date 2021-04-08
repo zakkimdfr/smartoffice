@@ -1,0 +1,28 @@
+<div class="table-responsive">
+    <table id="topOrganisations-all-details" class="table table-light table-responsive-sm table-striped">
+        <thead>
+        <tr class="text-primary">
+            <th scope="col" style="width: 120px">Peringkat</th>
+            <th scope="col">Organisasi</th>
+            <th scope="col">Jumlah Undangan</th>
+        </tr>
+        </thead>
+        <tbody id="topOrganisations-table-detail">
+        {% for organization in topOrganisations %}
+        <tr>
+            <td scope="row" class="align-middle">
+                <span>
+                    {{(((topOrganisations.currentPage - 1) * topOrganisations.perPage) + loop.index)}}
+                </span>
+            </td>
+            <td class="align-middle text-secondary">
+                <small class="d-block">{{organization.name}}</small>
+            </td>
+            <td class="align-middle text-secondary small">
+                {{organization.guests_count}}
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>

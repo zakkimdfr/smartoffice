@@ -1,0 +1,42 @@
+{% if listEvents|length > 0 %}
+{% for event in listEvents %}
+<div class="col-md-4 mb-2">
+    <a href="/detail/event/{{event.slug}}">
+        <div class="card border-0 shadow-sm mb-3">
+            <!-- House Items -->
+            <div class="position-relative">
+
+                {% if event.image %}
+                <img src="{{event.image.getThumb('350','327','crop')}}" alt="{{event.name}}"
+                     class="card-img-top dark-img">
+                {% else %}
+                <img src="/themes/smartoffice/assets/img/mockups/img9.png" alt="{{event.name}}"
+                     class="card-img-top">
+                {% endif %}
+
+                <div class="position-absolute top-0 right-0 left-0 p-5">
+                    <a class="media align-items-center text-white" href="#">
+                        
+                    </a>
+                </div>
+            </div>
+
+            <div class="card-body p-5">
+                <h4 class="h6">
+                    <a href="/detail/event/{{event.slug}}">{{event.name}}</a>
+                </h4>
+                <span class="fas fa-map-marker-alt text-danger mr-2"></span>
+                <span class="text-secondary">{{event.location}}</span>
+            </div>
+            <!-- End House Items -->
+        </div>
+    </a>
+</div>
+{% endfor %}
+
+
+{% else %}
+<div class="row">
+    <h3>Tidak ada venue yang dapat ditemukan berdasarkan kriteria pilihan Anda.</h3>
+</div>
+{% endif %}

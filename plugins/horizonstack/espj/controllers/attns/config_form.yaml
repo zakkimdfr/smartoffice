@@ -1,0 +1,10 @@
+name: Attns
+form: $/horizonstack/espj/models/attn/fields.yaml
+modelClass: Horizonstack\eSPJ\Models\Attn
+defaultRedirect: horizonstack/espj/attns
+create:
+    redirect: 'horizonstack/espj/attns/update/:id'
+    redirectClose: horizonstack/espj/attns
+update:
+    redirect: horizonstack/espj/attns
+    redirectClose: horizonstack/espj/attns

@@ -1,0 +1,10 @@
+name: Schemes
+form: $/horizonstack/investment/models/scheme/fields.yaml
+modelClass: Horizonstack\Investment\Models\Scheme
+defaultRedirect: horizonstack/investment/schemes
+create:
+    redirect: 'horizonstack/investment/schemes/update/:id'
+    redirectClose: horizonstack/investment/schemes
+update:
+    redirect: horizonstack/investment/schemes
+    redirectClose: horizonstack/investment/schemes

@@ -1,0 +1,10 @@
+name: Signatures
+form: $/horizonstack/espj/models/signature/fields.yaml
+modelClass: Horizonstack\eSPJ\Models\Signature
+defaultRedirect: horizonstack/espj/signatures
+create:
+    redirect: 'horizonstack/espj/signatures/update/:id'
+    redirectClose: horizonstack/espj/signatures
+update:
+    redirect: horizonstack/espj/signatures
+    redirectClose: horizonstack/espj/signatures

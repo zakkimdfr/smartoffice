@@ -1,0 +1,23 @@
+columns:
+    name:
+        label: Name
+        type: text
+    organization:
+        label: Organization
+        type: text
+    phone:
+        label: Phone
+        type: text
+    email:
+        label: Email
+        type: text
+    job_name:
+        label: Job
+        type: text
+    city:
+        label: City
+        type: text
+    created_at:
+        label: 'Registered At'
+        type: text
+

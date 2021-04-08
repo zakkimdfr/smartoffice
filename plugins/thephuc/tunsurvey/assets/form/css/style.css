@@ -1,0 +1,295 @@
+/* style sheet for survey form*/
+#tunsurvey-form-survey textarea {
+    resize: none;
+}
+#tunsurvey-form-survey .required {
+    color: red;
+}
+#tunsurvey-form-survey .inner {
+    min-width: 861px;
+    transform: translateX(47px);
+    margin: auto;
+    display: flex;
+    background: #fff;
+    border-radius: 20px;
+    padding-top: 35px;
+    padding-bottom: 35px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+    -ms-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+    -o-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+}
+#tunsurvey-form-survey .image-holder img {
+    border-radius: 15px;
+    transform: translateX(-94px);
+}
+#tunsurvey-form-survey form.survey {
+    padding-top: 42px;
+    width: 100%;
+    transform: translateX(-34px);
+}
+#tunsurvey-form-survey h3.survey-title {
+    font-size: 25px;
+    text-align: center;
+    margin-bottom: 21px;
+    color: #333;
+    text-transform: uppercase;
+    font-family: "ElMessiri-SemiBold.ttf";
+}
+#tunsurvey-form-survey .form-control:focus {
+    border: 1px solid #f4d5cc;
+}
+#tunsurvey-form-survey .form-control::-webkit-input-placeholder {
+    color: #999;
+}
+#tunsurvey-form-survey .form-control::-moz-placeholder {
+    color: #999;
+}
+#tunsurvey-form-survey .form-control:-ms-input-placeholder {
+    color: #999;
+}
+#tunsurvey-form-survey .form-control:-moz-placeholder {
+    color: #999;
+}
+
+#tunsurvey-form-survey .radio, .checkbox {
+    margin-right: 6px;
+}
+
+#tunsurvey-form-survey select.form-control {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+    color: #999;
+}
+#tunsurvey-form-survey select.form-control option[value=""][disabled] {
+    display: none;
+}
+#tunsurvey-form-survey textarea.form-control {
+    width: 100%;
+    padding-top: 13px;
+    padding-bottom: 13px;
+}
+#tunsurvey-form-survey .full {
+    width: 100% !important;
+    margin-right: 0 !important;
+}
+#tunsurvey-form-survey .form-row {
+    display: flex;
+    margin-bottom: 20px;
+}
+#tunsurvey-form-survey .form-row .form-control {
+    width: 50%;
+}
+#tunsurvey-form-survey .form-row .form-control:first-child {
+    margin-right: 20px;
+}
+#tunsurvey-form-survey .form-row .form-holder {
+    width: 50%;
+}
+#tunsurvey-form-survey .form-row .form-holder .form-control {
+    width: 100%;
+}
+#tunsurvey-form-survey .form-holder {
+    position: relative;
+}
+#tunsurvey-form-survey .form-holder i {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 20px;
+}
+#tunsurvey-form-survey button.button {
+    height: 47px;
+    width: 174px;
+    display: flex;
+    border: none;
+    color: #fff;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    margin-top: 30px;
+    cursor: pointer;
+    font-family: "Montserrat-Medium";
+    text-transform: uppercase;
+    background: #84cde1;
+    border-radius: 5px;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    overflow: hidden;
+    -webkit-transition-duration: 0.5s;
+    transition-duration: 0.5s;
+    -webkit-transition-property: color, background-color;
+    transition-property: color, background-color;
+}
+#tunsurvey-form-survey button.button i {
+    margin-left: 8px;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+}
+#tunsurvey-form-survey button.button:hover {
+    -webkit-animation-name: hvr-back-pulse;
+    animation-name: hvr-back-pulse;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-delay: 0.5s;
+    animation-delay: 0.5s;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    background-color: #17c8f8;
+    color: white;
+}
+#tunsurvey-form-survey button.button:hover i {
+    -webkit-animation-name: hvr-icon-buzz-out;
+    animation-name: hvr-icon-buzz-out;
+    -webkit-animation-duration: 0.75s;
+    animation-duration: 0.75s;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+}
+@-webkit-keyframes hvr-back-pulse {
+    50% {
+        background-color: rgba(32, 152, 209, 0.75);
+    }
+}
+@keyframes hvr-back-pulse {
+    50% {
+        background-color: rgba(32, 152, 209, 0.75);
+    }
+}
+@-webkit-keyframes hvr-icon-buzz-out {
+    10% {
+        -webkit-transform: translateX(3px) rotate(2deg);
+        transform: translateX(3px) rotate(2deg);
+    }
+    20% {
+        -webkit-transform: translateX(-3px) rotate(-2deg);
+        transform: translateX(-3px) rotate(-2deg);
+    }
+    30% {
+        -webkit-transform: translateX(3px) rotate(2deg);
+        transform: translateX(3px) rotate(2deg);
+    }
+    40% {
+        -webkit-transform: translateX(-3px) rotate(-2deg);
+        transform: translateX(-3px) rotate(-2deg);
+    }
+    50% {
+        -webkit-transform: translateX(2px) rotate(1deg);
+        transform: translateX(2px) rotate(1deg);
+    }
+    60% {
+        -webkit-transform: translateX(-2px) rotate(-1deg);
+        transform: translateX(-2px) rotate(-1deg);
+    }
+    70% {
+        -webkit-transform: translateX(2px) rotate(1deg);
+        transform: translateX(2px) rotate(1deg);
+    }
+    80% {
+        -webkit-transform: translateX(-2px) rotate(-1deg);
+        transform: translateX(-2px) rotate(-1deg);
+    }
+    90% {
+        -webkit-transform: translateX(1px) rotate(0);
+        transform: translateX(1px) rotate(0);
+    }
+    100% {
+        -webkit-transform: translateX(-1px) rotate(0);
+        transform: translateX(-1px) rotate(0);
+    }
+}
+@keyframes hvr-icon-buzz-out {
+    10% {
+        -webkit-transform: translateX(3px) rotate(2deg);
+        transform: translateX(3px) rotate(2deg);
+    }
+    20% {
+        -webkit-transform: translateX(-3px) rotate(-2deg);
+        transform: translateX(-3px) rotate(-2deg);
+    }
+    30% {
+        -webkit-transform: translateX(3px) rotate(2deg);
+        transform: translateX(3px) rotate(2deg);
+    }
+    40% {
+        -webkit-transform: translateX(-3px) rotate(-2deg);
+        transform: translateX(-3px) rotate(-2deg);
+    }
+    50% {
+        -webkit-transform: translateX(2px) rotate(1deg);
+        transform: translateX(2px) rotate(1deg);
+    }
+    60% {
+        -webkit-transform: translateX(-2px) rotate(-1deg);
+        transform: translateX(-2px) rotate(-1deg);
+    }
+    70% {
+        -webkit-transform: translateX(2px) rotate(1deg);
+        transform: translateX(2px) rotate(1deg);
+    }
+    80% {
+        -webkit-transform: translateX(-2px) rotate(-1deg);
+        transform: translateX(-2px) rotate(-1deg);
+    }
+    90% {
+        -webkit-transform: translateX(1px) rotate(0);
+        transform: translateX(1px) rotate(0);
+    }
+    100% {
+        -webkit-transform: translateX(-1px) rotate(0);
+        transform: translateX(-1px) rotate(0);
+    }
+}
+@media (min-width: 1350px) {
+    #tunsurvey-form-survey .inner {
+        padding-right: 10px;
+        padding-left: 10px;
+        min-width: 50%;
+    }
+}
+@media (max-width: 991px) {
+    #tunsurvey-form-survey .inner {
+        min-width: auto;
+        padding-right: 10px;
+        padding-left: 10px;
+        max-width: 660px;
+    }
+    #tunsurvey-form-survey form.survey {
+        padding-top: 0;
+    }
+}
+@media (max-width: 767px) {
+    #tunsurvey-form-survey .inner {
+        display: block;
+        transform: translateX(0);
+        border-radius: 0;
+        box-shadow: none;
+    }
+    #tunsurvey-form-survey .image-holder img {
+        transform: translateX(0);
+        border-radius: 0;
+    }
+    #tunsurvey-form-survey form.survey {
+        transform: translateX(0);
+        padding-top: 40px;
+    }
+    #tunsurvey-form-survey .form-row {
+        display: block;
+    }
+    #tunsurvey-form-survey .form-row .form-control,
+    .form-row .form-holder {
+        width: 100%;
+    }
+    #tunsurvey-form-survey .form-control {
+        margin-bottom: 20px;
+    }
+    #tunsurvey-form-survey .wrapper {
+        background: none;
+    }
+}

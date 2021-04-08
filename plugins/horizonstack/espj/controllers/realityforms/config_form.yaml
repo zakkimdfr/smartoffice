@@ -1,0 +1,10 @@
+name: RealityForms
+form: $/horizonstack/espj/models/realityform/fields.yaml
+modelClass: Horizonstack\eSPJ\Models\RealityForm
+defaultRedirect: horizonstack/espj/realityforms
+create:
+    redirect: 'horizonstack/espj/realityforms/update/:id'
+    redirectClose: horizonstack/espj/realityforms
+update:
+    redirect: horizonstack/espj/realityforms
+    redirectClose: horizonstack/espj/realityforms

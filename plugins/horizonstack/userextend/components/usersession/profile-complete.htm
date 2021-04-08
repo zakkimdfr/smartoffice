@@ -1,0 +1,344 @@
+<div class="modal-header yellow-background">
+    <h4 class="modal-title" style="font-size: 18px;" id="profileFormModalLabel">Update Profil</h4>
+</div>
+<div class="modal-body">
+    <div class="profile-alert alert">
+        Anda diharuskan untuk melakukan update Profil sebelum memasuki Dashboard.
+    </div>
+    <hr/>
+    <form data-request="onUpdateProfile" name="update-profile-form" data-request-files class="px-lg-5">
+        <input hidden type="text" name="latitude" id="latitude" value="{{user.latitude}}">
+        <input hidden type="text" name="longitude" id="longitude" value="{{user.longitude}}">
+        <div class="row">
+            <div class="col-md-12 mb-3">
+                <input type="file" name="avatar" id="cover" class="dropify"
+                       data-allowed-file-extensions="jpeg jpg png gif"
+                       data-default-file="{{user.avatar.path}}"
+                       data-max-file-size="5M"/>
+            </div>
+
+            <!-- File Attachment Input -->
+
+            <!-- End File Attachment Input -->
+
+
+        </div>
+
+        <div class="form-group row">
+            <label for="name" class="col-sm-3 col-form-label text-lg-right text-uppercase">Nama Lengkap</label>
+            <div class="col-sm-9">
+                <input type="text" name="name" placeholder="Ketik nama Anda disini" class="form-control" id="name"
+                       value="{{user.name}}">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="unique_id" class="col-sm-3 col-form-label text-lg-right text-uppercase">NIP</label>
+            <div class="col-sm-9">
+                <input type="text" name="unique_id" class="form-control" placeholder="Nomor Induk Pegawai"
+                       id="unique_id"
+                       value="{{user.unique_id}}">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="department_id" class="col-sm-3 col-form-label text-lg-right text-uppercase">Bidang</label>
+            <div class="col-sm-9">
+                <select name="department_id" class="custom-select" id="department_id"
+                        aria-describedby="listingStatuesLabel"
+                        data-request="onSelectDistrict"
+                        data-request-update="'{{__SELF__}}::sub_department_list': '#sub_department_list'">
+                    <option selected disabled value="">Unit Kerja</option>
+                    {% for department in userDepartments %}
+                    <option value="{{department.id}}" {% if user.department_id== department.id %}selected="selected"
+                            {% endif %}>{{department.name}}
+                    </option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="sub_department_list" class="col-sm-3 col-form-label text-lg-right text-uppercase">Sub
+                Bidang</label>
+            <div class="col-sm-9">
+                <select id="sub_department_list" name="sub_department_id" class="custom-select">
+                    {% partial '@sub_department_list' %}
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="job_level_id" class="col-sm-3 col-form-label text-lg-right text-uppercase">Golongan</label>
+            <div class="col-sm-9">
+                <select name="job_level_id" class="custom-select" id="job_level_id">
+                    <option selected value="">Pangkat/Golongan</option>
+                    {% for jobLevel in userJobLevels %}
+                    <option value="{{jobLevel.id}}" {% if user.job_level_id== jobLevel.id %}selected="selected"
+                            {% endif %}>{{jobLevel.name}}
+                    </option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="job" class="col-sm-3 col-form-label text-lg-right text-uppercase">Jabatan</label>
+            <div class="col-sm-9">
+                <input type="text" name="job" class="form-control" placeholder="Jabatan" id="job" value="{{user.job}}">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="date_of_birth" class="col-sm-3 col-form-label text-lg-right text-uppercase">Tanggal
+                Lahir</label>
+            <div class="col-sm-9">
+                <div id="dobDatepickerWrapper" class="input-group">
+                    <input name="date_of_birth" class="js-range-datepicker form-control bg-transparent"
+                           id="date_of_birth" value="{{user.date_of_birth|date('d/m/Y')}}"
+                           type="text" placeholder="Tanggal Lahir" aria-label="Tanggal Lahir">
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="phone" class="col-sm-3 col-form-label text-lg-right text-uppercase">Nomor Telepon</label>
+            <div class="col-sm-9">
+                <input type="text" name="phone" class="form-control" placeholder="Nomor HP" id="phone"
+                       value="{{user.phone}}">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="address" class="col-sm-3 col-form-label text-lg-right text-uppercase">Alamat Rumah</label>
+            <div class="col-sm-9">
+                <input type="text" name="address" class="form-control" placeholder="Cari Alamat Rumah"
+                       value="{{user.address}}" id="address">
+            </div>
+        </div>
+        <div id="map" style="height: 180px; width: 100%; margin-top: 10px"></div>
+
+        <div class="modal-footer">
+            <div class="row">
+                <div class="col-md-12">
+                    <button type="submit" class="btn btn-sm btn-custom  text-uppercase transition-3d-hover mr-1">
+                        Update
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+{% put javascript %}
+<script src="{{'assets/vendor/dropify/dist/js/dropify.min.js'|theme}}"></script>
+<script>
+    // Basic
+    $('#cover').dropify({
+        messages: {
+            'default': '<strong>Upload Foto</strong> <br/> <small>Maximum ukuran file adalah 5MB</small>',
+            'replace': 'Drag and drop or click to replace',
+            'remove': 'Remove',
+            'error': 'Ooops, something wrong happened!'
+        }
+    });
+
+    // Used events
+    var drEvent = $('#input-file-events').dropify();
+
+    drEvent.on('dropify.beforeClear', function (event, element) {
+        return confirm("Do you really want to delete \"" + element.file.name + "\" ?");
+    });
+
+    drEvent.on('dropify.afterClear', function (event, element) {
+        alert('File deleted');
+    });
+
+    drEvent.on('dropify.errors', function (event, element) {
+        console.log('Has Errors');
+    });
+
+    var drDestroy = $('#input-file-to-destroy').dropify();
+    drDestroy = drDestroy.data('dropify');
+    $('#toggleDropify').on('click', function (e) {
+        e.preventDefault();
+        if (drDestroy.isDropified()) {
+            drDestroy.destroy();
+        } else {
+            drDestroy.init();
+        }
+    });
+
+    $('#date_of_birth').datepicker({
+        format: "dd/mm/yyyy",
+        language: "id",
+        startDate: "01/01/1955",
+        endDate: "31/12/2005",
+    });
+</script>
+<script>
+    var map, autocomplete, place, address, autocompletePostalAddrss;
+    var geocoder;
+
+    var componentForm = {
+        street_number: 'short_name',
+        route: 'long_name',
+        locality: 'long_name',
+        administrative_area_level_1: 'long_name',
+        country: 'long_name',
+        postal_code: 'short_name'
+    };
+
+    var latitude = parseFloat("{{user.latitude}}");
+    var longitude = parseFloat("{{user.longitude}}");
+
+    if (!latitude) {
+        latitude = -6.912733;
+    }
+
+    if (!longitude) {
+        longitude = 107.633148;
+    }
+
+    function initMap() {
+        geocoder = new google.maps.Geocoder();
+        map = new google.maps.Map(document.getElementById('map'), {
+            center: {lat: latitude, lng: longitude},
+            zoom: 11
+        });
+
+        var postalAddress = /** @type {!HTMLInputElement} */(document.getElementById('postal_address'));
+
+        var options = {
+            componentRestrictions: {
+                country: ["id"]
+            }
+        };
+
+        var input = /** @type {!HTMLInputElement} */(document.getElementById('address'));
+
+        autocomplete = new google.maps.places.Autocomplete(input);
+        autocomplete.bindTo('bounds', map);
+        autocomplete.setComponentRestrictions({'country': ['id']});
+
+        var infowindow = new google.maps.InfoWindow();
+        var marker = new google.maps.Marker({
+            map: map,
+            draggable: true,
+            position: {lat: latitude, lng: longitude},
+        });
+
+        marker.addListener('dragend', handleEvent);
+
+        function handleEvent(event) {
+            $("#latitude").val(event.latLng.lat());
+            $("#longitude").val(event.latLng.lng());
+            geocodePosition(marker.getPosition());
+        }
+
+        function geocodePosition(pos) {
+            geocoder.geocode({
+                latLng: pos
+            }, function (responses) {
+                if (responses && responses.length > 0) {
+                    $("#address").val(responses[0].formatted_address);
+                }
+            });
+        }
+
+        autocomplete.addListener('place_changed', function () {
+
+            infowindow.close();
+            marker.setVisible(false);
+            place = autocomplete.getPlace();
+            if (!place.geometry) {
+                window.alert("Autocomplete's returned place contains no geometry");
+                return;
+            }
+
+            // If the place has a geometry, then present it on a map.
+            if (place.geometry.viewport) {
+                map.fitBounds(place.geometry.viewport);
+            } else {
+                map.setCenter(place.geometry.location);
+                map.setZoom(17);  // Why 17? Because it looks good.
+            }
+            // @type {google.maps.Icon}
+            /*marker.setIcon(({
+                url: place.icon,
+                size: new google.maps.Size(71, 71),
+                origin: new google.maps.Point(0, 0),
+                anchor: new google.maps.Point(17, 34),
+                scaledSize: new google.maps.Size(35, 35)
+            }));*/
+            marker.setPosition(place.geometry.location);
+            marker.setVisible(true);
+
+            address = '';
+
+            if (place.address_components) {
+                address = [
+                    (place.address_components[0] && place.address_components[0].short_name || ''),
+                    (place.address_components[1] && place.address_components[1].short_name || ''),
+                    (place.address_components[2] && place.address_components[2].short_name || '')
+                ].join(' ');
+            }
+
+            infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
+            infowindow.open(map, marker);
+        });
+
+        // Populate the address fields in the form.
+        autocomplete.addListener('place_changed', fillInAddress);
+    }
+
+    function fillInAddress() {
+
+        $("#latitude").val(place.geometry.location.lat());
+        $("#longitude").val(place.geometry.location.lng());
+
+        if (place.address_components[0].types[0] != 'street_number') {
+            var inputValue = (document.getElementById('address').value);
+            var res = inputValue.split(" ");
+            if (!isNaN(res[0])) {
+                document.getElementById('street_number').value = res[0];
+            }
+        }
+        for (var i = 0; i < place.address_components.length; i++) {
+            var addressType = place.address_components[i].types[0];
+
+            if (componentForm[addressType]) {
+                var val = place.address_components[i][componentForm[addressType]];
+                if (addressType === 'postal_code') {
+                    $('#postcode').val(val);
+                }
+                if (addressType === 'administrative_area_level_1') {
+                    $('#state').val(val);
+                }
+                if (addressType === 'locality') {
+                    $('#suburb').val(val);
+                }
+            }
+        }
+    }
+
+    // Bias the autocomplete object to the user's geographical location,
+    // as supplied by the browser's 'navigator.geolocation' object.
+    function geolocate() {
+        var geoOptions = {
+            maximumAge: 5 * 60 * 1000,
+            timeout: 10 * 1000
+        };
+
+        // Try HTML5 geolocation.
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function (position) {
+                var pos = {
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude
+                };
+
+                map.setCenter(pos);
+            }, function () {
+                console.log('Geolocation error occurred');
+            });
+        } else {
+            console.log("Browser doesn't support Geolocation");
+        }
+    }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key={{google_map_api_key}}&libraries=places&callback=initMap"
+        async defer></script>
+{% endput %}

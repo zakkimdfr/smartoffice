@@ -1,0 +1,10 @@
+name: Jobs
+form: $/horizonstack/guestbook/models/job/fields.yaml
+modelClass: Horizonstack\Guestbook\Models\Job
+defaultRedirect: horizonstack/guestbook/jobs
+create:
+    redirect: 'horizonstack/guestbook/jobs/update/:id'
+    redirectClose: horizonstack/guestbook/jobs
+update:
+    redirect: horizonstack/guestbook/jobs
+    redirectClose: horizonstack/guestbook/jobs

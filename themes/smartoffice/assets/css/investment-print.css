@@ -1,0 +1,9 @@
+@media print {
+    .add-page-break-after {
+        page-break-after: always;
+    }
+}
+
+#map_canvas div > img {
+    position: absolute;
+}

@@ -1,0 +1,122 @@
+description = "Login Page layout"
+==
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" type="image/png" href="{{ 'assets/img/logos/favicon.ico'|theme }}">
+    <title>{{ this.page.title }} &sim; Smart Office</title>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap" rel="stylesheet">
+
+    <!-- CSS Implementing Plugins -->
+    <link rel="stylesheet" href="{{ [
+  'assets/vendor/font-awesome/css/fontawesome-all.min.css',
+  'assets/vendor/animate.css/animate.min.css',
+  'assets/vendor/slick-carousel/slick/slick.css'
+  ]|theme }}">
+
+    <!-- CSS Front Template -->
+    <link rel="stylesheet" href="{{ [
+  'assets/css/theme.css',
+  'assets/css/custom.css'
+  ]|theme }}">
+</head>
+<body>
+{% flash %}
+<script>
+    // only execute once the DOM is loaded
+    document.addEventListener("DOMContentLoaded", function () {
+        $.oc.flashMsg({text: '{{ message }}', 'class': '{{ type }}', 'interval': 10})
+    }, false);
+</script>
+{% endflash %}
+{% partial 'webticker' %}
+<!-- ========== HEADER ========== -->
+<header id="header" class="u-header u-header--bg-transparent u-header--abs-top">
+    <div class="u-header__section">
+        <div id="logoAndNav" class="container-fluid">
+            <!-- Nav -->
+            <nav class="navbar navbar-expand u-header__navbar">
+                <!-- White Logo -->
+                <a class="d-none d-lg-flex navbar-brand u-header__navbar-brand u-header__navbar-brand-center u-header__navbar-brand-text-white"
+                   href="/" aria-label="Front">
+                    <img src="/themes/smartoffice/assets/img/logos/logo-shadowed.png">
+                    <!--<span class="u-header__navbar-brand-text">Front</span>-->
+                </a>
+                <!-- End White Logo -->
+
+                <!-- Default Logo -->
+                <a class="d-flex d-lg-none navbar-brand u-header__navbar-brand u-header__navbar-brand-center u-header__navbar-brand-collapsed"
+                   href="index.html" aria-label="Front">
+                    <img src="/themes/smartoffice/assets/img/logos/logo-shadowed.png">
+                    <!--<span class="d-inline-block u-header__navbar-brand-text">Front</span>-->
+                </a>
+                <!-- End Default Logo -->
+
+                <!-- Button -->
+                <div class="ml-auto">
+                    <!--<a class="btn btn-sm btn-primary transition-3d-hover" href="https://themes.getbootstrap.com/product/front-multipurpose-responsive-template/" target="_blank">
+                      Buy Now
+                    </a>-->
+                </div>
+                <!-- End Button -->
+            </nav>
+            <!-- End Nav -->
+        </div>
+    </div>
+</header>
+<!-- ========== END HEADER ========== -->
+
+<!-- ========== MAIN ========== -->
+<main id="content" role="main">
+    <!-- Form -->
+    <div class="d-flex align-items-center position-relative height-lg-100vh">
+        {% page %}
+    </div>
+    <!-- End Form -->
+</main>
+<!-- ========== END MAIN ========== -->
+
+<!-- JS Global Compulsory -->
+<script src="{{ [
+  'assets/vendor/jquery/dist/jquery.min.js',
+  'assets/vendor/jquery-migrate/dist/jquery-migrate.min.js',
+  'assets/vendor/popper.js/dist/umd/popper.min.js',
+  'assets/vendor/bootstrap/bootstrap.min.js'
+  ]|theme }}"></script>
+
+<!-- JS Implementing Plugins -->
+<script src="{{ [
+  'assets/vendor/jquery-validation/dist/jquery.validate.min.js',
+  'assets/vendor/slick-carousel/slick/slick.js'
+  ]|theme }}"></script>
+
+<!-- JS Front -->
+<script src="{{ [
+  'assets/js/hs.core.js',
+  'assets/js/components/hs.validation.js',
+  'assets/js/components/hs.slick-carousel.js'
+  ]|theme }}"></script>
+
+<!-- JS Plugins Init. -->
+{% placeholder javascript %}
+<script>
+    $(window).on('ajaxErrorMessage', function (event, message) {
+        $.oc.flashMsg({text: message, 'class': 'error', 'interval': 10});
+        return false;
+        event.preventDefault();
+    });
+
+    $(document).on('ready', function () {
+        // initialization of slick carousel
+        $.HSCore.components.HSSlickCarousel.init('.js-slick-carousel');
+
+        // initialization of form validation
+        $.HSCore.components.HSValidation.init('.js-validate');
+    });
+</script>
+{% framework extras %}
+{% scripts %}
+</body>
+</html>

@@ -1,0 +1,12 @@
+list: $/horizonstack/espj/models/signature/columns.yaml
+modelClass: Horizonstack\eSPJ\Models\Signature
+title: Signatures
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: true
+showCheckboxes: true
+recordsPerPage: 20
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'
+recordUrl: 'horizonstack/espj/signatures/update/:id'

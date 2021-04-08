@@ -1,0 +1,16 @@
+<?php if ($value == "1"): ?>
+<span class="list-badge badge-success">
+    <i class="icon-check"></i>
+</span>
+Using
+<?php elseif ($value == "2"): ?>
+<span class="list-badge badge-success">
+    <i class="icon-thumbs-up"></i>
+</span>
+Returned
+<?php else: ?>
+<span class="list-badge badge-success">
+    <i class="icon-ban"></i>
+</span>
+No Activity
+<?php endif; ?>

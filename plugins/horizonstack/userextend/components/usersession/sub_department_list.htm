@@ -1,0 +1,6 @@
+<option value="" disabled selected>Sub Unit Kerja</option>
+{% for subDepartment in userSubDepartments  %}
+<option value="{{subDepartment.id}}" {% if user.sub_department_id== subDepartment.id %}selected="selected"
+        {% endif %}> {{ subDepartment.name }}
+</option>
+{% endfor %}

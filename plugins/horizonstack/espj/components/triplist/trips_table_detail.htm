@@ -1,0 +1,22 @@
+{% for trip in trips %}
+<tr>
+    <td scope="row" class="align-middle">
+        <span>{{trip.name}}</span>
+    </td>
+    <td class="align-middle text-secondary">
+        <small class="d-block">{{trip.user.name}}</small>
+    </td>
+    <td class="align-middle text-secondary">
+        {{ trip.destinationCity1.name}}
+    </td>
+    <td>
+        <a href="/perjadin/print/{{trip.slug}}" class="btn btn-sm btn-icon btn-soft-info transition-3d-hover">
+            <span class="fa fa-print btn-icon__inner"></span>
+        </a>
+    </td>
+</tr>
+{% else %}
+<tr>
+    <td colspan="6">Belum ada peserta yang terdata.</td>
+</tr>
+{% endfor %}

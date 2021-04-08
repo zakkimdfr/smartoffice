@@ -1,0 +1,39 @@
+description = "webticker"
+==
+<?php
+function onStart() {
+    $this['domainname'] = $_SERVER['HTTP_HOST'];
+} 
+?>
+==
+{% if domainname matches '/(?:staging)/i' %}
+<style>
+.tickercontainer {
+  position: fixed;
+  top: 20rem;
+  z-index: 9999;
+}
+</style>
+<div class="tickercontainer">
+	<ul id="webTicker">
+		<li><h2 class="text-warning font-weight-bold">In development</h1></li>
+		<li class="ticker-spacer"><h2>&mdash;</h2></li>
+		<li><h2 class="text-danger font-weight-bold">Preview only</h1></li>
+		<li class="ticker-spacer"><h2>&mdash;</h2></li>
+	</ul>
+</div>
+
+{% put scripts %}
+<script src="{{ 'assets/js/jquery.webticker.min.js'|theme }}"></script>
+<script>
+$("#webTicker").webTicker({
+    height:'4.6rem', 
+    duplicate:true, 
+    rssfrequency:0, 
+    startEmpty:false, 
+    hoverpause:false, 
+    transition: "ease"
+}); 
+</script>
+{% endput %}
+{% endif %}

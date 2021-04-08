@@ -1,0 +1,251 @@
+<p class="font-weight-semi-bold text-body">Informasi Nota Dinas</p>
+<hr/>
+{{ form_ajax('onCreateWorkReportForm', { name : 'create-work-report-form', files: true, id: 'create-work-report-form', class : 'js-validate'}) }}
+<div class="form-group row">
+    <label class="col-sm-2 col-form-label text-uppercase" for="attn_to">Kepada <span
+            class="text-danger">*</span></label>
+    <div class="col-sm-10">
+        <div class="js-form-message">
+            <select name="attn_to" required class="custom-select" id="attn_to"
+                    data-msg="Please select Attn to"
+                    data-error-class="u-has-error"
+                    data-success-class="u-has-success">
+                <option selected disabled value="">Pilih pejabat</option>
+                {% for attn in attnOptions %}
+                <option value="{{attn.id}}">{{attn.name}}</option>
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+</div>
+
+<div class="form-group row">
+    <label class="col-sm-2 col-form-label text-uppercase" for="from">Dari <span
+            class="text-danger">*</span></label>
+    <div class="col-sm-10">
+        <div class="js-form-message">
+            <select name="from" required class="custom-select" id="from"
+                    data-msg="Please select From"
+                    data-error-class="u-has-error"
+                    data-success-class="u-has-success">
+                <option selected disabled value="">Pilih</option>
+                {% for attn in attnOptions %}
+                <option value="{{attn.id}}">{{attn.name}}</option>
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+</div>
+
+<div class="form-group row">
+    <label class="col-sm-2 col-form-label text-uppercase" for="cc">Tembusan <span
+            class="text-danger">*</span></label>
+    <div class="col-sm-10">
+        <div class="js-form-message">
+            <select name="cc" required class="custom-select" id="cc"
+                    data-msg="Please select CC"
+                    data-error-class="u-has-error"
+                    data-success-class="u-has-success">
+                <option selected disabled value="">Pilih tembusan</option>
+                {% for attn in attnOptions %}
+                <option value="{{attn.id}}">{{attn.name}}</option>
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+</div>
+
+<div class="form-group row">
+    <label class="col-sm-2 col-form-label text-uppercase" for="date">Tanggal <span
+            class="text-danger">*</span></label>
+    <div class="col-sm-10">
+        <div class="js-form-message">
+            <div class="input-group">
+                <input name="date" class="js-range-datepicker form-control"
+                       id="date" required
+                       data-msg="Signature Date is required"
+                       data-error-class="u-has-error"
+                       data-success-class="u-has-success"
+                       type="text" placeholder="Tanggal Penandatanganan">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="form-group row">
+    <label for="report_number" class="col-sm-2 col-form-label text-uppercase">Nomor <span
+            class="text-danger">*</span></label>
+    <div class="col-sm-10">
+        <div class="js-form-message">
+            <div class="input-group">
+                <input type="text" required name="report_number" class="form-control" placeholder="Cantumkan Nomor"
+                       id="report_number" data-msg="Mohon cantumkan nomor"
+                       data-error-class="u-has-error"
+                       data-success-class="u-has-success">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="form-group row">
+    <label class="col-sm-2 col-form-label text-uppercase" for="urgency_id">Sifat <span
+            class="text-danger">*</span></label>
+    <div class="col-sm-10">
+        <div class="js-form-message">
+            <select name="urgency_id" required class="custom-select" id="urgency_id"
+                    data-msg="Please select Urgency"
+                    data-error-class="u-has-error"
+                    data-success-class="u-has-success">
+                <option selected disabled value="">Pilih satu</option>
+                {% for urgency in urgencyOptions %}
+                <option value="{{urgency.id}}">{{urgency.name}}</option>
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+</div>
+
+<div class="form-group row">
+    <label for="attachment" class="col-sm-2 col-form-label text-uppercase">Lampiran <span
+            class="text-danger">*</span></label>
+    <div class="col-sm-10">
+        <div class="js-form-message">
+            <div class="input-group">
+                <input type="text" required name="attachment" class="form-control" placeholder="Sebutkan lampiran"
+                       id="attachment" data-msg="Isian dibutuhkan"
+                       data-error-class="u-has-error"
+                       data-success-class="u-has-success">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="form-group row">
+    <label for="subject" class="col-sm-2 col-form-label text-uppercase">Hal <span
+            class="text-danger">*</span></label>
+    <div class="col-sm-10">
+        <div class="js-form-message">
+            <div class="input-group">
+                <input type="text" required name="subject" class="form-control" placeholder="Isi perihal"
+                       id="subject" data-msg="Isian dibutuhkan"
+                       data-error-class="u-has-error"
+                       data-success-class="u-has-success">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="form-group row">
+    <label for="subject" class="col-sm-2 col-form-label text-uppercase">Foto Kegiatan </label>
+    <div class="col-sm-10">
+        {% component 'photos' %}
+    </div>
+</div>
+
+<div class="row form-group">
+    <label for="subject" class="col-sm-2 col-form-label text-uppercase">Dokumen Kegiatan </label>
+    <div class="col-md-4 mb-3">
+        <input type="file" name="file_attachment" id="file_attachment" class="dropify"
+               data-allowed-file-extensions="pdf ppt"
+               data-max-file-size="5M"/>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="mb-3">
+            <h2 class="h5 mb-0">Isi Laporan</h2>
+            <p>Silahkan ketik laporan Anda.</p>
+        </div>
+        <!-- End Title -->
+
+        <div class="mb-3">
+            <!-- Text Editor Input -->
+            <div class="u-summernote-editor">
+                <div class="js-summernote-editor" id="description" data-height="160"></div>
+            </div>
+            <!-- End Text Editor Input -->
+        </div>
+        <small class="text-muted">*Pastikan semua isian telah di isi sesuai dengan ketentuan yang berlaku.</small>
+    </div>
+
+    <div class="col-sm-12 mt-5">
+        <button type="button" onclick="submitForm()" class="btn btn-sm btn-primary transition-3d-hover mr-1">
+            Buat
+        </button>
+        <a href="{{'dashboard/perjadin'|page}}" class="btn btn-secondary btn-sm transition-3d-hover">Batal</a>
+    </div>
+</div>
+{{ form_close() }}
+
+{% put javascript %}
+<script src="{{'assets/vendor/summernote/dist/summernote-lite.js'|theme}}"></script>
+<script src="{{'assets/js/components/hs.summernote-editor.js'|theme}}"></script>
+<script src="{{'assets/vendor/dropify/dist/js/dropify.min.js'|theme}}"></script>
+<script>
+    // Basic
+    $('#file_attachment').dropify({
+        messages: {
+            'default': '<strong>Upload Dokumen (PDF/PPT)</strong> <br/> <small>Maximum ukuran file adalah 5MB</small>',
+            'replace': 'Drag and drop or click to replace',
+            'remove': 'Remove',
+            'error': 'Ooops, something wrong happened!'
+        }
+    });
+
+    // Used events
+    var drEvent = $('#input-file-events').dropify();
+
+    drEvent.on('dropify.beforeClear', function (event, element) {
+        return confirm("Do you really want to delete \"" + element.file.name + "\" ?");
+    });
+
+    drEvent.on('dropify.afterClear', function (event, element) {
+        alert('File deleted');
+    });
+
+    drEvent.on('dropify.errors', function (event, element) {
+        console.log('Has Errors');
+    });
+
+    var drDestroy = $('#input-file-to-destroy').dropify();
+    drDestroy = drDestroy.data('dropify');
+    $('#toggleDropify').on('click', function (e) {
+        e.preventDefault();
+        if (drDestroy.isDropified()) {
+            drDestroy.destroy();
+        } else {
+            drDestroy.init();
+        }
+    });
+
+    // initialization of text editors
+    $.HSCore.components.HSSummernoteEditor.init('.js-summernote-editor');
+
+    $('#date').datepicker({
+        format: "dd/mm/yyyy",
+        language: "id",
+        todayHighlight: true
+    });
+
+    function submitForm() {
+        var description = $("#description").summernote("code");
+        var form = $('#create-work-report-form');
+        if (form.valid()) {
+            form.request('onCreateWorkReportForm',
+                {
+                    data: {
+                        description: description,
+                    },
+                    files: true,
+                    beforeSend: function () {
+                        $.oc.stripeLoadIndicator.show();
+                    },
+                    complete: function () {
+                        $.oc.stripeLoadIndicator.hide();
+                    }
+                })
+        }
+    }
+</script>
+{% endput %}

@@ -1,0 +1,22 @@
+destinations:
+  label: Destination
+  view:
+    showSearch: true
+    recordsPerPage: 15
+    list: $/horizonstack/guestbook/models/city/columns.yaml
+    toolbarButtons: add|remove
+  manage:
+    showSearch: true
+    recordsPerPage: 10
+    list: $/horizonstack/guestbook/models/city/columns.yaml
+participants:
+  label: Participant
+  view:
+    showSearch: true
+    recordsPerPage: 15
+    list: $/horizonstack/userextend/userconfig/participant_columns.yaml
+    toolbarButtons: add|remove
+  manage:
+    showSearch: true
+    recordsPerPage: 10
+    list: $/horizonstack/userextend/userconfig/participant_columns.yaml

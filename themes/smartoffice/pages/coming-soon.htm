@@ -1,0 +1,94 @@
+title = "Segera Hadir"
+url = "/coming-soon"
+layout = "dashboard"
+is_hidden = 0
+==
+<!-- Hero Section -->
+<div class="d-lg-flex">
+    <div class="container d-lg-flex align-items-lg-center height-lg-100vh space-bottom-1 space-top-3 space-bottom-lg-3 space-lg-0">
+        <div class="row align-items-lg-center w-100 mt-lg-9">
+            <!-- SVG Icon -->
+            <div class="col-lg-6 mb-7 mb-lg-0">
+                <figure id="SVGvirtualReality" class="svg-preloader ie-virtual-reality">
+                    <img class="js-svg-injector" src="{{ 'assets/svg/illustrations/virtual-reality.svg'|theme }}"
+                         alt="Image Description"
+                         data-parent="#SVGvirtualReality">
+                </figure>
+            </div>
+            <!-- End SVG Icon -->
+
+            <div class="col-lg-6">
+                <div class="pl-lg-4">
+                    <!-- Title -->
+                    <div class="mb-4">
+                        <h1 class="text-primary font-weight-normal">Segera <span
+                                class="font-weight-semi-bold">Hadir</span>.</h1>
+                        <p>Kami sedang bekerja keras mengembangkan fitur yang Anda inginkan. Mohon kembali lagi di lain
+                            waktu.</p>
+                    </div>
+                    <!-- End Title -->
+
+                    <!-- Countdown -->
+                    <div class="js-countdown row mb-5"
+                         data-end-date="2020/03/30"
+                         data-month-format="%m"
+                         data-days-format="%D"
+                         data-hours-format="%H"
+                         data-minutes-format="%M"
+                         data-seconds-format="%S">
+                        <div class="col-3">
+                            <strong class="js-cd-days h3 text-primary font-weight-semi-bold mb-0"></strong>
+                            <span class="h5 font-weight-normal mb-0">Hari</span>
+                        </div>
+                        <div class="col-3">
+                            <strong class="js-cd-hours h3 text-primary font-weight-semi-bold mb-0"></strong>
+                            <span class="h5 font-weight-normal mb-0">Jam</span>
+                        </div>
+                        <div class="col-3">
+                            <strong class="js-cd-minutes h3 text-primary font-weight-semi-bold mb-0"></strong>
+                            <span class="h5 font-weight-normal mb-0">Menit</span>
+                        </div>
+                        <div class="col-3">
+                            <strong class="js-cd-seconds h3 text-primary font-weight-semi-bold mb-0"></strong>
+                            <span class="h5 font-weight-normal mb-0">Detik</span>
+                        </div>
+                    </div>
+                    <!-- End Countdown -->
+
+                    <!-- Input -->
+                    <!--<form class="js-validate js-form-message js-focus-state">
+                      <label class="sr-only" for="subscribeSrEmail">Enter your email address</label>
+                      <div class="input-group">
+                        <input type="text" class="form-control" name="name" id="subscribeSrEmail" placeholder="Enter your email address" aria-label="Enter your email address" aria-describedby="subscribeEmailButton" required
+                               data-msg="Please enter a valid email address."
+                               data-error-class="u-has-error"
+                               data-success-class="u-has-success">
+                        <div class="input-group-append">
+                          <button type="submit" class="btn btn-primary" id="subscribeEmailButton">Subscribe</button>
+                        </div>
+                      </div>
+                    </form>-->
+                    <a class="btn btn-primary btn-wide transition-3d-hover float-right"
+                       href="javascript:history.go(-1)">Smiling</a>Silahkan kembali ke halaman sebelumnya
+                    <!-- End Input -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Hero Section -->
+{% put javascript %}
+<script src="{{ ['assets/vendor/jquery.countdown.min.js','assets/js/components/hs.countdown.js']|theme }}"></script>
+  <script>
+    $(document).on('ready', function () {
+      // initialization of countdowns
+      var countdowns = $.HSCore.components.HSCountdown.init('.js-countdown', {
+        yearsElSelector: '.js-cd-years',
+        daysElSelector: '.js-cd-days',
+        hoursElSelector: '.js-cd-hours',
+        minutesElSelector: '.js-cd-minutes',
+        secondsElSelector: '.js-cd-seconds'
+      });
+    });
+  </script>
+{% endput %}

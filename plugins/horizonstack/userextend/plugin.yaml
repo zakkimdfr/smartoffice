@@ -1,0 +1,19 @@
+plugin:
+    name: 'horizonstack.userextend::lang.plugin.name'
+    description: 'horizonstack.userextend::lang.plugin.description'
+    author: Horizonstack
+    icon: oc-icon-user-plus
+    homepage: ''
+permissions:
+    horizonstack.userextend.manage_departments:
+        tab: 'horizonstack.userextend::lang.plugin.name'
+        label: 'horizonstack.userextend::lang.permissions.departments'
+    horizonstack.userextend.manage_sub_departments:
+        tab: 'horizonstack.userextend::lang.plugin.name'
+        label: 'horizonstack.userextend::lang.permissions.sub_departments'
+    horizonstack.userextend.manage_job_levels:
+        tab: 'horizonstack.userextend::lang.plugin.name'
+        label: 'horizonstack.userextend::lang.permissions.job_levels'
+    horizonstack.userextend.manage_settings:
+        tab: 'horizonstack.userextend::lang.plugin.name'
+        label: 'horizonstack.userextend::lang.permissions.settings'

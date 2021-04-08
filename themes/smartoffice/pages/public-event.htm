@@ -1,0 +1,33 @@
+title = "Public Event"
+url = "/public/event"
+layout = "default"
+is_hidden = 0
+
+[listPublicEvents]
+eventsPerPage = 6
+==
+<?php
+function onInit()
+{
+    $this->addCss('assets/css/custom-autocomplete.css');
+}
+?>
+==
+<!-- Hero Section -->
+<div class="d-md-flex bg-img-hero-bottom gradient-half-bg-img"
+     style="background-image: url(/themes/smartoffice/assets/img/bg-shapes/event-bg.jpeg);">
+    <div class="container d-md-flex align-items-md-center min-height-md-100vh space-3">
+        <div class="w-lg-80 text-center text-white mx-auto">
+            <h2 class="text-white display-3 mb-0 font-weight-medium">Smart Meeting</h2>
+            <small>Pendataan tamu dalam kegiatan dan rapat.</small>
+            <h5>Dinas Pariwisata dan Kebudayaan
+                Provinsi Jawa Barat</h5>
+        </div>
+    </div>
+</div>
+<!-- End Hero Section -->
+
+
+<div class="container mt-10">
+    {% component 'listPublicEvents' %}
+</div>

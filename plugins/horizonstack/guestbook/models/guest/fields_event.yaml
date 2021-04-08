@@ -1,0 +1,70 @@
+fields:
+  name:
+    label: Name
+    span: auto
+    type: text
+  slug:
+    label: Slug
+    span: auto
+    preset:
+      field: name
+      type: slug
+    type: text
+  phone:
+    label: Phone
+    span: auto
+    type: number
+  email:
+    label: Email
+    span: auto
+    type: text
+  job_id:
+    label: Job
+    span: auto
+    type: dropdown
+  job_title:
+    label: Job Title
+    span: auto
+    type: text
+  organization:
+    label: Organization
+    span: left
+    type: text
+  organization_id:
+    label: New Organization
+    span: right
+    type: dropdown
+  city:
+    label: City
+    span: left
+    type: text
+  city_id:
+    label: New City
+    span: right
+    type: dropdown
+  status:
+    label: Status
+    span: auto
+    type: dropdown
+  invitation_confirmation:
+    label: Invitation Confirmation?
+    span: auto
+    type: dropdown
+  is_souvenirs:
+    label: Souvenirs
+    type: switch
+    default: 0
+    span: left
+  image:
+    label: Image
+    type: fileupload
+    mode: image
+    imageHeight: 260
+    imageWidth: 260
+    thumbOptions:
+      mode: auto
+      offset:
+      - 0
+      - 0
+      interlace: false
+      extension: auto

@@ -1,0 +1,55 @@
+fields:
+    activity:
+        label: Activity
+        span: auto
+        type: text
+    slug:
+        label: Slug
+        span: auto
+        preset:
+            field: activity
+            type: slug
+        type: text
+    asset_id:
+        label: Asset
+        span: auto
+        type: dropdown
+    status:
+        label: Status
+        span: auto
+        type: dropdown
+    date_start:
+        label: Date Start
+        span: auto
+        type: datepicker
+        mode: date
+        ignoreTimezone: true
+    expected_return_date:
+        label: Expected Return Date
+        span: auto
+        type: datepicker
+        mode: date
+        ignoreTimezone: true
+    date_end:
+        label: Date End
+        span: left
+        type: datepicker
+        mode: date
+        ignoreTimezone: true
+    task:
+        label: Task
+        type: dropdown
+        span: left
+    user_id:
+        label: User
+        type: dropdown
+        span: auto
+    asset_conditions:
+        label: Asset Conditions
+        type: textarea
+        span: auto
+    is_active:
+        label: Active
+        span: left
+        default: 1
+        type: switch

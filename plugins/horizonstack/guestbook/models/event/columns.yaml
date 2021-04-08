@@ -1,0 +1,23 @@
+columns:
+    name:
+        label: Name
+        type: text
+        searchable: true
+        sortable: true
+    date:
+        label: Date
+        type: date
+    is_active:
+        label: Active
+        type: switch
+        sortable: true
+    is_public:
+        label: Public
+        type: switch
+        sortable: true
+    updated_at:
+        label: 'Modified At'
+        type: datetime
+        searchable: true
+        sortable: true
+

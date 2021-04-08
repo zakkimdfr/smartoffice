@@ -1,0 +1,10 @@
+name: Organizations
+form: $/horizonstack/guestbook/models/organization/fields.yaml
+modelClass: Horizonstack\Guestbook\Models\Organization
+defaultRedirect: horizonstack/guestbook/organizations
+create:
+    redirect: 'horizonstack/guestbook/organizations/update/:id'
+    redirectClose: horizonstack/guestbook/organizations
+update:
+    redirect: horizonstack/guestbook/organizations
+    redirectClose: horizonstack/guestbook/organizations

@@ -1,0 +1,28 @@
+{% set survey = __SELF__.survey %}
+{% set width  = __SELF__.banner.w %}
+{% set height = __SELF__.banner.h %}
+{% set questionNamespace = 'ThePhuc\\Tunsurvey\\Models\\Question' %}
+
+{% if (survey) %}
+<div id="tunsurvey-form-survey" class="wrapper" style="{{ __SELF__.background }}">
+    <div class="inner">
+        <div class="image-holder">
+            <img src="{{ survey.banner.getThumb(width, height) }}" alt="{{ survey.name }}">
+        </div>
+
+        <form class="survey" data-request="onSubmit" data-request-update="'@_completed': '#formFields'">
+            <input type="hidden" name="survey_id" value="{{ survey.id }}">
+            <h3 class="survey-title">{{ survey.name }}</h3>
+
+            <div id="formFields">
+                {% if (__SELF__.answered == false) %}
+                    {% partial __SELF__~"::_form_fields.htm" survey=survey questionNamespace=questionNamespace %}
+                {% else %}
+                    {% partial __SELF__~"::_completed.htm" survey=survey %}
+                {% endif %}
+            </div>
+        </form>
+
+    </div>
+</div>
+{% endif %}

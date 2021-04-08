@@ -1,0 +1,25 @@
+fields:
+    trip:
+        label: Trip
+        span: auto
+        type: relation
+        select: name
+    user_id:
+        label: User
+        span: auto
+        type: dropdown
+    signature_left_id:
+        label: Signature Left
+        span: left
+        type: dropdown
+        tab: Basic Details
+    signature_right_id:
+        label: Signature Right
+        span: right
+        type: dropdown
+        tab: Basic Details
+    remarks:
+        label: Remarks
+        span: full
+        type: richeditor
+        tab: Basic Details

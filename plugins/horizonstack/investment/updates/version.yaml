@@ -1,0 +1,56 @@
+1.0.1:
+    - 'Initialize plugin.'
+1.0.2:
+    - 'Created table horizonstack_investment_property_types'
+    - builder_table_create_horizonstack_investment_property_types.php
+1.0.3:
+    - 'Created table horizonstack_investment_schemes'
+    - builder_table_create_horizonstack_investment_schemes.php
+1.0.4:
+    - 'Created table horizonstack_investment_organizations'
+    - builder_table_create_horizonstack_investment_organizations.php
+1.0.5:
+    - 'Created table horizonstack_investment_study_documents'
+    - builder_table_create_horizonstack_investment_study_documents.php
+1.0.6:
+    - 'Created table horizonstack_investment_investments'
+    - builder_table_create_horizonstack_investment_investments.php
+1.0.7:
+    - 'Created table horizonstack_investment_property_type'
+    - builder_table_create_horizonstack_investment_property_type.php
+1.0.8:
+    - 'Created table horizonstack_investment_ownerships'
+    - builder_table_create_horizonstack_investment_ownerships.php
+1.0.9:
+    - 'Created table horizonstack_investment_project_levels'
+    - builder_table_create_horizonstack_investment_project_levels.php
+1.0.10:
+    - 'Created table horizonstack_investment_infrastructures'
+    - builder_table_create_horizonstack_investment_infrastructures.php
+1.0.11:
+    - 'Created table horizonstack_investment_investment_scheme'
+    - builder_table_create_horizonstack_investment_investment_scheme.php
+1.0.12:
+    - 'Created table horizonstack_investment_investment_infrastructure'
+    - builder_table_create_horizonstack_investment_investment_infrastructure.php
+1.0.13:
+    - 'Created table horizonstack_investment_policy_regulations'
+    - builder_table_create_horizonstack_investment_policy_regulations.php
+1.0.14:
+    - 'Remove switcher field and add property_type_id fields to investments'
+    - migration1014.php
+1.0.15:
+    - 'Add fields to investments table'
+    - migration1015.php
+1.0.16:
+    - 'Update revision fields to investments table'
+    - migration1016.php
+1.0.17:
+    - 'update profitability_index field from string type to float type '
+    - migration1017.php
+1.0.18:
+    - 'Add usd field to investments'
+    - migration1018.php
+1.0.19:
+    - 'Created table horizonstack_investment_investment_interests'
+    - builder_table_create_horizonstack_investment_investment_interests.php

@@ -1,0 +1,26 @@
+1.0.1:
+    - 'Initialize plugin.'
+1.0.2:
+    - 'Created table horizonstack_asset_categories'
+    - builder_table_create_horizonstack_asset_categories.php
+1.0.3:
+    - 'Created table horizonstack_asset_types'
+    - builder_table_create_horizonstack_asset_types.php
+1.0.4:
+    - 'Created table horizonstack_asset_assets'
+    - builder_table_create_horizonstack_asset_assets.php
+1.0.5:
+    - 'Created table horizonstack_asset_records'
+    - builder_table_create_horizonstack_asset_records.php
+1.0.6:
+    - 'add value field in assets'
+    - migration106.php
+1.0.7:
+    - 'Add task in horizonstack_asset_records table'
+    - migration107.php
+1.0.8:
+    - 'Add status field to horizonstack_asset_assets table'
+    - migration108.php
+1.0.9:
+    - 'Add expected_return_date to horizonstack_asset_records table'
+    - migration109.php

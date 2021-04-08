@@ -1,0 +1,10 @@
+name: AssetTypes
+form: $/horizonstack/asset/models/assettype/fields.yaml
+modelClass: Horizonstack\Asset\Models\AssetType
+defaultRedirect: horizonstack/asset/assettypes
+create:
+    redirect: 'horizonstack/asset/assettypes/update/:id'
+    redirectClose: horizonstack/asset/assettypes
+update:
+    redirect: horizonstack/asset/assettypes
+    redirectClose: horizonstack/asset/assettypes

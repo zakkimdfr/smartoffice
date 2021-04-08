@@ -1,0 +1,58 @@
+{% for question in survey.questions %}
+<div class="form-group">
+    <label>{{ question.question }} {% if (question.is_optional == false) %} <span class="required">*</span> {% endif %}</label>
+    <!-- TEXT -->
+    {% if (question.control == constant(questionNamespace ~ '::TEXT')) %}
+    <input type="text" class="form-control" placeholder="{{ question.question }}"
+           name="answer[{{ question.id }}]">
+
+    <!-- DROPDOWN -->
+    {% elseif (question.control == constant(questionNamespace ~ '::DROPDOWN')) %}
+
+    <div class="form-row">
+        <div class="form-holder full">
+            <select name="answer[{{ question.id }}]" class="form-control">
+                <option value="" disabled selected>{{ question.question }}</option>
+                {% for answer in question.answers %}
+                <option value="{{ answer.id }}">{{ answer.answer }}</option>
+                {% endfor %}
+            </select>
+            <i class="zmdi zmdi-chevron-down"></i>
+        </div>
+    </div>
+
+    <!-- RADIO -->
+    {% elseif (question.control == constant(questionNamespace ~ '::RADIO')) %}
+
+    <div class="form-row">
+        {% for answer in question.answers %}
+        <div class="radio">
+            <label><input type="radio" name="answer[{{ question.id }}]" value="{{ answer.id }}"> {{ answer.answer
+                }}</label>
+        </div>
+        <br>
+        {% endfor %}
+    </div>
+
+    <!-- CHECKBOX -->
+    {% elseif (question.control == constant(questionNamespace ~ '::CHECKBOX')) %}
+
+    <div class="form-row">
+        {% for answer in question.answers %}
+        <div class="checkbox">
+            <label><input type="checkbox" name="answer[{{ question.id }}][]" value="{{ answer.id }}"> {{ answer.answer
+                }}</label>
+        </div>
+        <br>
+        {% endfor %}
+    </div>
+
+    <!-- TEXTAREA -->
+    {% elseif (question.control == constant(questionNamespace ~ '::TEXTAREA')) %}
+
+    <textarea name="answer[{{ question.id }}]" class="form-control" style="height: 130px;"></textarea>
+
+    {% endif %}
+</div>
+{% endfor %}
+<button class="button">Submit<i class="zmdi zmdi-long-arrow-right"></i></button>

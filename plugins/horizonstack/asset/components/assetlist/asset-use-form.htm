@@ -1,0 +1,114 @@
+<div class="modal-dialog vertical-align-modal" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title" style="font-size: 18px;">Isi Formulir Penggunaan Perlengkapan</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="profile-alert alert">
+                Anda akan menggunakan aset ini. <strong>Lengkapi Semua Isian</strong>
+            </div>
+            <hr/>
+            <form data-request="onCreateRecord" name="create-record-form">
+                <input hidden name="asset_id" value="{{assetDetail.id}}">
+                <div class="form-group row">
+                    <div class="col-md-12">
+                        <div class="input-group input-group-borderless">
+                            <input type="text" name="activity" class="form-control pl-0" id="name"
+                                   placeholder="Sebutkan Nama Kegiatan...">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-md-6 mb-4 mb-sm-0">
+                        <label class="form-label">Tanggal Pemakaian</label>
+                        <!-- Datepicker -->
+                        <div id="datepickerWrapper"
+                             class="u-datepicker input-group input-group-sm input-group-borderless">
+                            <div class="input-group-prepend">
+                <span class="input-group-text p-0 mr-2">
+                  <span class="fas fa-calendar text-success" id="date_start"></span>
+                </span>
+                            </div>
+                            <input class="js-range-datepicker form-control bg-transparent px-1" type="text"
+                                   placeholder="Pilih Tanggal" aria-label="Date Using" aria-describedby="date_start"
+                                   name="date_start"
+                                   data-rp-wrapper="#datepickerWrapper"
+                                   data-rp-date-format="d/m/Y">
+                        </div>
+                        <!-- End Datepicker -->
+                    </div>
+
+                    <div class="col-md-6 mb-4 mb-sm-0">
+                        <label class="form-label">Rencana Pengembalian</label>
+                        <!-- Datepicker -->
+                        <div id="returnedDatePickerWrapper"
+                             class="u-datepicker input-group input-group-sm input-group-borderless">
+                            <div class="input-group-prepend">
+                <span class="input-group-text p-0 mr-2">
+                  <span class="fas fa-calendar text-success" id="expected_return_date"></span>
+                </span>
+                            </div>
+                            <input class="js-range-datepicker form-control bg-transparent px-1" type="text"
+                                   name="expected_return_date"
+                                   placeholder="Pilih Tanggal" aria-label="Returned date" aria-describedby="expected_return_date"
+                                   data-rp-wrapper="#returnedDatePickerWrapper"
+                                   data-rp-date-format="d/m/Y">
+                        </div>
+                        <!-- End Datepicker -->
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-md-6 col-sm-4 mb-4 mb-sm-0">
+                        <label class="form-label">Tujuan</label>
+                        <!-- Select -->
+                        <select name="task" class="js-select selectpicker dropdown-select w-100"
+                                data-style="btn-sm bg-transparent font-weight-normal px-0">
+                            <option value="">Pilih Pekerjaan</option>
+                            <option value="1">Tugas Utama</option>
+                            <option value="2">Tugas Tambahan</option>
+                        </select>
+                        <!-- End Select -->
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-md-12 mb-4 mb-sm-0">
+                        <div class="mb-3">
+                            <label class="form-label">Kondisi Aset</label>
+                            <div class="media">
+                                <div class="u-sm-avatar mr-2">
+                                    {% if user.avatar %}
+                                    <img class="img-fluid rounded-circle"
+                                         src="{{user.avatar.thumb('250','250','crop')}}"
+                                         alt="{{user.name}}">
+                                    {% else %}
+                                    <img class="img-fluid rounded-circle"
+                                         src="/themes/smartoffice/assets/img/logos/logo.png"
+                                         alt="{{user.name}}">
+                                    {% endif %}
+                                </div>
+                                <div class="media-body">
+                                    <textarea class="form-control" name="asset_conditions" rows="2"
+                                              placeholder="Jelaskan kondisi aset pada saat Anda menggunakan"
+                                              aria-label="Asset conditions"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-end">
+                    <button type="submit" class="btn btn-sm btn-primary transition-3d-hover mr-1">Gunakan</button>
+                    <button type="button" class="btn btn-sm btn-soft-secondary transition-3d-hover"
+                            data-dismiss="modal">Batal
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

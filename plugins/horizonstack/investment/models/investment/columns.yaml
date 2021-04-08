@@ -1,0 +1,22 @@
+columns:
+    name:
+        label: Name
+        type: text
+        searchable: true
+        sortable: true
+    agent_name:
+        label: Agent Name
+        type: text
+    city:
+        label: City
+        relation: city
+        select: name
+    investment_value:
+        label: Investment Value
+        type: number
+    created_at:
+        label: 'Modified At'
+        type: datetime
+        searchable: true
+        sortable: true
+

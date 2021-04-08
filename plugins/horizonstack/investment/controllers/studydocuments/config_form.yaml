@@ -1,0 +1,10 @@
+name: StudyDocuments
+form: $/horizonstack/investment/models/studydocument/fields.yaml
+modelClass: Horizonstack\Investment\Models\StudyDocument
+defaultRedirect: horizonstack/investment/studydocuments
+create:
+    redirect: 'horizonstack/investment/studydocuments/update/:id'
+    redirectClose: horizonstack/investment/studydocuments
+update:
+    redirect: horizonstack/investment/studydocuments
+    redirectClose: horizonstack/investment/studydocuments

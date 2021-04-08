@@ -1,0 +1,55 @@
+<?php return [
+    'plugin' => [
+        'name' => 'TunSurvey',
+        'description' => 'Easy to create quick survey on your website with TunSurvey.',
+    ],
+    'form' => [
+        'name' => 'Name',
+        'code' => 'Code',
+        'status' => 'Status',
+        'created_at' => 'Created at',
+        'banner' => 'Banner',
+        'question' => 'Question',
+        'questions' => 'Questions',
+        'control' => 'Control',
+        'answer' => 'Answer',
+        'answers' => 'Answers',
+        'createAnswer' => 'Create new answer',
+        'noAnswer' => 'Answer is unnecessary for this kind of question',
+        'optional' => 'Optional',
+        'stylesheet' => 'Style sheet',
+        'template' => 'Form template',
+        'user_answers' => 'User answers',
+        'action' => 'Action',
+        'remove' => 'Remove',
+        'view_details' => 'View details',
+        'detail_answers' => 'Detail answers',
+        'vote' => 'vote',
+        'votes' => 'votes',
+    ],
+    'status' => [
+        'draft'   => 'Draft',
+        'publish' => 'Publish',
+        'closed'  => 'Closed',
+    ],
+    'component' => [
+        'name' => 'Form survey',
+        'description' => 'Show form of survey',
+    ],
+    'permission' => [
+        'surveys_management' => 'Surveys management',
+        'settings' => 'Settings',
+        'survey_result_management' => 'Survey results management',
+    ],
+    'menu' => [
+        'surveys' => 'Surveys',
+        'settings' => 'Settings',
+        'survey_result' => 'Survey results',
+    ],
+    'errors' => [
+        'required' => 'Please enter the required fields',
+    ],
+    'message' => [
+        'setting_done' => 'Your config was saved',
+    ],
+];

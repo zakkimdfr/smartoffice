@@ -1,0 +1,179 @@
+title = "Perjadin Print"
+url = "/perjadin/print/:slug"
+is_hidden = 0
+layout = "dashboard"
+
+[tripPrintDetail]
+==
+<div class="container pt-10" id="printableArea">
+    <div class="card bg-img-hero">
+        <div class="card-body p-5 p-md-7 p-lg-11">
+            <!-- header start -->
+            <div class="row">
+                <div class="col-2 text-right pb-0"><img src="/themes/smartoffice/assets/img/logos/logo-print.png"
+                                                        height="150"/></div>
+                <div class="col-10 text-center pb-0"><h3 class="font-weight-bold">PEMERINTAH DAERAH PROVINSI JAWA
+                    BARAT</h3>
+                    <h1 class="font-weight-bold">DINAS PARIWISATA DAN KEBUDAYAAN</h1>
+
+                    Jl. LL. RE. Martadinata No. 209 Telp. (022) 7273209-7103605<br/>
+                    Fax. (022) 7271385 – 7234656 <u>www.disparbud.jabar.go.id</u> email:
+                    <u>disparbud@jabarprov.go.id</u><br/>
+                    Bandung - 40114
+                </div>
+            </div>
+            <hr class="barier-top mt-0 mb-1">
+            <hr class="barier-bottom mt-0">
+            <!-- header end -->
+
+            <!-- content start -->
+            <div class="row">
+                <div class="col"></div>
+                <div class="col text-center"><strong>SURAT PERINTAH</strong></div>
+                <div class="col"></div>
+            </div>
+            <div class="row">
+                <div class="col-5 text-right">Nomor :</div>
+                <div class="col"></div>
+            </div>
+
+            <div class="row pt-4">
+                <div class="col-2"></div>
+                <div class="col-2 pr-0">Dasar<span class="float-right">:</span></div>
+                <div class="col pl-1">{{trip.budget_name}}
+                </div>
+            </div>
+
+            <p class="text-center pt-5"><strong>MEMERINTAHKAN</strong></p>
+
+            <div class="row pt-4">
+                <div class="col-2"></div>
+                <div class="col-2 pr-0">Kepada<span class="float-right">:</span></div>
+                <div class="col">
+                    <ol class="pl-2">
+
+                        <li>
+                            <div class="row no-gutters">
+                                <div class="col-4">Nama<span class="float-right">:</span></div>
+                                <div class="col pl-1">{{trip.user.name}}</div>
+                            </div>
+                            <div class="row no-gutters">
+                                <div class="col-4">NIP<span class="float-right">:</span></div>
+                                <div class="col pl-1">{{trip.user.unique_id}}</div>
+                            </div>
+                            <div class="row no-gutters">
+                                <div class="col-4">Pangkat/Golongan<span class="float-right">:</span></div>
+                                <div class="col pl-1">{{trip.user.jobLevel.name}}</div>
+                            </div>
+                            <div class="row no-gutters">
+                                <div class="col-4">Jabatan<span class="float-right">:</span></div>
+                                <div class="col pl-1">{{trip.user.job}}</div>
+                            </div>
+                        </li>
+
+                        {% for participant in trip.participants %}
+                        <li>
+                            <div class="row no-gutters">
+                                <div class="col-4">Nama<span class="float-right">:</span></div>
+                                <div class="col pl-1">{{participant.name}}</div>
+                            </div>
+                            <div class="row no-gutters">
+                                <div class="col-4">NIP<span class="float-right">:</span></div>
+                                <div class="col pl-1">{{participant.unique_id}}</div>
+                            </div>
+                            <div class="row no-gutters">
+                                <div class="col-4">Pangkat/Golongan<span class="float-right">:</span></div>
+                                <div class="col pl-1">{{participant.jobLevel.name}}</div>
+                            </div>
+                            <div class="row no-gutters">
+                                <div class="col-4">Jabatan<span class="float-right">:</span></div>
+                                <div class="col pl-1">{{participant.job}}</div>
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </ol>
+                </div>
+            </div>
+
+            <div class="row pt-4">
+                <div class="col-2"></div>
+                <div class="col-2 pr-0">Untuk<span class="float-right">:</span></div>
+                <div class="col text-justify">
+                    <ol class="pl-2">
+
+                        <!-- list start -->
+                        <li>
+                            {{trip.mission}}
+                        </li>
+                        <!-- list end -->
+
+                        <!-- list start -->
+                        <li>
+                            Dilaksanakan dengan penuh rasa tanggung jawab dan setelah melaksanakan tugas agar
+                            membuat laporan tertulis.
+                        </li>
+                        <!-- list end -->
+
+                    </ol>
+                </div>
+            </div>
+
+            <!-- sign start -->
+            <div class="row pt-5">
+                <div class="col-7"></div>
+                <div class="col-2 pr-0">Ditetapkan di<span class="float-right">:</span></div>
+                <div class="col pl-1">Bandung</div>
+            </div>
+            <div class="row">
+                <div class="col-7"></div>
+                <div class="col-2 pr-0">Pada tanggal<span class="float-right">:</span></div>
+                <div class="col pl-1">{{trip.signature_date|localizeddate('long', 'none', 'id', 'Asia/Jakarta')}}</div>
+            </div>
+            <div class="row">
+                <div class="col-7"></div>
+                <div class="col">{{trip.signature.job_position}}</div>
+            </div>
+
+            <div class="row text-center sign-space">
+                <div class="col"></div>
+                <div class="col-7">{{trip.signature.name}}</div>
+            </div>
+            <div class="row text-center">
+                <div class="col"></div>
+                <div class="col-7">{{trip.signature.job_level}}</div>
+            </div>
+            <div class="row text-center">
+                <div class="col"></div>
+                <div class="col-7">NIP. {{trip.signature.identity_number}}</div>
+            </div>
+            <!-- sign end -->
+
+            <!-- content end -->
+
+            <!-- container end -->
+        </div>
+    </div>
+
+    <div class="text-right mt-5">
+        <button type="button" class="btn btn-primary btn-sm-wide transition-3Pembinad-hover"
+                onclick="printDiv('printableArea')">
+            <span class="fas fa-print mr-2"></span>
+            Print
+        </button>
+    </div>
+</div>
+
+{% put javascript %}
+<script>
+    function printDiv(divName) {
+        var printContents = document.getElementById(divName).innerHTML;
+        var originalContents = document.body.innerHTML;
+
+        document.body.innerHTML = printContents;
+
+        window.print();
+
+        document.body.innerHTML = originalContents;
+    }
+</script>
+{% endput %}

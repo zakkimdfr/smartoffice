@@ -1,0 +1,125 @@
+title = "Homepage"
+url = "/"
+layout = "landing"
+is_hidden = 0
+==
+<!-- Hero Section -->
+<div class="d-lg-flex">
+    <div class="container d-lg-flex align-self-start mt-25-per min-height-lg-100vh space-bottom-2 space-top-4 space-bottom-lg-3 space-lg-0">
+        <div class="w-lg-60 w-xl-50 mt-lg-9">
+            <div class="mb-6 col-md-12">
+                <h1 class="h2 text-white font-weight-normal">SIMARIMAS</h1>
+                <p class="text-white-70">Selamat datang di Sistem Smart Office Bidang Pemasaran Dinas
+                    Pariwisata dan Kebudayaan Provinsi Jawa Barat. </p>
+            </div>
+        </div>
+        <div class="w-lg-60 w-xl-50 mt-lg-9">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="col-md-12 px-0 mb-2">
+                        <div class="card card-frame h-100">
+                            <div class="card-body">
+                                <div class="media align-items-center">
+                                    <div class="u-sm-avatar mr-3">
+                                        <img class="img-fluid" src="{{ 'assets/img/icons/home-bukutamu.png'|theme }}"
+                                             alt="Buku Tamu">
+                                    </div>
+                                    <div class="media-body">
+                                        <div class="d-flex align-items-center">
+                                            <span class="d-block text-dark font-weight-medium">
+                                                {% if user %}
+                                                <a href="/event">Buku Tamu</a>
+                                                {% else %}
+                                                <a href="/public/event">Buku Tamu</a>
+                                                {% endif %}
+                                            </span>
+                                        </div>
+                                        <small class="d-block text-secondary">Pendataan tamu undangan rapat dan kegiatan
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 px-0 mb-2">
+                        <div class="card card-frame h-100">
+                            <div class="card-body">
+                                <div class="media align-items-center">
+                                    <div class="u-sm-avatar mr-3">
+                                        <img class="img-fluid"
+                                             src="{{ 'assets/img/icons/home-perjalanandinas.png'|theme }}"
+                                             alt="Perjalanan Dinas">
+                                    </div>
+                                    <div class="media-body">
+                                        <div class="d-flex align-items-center">
+                                            <span class="d-block text-dark font-weight-medium">
+                                                <a href="{{'dashboard/perjadin'|page}}"> Perjalanan Dinas</a>
+                                            </span>
+                                        </div>
+                                        <small class="d-block text-secondary">Pengajuan dan pencetakan administrasi SPJ
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 px-0 mb-2">
+                        <div class="card card-frame h-100">
+                            <div class="card-body">
+                                <div class="media align-items-center">
+                                    <div class="u-sm-avatar mr-3">
+                                        <img class="img-fluid" src="{{ 'assets/img/icons/home-logkerja.png'|theme }}"
+                                             alt="Nota Dinas">
+                                    </div>
+                                    <div class="media-body">
+                                        <div class="d-flex align-items-center">
+                                            <span class="d-block text-dark font-weight-medium">
+                                                <a href="{{'dashboard/nota-dinas'|page}}"> Nota Dinas</a>
+                                            </span>
+                                        </div>
+                                        <small class="d-block text-secondary">Pencatatan kinerja dan performa pegawai
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 px-lg-0">
+                    <div class="col-md-12 px-0 mb-2">
+                        <div class="card card-frame h-100">
+                            <div class="card-body">
+                                <div class="media align-items-center">
+                                    <div class="u-sm-avatar mr-3">
+                                        <img class="img-fluid"
+                                             src="{{ 'assets/img/icons/home-pengelolaanaset.png'|theme }}"
+                                             alt="Pengelolaan Aset">
+                                    </div>
+                                    <div class="media-body">
+                                        <div class="d-flex align-items-center">
+                                            <span class="d-block text-dark font-weight-medium">
+                                                <a href="{{'dashboard/asset'|page}}">Pengelolaan Aset</a>
+                                            </span>
+                                        </div>
+                                        <small class="d-block text-secondary">Pencatatan peminjaman dan pengembalian
+                                            barang
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 px-0 mb-2">
+                        <div class="card card-frame h-100">
+                            <div class="card-body">
+                                <h5 class="card-title text-center mb-0">Smart Tourism</h5>
+                                <img class="img-fluid img-landing-page" src="{{ 'assets/img/logos/logo.png'|theme }}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Hero Section -->

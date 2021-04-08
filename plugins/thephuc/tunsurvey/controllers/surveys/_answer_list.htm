@@ -1,0 +1,35 @@
+<?php if (count($answers)): ?>
+    <div class="list-preview list-flush">
+        <div class="control-list">
+            <table class="table data" data-control="rowlink">
+                <thead>
+                    <tr>
+                        <th><span><?= trans('thephuc.tunsurvey::lang.form.code') ?></span></th>
+                        <th><span><?= trans('thephuc.tunsurvey::lang.form.answer') ?></span></th>
+                        <th><span><?= trans('thephuc.tunsurvey::lang.form.created_at') ?></span></th>
+                        <th style="width: 10%"><span></span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($answers as $item): ?>
+                        <tr>
+                            <td><?= e($item->code) ?></td>
+                            <td><?= e($item->answer) ?></td>
+                            <td><?= e($item->created_at) ?></td>
+                            <td class="nolink text-right">
+                                <a
+                                    href="javascript:;"
+                                    data-request="onDeleteAnswer"
+                                    data-request-data="record_id: '<?= $item->id ?>'"
+                                    data-request-confirm="<?= trans('backend::lang.form.confirm_delete_multiple') ?>"
+                                    class="oc-icon-remove"
+                                    data-toggle="tooltip"
+                                    title="Remove"></a>
+                            </td>
+                        </tr>
+                    <?php endforeach ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+<?php endif ?>

@@ -1,0 +1,184 @@
+<form id="filters-form">
+    <div class="border-bottom py-4 mb-4">
+        <h4 class="h6 mb-3">Investment Value</h4>
+
+        <!-- Range Slider -->
+        <input class="js-range-slider" type="text"
+               data-extra-classes="u-range-slider u-range-slider-indicator u-range-slider-grid"
+               data-type="double"
+               data-grid="true"
+               data-hide-from-to="false"
+               data-prefix="Rp. "
+               data-postfix=" MIO"
+               data-min="0"
+               data-max="1000000"
+               data-from="100"
+               data-to="1000000"
+               data-result-min="#investmentValueFrom"
+               data-result-max="#investmentValueTo">
+        <div class="d-flex justify-content-between mt-4">
+            <input type="text" value="0" class="form-control form-control-sm max-width-1 mr-md-1"
+                   id="investmentValueFrom">
+            <input type="text" value="1000000" class="form-control form-control-sm max-width-1 mr-md-1"
+                   id="investmentValueTo">
+        </div>
+        <!-- End Range Slider -->
+    </div>
+
+    <div class="border-bottom pb-4 mb-4">
+        <h4 class="h6 mb-3">Scope of Project</h4>
+
+        <!-- Checkboxes -->
+        {% for level in projectLevels %}
+        <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-1">
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" name="projectLevels[]" value="{{level.id}}"
+                       class="custom-control-input investment-filter" id="project-level-{{level.id}}">
+                <label class="custom-control-label text-lh-md" for="project-level-{{level.id}}">{{level.name}}</label>
+            </div>
+        </div>
+        {% endfor %}
+        <!-- End Checkboxes -->
+    </div>
+
+    <div class="border-bottom pb-4 mb-4">
+        <h4 class="h6 mb-3">Investment Schemes</h4>
+
+        <!-- Checkboxes -->
+        {% for scheme in schemes %}
+        <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-1">
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" name="schemes[]" value="{{scheme.id}}"
+                       class="custom-control-input investment-filter"
+                       id="scheme-{{scheme.id}}">
+                <label class="custom-control-label text-lh-md" for="scheme-{{scheme.id}}">{{scheme.name}}</label>
+            </div>
+        </div>
+        {% endfor %}
+        <!-- End Checkboxes -->
+
+        <!-- View More - Collapse -->
+        <!-- <div class="collapse" id="collapseBrand">
+            <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-1">
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="brandGucci">
+                    <label class="custom-control-label" for="brandGucci">Gucci</label>
+                </div>
+                <small>5</small>
+            </div>
+            <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-1">
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="brandMango">
+                    <label class="custom-control-label" for="brandMango">Mango</label>
+                </div>
+                <small>1</small>
+            </div>
+        </div> -->
+        <!-- End View More - Collapse -->
+
+        <!-- Link -->
+        <!-- <a class="link link-collapse small font-size-1" data-toggle="collapse" href="#collapseBrand"
+           role="button" aria-expanded="false" aria-controls="collapseBrand">
+            <span class="link-collapse__default">View more</span>
+            <span class="link-collapse__active">View less</span>
+            <span class="link__icon ml-1">
+              <span class="link__icon-inner">+</span>
+            </span>
+        </a> -->
+        <!-- End Link -->
+    </div>
+
+    <div class="border-bottom pb-4 mb-4">
+        <h4 class="h6 mb-3">Project Status</h4>
+
+        <!-- Checkboxes -->
+        <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-1">
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="sizeS" checked>
+                <label class="custom-control-label" for="sizeS">Environmental Impact Analysis</label>
+            </div>
+            <small>27</small>
+        </div>
+        <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-1">
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="sizeM">
+                <label class="custom-control-label" for="sizeM">Pre Feasibility Study</label>
+            </div>
+            <small>18</small>
+        </div>
+        <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-1">
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="sizeL" checked>
+                <label class="custom-control-label" for="sizeL">Detail Engineering Design</label>
+            </div>
+            <small>0</small>
+        </div>
+        <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-1">
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="sizeXL">
+                <label class="custom-control-label" for="sizeXL">Feasibility Study</label>
+            </div>
+            <small>1</small>
+        </div>
+
+        <!-- End Checkboxes -->
+    </div>
+
+    <div class="border-bottom pb-4 mb-4">
+        <h4 class="h6 mb-3">Sector</h4>
+
+        <!-- Checkboxes -->
+        {% for type in propertyTypes %}
+        <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-1">
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" name="propertyTypes[]" value="{{type.id}}"
+                       class="custom-control-input investment-filter" id="property-type-{{type.id}}">
+                <label class="custom-control-label text-lh-md" for="property-type-{{type.id}}">{{type.name}}</label>
+            </div>
+        </div>
+        {% endfor %}
+
+
+        <!-- End Checkboxes -->
+
+        <!-- View More - Collapse -->
+        <!-- <div class="collapse" id="collapseCategory">
+            <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-1">
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="categoryShorts">
+                    <label class="custom-control-label" for="categoryShorts">Shorts</label>
+                </div>
+                <small>5</small>
+            </div>
+            <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-1">
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="categoryHats">
+                    <label class="custom-control-label" for="categoryHats">Hats</label>
+                </div>
+                <small>3</small>
+            </div>
+            <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-1">
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="categorySocks">
+                    <label class="custom-control-label" for="categorySocks">Socks</label>
+                </div>
+                <small>8</small>
+            </div>
+        </div> -->
+        <!-- End View More - Collapse -->
+
+        <!-- Link -->
+        <!-- <a class="link link-collapse small font-size-1" data-toggle="collapse" href="#collapseCategory"
+           role="button" aria-expanded="false" aria-controls="collapseCategory">
+            <span class="link-collapse__default">View more</span>
+            <span class="link-collapse__active">View less</span>
+            <span class="link__icon ml-1">
+              <span class="link__icon-inner">+</span>
+            </span>
+        </a> -->
+        <!-- End Link -->
+    </div>
+
+    <button type="button" onclick="resetFilterForm()" class="btn btn-sm btn-block btn-soft-secondary transition-3d-hover">Reset
+    </button>
+</form>

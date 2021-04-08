@@ -1,0 +1,65 @@
+<!--<form data-request="onSignin">
+    <div class="form-group">
+        <label for="userSigninLogin">{{ loginAttributeLabel }}</label>
+        <input class="form-control" name="login" type="text"  id="userSigninLogin" required=""
+               placeholder="Enter your email">
+    </div>
+    <div class="form-group">
+        <a href="{{'forgot-password'|page}}" class="text-muted float-right">
+            <small>Forgot your password?</small>
+        </a>
+        <label for="userSigninPassword">Password</label>
+        <input class="form-control" type="password" name="password" required="" id="userSigninPassword"
+               placeholder="Enter your password">
+    </div>
+
+    <div class="form-group mb-0 text-center">
+        <button class="btn btn-primary btn-block" type="submit"><i class="mdi mdi-login"></i> Log In
+        </button>
+    </div>
+
+</form>-->
+
+<form class="mt-5" data-request="onSignin">
+    <!-- Title -->
+    <div class="mb-7">
+        <h2 class="h3 text-primary font-weight-normal mb-0">Selamat <span class="font-weight-semi-bold">Datang</span>
+        </h2>
+        <p>Silahkan login untuk masuk ke dalam dashboard.</p>
+    </div>
+    <!-- End Title -->
+
+    <!-- Form Group -->
+    <div class="js-form-message form-group">
+        <label class="form-label" for="signinSrEmail">Alamat Email</label>
+        <input type="email" class="form-control" name="email" id="signinSrEmail" placeholder="Alamat Email"
+               aria-label="Email address" required>
+    </div>
+    <!-- End Form Group -->
+
+    <!-- Form Group -->
+    <div class="js-form-message form-group">
+        <label class="form-label" for="signinSrPassword">
+                  <span class="d-flex justify-content-between align-items-center">
+                    Kata Sandi
+                      <a class="link-muted text-capitalize font-weight-normal" href="{{'forgot-password'|page}}">Lupa Password?</a>
+                  </span>
+        </label>
+        <input type="password" class="form-control" name="password" id="signinSrPassword" placeholder="********"
+               aria-label="********" required>
+    </div>
+    <!-- End Form Group -->
+
+    <!-- Button -->
+    <div class="row align-items-center mb-5">
+        <!--<div class="col-6">
+          <span class="small text-muted">Don't have an account?</span>
+          <a class="small" href="signup.html">Signup</a>
+        </div>-->
+
+        <div class="col text-right">
+            <button type="submit" class="btn btn-primary transition-3d-hover">Login</button>
+        </div>
+    </div>
+    <!-- End Button -->
+</form>

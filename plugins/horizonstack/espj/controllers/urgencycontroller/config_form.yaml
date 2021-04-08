@@ -1,0 +1,10 @@
+name: UrgencyController
+form: $/horizonstack/espj/models/urgency/fields.yaml
+modelClass: Horizonstack\eSPJ\Models\Urgency
+defaultRedirect: horizonstack/espj/urgencycontroller
+create:
+    redirect: 'horizonstack/espj/urgencycontroller/update/:id'
+    redirectClose: horizonstack/espj/urgencycontroller
+update:
+    redirect: horizonstack/espj/urgencycontroller
+    redirectClose: horizonstack/espj/urgencycontroller

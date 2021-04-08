@@ -1,0 +1,48 @@
+{% if listEmployees|length > 0 %}
+{% for employee in listEmployees %}
+<div class="col-md-4 mb-2">
+    <div class="card text-center mb-5">
+        <div class="card-body p-6">
+            <!-- Team -->
+            <div class="mb-4">
+                <div class="position-relative u-lg-avatar mx-auto mb-3">
+                    {% if employee.avatar %}
+                    <img class="img-fluid rounded-circle" src="{{ employee.avatar.thumb('85','85','crop') }}" alt="{{employee.name}}">
+                    {% else %}
+                    <img src="/themes/smartoffice/assets/img/default-avatar.png"
+                         class="img-fluid rounded-circle" alt="user">
+                    {% endif %}
+
+                    <span class="badge badge-xs badge-outline-primary badge-pos badge-pos--bottom-left rounded-circle"></span>
+                </div>
+
+                <h2 class="h6 mb-0">
+                    <a href="/detail/employee/{{employee.id}}">{{employee.name}}</a>
+                </h2>
+                <p class="small text-primary mb-0">{{employee.email}}</p>
+                <p class="text-black">
+                    {{employee.job}}
+                    <br/>
+                    {{employee.jobLevel.name}}
+                </p>
+            </div>
+            <!-- End Team -->
+        </div>
+
+        <div class="card-footer py-4 px-6">
+            <a class="btn btn-sm btn-soft-success transition-3d-hover" href="tel:{{employee.phone}}">
+                <span class="fa fa-phone mr-2"></span>
+                {{employee.phone}}
+            </a>
+        </div>
+    </div>
+
+</div>
+{% endfor %}
+
+
+{% else %}
+<div class="row">
+    <h3>Tidak ada pegawai yang dapat ditemukan berdasarkan kriteria pilihan Anda.</h3>
+</div>
+{% endif %}

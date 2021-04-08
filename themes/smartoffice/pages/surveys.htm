@@ -1,0 +1,27 @@
+title = "Surveys"
+url = "/surveys"
+layout = "landing"
+is_hidden = 0
+
+[formsurvey]
+active_survey = 1
+background = "background: url(/plugins/thephuc/tunsurvey/assets/form/images/background.jpg) no-repeat center center; background-size: cover;"
+banner_width = 300
+banner_height = 500
+==
+<!-- Hero Section -->
+<div class="d-lg-flex">
+    <div class="container d-lg-flex align-self-start mt-25-per min-height-lg-100vh space-bottom-2 space-top-4 space-bottom-lg-3 space-lg-0">
+        <div class="w-lg-60 w-xl-40 mt-lg-9">
+            <div class="mb-6 col-md-12">
+                <h1 class="h2 text-white font-weight-normal">SIMARIMAS</h1>
+                <p class="text-white-70">Selamat datang di Sistem Smart Office Bidang Pemasaran Dinas
+                    Pariwisata dan Kebudayaan Provinsi Jawa Barat. </p>
+            </div>
+        </div>
+        <div class="w-lg-60 w-xl-60 mt-lg-9">
+            {% component 'formsurvey' %}
+        </div>
+    </div>
+</div>
+<!-- End Hero Section -->

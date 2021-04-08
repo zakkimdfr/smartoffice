@@ -1,0 +1,10 @@
+name: Attn
+form: $/horizonstack/workreport/models/reportattn/fields.yaml
+modelClass: Horizonstack\Workreport\Models\ReportAttn
+defaultRedirect: horizonstack/workreport/reportattns
+create:
+    redirect: 'horizonstack/workreport/reportattns/update/:id'
+    redirectClose: horizonstack/workreport/reportattns
+update:
+    redirect: horizonstack/workreport/reportattns
+    redirectClose: horizonstack/workreport/reportattns

@@ -1,0 +1,10 @@
+name: Ownerships
+form: $/horizonstack/investment/models/ownership/fields.yaml
+modelClass: Horizonstack\Investment\Models\Ownership
+defaultRedirect: horizonstack/investment/ownerships
+create:
+    redirect: 'horizonstack/investment/ownerships/update/:id'
+    redirectClose: horizonstack/investment/ownerships
+update:
+    redirect: horizonstack/investment/ownerships
+    redirectClose: horizonstack/investment/ownerships

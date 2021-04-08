@@ -1,0 +1,20 @@
+title = "Add Investment"
+url = "/form-demo-investasi"
+layout = "default"
+is_hidden = 0
+
+[investmentForm]
+==
+<div class="container-fluid position-relative p-2 mb-3 space-top-3">
+    <div class="container mt-10 px-md-0">
+        <div class="text-center">
+            <h3 class="font-weight-semi-bold">Investment Form Submission</h3>
+            <p>Please prepare your data based on the project proposal.<br/>
+                Submitted submissions will be validated and curated by our team.</p>
+        </div>
+
+        <div class="row">
+            {% component 'investmentForm' %}
+        </div>
+    </div>
+</div>

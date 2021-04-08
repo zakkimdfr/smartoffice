@@ -1,0 +1,18 @@
+columns:
+    id:
+        label: ID
+        type: text
+    name:
+        label: Name
+        type: text
+        searchable: true
+        sortable: true
+    district:
+        label: District
+        span: auto
+        relation: district
+        select: name
+    is_active:
+        label: Active
+        type: switch
+        sortable: true

@@ -1,0 +1,10 @@
+name: Infrastructures
+form: $/horizonstack/investment/models/infrastructure/fields.yaml
+modelClass: Horizonstack\Investment\Models\Infrastructure
+defaultRedirect: horizonstack/investment/infrastructures
+create:
+    redirect: 'horizonstack/investment/infrastructures/update/:id'
+    redirectClose: horizonstack/investment/infrastructures
+update:
+    redirect: horizonstack/investment/infrastructures
+    redirectClose: horizonstack/investment/infrastructures

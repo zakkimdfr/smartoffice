@@ -1,0 +1,23 @@
+<h2 class="h3 text-primary font-weight-normal mb-0">Lupa <span class="font-weight-semi-bold">password?</span>
+</h2>
+<p class="small">
+    Jangan khawatir! Ketik alamat email Anda untuk verifikasi.
+</p>
+
+<form class="mt-5"
+      data-request="{{ __SELF__ }}::onRestorePassword"
+      data-request-update="'{{ __SELF__ }}::reset': '#partialUserResetForm'">
+    <div class="form-group">
+        <label for="userRestoreEmail" class="text-uppercase">Alamat Email</label>
+        <input name="email" type="email" class="form-control" id="userRestoreEmail" placeholder="Email Anda">
+    </div>
+
+    <div class="row align-items-center mb-5">
+        <div class="col-md-5 text-left">
+            <a href="{{'login'|page}}" class="text-decoration-none border-bottom-dashed small">Kembali ke halaman login</a>
+        </div>
+        <div class="col-md-7 text-right">
+            <button type="submit" class="btn btn-primary transition-3d-hover">Minta tautan reset password</button>
+        </div>
+    </div>
+</form>

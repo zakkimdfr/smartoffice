@@ -1,0 +1,12 @@
+columns:
+    code:
+        label: 'thephuc.tunsurvey::lang.form.code'
+        type: text
+        searchable: true
+    answer:
+        label: 'thephuc.tunsurvey::lang.form.answer'
+        type: text
+        searchable: true
+    created_at:
+        label: 'thephuc.tunsurvey::lang.form.created_at'
+        type: datetime

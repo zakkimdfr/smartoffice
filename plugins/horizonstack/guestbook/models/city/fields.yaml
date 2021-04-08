@@ -1,0 +1,14 @@
+fields:
+    id:
+        label: Id
+        span: auto
+        type: number
+    name:
+        label: Name
+        span: left
+        type: text
+    is_active:
+        label: Active
+        span: left
+        type: switch
+        default: 1

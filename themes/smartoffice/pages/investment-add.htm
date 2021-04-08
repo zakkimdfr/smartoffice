@@ -1,0 +1,1420 @@
+title = "add investment"
+url = "/investment/add"
+layout = "default"
+is_hidden = 0
+
+[investmentForm]
+==
+<div class="container-fluid position-relative p-2 mb-3 space-top-2">
+    <div class="container mt-10">
+        <div class="text-center">
+            <h3 class="font-weight-semi-bold">Formulir Isian Data Investasi</h3>
+            <p>Mohon siapkan data Anda sebelum mengisi formulir ini.<br>
+                Data-data yang telah terkirim akan tersimpan ke dalam database kami.</p>
+        </div>
+
+        <!-- Step Form -->
+        <form class="js-validate js-step-form"
+              data-progress-id="#progressStepForm"
+              data-steps-id="#contentStepForm"
+              novalidate="novalidate">
+            <div class="card">
+                <div class="card-header p-5 d-none d-lg-block">
+                    <nav id="progressStepForm" class="js-step-progress nav nav-icon nav-justified text-center">
+                        <a href="javascript:;" class="nav-item">
+          <span class="nav-icon-action">
+            <h1 class="display-4 font-weight-bold">1</h1>
+          </span>
+                            Project Title
+                        </a>
+                        <a href="javascript:;" class="nav-item">
+          <span class="nav-icon-action">
+            <h1 class="display-4 font-weight-bold">2</h1>
+          </span>
+                            Project Location &amp; Map
+                        </a>
+                        <a href="javascript:;" class="nav-item">
+          <span class="nav-icon-action">
+            <h1 class="display-4 font-weight-bold">3</h1>
+          </span>
+                            Policy Background
+                        </a>
+                        <a href="javascript:;" class="nav-item">
+          <span class="nav-icon-action">
+            <h1 class="display-4 font-weight-bold">4</h1>
+          </span>
+                            Project Objectives
+                        </a>
+                        <a href="javascript:;" class="nav-item">
+          <span class="nav-icon-action">
+            <h1 class="display-4 font-weight-bold">5</h1>
+          </span>
+                            Project Description
+                        </a>
+                        <a href="javascript:;" class="nav-item">
+          <span class="nav-icon-action">
+            <h1 class="display-4 font-weight-bold">6</h1>
+          </span>
+                            Scope of Project
+                        </a>
+                        <a href="javascript:;" class="nav-item">
+          <span class="nav-icon-action">
+            <h1 class="display-4 font-weight-bold">7</h1>
+          </span>
+                            Expected Time of Operation
+                        </a>
+                        <a href="javascript:;" class="nav-item">
+          <span class="nav-icon-action">
+            <h1 class="display-4 font-weight-bold">8</h1>
+          </span>
+                            Period of Development
+                        </a>
+                        <a href="javascript:;" class="nav-item">
+          <span class="nav-icon-action">
+            <h1 class="display-4 font-weight-bold">9</h1>
+          </span>
+                            Project Current Status
+                        </a>
+                        <a href="javascript:;" class="nav-item">
+          <span class="nav-icon-action">
+            <h1 class="display-4 font-weight-bold">10</h1>
+          </span>
+                            Offered Investment Schemes
+                        </a>
+                        <a href="javascript:;" class="nav-item">
+          <span class="nav-icon-action">
+            <h1 class="display-4 font-weight-bold">11</h1>
+          </span>
+                            Investment Cost
+                        </a>
+                        <a href="javascript:;" class="nav-item">
+          <span class="nav-icon-action">
+            <h1 class="display-4 font-weight-bold">12</h1>
+          </span>
+                            Financial Overview
+                        </a>
+                        <a href="javascript:;" class="nav-item">
+          <span class="nav-icon-action">
+            <h1 class="display-4 font-weight-bold">13</h1>
+          </span>
+                            Incentives
+                        </a>
+                        <a href="javascript:;" class="nav-item">
+          <span class="nav-icon-action">
+            <h1 class="display-4 font-weight-bold">14</h1>
+          </span>
+                            Executing Agency
+                        </a>
+                        <a href="javascript:;" class="nav-item">
+          <span class="nav-icon-action">
+            <h1 class="display-4 font-weight-bold">15</h1>
+          </span>
+                            Contact and Coordination
+                        </a>
+                    </nav>
+                </div>
+
+                <!-- Content Step Form -->
+                <div id="contentStepForm" class="card-body p-5">
+                    <div id="selectStepOne" class="active">
+
+                        <div class="d-block d-lg-none border-bottom mb-5 text-center">
+  <span class="nav-icon-action bg-primary">
+    <h1 class="display-4 font-weight-bold text-white">1</h1>
+  </span>
+                            Project Title
+                        </div>
+
+                        <div class="row mt-2">
+                            <div class="col-md-12 mb-3">
+                                <label for="name" class="font-weight-medium text-uppercase">Judul Proyek
+                                    <strong
+                                            class="text-danger">*</strong></label>
+
+                                <div class="input-group mb-2">
+                                    <div class="input-group-prepend">
+                    <span class="input-group-text" id="listingOrganizationsLabel"><span
+                            class="fas fa-globe"></span></span>
+                                    </div>
+                                    <input type="text" class="form-control" name="name" id="name"
+                                           placeholder="Isi Judul Proyek Anda">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-end">
+                            <button type="button" class="btn btn-sm btn-primary transition-3d-hover mr-1"
+                                    data-next-step="#selectStepTwo">Next
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="selectStepTwo" style="display: none;">
+
+                        <div class="d-block d-lg-none border-bottom mb-5 text-center">
+  <span class="nav-icon-action bg-primary">
+    <h1 class="display-4 font-weight-bold text-white">2</h1>
+  </span>
+                            Project Location &amp; Map
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12 mb-3">
+                                <label for="objectives" class="font-weight-medium text-uppercase">Lokasi <strong
+                                        class="text-danger">*</strong></label>
+                                <div class="input-group mb-2">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><span class="fas fa-map-pin"></span></span>
+                                    </div>
+                                    <input type="text" class="form-control" name="address" id="address"
+                                           placeholder="Ketik alamat dan arahkan marker peta">
+                                    <div id="map" style="height: 250px; width: 100%; margin-top: 10px"></div>
+                                </div>
+                                <input hidden type="text" name="latitude" id="latitude">
+                                <input hidden type="text" name="longitude" id="longitude">
+                            </div>
+
+                            <div class="col-md-12 mb-3">
+                                <label for="city_id" class="font-weight-medium text-uppercase">Kota/Kabupaten <strong
+                                        class="text-danger">*</strong></label>
+                                <div class="input-group mb-2">
+                                    <div class="input-group-prepend"><span class="input-group-text"><span
+                                            class="fas fa-building"></span></span>
+                                    </div>
+                                    <select id="city_id" name="city_id"
+                                            data-request="onSelectCity"
+                                            class="js-select selectpicker form-control"
+                                            title="Pilih Kota/Kabupaten"
+                                            data-style="btn-sm bg-transparent text-secondary font-weight-normal px-0"
+                                            data-live-search="true"
+                                            data-container="body"
+                                            data-searchbox-classes="input-group-sm"
+                                            data-size="8">
+                                        <option class="bs-title-option" value=""></option>
+                                        <option value="3204">Kabupaten Bandung</option>
+                                        <option value="3217">Kabupaten Bandung Barat</option>
+                                        <option value="3216">Kabupaten Bekasi</option>
+                                        <option value="3201">Kabupaten Bogor</option>
+                                        <option value="3207">Kabupaten Ciamis</option>
+                                        <option value="3203">Kabupaten Cianjur</option>
+                                        <option value="3209">Kabupaten Cirebon</option>
+                                        <option value="3205">Kabupaten Garut</option>
+                                        <option value="3212">Kabupaten Indramayu</option>
+                                        <option value="3215">Kabupaten Karawang</option>
+                                        <option value="3208">Kabupaten Kuningan</option>
+                                        <option value="3210">Kabupaten Majalengka</option>
+                                        <option value="3218">Kabupaten Pangandaran</option>
+                                        <option value="3214">Kabupaten Purwakarta</option>
+                                        <option value="3213">Kabupaten Subang</option>
+                                        <option value="3202">Kabupaten Sukabumi</option>
+                                        <option value="3211">Kabupaten Sumedang</option>
+                                        <option value="3206">Kabupaten Tasikmalaya</option>
+                                        <option value="3273">Kota Bandung</option>
+                                        <option value="3279">Kota Banjar</option>
+                                        <option value="3275">Kota Bekasi</option>
+                                        <option value="3271">Kota Bogor</option>
+                                        <option value="3277">Kota Cimahi</option>
+                                        <option value="3274">Kota Cirebon</option>
+                                        <option value="3276">Kota Depok</option>
+                                        <option value="3272">Kota Sukabumi</option>
+                                        <option value="3278">Kota Tasikmalaya</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="district_id" class="font-weight-medium text-uppercase">Kecamatan <strong
+                                        class="text-danger">*</strong></label>
+                                <div class="input-group mb-2">
+                                    <div class="input-group-prepend"><span class="input-group-text"><span
+                                            class="fas fa-building"></span></span>
+                                    </div>
+                                    <select id="district_id" name="district_id"
+                                            data-request="onSelectDistrict"
+                                            class="js-select selectpicker form-control"
+                                            title="Pilih Kecamatan"
+                                            data-style="btn-sm bg-transparent text-secondary font-weight-normal px-0"
+                                            data-live-search="true"
+                                            data-container="body"
+                                            data-searchbox-classes="input-group-sm"
+                                            data-size="8">
+                                        <option class="bs-title-option" value=""></option>
+                                        <option value="3204150"> Arjasari</option>
+                                        <option value="3204140"> Baleendah</option>
+                                        <option value="3204160"> Banjaran</option>
+                                        <option value="3204280"> Bojongsoang</option>
+                                        <option value="3204161"> Cangkuang</option>
+                                        <option value="3204100"> Cicalengka</option>
+                                        <option value="3204090"> Cikancung</option>
+                                        <option value="3204300"> Cilengkrang</option>
+                                        <option value="3204290"> Cileunyi</option>
+                                        <option value="3204030"> Cimaung</option>
+                                        <option value="3204310"> Cimenyan</option>
+                                        <option value="3204130"> Ciparay</option>
+                                        <option value="3204010"> Ciwidey</option>
+                                        <option value="3204270"> Dayeuhkolot</option>
+                                        <option value="3204070"> Ibun</option>
+                                        <option value="3204180"> Katapang</option>
+                                        <option value="3204050"> Kertasari</option>
+                                        <option value="3204191"> Kutawaringin</option>
+                                        <option value="3204120"> Majalaya</option>
+                                        <option value="3204250"> Margaasih</option>
+                                        <option value="3204260"> Margahayu</option>
+                                        <option value="3204101"> Nagreg</option>
+                                        <option value="3204060"> Pacet</option>
+                                        <option value="3204170"> Pameungpeuk</option>
+                                        <option value="3204040"> Pangalengan</option>
+                                        <option value="3204080"> Paseh</option>
+                                        <option value="3204020"> Pasirjambu</option>
+                                        <option value="3204011"> Rancabali</option>
+                                        <option value="3204110"> Rancaekek</option>
+                                        <option value="3204121"> Solokan Jeruk</option>
+                                        <option value="3204190"> Soreang</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="village_id" class="font-weight-medium text-uppercase">Desa <strong
+                                        class="text-danger">*</strong></label>
+                                <div class="input-group mb-2">
+                                    <div class="input-group-prepend"><span class="input-group-text"><span
+                                            class="fas fa-building"></span></span>
+                                    </div>
+                                    <select id="village_id" name="village_id"
+                                            class="js-select selectpicker form-control"
+                                            title="Pilih Desa"
+                                            data-style="btn-sm bg-transparent text-secondary font-weight-normal px-0"
+                                            data-live-search="true"
+                                            data-container="body"
+                                            data-searchbox-classes="input-group-sm"
+                                            data-size="8">
+                                        <option class="bs-title-option" value=""></option>
+                                        <option value="3204140004"> Andir</option>
+                                        <option value="3204140003"> Baleendah</option>
+                                        <option value="3204140006"> Bojongmalaka</option>
+                                        <option value="3204140001"> Jelekong</option>
+                                        <option value="3204140005"> Malakasari</option>
+                                        <option value="3204140002"> Manggahang</option>
+                                        <option value="3204140007"> Rancamanyar</option>
+                                        <option value="3204140008"> Wargamekar</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="d-flex justify-content-end">
+                            <a class="btn btn-sm btn-soft-secondary transition-3d-hover mr-1" href="javascript:;"
+                               data-previous-step="#selectStepOne">Back</a>
+                            <button type="button" class="btn btn-sm btn-primary transition-3d-hover"
+                                    data-next-step="#selectStepThree">Next
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="selectStepThree" style="display: none;">
+
+                        <div class="d-block d-lg-none border-bottom mb-5 text-center">
+  <span class="nav-icon-action bg-primary">
+    <h1 class="display-4 font-weight-bold text-white">3</h1>
+  </span>
+                            Policy Background
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12 mb-3">
+                                <label class="font-weight-medium text-uppercase">Dasar Hukum</label>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="input-group mb-2">
+                                            <div class="input-group-prepend">
+                    <span class="input-group-text">1.
+                    </span>
+                                            </div>
+                                            <input type="text" class="form-control" name="policy_regulations_name1"
+                                                   id="policy_regulations_name1"
+                                                   placeholder="Nama Berkas">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="input-group mb-2">
+                                            <input type="file" class="form-control form-control-file"
+                                                   name="policy_regulations_file1"
+                                                   id="policy_regulations_file1">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="input-group mb-2">
+                                            <div class="input-group-prepend">
+                    <span class="input-group-text">2.
+                    </span>
+                                            </div>
+                                            <input type="text" class="form-control" name="policy_regulations_name2"
+                                                   id="policy_regulations_name2"
+                                                   placeholder="Nama Berkas">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="input-group mb-2">
+                                            <input type="file" class="form-control form-control-file"
+                                                   name="policy_regulations_file2"
+                                                   id="policy_regulations_file2">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="input-group mb-2">
+                                            <div class="input-group-prepend">
+                    <span class="input-group-text">3.
+                    </span>
+                                            </div>
+                                            <input type="text" class="form-control" name="policy_regulations_name3"
+                                                   id="policy_regulations_name3"
+                                                   placeholder="Nama Berkas">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="input-group mb-2">
+                                            <input type="file" class="form-control form-control-file"
+                                                   name="policy_regulations_file3"
+                                                   id="policy_regulations_file3">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="input-group mb-2">
+                                            <div class="input-group-prepend">
+                    <span class="input-group-text">4.
+                    </span>
+                                            </div>
+                                            <input type="text" class="form-control" name="policy_regulations_name4"
+                                                   id="policy_regulations_name4"
+                                                   placeholder="Nama Berkas">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="input-group mb-2">
+                                            <input type="file" class="form-control form-control-file"
+                                                   name="policy_regulations_file4"
+                                                   id="policy_regulations_file4">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-end">
+                            <a class="btn btn-sm btn-soft-secondary transition-3d-hover mr-1" href="javascript:;"
+                               data-previous-step="#selectStepTwo">Back</a>
+                            <button type="button" class="btn btn-sm btn-primary transition-3d-hover"
+                                    data-next-step="#selectStepFour">Next
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="selectStepFour" style="display: none;">
+
+                        <div class="d-block d-lg-none border-bottom mb-5 text-center">
+  <span class="nav-icon-action bg-primary">
+    <h1 class="display-4 font-weight-bold text-white">4</h1>
+  </span>
+                            Project Objectives
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12 mb-3">
+                                <label for="objectives" class="font-weight-medium text-uppercase">Tujuan Proyek </label>
+                                <div class="input-group mb-2">
+                <textarea type="text" rows="5" class="form-control" name="objectives" id="objectives"
+                          placeholder="Jabarkan tujuan proyek yang akan Anda tawarkan.."></textarea>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="d-flex justify-content-end">
+                            <a class="btn btn-sm btn-soft-secondary transition-3d-hover mr-1" href="javascript:;"
+                               data-previous-step="#selectStepThree">Back</a>
+                            <button type="button" class="btn btn-sm btn-primary transition-3d-hover"
+                                    data-next-step="#selectStepFive">Next
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="selectStepFive" style="display: none;">
+
+                        <div class="d-block d-lg-none border-bottom mb-5 text-center">
+  <span class="nav-icon-action bg-primary">
+    <h1 class="display-4 font-weight-bold text-white">5</h1>
+  </span>
+                            Project Description
+                        </div>
+
+                        <div class="col-md-12 mb-3">
+                            <label for="objectives" class="font-weight-medium text-uppercase">Deskripsi
+                                Proyek </label>
+                            <div class="input-group mb-2">
+                <textarea type="text" rows="5" class="form-control" name="objectives" id="objectives"
+                          placeholder="Jabarkan deskripsi atas proyek yang akan Anda tawarkan.."></textarea>
+                            </div>
+                        </div>
+
+
+                        <div class="d-flex justify-content-end">
+                            <a class="btn btn-sm btn-soft-secondary transition-3d-hover mr-1" href="javascript:;"
+                               data-previous-step="#selectStepFour">Back</a>
+                            <button type="button" class="btn btn-sm btn-primary transition-3d-hover"
+                                    data-next-step="#selectStepSix">Next
+                            </button>
+                        </div>
+                    </div>
+
+
+                    <div id="selectStepSix" style="display: none;">
+
+                        <div class="d-block d-lg-none border-bottom mb-5 text-center">
+  <span class="nav-icon-action bg-primary">
+    <h1 class="display-4 font-weight-bold text-white">6</h1>
+  </span>
+                            Scope of Project
+                        </div>
+
+                        <div class="col">
+                            <label for="project_level_id" class="font-weight-medium text-uppercase">Cakupan Proyek
+                                <strong
+                                        class="text-danger">*</strong></label>
+
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><span class="fas fa-suitcase"></span></span>
+                                </div>
+                                <select name="project_level_id" class="custom-select" id="project_level_id">
+                                    <option selected disabled>Pilih Cakupan</option>
+                                    {% for level in projectLevels %}
+                                    <option value="{{level.id}}">{{level.name}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12 mb-10">
+                                <!-- Title -->
+                                <div class="border-bottom pb-3 mb-5">
+                                    <h2 class="h6 text-secondary mb-0">Tipe Properti <strong
+                                            class="text-danger">*</strong>
+                                    </h2>
+                                </div>
+                                <!-- End Title -->
+
+                                <!-- Radio Checkbox Group -->
+                                <div class="row mx-gutters-2">
+                                    {% for type in propertyTypes %}
+                                    <div class="col-6 col-md-3 mb-3 mb-md-0">
+                                        <div class="custom-control custom-radio custom-control-inline checkbox-outline text-center">
+                                            <input type="radio" id="property-type-{{type.id}}" name="property_type_id"
+                                                   value="{{type.id}}"
+                                                   class="custom-control-input checkbox-outline__input">
+                                            <label class="checkbox-outline__label rounded py-3 px-1 mb-0"
+                                                   for="property-type-{{type.id}}">
+                                                {% if type.icon %}
+                                                <img class="js-svg-injector w-50 mb-3"
+                                                     src="{{type.icon.path}}" alt="{{type.name}}"
+                                                     data-parent="#add-investment-form">
+                                                {% else %}
+                                                <img class="js-svg-injector w-50 mb-3"
+                                                     src="{{'assets/img/logos/logo.png'|theme}}" alt="{{type.name}}"
+                                                     data-parent="#add-investment-form">
+                                                {% endif %}
+                                                <span class="d-block">{{type.name}}</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                                <!-- End Radio Checkbox Group -->
+                            </div>
+
+                        </div>
+
+                        <div class="col">
+                            <label for="organization_name" class="font-weight-medium text-uppercase">Remarks
+                                <strong
+                                        class="text-danger">*</strong></label>
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend">
+                    <span class="input-group-text"><span class="fas fa-suitcase"></span>
+                    </span>
+                                </div>
+                                <input type="text" class="form-control" name="organization_name"
+                                       id="organization_name"
+                                       placeholder="remarks">
+                            </div>
+                        </div>
+
+
+                        <div class="d-flex justify-content-end">
+                            <a class="btn btn-sm btn-soft-secondary transition-3d-hover mr-1" href="javascript:;"
+                               data-previous-step="#selectStepFive">Back</a>
+                            <button type="button" class="btn btn-sm btn-primary transition-3d-hover"
+                                    data-next-step="#selectStepSeven">Next
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="selectStepSeven" style="display: none;">
+
+                        <div class="d-block d-lg-none border-bottom mb-5 text-center">
+  <span class="nav-icon-action bg-primary">
+    <h1 class="display-4 font-weight-bold text-white">7</h1>
+  </span>
+                            Expected Time of Operation
+                        </div>
+
+                        <div class="col mb-3">
+                            <label for="project_level_id" class="font-weight-medium text-uppercase">Target
+                                Operational <strong
+                                        class="text-danger">*</strong></label>
+
+                            <!-- Datepicker -->
+                            <div id="datepickerWrapperFrom" class="u-datepicker input-group">
+                                <div class="input-group-prepend">
+    <span class="input-group-text">
+      <span class="fas fa-calendar"></span>
+    </span>
+                                </div>
+                                <input class="js-range-datepicker form-control bg-transparent rounded-right"
+                                       type="text" placeholder="Tanggal" aria-label="Tanggal"
+                                       data-rp-wrapper="#datepickerWrapperFrom"
+                                       data-rp-date-format="d/m/Y">
+                            </div>
+                            <!-- End Datepicker -->
+                        </div>
+
+                        <div class="d-flex justify-content-end">
+                            <a class="btn btn-sm btn-soft-secondary transition-3d-hover mr-1" href="javascript:;"
+                               data-previous-step="#selectStepSix">Back</a>
+                            <button type="button" class="btn btn-sm btn-primary transition-3d-hover"
+                                    data-next-step="#selectStepEight">Next
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="selectStepEight" style="display: none;">
+
+                        <div class="d-block d-lg-none border-bottom mb-5 text-center">
+  <span class="nav-icon-action bg-primary">
+    <h1 class="display-4 font-weight-bold text-white">8</h1>
+  </span>
+                            Period of Development
+                        </div>
+
+                        <div class="col">
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend">
+                    <span class="input-group-text"><span class="fas fa-layer-group"></span>
+                    </span>
+                                </div>
+                                <input type="text" class="form-control" name="land_allocation" id="land_allocation"
+                                       placeholder="Periode">
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-end">
+                            <a class="btn btn-sm btn-soft-secondary transition-3d-hover mr-1" href="javascript:;"
+                               data-previous-step="#selectStepSeven">Back</a>
+                            <button type="button" class="btn btn-sm btn-primary transition-3d-hover"
+                                    data-next-step="#selectStepNine">Next
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="selectStepNine" style="display: none;">
+
+                        <div class="d-block d-lg-none border-bottom mb-5 text-center">
+  <span class="nav-icon-action bg-primary">
+    <h1 class="display-4 font-weight-bold text-white">9</h1>
+  </span>
+                            Project Current Status
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-md-6 mb-3">
+                                <label for="ownership_id" class="font-weight-medium text-uppercase">Kepemilikan Properti
+                                    <strong
+                                            class="text-danger">*</strong></label>
+                                <div class="input-group mb-2">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><span class="fas fa-suitcase"></span></span>
+                                    </div>
+                                    <select name="ownership_id" class="custom-select" id="ownership_id">
+                                        <option selected disabled>Pilih salah satu</option>
+                                        {% for ownership in ownerships %}
+                                        <option value="{{ownership.id}}">{{ownership.name}}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="land_allocation" class="font-weight-medium text-uppercase">Alokasi Lahan
+                                    <strong
+                                            class="text-danger">*</strong></label>
+                                <div class="input-group mb-2">
+                                    <div class="input-group-prepend">
+                    <span class="input-group-text"><span class="fas fa-layer-group"></span>
+                    </span>
+                                    </div>
+                                    <input type="text" class="form-control" name="land_allocation" id="land_allocation"
+                                           placeholder="Peruntukan lahan">
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="land_area" class="font-weight-medium text-uppercase">Luas Lahan <strong
+                                        class="text-danger">*</strong></label>
+                                <div class="input-group mb-2">
+                                    <div class="input-group-prepend">
+                    <span class="input-group-text">m2
+                    </span>
+                                    </div>
+                                    <input type="number" class="form-control" name="land_area" id="land_area"
+                                           placeholder="0">
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="land_area" class="font-weight-medium text-uppercase">Human Resource <strong
+                                        class="text-danger">*</strong></label>
+                                <div class="input-group mb-2">
+                                    <div class="input-group-prepend">
+                    <span class="input-group-text">People
+                    </span>
+                                    </div>
+                                    <input type="number" class="form-control" name="land_area" id="land_area"
+                                           placeholder="0">
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12 mb-3">
+                                <!-- Title -->
+                                <div class="border-bottom pb-3 mb-5">
+                                    <h2 class="h6 text-secondary mb-0">Ketersediaan Infrastruktur <strong
+                                            class="text-danger">*</strong>
+                                    </h2>
+                                </div>
+                                <!-- End Title -->
+
+                                <!-- Radio Checkbox Group -->
+                                <div class="row mx-gutters-2">
+                                    {% for infrastructure in infrastructures %}
+                                    <div class="col-4 col-md-2 mb-3">
+                                        <div class="custom-control custom-radio custom-control-inline checkbox-outline text-center w-100">
+                                            <input type="checkbox" id="infrastructure-{{infrastructure.id}}"
+                                                   name="infrastructures[]"
+                                                   value="{{infrastructure.id}}"
+                                                   class="custom-control-input checkbox-outline__input">
+                                            <label class="checkbox-outline__label rounded py-3 px-1 mb-0 w-100"
+                                                   for="infrastructure-{{infrastructure.id}}">
+                                                {% if infrastructure.icon %}
+                                                <img class="js-svg-injector w-50 mb-3"
+                                                     src="{{infrastructure.icon.thumb('75','75','crop')}}"
+                                                     alt="{{infrastructure.name}}"
+                                                     data-parent="#add-investment-form">
+                                                {% else %}
+                                                <img class="js-svg-injector w-50 mb-3"
+                                                     src="{{'assets/img/logos/logo.png'|theme}}"
+                                                     alt="{{infrastructure.name}}"
+                                                     data-parent="#add-investment-form">
+                                                {% endif %}
+                                                <span class="d-block"
+                                                      style="height: 48px">{{infrastructure.name}}</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                                <!-- End Radio Checkbox Group -->
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label class="font-weight-medium text-uppercase">Foto-foto <strong
+                                        class="text-danger">*</strong></label>
+                                <div class="input-group mb-2">
+                                    {% component 'photos' %}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="ded_document" class="font-weight-medium text-uppercase">Dokumen DED </label>
+                                <div class="input-group mb-2">
+                                    <input type="file" name="ded_document" id="ded_document" class="dropify"
+                                           data-allowed-file-extensions="pdf"
+                                           data-max-file-size="5M"/>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="amdal_document" class="font-weight-medium text-uppercase">Dokumen
+                                    AMDAL </label>
+                                <div class="input-group mb-2">
+                                    <input type="file" name="amdal_document" id="amdal_document" class="dropify"
+                                           data-allowed-file-extensions="pdf"
+                                           data-max-file-size="5M"/>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="amdas_document" class="font-weight-medium text-uppercase">Dokumen
+                                    AMDAS </label>
+                                <div class="input-group mb-2">
+                                    <input type="file" name="amdas_document" id="amdas_document" class="dropify"
+                                           data-allowed-file-extensions="pdf"
+                                           data-max-file-size="5M"/>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="feasibility_study_document" class="font-weight-medium text-uppercase">Dokumen
+                                    Feasibility Study
+                                </label>
+                                <div class="input-group mb-2">
+                                    <input type="file" name="feasibility_study_document" id="feasibility_study_document"
+                                           class="dropify"
+                                           data-allowed-file-extensions="pdf"
+                                           data-max-file-size="5M"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-end">
+                            <a class="btn btn-sm btn-soft-secondary transition-3d-hover mr-1" href="javascript:;"
+                               data-previous-step="#selectStepEight">Back</a>
+                            <button type="button" class="btn btn-sm btn-primary transition-3d-hover"
+                                    data-next-step="#selectStepTen">Next
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="selectStepTen" style="display: none;">
+
+                        <div class="d-block d-lg-none border-bottom mb-5 text-center">
+  <span class="nav-icon-action bg-primary">
+    <h1 class="display-4 font-weight-bold text-white">10</h1>
+  </span>
+                            Offered Investment Schemes
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <label for="investment_schemes" class="font-weight-medium text-uppercase">Skema
+                                    Penawaran
+                                    <strong
+                                            class="text-danger">*</strong></label>
+                                <div class="input-group mb-2">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><span class="fas fa-suitcase"></span></span>
+                                    </div>
+                                    <select id="investment_schemes" name="investment_schemes[]"
+                                            class="js-select selectpicker form-control"
+                                            title="Pilih Skema"
+                                            data-style="btn-sm bg-transparent text-secondary font-weight-normal px-0"
+                                            data-live-search="true"
+                                            multiple
+                                            data-container="body"
+                                            data-searchbox-classes="input-group-sm"
+                                            data-selected-text-format="count">
+                                        {% for scheme in schemes %}
+                                        <option value="{{scheme.id}}"
+                                                data-tokens="scheme-{{scheme.id}}">
+                                            {{scheme.name}}
+                                        </option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="d-flex justify-content-end">
+                            <a class="btn btn-sm btn-soft-secondary transition-3d-hover mr-1" href="javascript:;"
+                               data-previous-step="#selectStepNine">Back</a>
+                            <button type="button" class="btn btn-sm btn-primary transition-3d-hover"
+                                    data-next-step="#selectStepEleven">Next
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="selectStepEleven" style="display: none;">
+
+                        <div class="d-block d-lg-none border-bottom mb-5 text-center">
+  <span class="nav-icon-action bg-primary">
+    <h1 class="display-4 font-weight-bold text-white">11</h1>
+  </span>
+                            Investment Cost
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <label for="investment_value" class="font-weight-medium text-uppercase">Nilai Investasi
+                                    <strong
+                                            class="text-danger">*</strong></label>
+
+                                <div class="input-group mb-2">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Rp.</span>
+                                    </div>
+                                    <input type="text" class="form-control" name="investment_value"
+                                           id="investment_value"
+                                           placeholder="Isi dengan angka tanpa titik/koma">
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        <div class="d-flex justify-content-end">
+                            <a class="btn btn-sm btn-soft-secondary transition-3d-hover mr-1" href="javascript:;"
+                               data-previous-step="#selectStepTen">Back</a>
+                            <button type="button" class="btn btn-sm btn-primary transition-3d-hover"
+                                    data-next-step="#selectStepTwelve">Next
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="selectStepTwelve" style="display: none;">
+
+                        <div class="d-block d-lg-none border-bottom mb-5 text-center">
+  <span class="nav-icon-action bg-primary">
+    <h1 class="display-4 font-weight-bold text-white">12</h1>
+  </span>
+                            Financial Overview
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="investment_value" class="font-weight-medium text-uppercase">Internal Rate
+                                    Return (IRR)
+                                    <strong
+                                            class="text-danger">*</strong></label>
+
+                                <div class="input-group mb-2">
+                                    <input type="text" class="form-control" name="investment_value"
+                                           id="investment_value"
+                                           placeholder="Isi dengan angka tanpa titik/koma">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">%</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="investment_value" class="font-weight-medium text-uppercase">Net Present
+                                    Value (NPV)
+                                    <strong
+                                            class="text-danger">*</strong></label>
+
+                                <div class="input-group mb-2">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Rp.</span>
+                                    </div>
+                                    <input type="text" class="form-control" name="investment_value"
+                                           id="investment_value"
+                                           placeholder="Isi dengan angka tanpa titik/koma">
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="investment_value" class="font-weight-medium text-uppercase">Build Coverage
+                                    Ratio (BCR)
+                                    <strong
+                                            class="text-danger">*</strong></label>
+
+                                <div class="input-group mb-2">
+                                    <input type="text" class="form-control" name="investment_value"
+                                           id="investment_value"
+                                           placeholder="Isi dengan angka tanpa titik/koma">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">%</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="investment_value" class="font-weight-medium text-uppercase">Payback Period
+                                    <strong
+                                            class="text-danger">*</strong></label>
+
+                                <div class="input-group mb-2">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Month</span>
+                                    </div>
+                                    <input type="text" class="form-control" name="investment_value"
+                                           id="investment_value"
+                                           placeholder="Isi dengan angka tanpa titik/koma">
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="investment_value" class="font-weight-medium text-uppercase">Return of
+                                    Investment (ROI)
+                                    <strong
+                                            class="text-danger">*</strong></label>
+
+                                <div class="input-group mb-2">
+                                    <input type="text" class="form-control" name="investment_value"
+                                           id="investment_value"
+                                           placeholder="Isi dengan angka tanpa titik/koma">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">%</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="investment_value" class="font-weight-medium text-uppercase">Break Event
+                                    Point (BEP)
+                                    <strong
+                                            class="text-danger">*</strong></label>
+
+                                <div class="input-group mb-2">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">RP.</span>
+                                    </div>
+                                    <input type="text" class="form-control" name="investment_value"
+                                           id="investment_value"
+                                           placeholder="Isi dengan angka tanpa titik/koma">
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="investment_value" class="font-weight-medium text-uppercase">Profitability
+                                    Index
+                                    <strong
+                                            class="text-danger">*</strong></label>
+
+                                <div class="input-group mb-2">
+                                    <input type="text" class="form-control" name="investment_value"
+                                           id="investment_value"
+                                           placeholder="Isi dengan angka tanpa titik/koma">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">%</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="d-flex justify-content-end">
+                            <a class="btn btn-sm btn-soft-secondary transition-3d-hover mr-1" href="javascript:;"
+                               data-previous-step="#selectStepEleven">Back</a>
+                            <button type="button" class="btn btn-sm btn-primary transition-3d-hover"
+                                    data-next-step="#selectStepThirteen">Next
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="selectStepThirteen" style="display: none;">
+
+                        <div class="d-block d-lg-none border-bottom mb-5 text-center">
+  <span class="nav-icon-action bg-primary">
+    <h1 class="display-4 font-weight-bold text-white">13</h1>
+  </span>
+                            Incentives
+                        </div>
+
+                        <div class="col">
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend">
+                    <span class="input-group-text"><span class="fas fa-layer-group"></span>
+                    </span>
+                                </div>
+                                <input type="text" class="form-control" name="land_allocation" id="land_allocation"
+                                       placeholder="Incentives">
+                            </div>
+                        </div>
+
+
+                        <div class="d-flex justify-content-end">
+                            <a class="btn btn-sm btn-soft-secondary transition-3d-hover mr-1" href="javascript:;"
+                               data-previous-step="#selectStepTwelve">Back</a>
+                            <button type="button" class="btn btn-sm btn-primary transition-3d-hover"
+                                    data-next-step="#selectStepFourteen">Next
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="selectStepFourteen" style="display: none;">
+
+                        <div class="d-block d-lg-none border-bottom mb-5 text-center">
+  <span class="nav-icon-action bg-primary">
+    <h1 class="display-4 font-weight-bold text-white">14</h1>
+  </span>
+                            Executing Agency
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <label for="organization_id" class="font-weight-medium text-uppercase">Pengelola <strong
+                                        class="text-danger">*</strong></label>
+                                <div class="input-group mb-2">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><span class="fas fa-suitcase"></span></span>
+                                    </div>
+                                    <select name="organization_id" class="custom-select" id="organization_id">
+                                        <option selected disabled>Pilih Pengelola</option>
+                                        {% for organization in organizations %}
+                                        <option value="{{organization.id}}">{{organization.name}}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="d-flex justify-content-end">
+                            <a class="btn btn-sm btn-soft-secondary transition-3d-hover mr-1" href="javascript:;"
+                               data-previous-step="#selectStepThirteen">Back</a>
+                            <button type="button" class="btn btn-sm btn-primary transition-3d-hover"
+                                    data-next-step="#selectStepFifteen">Next
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="selectStepFifteen" style="display: none;">
+
+                        <div class="d-block d-lg-none border-bottom mb-5 text-center">
+  <span class="nav-icon-action bg-primary">
+    <h1 class="display-4 font-weight-bold text-white">15</h1>
+  </span>
+                            Contact and Coordination
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="agent_name" class="font-weight-medium text-uppercase">Nama Anda <strong
+                                        class="text-danger">*</strong></label>
+                                <div class="input-group mb-2">
+                                    <div class="input-group-prepend">
+                    <span class="input-group-text"><span class="fas fa-user"></span>
+                    </span>
+                                    </div>
+                                    <input type="text" class="form-control" name="agent_name" id="agent_name"
+                                           placeholder="Isi dengan nama lengkap">
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="organization_name" class="font-weight-medium text-uppercase">Office Address
+                                    <strong
+                                            class="text-danger">*</strong></label>
+                                <div class="input-group mb-2">
+                                    <div class="input-group-prepend">
+                    <span class="input-group-text"><span class="fas fa-suitcase"></span>
+                    </span>
+                                    </div>
+                                    <input type="text" class="form-control" name="organization_name"
+                                           id="organization_name"
+                                           placeholder="Alamat kantor Anda">
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="agent_phone" class="font-weight-medium text-uppercase">Nomor Handphone
+                                    <strong
+                                            class="text-danger">*</strong></label>
+                                <div class="input-group mb-2">
+                                    <div class="input-group-prepend">
+                    <span class="input-group-text">+62
+                    </span>
+                                    </div>
+                                    <input type="number" class="form-control" name="agent_phone" id="agent_phone"
+                                           placeholder="85220009800">
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="organization_name" class="font-weight-medium text-uppercase">Organisasi
+                                    <strong
+                                            class="text-danger">*</strong></label>
+                                <div class="input-group mb-2">
+                                    <div class="input-group-prepend">
+                    <span class="input-group-text"><span class="fas fa-suitcase"></span>
+                    </span>
+                                    </div>
+                                    <input type="text" class="form-control" name="organization_name"
+                                           id="organization_name"
+                                           placeholder="Nama organisasi Anda">
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="agent_email" class="font-weight-medium text-uppercase">Alamat Email <strong
+                                        class="text-danger">*</strong></label>
+                                <div class="input-group mb-2">
+                                    <div class="input-group-prepend">
+                    <span class="input-group-text"><span class="fas fa-globe"></span>
+                    </span>
+                                    </div>
+                                    <input type="text" class="form-control" name="agent_email" id="agent_email"
+                                           placeholder="Email Anda">
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="d-flex justify-content-end">
+                            <a class="btn btn-sm btn-soft-secondary transition-3d-hover mr-1" href="javascript:;"
+                               data-previous-step="#selectStepFourteen">Back</a>
+                            <button type="button" class="btn btn-sm btn-primary transition-3d-hover">Send
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- End Content Step Form -->
+            </div>
+        </form>
+        <!-- End Step Form -->
+
+    </div>
+</div>
+{% put javascript %}
+<script src="{{'assets/vendor/dropify/dist/js/dropify.min.js'|theme}}"></script>
+<script>
+    // DED document
+    $('#ded_document').dropify({
+        messages: {
+            default:
+                '<strong>Upload Dokumen DED</strong> <br/> <small>Maximum ukuran file adalah 5MB</small>',
+            replace: 'Drag and drop or click to replace',
+            remove: 'Remove',
+            error: 'Ooops, something wrong happened!',
+        },
+    });
+
+    // AMDAL document
+    $('#amdal_document').dropify({
+        messages: {
+            default:
+                '<strong>Upload Dokumen AMDAL</strong> <br/> <small>Maximum ukuran file adalah 5MB</small>',
+            replace: 'Drag and drop or click to replace',
+            remove: 'Remove',
+            error: 'Ooops, something wrong happened!',
+        },
+    });
+
+    // AMDAS document
+    $('#amdas_document').dropify({
+        messages: {
+            default:
+                '<strong>Upload Dokumen AMDAS</strong> <br/> <small>Maximum ukuran file adalah 5MB</small>',
+            replace: 'Drag and drop or click to replace',
+            remove: 'Remove',
+            error: 'Ooops, something wrong happened!',
+        },
+    });
+
+    // Feasibility Study document
+    $('#feasibility_study_document').dropify({
+        messages: {
+            default:
+                '<strong>Upload Dokumen Feasibility Study</strong> <br/> <small>Maximum ukuran file adalah 5MB</small>',
+            replace: 'Drag and drop or click to replace',
+            remove: 'Remove',
+            error: 'Ooops, something wrong happened!',
+        },
+    })
+</script>
+<script>
+    var map, autocomplete, place, address, autocompletePostalAddrss;
+    var geocoder;
+
+    var componentForm = {
+        street_number: 'short_name',
+        route: 'long_name',
+        locality: 'long_name',
+        administrative_area_level_1: 'long_name',
+        country: 'long_name',
+        postal_code: 'short_name',
+    };
+
+    latitude = -6.912733;
+    longitude = 107.633148;
+
+    function initMap() {
+        geocoder = new google.maps.Geocoder();
+        map = new google.maps.Map(document.getElementById('map'), {
+            center: {lat: latitude, lng: longitude},
+            zoom: 11,
+        });
+
+        var postalAddress = /** @type {!HTMLInputElement} */ (document.getElementById(
+            'postal_address',
+        ));
+
+        var options = {
+            componentRestrictions: {
+                country: ['id'],
+            },
+        };
+
+        var input = /** @type {!HTMLInputElement} */ (document.getElementById(
+            'address',
+        ));
+
+        autocomplete = new google.maps.places.Autocomplete(input);
+        autocomplete.bindTo('bounds', map);
+        autocomplete.setComponentRestrictions({country: ['id']});
+
+        var infowindow = new google.maps.InfoWindow();
+        var marker = new google.maps.Marker({
+            map: map,
+            draggable: true,
+            position: {lat: latitude, lng: longitude},
+        });
+
+        marker.addListener('dragend', handleEvent);
+
+        function handleEvent(event) {
+            $('#latitude').val(event.latLng.lat());
+            $('#longitude').val(event.latLng.lng());
+            geocodePosition(marker.getPosition())
+        }
+
+        function geocodePosition(pos) {
+            geocoder.geocode(
+                {
+                    latLng: pos,
+                },
+                function (responses) {
+                    if (responses && responses.length > 0) {
+                        $('#address').val(responses[0].formatted_address)
+                    }
+                },
+            )
+        }
+
+        autocomplete.addListener('place_changed', function () {
+            infowindow.close();
+            marker.setVisible(false);
+            place = autocomplete.getPlace();
+            if (!place.geometry) {
+                window.alert("Autocomplete's returned place contains no geometry");
+                return
+            }
+
+            // If the place has a geometry, then present it on a map.
+            if (place.geometry.viewport) {
+                map.fitBounds(place.geometry.viewport)
+            } else {
+                map.setCenter(place.geometry.location);
+                map.setZoom(17) // Why 17? Because it looks good.
+            }
+            // @type {google.maps.Icon}
+            /*marker.setIcon(({
+                      url: place.icon,
+                      size: new google.maps.Size(71, 71),
+                      origin: new google.maps.Point(0, 0),
+                      anchor: new google.maps.Point(17, 34),
+                      scaledSize: new google.maps.Size(35, 35)
+                  }));*/
+            marker.setPosition(place.geometry.location);
+            marker.setVisible(true);
+
+            address = '';
+
+            if (place.address_components) {
+                address = [
+                    (place.address_components[0] &&
+                        place.address_components[0].short_name) ||
+                    '',
+                    (place.address_components[1] &&
+                        place.address_components[1].short_name) ||
+                    '',
+                    (place.address_components[2] &&
+                        place.address_components[2].short_name) ||
+                    '',
+                ].join(' ')
+            }
+
+            infowindow.setContent(
+                '<div><strong>' + place.name + '</strong><br>' + address,
+            );
+            infowindow.open(map, marker)
+        });
+
+        // Populate the address fields in the form.
+        autocomplete.addListener('place_changed', fillInAddress)
+    }
+
+    function fillInAddress() {
+        $('#latitude').val(place.geometry.location.lat());
+        $('#longitude').val(place.geometry.location.lng());
+
+        if (place.address_components[0].types[0] != 'street_number') {
+            var inputValue = document.getElementById('address').value;
+            var res = inputValue.split(' ');
+            if (!isNaN(res[0])) {
+                document.getElementById('street_number').value = res[0]
+            }
+        }
+        for (var i = 0; i < place.address_components.length; i++) {
+            var addressType = place.address_components[i].types[0];
+
+            if (componentForm[addressType]) {
+                var val = place.address_components[i][componentForm[addressType]];
+                if (addressType === 'postal_code') {
+                    $('#postcode').val(val)
+                }
+                if (addressType === 'administrative_area_level_1') {
+                    $('#state').val(val)
+                }
+                if (addressType === 'locality') {
+                    $('#suburb').val(val)
+                }
+            }
+        }
+    }
+
+    // Bias the autocomplete object to the user's geographical location,
+    // as supplied by the browser's 'navigator.geolocation' object.
+    function geolocate() {
+        var geoOptions = {
+            maximumAge: 5 * 60 * 1000,
+            timeout: 10 * 1000,
+        };
+
+        // Try HTML5 geolocation.
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                function (position) {
+                    var pos = {
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude,
+                    };
+
+                    map.setCenter(pos)
+                },
+                function () {
+                    console.log('Geolocation error occurred')
+                },
+            )
+        } else {
+            console.log("Browser doesn't support Geolocation")
+        }
+    }
+</script>
+<script
+        src="https://maps.googleapis.com/maps/api/js?key={{google_map_api_key}}&libraries=places&callback=initMap"
+        async
+        defer></script>
+{% endput %}

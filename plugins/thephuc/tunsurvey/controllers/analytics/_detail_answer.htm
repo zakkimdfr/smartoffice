@@ -1,0 +1,89 @@
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="popup">×</button>
+    <h3 class="modal-title"><?= $questionName ?></h3>
+</div>
+
+<div class="modal-body">
+    <?php if ($isChart): ?>
+    <div id="survey_chart"></div>
+    <?php else: ?>
+        <div class="control-list">
+            <table class="table data">
+                <tbody>
+                    <?php foreach ($results as $item): ?>
+                    <tr><td><?= $item ?></td></tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+    <?php endif; ?>
+</div>
+
+<div class="modal-footer"></div>
+
+<?php if ($isChart): ?>
+<script>
+    function generateChart(element, name, data) {
+        Highcharts.chart(element, {
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false,
+                type: 'pie'
+            },
+            title: {
+                text: '<?= $questionName ?>'
+            },
+            tooltip: {
+                pointFormat: '<b>{point.count}</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                        format: '<br>{point.name} ({point.percentage:.1f}%)',
+                        distance: -50,
+                        filter: {
+                            property: 'percentage',
+                            operator: '>',
+                            value: 4
+                        }
+                    }
+                }
+            },
+            series: [{
+                colorByPoint: true,
+                data: data,
+            }],
+            credits: {
+                enabled: !0,
+                href: "",
+                style: {
+                    'font-weight': 'bold',
+                    'font-size': '10px',
+                    'color': 'black',
+                },
+                position: {
+                    align: "center",
+                    verticalAlign: "bottom",
+                },
+                text: name,
+            },
+        });
+    }
+
+    $(function() {
+        generateChart('survey_chart', '', [
+            <?php foreach ($results as $item): ?>
+            {
+                count: "<?= $item['count'] > 1 ? number_format($item['count']) . ' ' . trans('thephuc.tunsurvey::lang.form.votes') : $item['count'] . ' ' . trans('thephuc.tunsurvey::lang.form.vote') ?>",
+                name: '<?= $item['answer'] ?>',
+                y: <?= $item['count'] ?>
+            },
+            <?php endforeach; ?>
+        ]);
+    });
+</script>
+<?php endif; ?>

@@ -1,0 +1,78 @@
+plugin:
+    name: 'horizonstack.espj::lang.plugin.name'
+    description: 'horizonstack.espj::lang.plugin.description'
+    author: Horizonstack
+    icon: oc-icon-plane
+    homepage: ''
+permissions:
+    horizonstack.espj.manage_trips:
+        tab: 'horizonstack.espj::lang.plugin.name'
+        label: 'horizonstack.espj::lang.permissions.trips'
+    horizonstack.espj.manage_signatures:
+        tab: 'horizonstack.espj::lang.plugin.name'
+        label: 'horizonstack.espj::lang.permissions.signatures'
+    horizonstack.espj.manage_transportations:
+        tab: 'horizonstack.espj::lang.plugin.name'
+        label: 'horizonstack.espj::lang.permissions.transportations'
+    horizonstack.espj.manage_reality_forms:
+        tab: 'horizonstack.espj::lang.plugin.name'
+        label: 'horizonstack.espj::lang.permissions.reality_forms'
+    horizonstack.espj.manage_trip_reports:
+        tab: 'horizonstack.espj::lang.plugin.name'
+        label: 'horizonstack.espj::lang.permissions.trip_reports'
+    horizonstack.espj.manage_urgency:
+        tab: 'horizonstack.espj::lang.plugin.name'
+        label: 'horizonstack.espj::lang.permissions.urgency'
+    horizonstack.espj.manage_attn:
+        tab: 'horizonstack.espj::lang.plugin.name'
+        label: 'horizonstack.espj::lang.permissions.attn'
+navigation:
+    eSPJ:
+        label: eSPJ
+        url: horizonstack/espj/trips
+        icon: icon-plane
+        permissions:
+            - horizonstack.espj.manage_trips
+        sideMenu:
+            trips:
+                label: Trips
+                url: horizonstack/espj/trips
+                icon: icon-plane
+                permissions:
+                    - horizonstack.espj.manage_trips
+            trip-reports:
+                label: Reports
+                url: horizonstack/espj/tripreports
+                icon: icon-envelope-o
+                permissions:
+                    - horizonstack.espj.manage_trip_reports
+            reality-forms:
+                label: 'Reality Forms'
+                url: horizonstack/espj/realityforms
+                icon: icon-gavel
+                permissions:
+                    - horizonstack.espj.manage_reality_forms
+            signatures:
+                label: Signatures
+                url: horizonstack/espj/signatures
+                icon: icon-pencil-square
+                permissions:
+                    - horizonstack.espj.manage_signatures
+            transportations:
+                label: Transportations
+                url: horizonstack/espj/transportations
+                icon: icon-space-shuttle
+                permissions:
+                    - horizonstack.espj.manage_transportations
+            urgency:
+                label: Urgency
+                url: horizonstack/espj/urgencycontroller
+                icon: icon-th
+                permissions:
+                    - horizonstack.espj.manage_urgency
+            attn:
+                label: Attn
+                url: horizonstack/espj/attns
+                icon: icon-sun-o
+                permissions:
+                    - horizonstack.espj.manage_attn

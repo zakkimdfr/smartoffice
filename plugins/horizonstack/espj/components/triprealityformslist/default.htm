@@ -1,0 +1,68 @@
+<div class="table-responsive">
+    <table id="trip-reality-forms-all-details" class="table table-light table-responsive-sm table-striped">
+        <thead>
+        <tr class="text-primary">
+            <th scope="col">Nama Kegiatan</th>
+            <th scope="col">Tanggal Berangkat</th>
+            <th scope="col">Hari</th>
+            <th scope="col">Kota Tujuan</th>
+            <th scope="col">Tindakan</th>
+        </tr>
+        </thead>
+        <tbody id="trip-reality-forms-table-detail">
+        {% partial "@trip_reality_forms_table_detail" trips=trips %}
+        </tbody>
+    </table>
+</div>
+
+<div id="trip-reality-forms-pagination">
+    {% partial '@trip_reality_forms_pagination' trips=trips %}
+</div>
+
+{% put javascript %}
+<script>
+    $(document).on('click', '.sort', function () {
+
+
+        $('.sort').not(this).each(function () {
+            $(this).find('i:first').attr('class', 'fa fa-sort');
+        });
+
+        var sortField = $(this).data('sort-name');
+        var sortClass = $(this).find('i:first').hasClass('fa-sort');
+        var ascClass = $(this).find('i:first').hasClass('fa fa-sort-up');
+        var sortDirection = 'asc';
+        if (sortClass) {
+            $(this).find('i:first').attr('class', 'fa fa-sort-up');
+        } else {
+            if (ascClass) {
+                $(this).find('i:first').attr('class', 'fa fa-sort-down');
+                sortDirection = 'desc';
+            } else {
+                $(this).find('i:first').attr('class', 'fa fa-sort-up');
+                sortDirection = 'asc';
+            }
+        }
+
+        $("#sortBy").val(sortField);
+        $("#sortDirection").val(sortDirection);
+
+        $('#searchTerm').request('onSearchTripRealityForms', {
+            update: {
+                '@trip_reality_forms_table_detail': '#trip-reality-forms-table-detail',
+                '@trip_reality_forms_pagination': '#trip-reality-forms-pagination',
+                '@trip_reality_forms_sorting_field': '#sorting-fields'
+            },
+            data: {sort_by: sortField, sort_direction: sortDirection},
+            beforeUpdate: function () {
+            },
+            beforeSend: function () {
+                $.oc.stripeLoadIndicator.show()
+            },
+            complete: function () {
+                $.oc.stripeLoadIndicator.hide()
+            }
+        })
+    });
+</script>
+{% endput %}

@@ -1,0 +1,10 @@
+name: InvestmentOrganizations
+form: $/horizonstack/investment/models/investmentorganization/fields.yaml
+modelClass: Horizonstack\Investment\Models\InvestmentOrganization
+defaultRedirect: horizonstack/investment/investmentorganizations
+create:
+    redirect: 'horizonstack/investment/investmentorganizations/update/:id'
+    redirectClose: horizonstack/investment/investmentorganizations
+update:
+    redirect: horizonstack/investment/investmentorganizations
+    redirectClose: horizonstack/investment/investmentorganizations

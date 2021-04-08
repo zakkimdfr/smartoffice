@@ -1,0 +1,10 @@
+name: Reports
+form: $/horizonstack/workreport/models/report/fields.yaml
+modelClass: Horizonstack\Workreport\Models\Report
+defaultRedirect: horizonstack/workreport/reports
+create:
+    redirect: 'horizonstack/workreport/reports/update/:id'
+    redirectClose: horizonstack/workreport/reports
+update:
+    redirect: horizonstack/workreport/reports
+    redirectClose: horizonstack/workreport/reports

@@ -1,0 +1,42 @@
+plugin:
+    name: 'horizonstack.location::lang.plugin.name'
+    description: 'horizonstack.location::lang.plugin.description'
+    author: Horizonstack
+    icon: oc-icon-map-marker
+    homepage: ''
+permissions:
+    horizonstack.location.manage_cities:
+        tab: 'horizonstack.location::lang.plugin.name'
+        label: 'horizonstack.location::lang.permissions.cities'
+    horizonstack.location.manage_districts:
+        tab: 'horizonstack.location::lang.plugin.name'
+        label: 'horizonstack.location::lang.permissions.districts'
+    horizonstack.location.manage_villages:
+        tab: 'horizonstack.location::lang.plugin.name'
+        label: 'horizonstack.location::lang.permissions.villages'
+navigation:
+    locations:
+        label: Locations
+        url: horizonstack/guestbook/cities
+        icon: icon-map-marker
+        permissions:
+            - horizonstack.location.manage_districts
+        sideMenu:
+            cities:
+                label: Cities
+                url: horizonstack/guestbook/cities
+                icon: icon-sitemap
+                permissions:
+                    - horizonstack.location.manage_cities
+            districts:
+                label: Districts
+                url: horizonstack/location/districts
+                icon: icon-sliders
+                permissions:
+                    - horizonstack.location.manage_districts
+            villages:
+                label: Villages
+                url: horizonstack/location/villages
+                icon: icon-sort-amount-desc
+                permissions:
+                    - horizonstack.location.manage_villages

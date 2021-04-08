@@ -1,0 +1,67 @@
+<div class="table-responsive">
+    <table id="trip-reports-all-details" class="table table-light table-responsive-sm table-striped">
+        <thead>
+        <tr class="text-primary">
+            <th scope="col">Nama Kegiatan</th>
+            <th scope="col">Kepada</th>
+            <th scope="col">Hal</th>
+            <th scope="col">Tindakan</th>
+        </tr>
+        </thead>
+        <tbody id="trip-reports-table-detail">
+        {% partial "@trip_reports_table_detail" trips=trips %}
+        </tbody>
+    </table>
+</div>
+
+<div id="trip-reports-pagination">
+    {% partial '@trip_reports_pagination' trips=trips %}
+</div>
+
+{% put javascript %}
+<script>
+    $(document).on('click', '.sort', function () {
+
+
+        $('.sort').not(this).each(function () {
+            $(this).find('i:first').attr('class', 'fa fa-sort');
+        });
+
+        var sortField = $(this).data('sort-name');
+        var sortClass = $(this).find('i:first').hasClass('fa-sort');
+        var ascClass = $(this).find('i:first').hasClass('fa fa-sort-up');
+        var sortDirection = 'asc';
+        if (sortClass) {
+            $(this).find('i:first').attr('class', 'fa fa-sort-up');
+        } else {
+            if (ascClass) {
+                $(this).find('i:first').attr('class', 'fa fa-sort-down');
+                sortDirection = 'desc';
+            } else {
+                $(this).find('i:first').attr('class', 'fa fa-sort-up');
+                sortDirection = 'asc';
+            }
+        }
+
+        $("#sortBy").val(sortField);
+        $("#sortDirection").val(sortDirection);
+
+        $('#searchTerm').request('onSearchTripReports', {
+            update: {
+                '@trip_reports_table_detail': '#trip-reports-table-detail',
+                '@trip_reports_pagination': '#trip-reports-pagination',
+                '@trip_reports_sorting_field': '#sorting-fields'
+            },
+            data: {sort_by: sortField, sort_direction: sortDirection},
+            beforeUpdate: function () { /* do something */
+            },
+            beforeSend: function () {
+                $.oc.stripeLoadIndicator.show()
+            },
+            complete: function () {
+                $.oc.stripeLoadIndicator.hide()
+            }
+        })
+    });
+</script>
+{% endput %}

@@ -1,0 +1,10 @@
+name: JobLevels
+form: $/horizonstack/userextend/models/joblevel/fields.yaml
+modelClass: Horizonstack\Userextend\Models\JobLevel
+defaultRedirect: horizonstack/userextend/joblevels
+create:
+    redirect: 'horizonstack/userextend/joblevels/update/:id'
+    redirectClose: horizonstack/userextend/joblevels
+update:
+    redirect: horizonstack/userextend/joblevels
+    redirectClose: horizonstack/userextend/joblevels

@@ -1,0 +1,8 @@
+1.0.1:
+    - 'Initialize plugin.'
+1.0.2:
+    - 'Created table horizonstack_location_districts'
+    - builder_table_create_horizonstack_location_districts.php
+1.0.3:
+    - 'Created table horizonstack_location_villages'
+    - builder_table_create_horizonstack_location_villages.php

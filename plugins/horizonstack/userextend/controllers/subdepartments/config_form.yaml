@@ -1,0 +1,10 @@
+name: SubDepartments
+form: $/horizonstack/userextend/models/subdepartment/fields.yaml
+modelClass: Horizonstack\Userextend\Models\SubDepartment
+defaultRedirect: horizonstack/userextend/subdepartments
+create:
+    redirect: 'horizonstack/userextend/subdepartments/update/:id'
+    redirectClose: horizonstack/userextend/subdepartments
+update:
+    redirect: horizonstack/userextend/subdepartments
+    redirectClose: horizonstack/userextend/subdepartments

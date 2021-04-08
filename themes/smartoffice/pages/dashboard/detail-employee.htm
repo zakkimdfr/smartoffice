@@ -1,0 +1,198 @@
+title = "Detail Employee"
+url = "/detail/employee/:id"
+layout = "dashboard"
+is_hidden = 0
+
+[employeeDetails]
+==
+<!-- Content Section -->
+<div class="bg-light">
+    <div class="container space-2">
+        <div class="row">
+            <div class="col-lg-3 mb-7 mb-lg-0">
+                <!-- Profile Card -->
+                <div class="card p-1 mb-4">
+                    <div class="card-body text-center">
+                        <div class="mb-3">
+                            {% if employee.avatar %}
+                            <img class="u-lg-avatar rounded-circle" src="{{ employee.avatar.thumb('80','80','crop') }}" alt="{{employee.name}}">
+                            {% else %}
+                            <img src="/themes/smartoffice/assets/img/default-avatar.png"
+                                 class="u-lg-avatar rounded-circle" alt="user">
+                            {% endif %}
+                        </div>
+
+                        <div class="mb-3">
+                            <h1 class="h6 font-weight-medium mb-0">{{employee.name}}</h1>
+                            <small class="d-block text-muted">{{employee.job}}</small>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Profile Card -->
+
+                <!-- Dukungan  -->
+                <div class="card mb-4">
+                    <div class="card-header pt-4 pb-3 px-0 mx-4">
+                        <h2 class="h6 mb-0">Dukungan</h2>
+                    </div>
+
+                    <div class="card-body pt-3 pb-4 px-4">
+                        <img src="{{'assets/img/logos/logo.png'|theme}}" class="img-fluid" alt="Smiling West Java">
+                    </div>
+                </div>
+                <!-- End Dukungan  -->
+            </div>
+
+            <div class="col-lg-9">
+                <!-- User Details -->
+                <div class="mb-4">
+                    <h2 class="h4">{{employee.name}}</h2>
+                    <h4 class="h6 text-secondary mb-0">{{employee.address}}
+                        <small>- Joined in {{ employee.activated_at |localizeddate('medium', 'none', 'id',
+                            'Asia/Jakarta')}}
+                        </small>
+                    </h4>
+                </div>
+                <!-- End User Details -->
+
+                <!-- Collections -->
+                <ul class="list-inline d-flex align-items-center">
+                    <li class="list-inline-item mb-3 mb-sm-0 mr-5">
+                        <div class="d-flex align-items-center">
+                            <span class="bg-warning text-white font-weight-medium rounded py-2 px-3 mr-2">0</span>
+                            <div class="text-secondary">
+                                Perjalanan Dinas
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-inline-item mb-3 mb-sm-0 mr-5">
+                        <div class="d-flex align-items-center">
+                            <span class="bg-success text-white font-weight-medium rounded py-2 px-3 mr-2">0</span>
+                            <div class="text-secondary">
+                                Menit Kerja
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-inline-item mb-3 mb-sm-0">
+                        <div class="d-flex align-items-center">
+                            <span class="bg-primary text-white font-weight-medium rounded py-2 px-3 mr-2">0</span>
+                            <div class="text-secondary">
+                                Perlengkapan
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <!-- End Collections -->
+
+                <hr class="my-7">
+
+                <!-- Icon Blocks -->
+                <div class="row">
+                    <div class="col-md-6 col-lg-4">
+                        <!-- List Group -->
+                        <ul class="list-group list-group-transparent list-group-flush list-group-borderless mb-0">
+                            <li class="list-group-item pt-0 pb-4">
+                                <div class="media">
+                                    <span class="fas fa-envelope list-group-icon mr-3"></span>
+                                    <div class="media-body text-lh-sm">
+                                        <span class="d-block mb-1 text-muted">Alamat Email:</span>
+                                        <a href="#">{{employee.email}}</a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item pt-0 pb-4">
+                                <div class="media">
+                                    <span class="fas fa-expand list-group-icon mr-3"></span>
+                                    <div class="media-body text-lh-sm">
+                                        <span class="d-block mb-1 text-muted">Nomor Induk Pegawai</span>
+                                        <span>{{employee.unique_id}}</span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item pt-0 pb-4">
+                                <div class="media">
+                                    <span class="fas fa-user list-group-icon mr-3"></span>
+                                    <div class="media-body text-lh-sm">
+                                        <span class="d-block mb-1 text-muted">Jabatan:</span>
+                                        <span>{{employee.job}}</span>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        <!-- End List Group -->
+                    </div>
+
+                    <div class="col-md-6 col-lg-4">
+                        <!-- List Group -->
+                        <ul class="list-group list-group-transparent list-group-flush list-group-borderless mb-0">
+                            <li class="list-group-item pt-0 pb-4">
+                                <div class="media">
+                                    <span class="fas fa-birthday-cake list-group-icon mr-3"></span>
+                                    <div class="media-body text-lh-sm">
+                                        <span class="d-block text-muted mb-1">Tanggal Lahir:</span>
+                                        <span class="d-block">{{employee.date_of_birth|localizeddate('medium', 'none', 'id', 'Asia/Jakarta')}}</span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item pt-0 pb-4">
+                                <div class="media">
+                                    <span class="fas fa-building list-group-icon mr-3"></span>
+                                    <div class="media-body text-lh-sm">
+                                        <span class="d-block mb-1 text-muted">Unit Kerja:</span>
+                                        <span>{{employee.department.name}}</span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item pt-0 pb-4">
+                                <div class="media">
+                                    <span class="fas fa-address-card list-group-icon mr-3"></span>
+                                    <div class="media-body text-lh-sm">
+                                        <span class="d-block mb-1 text-muted">Sub Unit Kerja:</span>
+                                        <span>{{employee.subDepartment.name}}</span>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        <!-- End List Group -->
+                    </div>
+
+                    <div class="col-md-6 col-lg-4">
+                        <!-- List Group -->
+                        <ul class="list-group list-group-transparent list-group-flush list-group-borderless mb-0">
+                            <li class="list-group-item pt-0 pb-4">
+                                <div class="media">
+                                    <span class="fas fa-mobile-alt list-group-icon mr-3"></span>
+                                    <div class="media-body text-lh-sm">
+                                        <span class="d-block mb-1 text-muted">Nomor HP:</span>
+                                        <span>{{employee.phone}}</span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item pt-0 pb-4">
+                                <div class="media">
+                                    <span class="fas fa-award list-group-icon mr-3"></span>
+                                    <div class="media-body text-lh-sm">
+                                        <span class="d-block text-muted mb-1">Golongan:</span>
+                                        <span class="d-block">{{employee.jobLevel.name}}</span>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        <!-- End List Group -->
+                    </div>
+                </div>
+                <!-- End Icon Blocks -->
+                <!-- map -->
+                <div class="row mb-7">
+                    <div class="col-md-12">
+                        <p class="border-bottom">Alamat Rumah:</p>
+                    </div>
+                    <iframe allowfullscreen src="https://maps.google.com/maps?q={{employee.latitude}}, {{employee.longitude}}&z=15&output=embed"
+                            class="col-md-12" height="270" frameborder="0" style="border:0"></iframe>
+                </div>
+                <!-- End map -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Content Section -->

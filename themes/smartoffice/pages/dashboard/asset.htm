@@ -1,0 +1,30 @@
+title = "Asset"
+url = "/asset"
+layout = "dashboard"
+is_hidden = 0
+
+[assetList]
+assetsPerPage = 6
+sortOrder = "name asc"
+==
+<div class="container py-5">
+    <div class="row align-items-sm-center mb-5">
+        <div class="col-sm-6">
+            <h1 class="h4 mb-0">Daftar Perlengkapan</h1>
+        </div>
+
+        <div class="col-sm-6">
+            <!-- Breadcrumb -->
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb breadcrumb-no-gutter justify-content-sm-end mb-0">
+                    <li class="breadcrumb-item"><a href="{{'dashboard/dashboard'|page}}">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Aset Perlengkapan</li>
+                </ol>
+            </nav>
+            <!-- End Breadcrumb -->
+        </div>
+    </div>
+</div>
+<div class="container space-2 space-bottom-lg-3">
+    {% component 'assetList' %}
+</div>

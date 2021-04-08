@@ -1,0 +1,52 @@
+{% for guest in guests %}
+<tr>
+    <td scope="row" class="align-middle">
+        <span>
+            {{(((guests.currentPage - 1) * guests.perPage) + loop.index)}}
+        </span>
+    </td>
+    <td scope="row">
+        <div class="position-relative u-lg-avatar mx-auto mb-3">
+            <img class="img-fluid rounded-circle" style="border-radius: 50%;"
+                 src="{{guest.image.thumb('80','80','crop')}}">
+            <span class="badge badge-xs
+            {% if guest.invitation_confirmation == '1' %}
+            badge-outline-warning
+            {% elseif guest.invitation_confirmation == '2' %}
+            badge-outline-primary
+            {% elseif guest.invitation_confirmation == '3' %}
+            badge-outline-danger
+            {% endif %}
+            badge-pos badge-pos--bottom-left rounded-circle"></span>
+        </div>
+    </td>
+    <td scope="row" class="align-middle">
+        <a href="javascript:void(0)" data-request="onOpenGuestDetail" data-request-update="'guest-details-modal':'#guestDetailModal'" data-request-success="openModal()" data-request-data="guestId: {{guest.id}}">
+            <span>{{guest.name}}</span>
+        </a>
+    </td>
+    <td class="align-middle text-secondary">
+        <small class="d-block">{{guest.guestOrganization.name}}</small>
+    </td>
+    <td class="align-middle text-secondary small text-nowrap">
+        <span class="fas fa-phone mr-2"></span>
+        {{guest.phone}}
+    </td>
+    <td class="align-middle">
+        {{guest.email}}
+    </td>
+    <td class="align-middle text-secondary">
+        {{ guest.created_at |localizeddate('medium', 'short', 'id', 'Asia/Jakarta')}}
+        <!--<button type="button" class="btn btn-xs btn-icon btn-soft-primary transition-3d-hover">
+            <span class="fas fa-check btn-icon__inner"></span>
+        </button>
+        <button type="button" class="btn btn-xs btn-icon btn-soft-danger transition-3d-hover">
+            <span class="fas fa-times btn-icon__inner"></span>
+        </button>-->
+    </td>
+</tr>
+{% else %}
+<tr>
+    <td colspan="6">Belum ada peserta yang terdata.</td>
+</tr>
+{% endfor %}

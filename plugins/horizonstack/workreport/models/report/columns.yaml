@@ -1,0 +1,17 @@
+columns:
+  subject:
+    label: Subject
+    type: text
+  user:
+    label: User
+    relation: user
+    select: name
+  date:
+    label: Date
+    type: date
+  updated_at:
+    label: 'Modified At'
+    type: datetime
+    searchable: true
+    sortable: true
+

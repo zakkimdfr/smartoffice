@@ -1,0 +1,42 @@
+plugin:
+    name: 'thephuc.tunsurvey::lang.plugin.name'
+    description: 'thephuc.tunsurvey::lang.plugin.description'
+    author: ThePhuc
+    icon: oc-icon-question
+    homepage: ''
+permissions:
+    thephuc.tunsurvey.surveys_management:
+        tab: 'thephuc.tunsurvey::lang.plugin.name'
+        label: 'thephuc.tunsurvey::lang.permission.surveys_management'
+    thephuc.tunsurvey.settings:
+        tab: 'thephuc.tunsurvey::lang.plugin.name'
+        label: 'thephuc.tunsurvey::lang.permission.settings'
+    thephuc.tunsurvey.survey_results_management:
+        tab: 'thephuc.tunsurvey::lang.plugin.name'
+        label: 'thephuc.tunsurvey::lang.permission.survey_result_management'
+navigation:
+    main-menu-item:
+        label: 'thephuc.tunsurvey::lang.plugin.name'
+        url: thephuc/tunsurvey/surveys
+        icon: icon-question
+        permissions:
+            - thephuc.tunsurvey.surveys_management
+        sideMenu:
+            side-menu-item:
+                label: 'thephuc.tunsurvey::lang.menu.surveys'
+                url: thephuc/tunsurvey/surveys
+                icon: icon-book
+                permissions:
+                    - thephuc.tunsurvey.surveys_management
+            side-menu-item3:
+                label: 'thephuc.tunsurvey::lang.menu.survey_result'
+                url: thephuc/tunsurvey/analytics
+                icon: icon-bar-chart
+                permissions:
+                    - thephuc.tunsurvey.survey_results_management
+            side-menu-item2:
+                label: 'thephuc.tunsurvey::lang.menu.settings'
+                url: thephuc/tunsurvey/settings
+                icon: icon-gears
+                permissions:
+                    - thephuc.tunsurvey.settings

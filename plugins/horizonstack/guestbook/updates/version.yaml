@@ -1,0 +1,35 @@
+1.0.1:
+    - 'Initialize plugin.'
+1.0.2:
+    - 'Created table horizonstack_guestbook_jobs'
+    - builder_table_create_horizonstack_guestbook_jobs.php
+1.0.3:
+    - 'Created table horizonstack_guestbook_events'
+    - builder_table_create_horizonstack_guestbook_events.php
+1.0.4:
+    - 'Created table horizonstack_guestbook_guests'
+    - builder_table_create_horizonstack_guestbook_guests.php
+1.0.5:
+    - 'Created table horizonstack_guestbook_organizations'
+    - builder_table_create_horizonstack_guestbook_organizations.php
+1.0.6:
+    - 'Created table horizonstack_guestbook_event_organization'
+    - builder_table_create_horizonstack_guestbook_event_organization.php
+1.0.7:
+    - 'Created table horizonstack_guestbook_cities'
+    - builder_table_create_horizonstack_guestbook_cities.php
+1.0.8:
+    - 'Add more fields to guests table'
+    - migration108.php
+1.0.9:
+    - 'Add invitation_confirmation field to guests table'
+    - migration109.php
+1.0.10:
+    - 'Add job_title field in guests table'
+    - migration1010.php
+1.0.11:
+    - 'add is_souvenirs field to guests table'
+    - migration1011.php
+1.0.12:
+    - 'Add is_public field to events table'
+    - migration1012.php

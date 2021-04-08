@@ -1,0 +1,34 @@
+columns:
+    name:
+        label: Name
+        type: text
+        searchable: true
+        sortable: true
+    code:
+        label: Code
+        type: text
+        searchable: true
+        sortable: true
+    category:
+        label: Category
+        relation: category
+        select: name
+    type:
+        label: Type
+        relation: type
+        select: name
+    is_active:
+        label: Active
+        type: switch
+        sortable: true
+    status:
+        label: Status
+        type: partial
+        path: $/horizonstack/asset/models/asset/_status_column.htm
+        sortable: true
+    updated_at:
+        label: 'Modified At'
+        type: datetime
+        searchable: true
+        sortable: true
+

@@ -1,0 +1,18 @@
+<?php if (! in_array($model->control, [$model::TEXT, $model::TEXTAREA])): ?>
+<p>
+    <a
+        href="javascript:;"
+        class="btn btn-secondary oc-icon-plus"
+        data-control="popup"
+        data-handler="onLoadCreateAnswerForm"
+        data-size="small">
+        <?= trans('thephuc.tunsurvey::lang.form.createAnswer') ?>
+    </a>
+</p>
+
+<div id="answerList">
+    <?= $this->makePartial('answer_list', ['answers' => $model->answers]) ?>
+</div>
+<?php else: ?>
+    <div class="text-danger"><?= trans('thephuc.tunsurvey::lang.form.noAnswer') ?></div>
+<?php endif ?>

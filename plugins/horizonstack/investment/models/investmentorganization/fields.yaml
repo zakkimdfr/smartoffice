@@ -1,0 +1,30 @@
+fields:
+    name:
+        label: Name
+        span: auto
+        type: text
+    slug:
+        label: Slug
+        span: auto
+        preset:
+            field: name
+            type: slug
+        type: text
+    is_active:
+        label: Active
+        span: auto
+        default: 1
+        type: switch
+    icon:
+        label: Icon
+        type: fileupload
+        mode: image
+        imageHeight: 260
+        imageWidth: 260
+        thumbOptions:
+            mode: auto
+            offset:
+                - 0
+                - 0
+            interlace: false
+            extension: auto

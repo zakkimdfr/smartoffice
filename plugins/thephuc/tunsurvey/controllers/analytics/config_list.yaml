@@ -1,0 +1,9 @@
+list: $/thephuc/tunsurvey/models/survey/columns_result.yaml
+modelClass: ThePhuc\Tunsurvey\Models\Survey
+title: Analytics
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: false
+showCheckboxes: false
+recordsPerPage: 20
+recordUrl: 'thephuc/tunsurvey/analytics/preview/:id'
+filter: config_filter.yaml

@@ -1,0 +1,47 @@
+<!-- Investments -->
+{% for investment in listInvestments %}
+<li class="card mb-5">
+    <div class="row">
+        <div class="col-4 pr-0">
+            <div class="bg-img-hero-center rounded-left h-100"
+                 style="background-image: url({{investment.photos[0].thumb('200','300','auto')}});"></div>
+        </div>
+
+        <div class="col-8">
+            <div class="card-body py-5 px-md-4">
+                <div class="mb-2">
+                    <a class="d-inline-block text-secondary small font-weight-medium mb-1" href="#">{{investment.city.name}}</a>
+                    <h2 class="h6 font-weight-normal">
+                        <a class="text-secondary" href="/investment/{{investment.slug}}">{{investment.name}}</a>
+                    </h2>
+                    <p class="font-size-1 two-line-truncate">{{investment.objectives}}</p>
+                    <div class="d-block">
+                        <span class="h5">Rp. {{investment.investment_value|number_format(0, '.', '.')}}</span>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <div class="d-inline-flex align-items-center small" href="#">
+                        <span class="text-secondary">
+                            schema: {% for scheme in investment.investment_schemes %}{{scheme.name}} {% if not loop.last %},{% endif %}{% else %}No Data{% endfor %}
+                        </span>
+                    </div>
+                </div>
+                <button type="button"
+                        class="btn btn-sm btn-soft-secondary btn-pill transition-3d-hover">
+                    {{investment.organization_name}}
+                </button>
+                <a href="/investment/{{investment.slug}}"
+                        class="btn btn-sm btn-outline-primary btn-sm-wide btn-pill transition-3d-hover mr-1">
+                    Detail
+                </a>
+            </div>
+        </div>
+    </div>
+</li>
+{% else %}
+<li>
+    <h4 class="text-center">No Investment Projects found within these criteria.</h4>
+</li>
+{% endfor %}
+<!-- End Investments -->

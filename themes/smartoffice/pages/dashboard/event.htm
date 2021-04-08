@@ -1,0 +1,18 @@
+title = "Event"
+url = "/event"
+layout = "dashboard"
+is_hidden = 0
+
+[listEvents]
+eventsPerPage = 6
+==
+<?php
+function onInit()
+{
+    $this->addCss('assets/css/custom-autocomplete.css');
+}
+?>
+==
+<div class="container mt-10">
+    {% component 'listEvents' %}
+</div>

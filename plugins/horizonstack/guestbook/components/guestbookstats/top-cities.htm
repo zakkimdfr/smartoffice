@@ -1,0 +1,28 @@
+<div class="table-responsive">
+    <table id="topCities-all-details" class="table table-light table-responsive-sm table-striped">
+        <thead>
+        <tr class="text-primary">
+            <th scope="col" style="width: 120px">Peringkat</th>
+            <th scope="col">Asal Kota/Kabupaten</th>
+            <th scope="col">Jumlah Undangan</th>
+        </tr>
+        </thead>
+        <tbody id="topCities-table-detail">
+        {% for city in topCities %}
+        <tr>
+            <td scope="row" class="align-middle">
+                <span>
+                    {{(((topCities.currentPage - 1) * topCities.perPage) + loop.index)}}
+                </span>
+            </td>
+            <td class="align-middle text-secondary">
+                <small class="d-block">{{city.name}}</small>
+            </td>
+            <td class="align-middle text-secondary small">
+                {{city.guests_count}}
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,73 @@
+# ===================================
+#  Extended Profile Field Definitions
+# ===================================
+
+user_type:
+    label: horizonstack.userextend::lang.user.user_type
+    tab: rainlab.user::lang.user.account
+    type: dropdown
+    span: left
+
+unique_id:
+    label: horizonstack.userextend::lang.user.unique_id
+    tab: horizonstack.userextend::lang.tab.profile
+    span: left
+
+date_of_birth:
+    label: horizonstack.userextend::lang.user.date_of_birth
+    tab: horizonstack.userextend::lang.tab.profile
+    type: datepicker
+    mode: date
+    ignoreTimezone: true
+    span: left
+
+phone:
+    label: horizonstack.userextend::lang.user.phone
+    tab: horizonstack.userextend::lang.tab.profile
+    span: right
+
+department_id:
+    label: horizonstack.userextend::lang.user.department_id
+    tab: horizonstack.userextend::lang.tab.profile
+    span: left
+    type: dropdown
+
+sub_department_id:
+    label: horizonstack.userextend::lang.user.sub_department_id
+    tab: horizonstack.userextend::lang.tab.profile
+    dependsOn:
+        - department_id
+    span: right
+    type: dropdown
+
+job_level_id:
+    label: horizonstack.userextend::lang.user.job_level_id
+    tab: horizonstack.userextend::lang.tab.profile
+    span: left
+    type: dropdown
+
+job:
+    label: horizonstack.userextend::lang.user.job
+    tab: horizonstack.userextend::lang.tab.profile
+    span: right
+
+address:
+    label: horizonstack.userextend::lang.user.address
+    tab: horizonstack.userextend::lang.tab.address
+    span: auto
+    type: user_addressfinder
+    fieldMap:
+        latitude: latitude
+        longitude: longitude
+
+latitude:
+    label: Latitude
+    span: left
+    type: text
+    tab: horizonstack.userextend::lang.tab.address
+
+longitude:
+    label: Longitude
+    span: right
+    type: text
+    tab: horizonstack.userextend::lang.tab.address

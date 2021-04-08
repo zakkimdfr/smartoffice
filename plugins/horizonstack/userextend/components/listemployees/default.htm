@@ -1,0 +1,60 @@
+<div id="list-employee-results">
+    <div class="row mb-sm-3 mb-md-6">
+        <div class="col-md-6 mb-md-3" id="list-employee-total">
+            {% partial "@list-employee-total" %}
+        </div>
+        <div class="col-md-6">
+            <div class="row justify-content-end">
+                <div class="col-md-3 col-sm-12">
+                    {% partial '@list-employee-sorting' %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="list-employee-result" class="row">
+        {% partial "@list-employee-result" %}
+    </div>
+
+    <div id="list-employee-pagination">
+        {% partial "@list-employee-pagination" %}
+    </div>
+</div>
+{% put javascript %}
+<script>
+    $('#filter-by').on('change', function () {
+        applyFilter(1);
+    });
+
+    function applyFilter(pageNum) {
+        var page = 1;
+        if (pageNum) {
+            page = pageNum;
+        }
+
+        if (pageNum) {
+            $('form').request('onPageChangeFilter', {
+                update: {
+                    '@list-employee-result': '#list-employee-result',
+                    '@list-employee-total': '#list-employee-total',
+                    '@list-employee-pagination': '#list-employee-pagination',
+                },
+                data: {
+                    page: page,
+                    filter_by: $('#filter-by').val(),
+                },
+                beforeSend: function () {
+                    $.oc.stripeLoadIndicator.show();
+                },
+                complete: function () {
+                    $.oc.stripeLoadIndicator.hide();
+                }
+            })
+        }
+    }
+
+    $(document).on('click', '.paginate-list', function () {
+        var page = $(this).data('page');
+        applyFilter(page);
+    });
+</script>
+{% endput %}

@@ -1,0 +1,15 @@
+<?php use ThePhuc\Tunsurvey\Models\Survey; ?>
+
+<div class="scoreboard">
+    <div data-control="toolbar">
+        <div class="scoreboard-item control-chart" data-control="chart-bar">
+            <ul>
+                <li data-color="#e5a91a"><?= trans('thephuc.tunsurvey::lang.status.draft') ?> <span><?= number_format(Survey::where('status', Survey::DRAFT)->count()) ?></span></li>
+                <li data-color="#95b753"><?= trans('thephuc.tunsurvey::lang.status.publish') ?> <span><?= number_format(Survey::where('status', Survey::PUBLISH)->count()) ?></span></li>
+                <li data-color="#cc3300"><?= trans('thephuc.tunsurvey::lang.status.closed') ?> <span><?= number_format(Survey::where('status', Survey::CLOSED)->count()) ?></span></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<?= $this->listRender() ?>

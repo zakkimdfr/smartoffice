@@ -1,0 +1,98 @@
+.layout-sidenav-container {
+    width: 80px;
+}
+#layout-sidenav {
+    border-right: 1px solid #ddd;
+    background-color: #ffffff;
+}
+
+#layout-sidenav ul li a i {
+    color: rgba(255,255,255,0.6);
+    display: block;
+    margin-bottom: 5px;
+    font-size: 1.5em;
+}
+
+#layout-sidenav ul li a,
+#layout-sidenav ul li a i {
+    color: grey;
+}
+
+#layout-sidenav ul li a:hover,
+#layout-sidenav ul li a i:hover,
+#layout-sidenav ul li.active a,
+#layout-sidenav ul li.active a i {
+    background-color: #f7f7f7;
+    color: #ed9c28;
+}
+.qrcode {
+    border-width: 2px;
+    border-style: dotted;
+    border-color: #f39c12;
+    padding: 5px;
+}
+
+.mytip {
+  position: relative;
+  display: inline-block;
+}
+
+.mytip .tooltiptext {
+  visibility: hidden;
+  width: 200px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  top: 150%;
+  left: 50%;
+  margin-left: -100px;
+}
+
+.mytip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent black transparent;
+}
+
+.mytip:hover .tooltiptext {
+  visibility: visible;
+}
+
+.lbl-primary {
+    background: #7f8c8d;
+    border-radius: 2px;
+    border: 1px solid #d2d2d2;
+    color: #fff;
+    font-size: 11px;
+    padding: 2px;
+    font-weight: bold;
+}
+
+.lbl-danger {
+    background: #e74c3c;
+    border-radius: 2px;
+    border: 1px solid #d2d2d2;
+    color: #fff;
+    font-size: 11px;
+    padding: 2px;
+    font-weight: bold;
+}
+
+.lbl-success {
+    background: #2ecc71;
+    border-radius: 2px;
+    border: 1px solid #d2d2d2;
+    color: #fff;
+    font-size: 11px;
+    padding: 2px;
+    font-weight: bold;
+}

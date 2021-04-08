@@ -1,0 +1,200 @@
+.gradient-half-primary-body-v1 {
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(/themes/smartoffice/assets/img/bg-shapes/landing_bg_img.jpeg);
+    background-size: cover;
+}
+
+.mt-25-per {
+    margin-top: 25vh;
+}
+
+.img-landing-page {
+    width: 135px;
+    margin: 0 auto;
+    display: block;
+}
+
+.main-logo img {
+    position: absolute;
+    top: -10px;
+    left: 10px;
+    margin-top: unset !important;
+}
+
+.web-cam-img {
+    width: 312px;
+    display: block;
+    height: 250px;
+    border: 1px solid black;
+    margin: 0 auto;
+}
+
+.web-cam-preview-img {
+    margin: 0 auto;
+    display: block;
+    width: 312px;
+}
+
+.bootstrap-select.form-control {
+    border: 1px solid #d5dae2;
+    padding: 0.20rem 1rem;
+}
+
+.btn-souvenir {
+    color: #fff;
+    background-color: #00C9A7;
+    border-color: #00C9A7;
+}
+
+.border-radius-0 {
+    border-radius: unset !important;
+}
+
+@media (max-width: 480px) {
+    .height-48 {
+        height: unset !important;
+    }
+
+    .bootstrap-select .dropdown-menu {
+        width: 350px;
+    }
+}
+
+.border-bottom-dashed {
+    border-bottom: 1px dashed #e7eaf3
+}
+
+.yellow-background {
+    background-color: #FFC107
+}
+
+.profile-alert {
+    background-color: #fff3cd;
+    margin: -1rem -1rem 0 -1rem;
+}
+
+.btn-custom {
+    background-color: #00C9A7;
+    color: white;
+}
+
+.pac-container {
+    z-index: 10000 !important;
+}
+
+.barier-top {
+    border: 3px solid #000;
+}
+
+.barier-bottom {
+    border: 1px solid #000;
+}
+
+.sign-space {
+    padding-top: 90px;
+}
+
+.table {
+    table-layout: fixed;
+}
+
+/* styles for '...' */
+.one-line-truncate {
+    /* hide text if it more than N lines  */
+    overflow: hidden;
+    /* for set '...' in absolute position */
+    position: relative;
+    /* use this value to count block height */
+    line-height: 1.2em;
+    /* max-height = line-height (1.2) * lines max number (3) */
+    max-height: 1.2em;
+}
+
+/* create the ... */
+.one-line-truncate:before {
+    /* points in the end */
+    content: '...';
+    /* absolute position */
+    position: absolute;
+    /* set position to right bottom corner of block */
+    right: 0;
+    bottom: 0;
+}
+
+/* hide ... if we have text, which is less than or equal to max lines */
+.one-line-truncate:after {
+    /* points in the end */
+    content: '';
+    /* absolute position */
+    position: absolute;
+    /* set position to right bottom corner of text */
+    right: 0;
+    /* set width and height */
+    width: 1em;
+    height: 1em;
+    margin-top: 0.2em;
+    /* bg color = bg color under block */
+    background: white;
+}
+
+.two-line-truncate {
+    /* hide text if it more than N lines  */
+    overflow: hidden;
+    /* for set '...' in absolute position */
+    position: relative;
+    /* use this value to count block height */
+    line-height: 1.2em;
+    /* max-height = line-height (1.2) * lines max number (3) */
+    max-height: 2.4em;
+}
+
+/* create the ... */
+.two-line-truncate:before {
+    /* points in the end */
+    content: '...';
+    /* absolute position */
+    position: absolute;
+    /* set position to right bottom corner of block */
+    right: 0;
+    bottom: 0;
+}
+
+/* hide ... if we have text, which is less than or equal to max lines */
+.two-line-truncate:after {
+    /* points in the end */
+    content: '';
+    /* absolute position */
+    position: absolute;
+    /* set position to right bottom corner of text */
+    right: 0;
+    /* set width and height */
+    width: 1em;
+    height: 1em;
+    margin-top: 0.2em;
+    /* bg color = bg color under block */
+    background: white;
+}
+
+.btn-whatsapp {
+    background-color: #63C98C;
+    color: white;
+}
+
+.btn-whatsapp:focus, .btn-whatsapp:hover, .btn-whatsapp:active {
+    background-color: #63C98C;
+    color: white;
+}
+
+.btn-print {
+    background-color: #FEC55E;
+    color: white;
+}
+
+.btn-print:focus, .btn-print:hover, .btn-print:active {
+    background-color: #FEC55E;
+    color: white;
+}
+
+.height-48 {
+    height: 48px;
+    overflow: hidden;
+}

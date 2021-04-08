@@ -1,0 +1,78 @@
+fields:
+    user_id:
+        label: User
+        span: auto
+        type: dropdown
+tabs:
+    fields:
+        report_number:
+            label: Report Number
+            span: auto
+            type: text
+            tab: Basic Details
+        attnTo:
+            label: Attn To
+            span: auto
+            type: relation
+            select: name
+            tab: Basic Details
+        From:
+            label: From
+            span: auto
+            type: relation
+            select: name
+            tab: Basic Details
+        CC:
+            label: CC
+            span: auto
+            type: relation
+            select: name
+            tab: Basic Details
+        date:
+            label: Date
+            span: auto
+            type: datepicker
+            mode: date
+            ignoreTimezone: true
+            tab: Basic Details
+        attachment:
+            label: Attachment
+            span: auto
+            type: text
+            tab: Basic Details
+        subject:
+            label: Subject
+            span: auto
+            type: text
+            tab: Basic Details
+        urgency_id:
+            label: Urgency
+            span: auto
+            type: dropdown
+            tab: Basic Details
+        description:
+            label: Description
+            span: full
+            type: richeditor
+            tab: Basic Details
+        photos:
+            label: Photos
+            type: fileupload
+            mode: image
+            imageHeight: 260
+            imageWidth: 260
+            thumbOptions:
+                mode: auto
+                offset:
+                - 0
+                - 0
+                interlace: false
+                extension: auto
+            tab: Media Details
+            span: auto
+        file_attachment:
+            label: File Attachment
+            type: fileupload
+            mode: file
+            span: auto
+            tab: Media Details

@@ -1,0 +1,12 @@
+list: $/horizonstack/asset/models/assetcategory/columns.yaml
+modelClass: Horizonstack\Asset\Models\AssetCategory
+title: AssetCategories
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: true
+showCheckboxes: true
+recordsPerPage: 20
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'
+recordUrl: 'horizonstack/asset/assetcategories/update/:id'

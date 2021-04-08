@@ -1,0 +1,22 @@
+policyRegulations:
+  label: Policy Regulation
+  deferredBinding: true
+  view:
+    showSearch: true
+    recordsPerPage: 15
+    list: $/horizonstack/investment/models/policyregulation/columns.yaml
+    toolbarButtons: create|delete
+  manage:
+    list: $/horizonstack/investment/models/policyregulation/columns.yaml
+    form: $/horizonstack/investment/models/policyregulation/fields.yaml
+interests:
+  label: Interest
+  deferredBinding: true
+  view:
+    showSearch: true
+    recordsPerPage: 15
+    list: $/horizonstack/investment/models/investmentinterest/columns.yaml
+    toolbarButtons: create|delete
+  manage:
+    list: $/horizonstack/investment/models/investmentinterest/columns.yaml
+    form: $/horizonstack/investment/models/investmentinterest/fields.yaml

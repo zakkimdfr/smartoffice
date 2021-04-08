@@ -1,0 +1,11 @@
+1.0.1:
+    - 'Initialize plugin.'
+1.0.2:
+    - 'Created table horizonstack_workreport_reports'
+    - builder_table_create_horizonstack_workreport_reports.php
+1.0.3:
+    - 'Created table horizonstack_workreport_attns'
+    - builder_table_create_horizonstack_workreport_attns.php
+1.0.4:
+    - 'Created table horizonstack_workreport_urgencies'
+    - builder_table_create_horizonstack_workreport_urgencies.php

@@ -1,0 +1,37 @@
+{% if tripReports.lastPage > 1 %}
+<nav aria-label="Page navigation example">
+    <ul class="pagination">
+        {% if tripReports.currentPage > 1 %}
+        <li class="page-item"><a href="#" class="page-link" data-request="onPageChangeTripReports"
+                                 data-request-update="'@trip_reports_table_detail': '#trip-reports-table-detail','@trip_reports_pagination': '#trip-reports-pagination'"
+                                 data-request-data="page: '{{tripReports.currentPage-1}}'{% if searchTerm %},searchTerm:'{{ searchTerm }}'{% endif %}{% if sortField %},sort_by:'{{sortField}}'{% endif %}{% if sort_direction %},sort_direction: '{{sort_direction}}'{% endif %}">
+            <span aria-hidden="true">&laquo;</span>
+            <span class="sr-only">Sebelumnya</span>
+        </a></li>
+        {% endif %}
+
+        {% for page in 1..tripReports.lastPage %}
+        <li class="page-item {{ tripReports.currentPage == page ? 'active' : null }}">
+            <a href="#" data-request="onPageChangeTripReports" class="page-link"
+               data-request-update="'@trip_reports_table_detail': '#trip-reports-table-detail','@trip_reports_pagination': '#trip-reports-pagination'"
+               data-request-data="page: '{{page}}'{% if searchTerm %},searchTerm:'{{ searchTerm }}'{% endif %}{% if sortField %},sort_by:'{{sortField}}'{% endif %}{% if sort_direction %},sort_direction: '{{sort_direction}}'{% endif %}">{{
+                page }}</a>
+        </li>
+        {% endfor %}
+
+        {% if tripReports.lastPage > tripReports.currentPage %}
+        <li class="page-item"><a href="#" data-request="onPageChangeTripReports" class="page-link"
+                                 data-request-update="'@trip_reports_table_detail': '#trip-reports-table-detail','@trip_reports_pagination': '#trip-reports-pagination'"
+                                 data-request-data="page: '{{tripReports.currentPage+1}}'{% if searchTerm %},searchTerm:'{{ searchTerm }}'{% endif %}{% if sortField %},sort_by:'{{sortField}}'{% endif %}{% if sort_direction %},sort_direction: '{{sort_direction}}'{% endif %}">
+            <span aria-hidden="true">&raquo;</span>
+            <span class="sr-only">Berikutnya</span>
+        </a></li>
+        {% endif %}
+    </ul>
+</nav>
+{% endif %}
+
+<form id="searchTerm">
+    <input type="hidden" name="searchTerm" value="{{ searchTerm }}">
+    <input type="hidden" name="page" value="{{ page }}">
+</form>

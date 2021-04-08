@@ -1,0 +1,37 @@
+{% if tripRealityForms.lastPage > 1 %}
+<nav aria-label="Page navigation example">
+    <ul class="pagination">
+        {% if tripRealityForms.currentPage > 1 %}
+        <li class="page-item"><a href="#" class="page-link" data-request="onPageChangeTripRealityForms"
+                                 data-request-update="'@trip_reality_forms_table_detail': '#trip-reality-forms-table-detail','@trip_reality_forms_pagination': '#trip-reality-forms-pagination'"
+                                 data-request-data="page: '{{tripRealityForms.currentPage-1}}'{% if searchTerm %},searchTerm:'{{ searchTerm }}'{% endif %}{% if sortField %},sort_by:'{{sortField}}'{% endif %}{% if sort_direction %},sort_direction: '{{sort_direction}}'{% endif %}">
+            <span aria-hidden="true">&laquo;</span>
+            <span class="sr-only">Sebelumnya</span>
+        </a></li>
+        {% endif %}
+
+        {% for page in 1..tripRealityForms.lastPage %}
+        <li class="page-item {{ tripRealityForms.currentPage == page ? 'active' : null }}">
+            <a href="#" data-request="onPageChangeTripRealityForms" class="page-link"
+               data-request-update="'@trip_reality_forms_table_detail': '#trip-reality-forms-table-detail','@trip_reality_forms_pagination': '#trip-reality-forms-pagination'"
+               data-request-data="page: '{{page}}'{% if searchTerm %},searchTerm:'{{ searchTerm }}'{% endif %}{% if sortField %},sort_by:'{{sortField}}'{% endif %}{% if sort_direction %},sort_direction: '{{sort_direction}}'{% endif %}">{{
+                page }}</a>
+        </li>
+        {% endfor %}
+
+        {% if tripRealityForms.lastPage > tripRealityForms.currentPage %}
+        <li class="page-item"><a href="#" data-request="onPageChangeTripRealityForms" class="page-link"
+                                 data-request-update="'@trip_reality_forms_table_detail': '#trip-reality-forms-table-detail','@trip_reality_forms_pagination': '#trip-reality-forms-pagination'"
+                                 data-request-data="page: '{{tripRealityForms.currentPage+1}}'{% if searchTerm %},searchTerm:'{{ searchTerm }}'{% endif %}{% if sortField %},sort_by:'{{sortField}}'{% endif %}{% if sort_direction %},sort_direction: '{{sort_direction}}'{% endif %}">
+            <span aria-hidden="true">&raquo;</span>
+            <span class="sr-only">Berikutnya</span>
+        </a></li>
+        {% endif %}
+    </ul>
+</nav>
+{% endif %}
+
+<form id="searchTerm">
+    <input type="hidden" name="searchTerm" value="{{ searchTerm }}">
+    <input type="hidden" name="page" value="{{ page }}">
+</form>

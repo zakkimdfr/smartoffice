@@ -1,0 +1,11 @@
+guests:
+  label: Guests
+  deferredBinding: true
+  view:
+    showSearch: true
+    recordsPerPage: 15
+    list: $/horizonstack/guestbook/models/guest/columns_event.yaml
+    toolbarPartial: relation_toolbar
+  manage:
+    list: $/horizonstack/guestbook/models/guest/columns_event.yaml
+    form: $/horizonstack/guestbook/models/guest/fields_event.yaml

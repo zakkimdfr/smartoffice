@@ -1,0 +1,446 @@
+<!-- Gallery Section -->
+<div class="container-fluid position-relative p-2 mb-3 space-1 space-top-3">
+    <div class="row {% if investment.photos|length == 1 %}text-center {% endif %}mx-gutters-1">
+        <div class="{% if investment.photos|length == 1 %}col-md-12 col-lg-12{% else %}col-md-8 col-lg-6{% endif %}">
+            <!-- Gallery -->
+            <img class="img-fluid" src="{{investment.photos[0].thumb('900','455','crop')}}"
+                 alt="{{investment.photos[0].filename}}">
+            <!-- End Gallery -->
+        </div>
+
+        {% if investment.photos|length > 1 %}
+        <div class="col-md-4 col-lg-3 d-none d-md-inline-block">
+            <!-- Gallery -->
+
+            <img class="img-fluid" src="{{investment.photos[1].thumb('450','225','crop')}}"
+                 alt="{{investment.photos[1].filename}}">
+
+            {% if investment.photos|length > 2 %}
+            <img class="img-fluid" src="{{investment.photos[2].thumb('450','225','crop')}}"
+                 alt="{{investment.photos[2].filename}}">
+            {% endif %}
+            <!-- End Gallery -->
+        </div>
+        {% endif %}
+
+        {% if investment.photos|length > 3 %}
+        <div class="col-lg-3 d-none d-lg-inline-block">
+            <!-- Gallery -->
+            <img class="img-fluid" src="{{investment.photos[3].thumb('450','225','crop')}}"
+                 alt="{{investment.photos[3].filename}}">
+            <!-- End Gallery -->
+
+            {% if investment.photos|length > 4 %}
+            <img class="img-fluid" src="{{investment.photos[4].thumb('450','225','crop')}}"
+                 alt="{{investment.photos[4].filename}}">
+            {% endif %}
+        </div>
+        {% endif %}
+    </div>
+</div>
+<!-- End Gallery Section -->
+
+<!-- Property Description Section -->
+<div class="container space-bottom-2">
+    <!-- Additional Functions -->
+    <div class="d-md-flex justify-content-md-start align-items-md-center text-center mb-7">
+        <div class="mr-md-auto mb-2 mb-md-0">
+            <span class="font-size-1 font-weight-medium">Published:</span>
+            <span class="text-secondary font-size-1">{{investment.created_at|localizeddate('long', 'none', 'en', 'Asia/Jakarta')}}</span>
+        </div>
+    </div>
+    <!-- End Additional Functions -->
+
+    <!-- Title -->
+    <div class="row justify-content-lg-between">
+        <div class="col-lg-8">
+
+            <h1 class="h3 font-weight-medium">{{investment.name}}</h1>
+        </div>
+
+        <div class="col-lg-4 align-self-lg-end text-lg-right mb-5 mb-lg-0">
+            <span class="h3 text-primary font-weight-medium text-nowrap">
+                {% if investment.investment_value %}Rp. {{investment.investment_value|number_format(0, '.', '.')}}{% else %}No Data{% endif %}
+            <br/>
+                {% if investment.usd %}USD {{investment.usd|number_format(0, ',', ',')}}{% else %}No Data{% endif %}</span>
+        </div>
+    </div>
+    <!-- End Title -->
+
+    <div class="row space-top-lg-2">
+        <div class="col-lg-12 mb-9 mb-lg-0">
+            <div class="px-2 py-2 mb-3">
+
+                <div class="d-md-flex border rounded justify-content-md-center align-items-md-center mb-3 py-2">
+                    <figure class="ie-height-40 d-none d-md-block w-100 max-width-6 mr-3">
+                        <img class="js-svg-injector" src="{{ 'assets/svg/icons/icon-5.svg'|theme }}" alt="SVG"
+                             data-parent="#SVGnavIcons">
+                    </figure>
+                    <h2 class="h5">Details</h2>
+                </div>
+
+
+                <!-- Key Facts -->
+                <div class="row">
+                    <div class="col-md-6">
+                        <h4>Key Facts</h4>
+                        <!-- Fact List -->
+                        <ul class="list-unstyled font-size-1 mb-0">
+                            <li class="d-sm-flex justify-content-sm-between py-1">
+                                <span class="font-weight-medium">Scope of Project:</span>
+                                <span class="text-secondary">
+                                        {% if investment.projectLevel %}{{investment.projectLevel.name}}{% else %}No Data{% endif %}
+                                    </span>
+                            </li>
+
+                            <li class="d-sm-flex justify-content-sm-between py-1">
+                                <span class="font-weight-medium">Sector:</span>
+                                <span class="text-secondary">
+                                        {% if investment.propertyType %}{{investment.propertyType.name}}{% else %}No Data{% endif %}
+                                    </span>
+                            </li>
+
+                            <li class="d-sm-flex justify-content-sm-between py-1">
+                                <span class="font-weight-medium">Expected Time of Operation:</span>
+                                <span class="text-secondary">
+                                        {% if targetOperationMonth %}{{targetOperationMonth}}, {{targetOperationYear}}{% else %}No Data{% endif %}
+                                    </span>
+                            </li>
+
+                            <li class="d-sm-flex justify-content-sm-between py-1">
+                                <span class="font-weight-medium">Ownership:</span>
+                                <span class="text-secondary">
+                                        {% if investment.ownership %}{{investment.ownership.name}}{% else %}No Data{% endif %}
+                                    </span>
+                            </li>
+
+                            <li class="d-sm-flex justify-content-sm-between py-1">
+                                <span class="font-weight-medium">Land Size:</span>
+                                <span class="text-secondary">
+                                        {% if investment.land_size %}{{investment.land_size|number_format(0, '.', '.')}} <strong>M2</strong>{% else %}No Data{% endif %}
+                                    </span>
+                            </li>
+
+                            <li class="d-sm-flex justify-content-sm-between py-1">
+                                <span class="font-weight-medium">Land Allocation:</span>
+                                <span class="text-secondary">
+                                        {% if investment.land_allocation %}{{investment.land_allocation}}{% else %}No Data{% endif %}
+                                    </span>
+                            </li>
+
+                            <li class="d-sm-flex justify-content-sm-between py-1">
+                                <span class="font-weight-medium">Number of Human Resource:</span>
+                                <span class="text-secondary">
+                                        {% if investment.human_resources %}{{investment.human_resources|number_format(0, '.', '.')}}{% else %}No Data{% endif %}
+                                    </span>
+                            </li>
+                        </ul>
+                        <!-- End Fact List -->
+                    </div>
+
+                    <div class="col-md-6">
+                        <h4>Financial Overview</h4>
+                        <!-- Fact List -->
+                        <ul class="list-unstyled font-size-1 mb-0">
+                            <li class="d-sm-flex justify-content-sm-between py-1">
+                                <span class="font-weight-medium">Internal Rate Return (IRR):</span>
+                                <span class="text-secondary">
+                                        {% if investment.irr %}{{investment.irr}}%{% else %}No Data{% endif %}
+                                    </span>
+                            </li>
+
+                            <li class="d-sm-flex justify-content-sm-between py-1">
+                                <span class="font-weight-medium">Net Present Value (NPV):</span>
+                                <span class="text-secondary">
+                                        {% if investment.npv %}Rp.{{investment.npv|number_format(0, '.', '.')}}{% else %}No Data{% endif %}
+                                    </span>
+                            </li>
+
+                            <li class="d-sm-flex justify-content-sm-between py-1">
+                                <span class="font-weight-medium">Build Coverage Ratio (BCR):</span>
+                                <span class="text-secondary">
+                                        {% if investment.bcr %}({{investment.bcr}})%{% else %}No Data{% endif %}
+                                    </span>
+                            </li>
+
+                            <li class="d-sm-flex justify-content-sm-between py-1">
+                                <span class="font-weight-medium">Payback Period:</span>
+                                <span class="text-secondary">
+                                        {% if investment.payback_period %}{{investment.payback_period}} Months{% else %}No Data{% endif %}
+                                    </span>
+                            </li>
+
+                            <li class="d-sm-flex justify-content-sm-between py-1">
+                                <span class="font-weight-medium">Return of Investment (ROI):</span>
+                                <span class="text-secondary">
+                                        {% if investment.return_of_investment %}{{investment.return_of_investment}}%{% else %}No Data{% endif %}
+                                    </span>
+                            </li>
+
+                            <li class="d-sm-flex justify-content-sm-between py-1">
+                                <span class="font-weight-medium">Break Event Point (BEP):</span>
+                                <span class="text-secondary">
+                                        {% if investment.break_event_point %}Rp.{{investment.break_event_point|number_format(0, '.', '.')}}{% else %}No Data{% endif %}
+                                    </span>
+                            </li>
+
+                            <li class="d-sm-flex justify-content-sm-between py-1">
+                                <span class="font-weight-medium">Profitability Index:</span>
+                                <span class="text-secondary">
+                                        {% if investment.profitability_index %}{{investment.profitability_index}}%{% else %}No Data{% endif %}
+                                    </span>
+                            </li>
+                        </ul>
+                        <!-- End Fact List -->
+                    </div>
+                </div>
+                <!-- End Key Facts -->
+
+                <!-- View Info -->
+                <div class="border-top border-bottom py-4 my-6">
+                    <div class="pr-md-4">
+                        <span class="text-secondary">Investment Schema:</span>
+                        <strong class="text-dark">
+                            {% for scheme in investment.investment_schemes %}{{scheme.name}}
+                            {% if not loop.last %},{% endif %}
+                            {% else %}
+                            No Data
+                            {% endfor %}
+                        </strong>
+                    </div>
+                </div>
+                <!-- End View Info -->
+
+                <!-- Executing Agent -->
+                <div class="mb-3 add-page-break-after">
+                    <h3 class="h5">Executing Agent</h3>
+                    <div>
+                        {% if investment.organization %}
+                        {% if investment.organization and investment.organization.icon %}
+                        <img class="js-svg-injector w-15" src="{{investment.organization.icon.path}}">
+                        {% else %}
+                        <img class="js-svg-injector w-15"
+                             src="{{'assets/img/logos/logo.png'|theme}}">
+                        {% endif %}
+                        <span class="ml-2">{{investment.organization.name}}</span>
+                        {% else %}
+                        No Data
+                        {% endif %}
+                    </div>
+                </div>
+                <!-- End Executing Agent -->
+
+                <h3 class="h5">
+                    Incentives
+                </h3>
+                <p>
+                    {% if investment.incentives %}
+                    {{investment.incentives}}
+                    {% else %}
+                    No Data
+                    {% endif %}
+                </p>
+                <hr>
+
+                <h3 class="h5">
+                    Project Description
+                </h3>
+                <p>
+                    {% if investment.description %}
+                    {{investment.description}}
+                    {% else %}
+                    No Data
+                    {% endif %}
+                </p>
+                <hr>
+
+                <!-- Collapse Link - Content -->
+                <!--<div class="collapse" id="collapseLinkExample">
+                    <h4 class="h6">Directions</h4>
+
+                    <p>Proceed up the Otley Road from the Prince Of Wales roundabout and through the traffic lights
+                        with the turning into Harlow Moor Road. Continue ahead where the property can be found on
+                        the left hand side.</p>
+
+                    <h4 class="h6">Strictly by appointment through Front House</h4>
+
+                    <p>You may download, store and use the material for your own personal use and research. You may
+                        not republish, retransmit, redistribute or otherwise make the material available to any
+                        party or make the same available on any website, online service or bulletin board of your
+                        own or of any other party or make the same available in hard copy or in any other media
+                        without the website owner's express prior written consent. The website owner's copyright
+                        must remain on all reproductions of material taken from this website.</p>
+                </div>-->
+                <!-- End Collapse Link - Content -->
+
+                <!-- Collapse Link -->
+                <!--<a class="link-collapse" data-toggle="collapse" href="#collapseLinkExample" role="button"
+                   aria-expanded="false" aria-controls="collapseLinkExample">
+                    <span class="link-collapse__default">View More</span>
+                    <span class="link-collapse__active">View Less</span>
+                </a>-->
+                <!-- End Collapse Link -->
+
+                <div class="mb-3">
+                    <h3 class="h5">Available Infrastructure</h3>
+                </div>
+
+                <div class="row mx-0">
+                    {% for infrastructure in investment.infrastructures %}
+                    <div class="col-md-2 col-sm-3 col-5 border rounded text-center p-2 mr-2 mb-2 w-100">
+                        {% if infrastructure.icon %}
+                        <img class="mb-2" src="{{ infrastructure.icon.thumb('50','50','crop') }}">
+                        {% else %}
+                        <img class="mb-2" src="{{ 'assets/img/icons/img1.png'|theme }}">
+                        {% endif %}
+                        <p class="d-block two-line-truncate">{{infrastructure.name}}</p>
+                    </div>
+                    {% else %}
+                    No Data
+                    {% endfor %}
+                </div>
+
+                {% if investment.objectives %}
+                <h3 class="h5">
+                    Project Objective
+                </h3>
+                <p>
+                    {% if investment.objectives %}
+                    {{investment.objectives}}
+                    {% else %}
+                    No Data
+                    {% endif %}
+                </p>
+                {% endif %}
+            </div>
+
+            <div class="px-2 py-2 mb-3">
+                <!-- Title -->
+                <div class="d-md-flex border rounded justify-content-md-center align-items-md-center mb-3 py-2">
+                    <figure class="ie-height-40 d-none d-md-block w-100 max-width-6 mr-3">
+                        <img class="js-svg-injector" src="{{ 'assets/svg/icons/icon-37.svg'|theme }}" alt="SVG"
+                             data-parent="#SVGnavIcons">
+                    </figure>
+                    <h2 class="h5">Locations</h2>
+                </div>
+                <!-- gmap locations here -->
+                <div style="height: 430px" id="print-map"></div>
+                <!-- gmap locations here -->
+
+                <div class="mt-2">
+                    <span class="text-secondary">Administrative Locations:</span>
+                    <strong class="text-dark">{{investment.village.name}}, {{investment.district.name}},
+                        {{investment.city.name}}</strong>
+                </div>
+            </div>
+
+            <div class="px-2 py-2 mb-3">
+                <div class="d-md-flex border rounded justify-content-md-center align-items-md-center mb-3 py-2">
+                    <figure class="ie-height-40 d-none d-md-block w-100 max-width-6 mr-3">
+                        <img class="js-svg-injector" src="{{ 'assets/svg/icons/icon-12.svg'|theme }}" alt="SVG"
+                             data-parent="#SVGnavIcons">
+                    </figure>
+                    <h2 class="h5">Legalities and Documents</h2>
+                </div>
+
+                {% if investment.policyRegulations|length > 0 or investment.ded_document or
+                investment.amdal_document or investment.amdas_document or investment.feasibility_study_document %}
+                {% for policy in investment.policyRegulations %}
+                <div class="row mb-3">
+                    <div class="col-1">
+                        <span class="fas fa-file-pdf display-4"></span>
+                    </div>
+                    <div class="col">
+                        {{policy.name}}<br>
+                        <a target="_blank" href="/files/download/{{policy.file.id}}"
+                           class="btn btn-sm btn-soft-primary">Download ({{policy.file.size}})</a>
+                    </div>
+                </div>
+                {% endfor %}
+
+                {% if investment.ded_document %}
+                <div class="row mb-3">
+                    <div class="col-1">
+                        <span class="fas fa-file-pdf display-4"></span>
+                    </div>
+                    <div class="col">
+                        Dokumen DED<br>
+                        <a target="_blank" href="/files/download/{{investment.ded_document.id}}"
+                           class="btn btn-sm btn-soft-primary">Download ({{investment.ded_document.size}})</a>
+                    </div>
+                </div>
+                {% endif %}
+
+                {% if investment.amdal_document %}
+                <div class="row mb-3">
+                    <div class="col-1">
+                        <span class="fas fa-file-pdf display-4"></span>
+                    </div>
+                    <div class="col">
+                        Dokumen AMDAL<br>
+                        <a target="_blank" href="/files/download/{{investment.amdal_document.id}}"
+                           class="btn btn-sm btn-soft-primary">Download ({{investment.amdal_document.size}})</a>
+                    </div>
+                </div>
+                {% endif %}
+
+                {% if investment.amdas_document %}
+                <div class="row mb-3">
+                    <div class="col-1">
+                        <span class="fas fa-file-pdf display-4"></span>
+                    </div>
+                    <div class="col">
+                        Dokumen AMDAS<br>
+                        <a target="_blank" href="/files/download/{{investment.amdas_document.id}}"
+                           class="btn btn-sm btn-soft-primary">Download ({{investment.amdas_document.size}})</a>
+                    </div>
+                </div>
+                {% endif %}
+
+                {% if investment.feasibility_study_document %}
+                <div class="row mb-3">
+                    <div class="col-1">
+                        <span class="fas fa-file-pdf display-4"></span>
+                    </div>
+                    <div class="col">
+                        Dokumen Feasibility Study<br>
+                        <a target="_blank" href="/files/download/{{investment.feasibility_study_document.id}}"
+                           class="btn btn-sm btn-soft-primary">Download
+                            ({{investment.feasibility_study_document.size}})</a>
+                    </div>
+                </div>
+                {% endif %}
+                {% else %}
+                <p>No Data</p>
+                {% endif %}
+            </div>
+
+            <div class="px-2 py-2">
+                <!-- Title -->
+                <div class="d-md-flex border rounded justify-content-md-center align-items-md-center mb-3 py-2">
+                    <figure class="ie-height-40 d-none d-md-block w-100 max-width-6 mr-3">
+                        <img class="img-fluid rounded-circle" src="{{ 'assets/img/logos/logo.png'|theme }}"
+                             alt="Image Description">
+                    </figure>
+                    <h2 class="h5">Contact Information</h2>
+                </div>
+                <!-- End Title -->
+
+                <p>Contact Person<br>
+                    <span class="text-dark font-weight-bold">{{investment.agent_name}}</span></p>
+                <p>Organization Name<br>
+                    <span class="text-dark font-weight-bold">{{investment.organization_name}}</span></p>
+                <p>Email Address<br>
+                    <span class="text-dark font-weight-bold">{{investment.agent_email}}</span></p>
+
+                <p>Office Address<br>
+                    <span class="text-dark font-weight-bold">{% if investment.office_address %}{{investment.office_address}}{% else %}No Data{% endif %}</span>
+                </p>
+
+                <p>Phone<br>
+                    <span class="text-dark font-weight-bold">+62{{investment.agent_phone}}</span></p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Property Description Section -->

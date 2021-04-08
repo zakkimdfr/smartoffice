@@ -1,0 +1,10 @@
+scopes:
+    status:
+        modelClass: ThePhuc\Tunsurvey\Models\Survey
+        label: 'thephuc.tunsurvey::lang.form.status'
+        conditions: status in (:filtered)
+        type: group
+        options:
+            1: 'thephuc.tunsurvey::lang.status.draft'
+            2: 'thephuc.tunsurvey::lang.status.publish'
+            3: 'thephuc.tunsurvey::lang.status.closed'

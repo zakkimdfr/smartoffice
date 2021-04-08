@@ -1,0 +1,51 @@
+plugin:
+    name: 'horizonstack.asset::lang.plugin.name'
+    description: 'horizonstack.asset::lang.plugin.description'
+    author: Horizonstack
+    icon: oc-icon-superpowers
+    homepage: ''
+permissions:
+    horizonstack.asset.manage_assets:
+        tab: 'horizonstack.asset::lang.plugin.name'
+        label: 'horizonstack.asset::lang.permissions.assets'
+    horizonstack.asset.manage_records:
+        tab: 'horizonstack.asset::lang.plugin.name'
+        label: 'horizonstack.asset::lang.permissions.records'
+    horizonstack.asset.manage_categories:
+        tab: 'horizonstack.asset::lang.plugin.name'
+        label: 'horizonstack.asset::lang.permissions.categories'
+    horizonstack.asset.manage_types:
+        tab: 'horizonstack.asset::lang.plugin.name'
+        label: 'horizonstack.asset::lang.permissions.types'
+navigation:
+    asset-plugin:
+        label: Assets
+        url: horizonstack/asset/assetrecords
+        icon: icon-superpowers
+        permissions:
+            - horizonstack.asset.manage_assets
+        sideMenu:
+            records:
+                label: Records
+                url: horizonstack/asset/assetrecords
+                icon: icon-yelp
+                permissions:
+                    - horizonstack.asset.manage_records
+            assets:
+                label: Assets
+                url: horizonstack/asset/assets
+                icon: icon-superpowers
+                permissions:
+                    - horizonstack.asset.manage_assets
+            categories:
+                label: Categories
+                url: horizonstack/asset/assetcategories
+                icon: icon-sliders
+                permissions:
+                    - horizonstack.asset.manage_categories
+            types:
+                label: Types
+                url: horizonstack/asset/assettypes
+                icon: icon-spinner
+                permissions:
+                    - horizonstack.asset.manage_types
